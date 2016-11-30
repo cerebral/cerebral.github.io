@@ -3889,6 +3889,9 @@ a.panel-block:hover {
       .footer a:not(.icon):hover, .footer a:visited:not(.icon):hover {
         border-bottom-color: #499; }
 
+.Login .modal, .Login .modal-content {
+  overflow: visible; }
+
 #root .is-dark .menu-list a:not(.is-active):hover {
   color: #444; }
 
@@ -3903,7 +3906,12 @@ a.panel-block:hover {
   background: #444; }
 
 .Selector {
-  position: relative; }
+  position: relative;
+  cursor: pointer; }
+
+.nav .Selector {
+  border-left: 1px solid #444;
+  padding-left: 20px; }
 
 .SelectorLeft, .SelectorRight {
   border-radius: 2px;
@@ -3922,6 +3930,11 @@ a.panel-block:hover {
 
 #root .is-dark .SelectorLeft, #root .is-dark .SelectorRight {
   background: #444; }
+
+#root .is-dark .Selector > a {
+  color: #666; }
+  #root .is-dark .Selector > a:hover {
+    color: #aaa; }
 
 @media screen and (max-width: 979px) {
   .hero-head > .container > .nav > .nav-right > .nav-item:last-child {
