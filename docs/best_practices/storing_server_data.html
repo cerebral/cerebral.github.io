@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><span>install</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/install/index.html">Cerebral</a><a class="docs-navigation-subItem" href="/docs/install/boilerplate.html">Boilerplates</a><a class="docs-navigation-subItem" href="/docs/install/tools.html">Tools</a><a class="docs-navigation-subItem" href="/docs/install/function_tree.html">Function Tree</a></div></li><li class="docs-navigation-item"><span>tutorial</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/tutorial/index.html">Introduction</a><a class="docs-navigation-subItem" href="/docs/tutorial/define_state.html">Define State</a><a class="docs-navigation-subItem" href="/docs/tutorial/render_state.html">Render state</a><a class="docs-navigation-subItem" href="/docs/tutorial/update_state.html">Update state</a><a class="docs-navigation-subItem" href="/docs/tutorial/chains.html">Chains</a><a class="docs-navigation-subItem" href="/docs/tutorial/actions.html">Actions</a><a class="docs-navigation-subItem" href="/docs/tutorial/async_actions.html">Async actions</a><a class="docs-navigation-subItem" href="/docs/tutorial/paths.html">Paths</a><a class="docs-navigation-subItem" href="/docs/tutorial/compute_state.html">Compute state</a><a class="docs-navigation-subItem" href="/docs/tutorial/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/tutorial/routing.html">Routing</a><a class="docs-navigation-subItem" href="/docs/tutorial/modules.html">Modules</a></div></li><li class="docs-navigation-item"><span>in depth</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/in_depth/index.html">The architecture</a><a class="docs-navigation-subItem" href="/docs/in_depth/controller.html">Controller</a><a class="docs-navigation-subItem" href="/docs/in_depth/state.html">State</a><a class="docs-navigation-subItem" href="/docs/in_depth/signals.html">Signals</a><a class="docs-navigation-subItem" href="/docs/in_depth/chains_and_paths.html">Chains and paths</a><a class="docs-navigation-subItem" href="/docs/in_depth/actions.html">Actions</a><a class="docs-navigation-subItem" href="/docs/in_depth/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/in_depth/tags.html">Tags</a><a class="docs-navigation-subItem" href="/docs/in_depth/operators.html">Operators</a><a class="docs-navigation-subItem" href="/docs/in_depth/factories.html">Factories</a><a class="docs-navigation-subItem" href="/docs/in_depth/connect.html">Connect</a><a class="docs-navigation-subItem" href="/docs/in_depth/compute.html">Compute</a><a class="docs-navigation-subItem" href="/docs/in_depth/routing.html">Routing</a></div></li><li class="docs-navigation-item active"><span>best practices</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/best_practices/index.html">Organizing</a><a class="docs-navigation-subItem" href="/docs/best_practices/constants.html">Constants</a><a class="docs-navigation-subItem" href="/docs/best_practices/testing.html">Testing</a><a class="docs-navigation-subItem" href="/docs/best_practices/load_initial_data.html">Load initial data</a><a class="docs-navigation-subItem active" href="/docs/best_practices/storing_server_data.html">Storing server data</a><a class="docs-navigation-subItem" href="/docs/best_practices/lists.html">Lists</a><a class="docs-navigation-subItem" href="/docs/best_practices/modals.html">Modals</a><a class="docs-navigation-subItem" href="/docs/best_practices/feedback_messages.html">Feedback messages</a><a class="docs-navigation-subItem" href="/docs/best_practices/popups.html">Popups</a><a class="docs-navigation-subItem" href="/docs/best_practices/long_running_side_effects.html">Long running side effects</a><a class="docs-navigation-subItem" href="/docs/best_practices/server_side.html">Server side</a></div></li><li class="docs-navigation-item"><span>migration</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/migration/index.html">From 1.x to 2.x</a></div></li><li class="docs-navigation-item"><span>api</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/api/index.html">Controller</a><a class="docs-navigation-subItem" href="/docs/api/state.html">State</a><a class="docs-navigation-subItem" href="/docs/api/signals.html">Signals</a><a class="docs-navigation-subItem" href="/docs/api/tags.html">Tags</a><a class="docs-navigation-subItem" href="/docs/api/connect.html">Connect</a><a class="docs-navigation-subItem" href="/docs/api/modules.html">Modules</a><a class="docs-navigation-subItem" href="/docs/api/operators.html">Operators</a><a class="docs-navigation-subItem" href="/docs/api/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/api/compute.html">Compute</a><a class="docs-navigation-subItem" href="/docs/api/router.html">Router</a></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="#storing-server-data">Storing server data</a><ul><li><a href="#store-as-objects,-compute-to-arrays">Store as objects, compute to arrays</a></li><li><a href="#optimistic-updates">Optimistic updates</a></li></ul></li></ul></div></div><div class="docs-doc"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/docs/docs/best_practices/storing_server_data.md" target="_new">Edit on Github</a></div><div class="docs-doc-content"><div style="background-color:#DD4A68;color:#fff;margin:10px;padding:5px 10px;border-radius:3px;">Docs are still being written and might not be up to date with API</div><h1 id="storing-server-data">Storing server data</h1><p>Your application usually needs to talk to a backend, grab some data and show it to the users. There are thousands of different types of backends and thousands of ways to structure the data. Discussions on how to store this data in the client, caching, optimistic updates, naming properties and endpoints are endless. Cerebral can only show you its preferred practice to solving this, but you are free to do whatever makes sense to you.</p><h2 id="store-as-objects,-compute-to-arrays">Store as objects, compute to arrays</h2><p>Why do we store data in arrays? And why do we store them as objects? So for example a list of users:</p><pre><code class="language-js">// As array
+[{
+  id: &#x27;123&#x27;,
+  name: &#x27;Bob&#x27;
+}]
+
+// As object
+{
+  &#x27;123&#x27;: {
+    id: &#x27;123&#x27;,
+    name: &#x27;Bob&#x27;
+  }
+}</code></pre><p>These ways of storing data has different benefits. Arrays are really great for views. Typically views only wants to map over an array of data and create a component for each item in array. Objects though are really great for lookups. If you have the ID of the user it requires way less computation and syntax to grab the user data:</p><pre><code class="language-js">const id = &#x27;123&#x27;
+
+const userFromArray = users.filter(user =&gt; user.id === id)[0]
+
+const userFromObject = users[id]</code></pre><p>So which one should you choose? Well, both! Use objects to structure data in the model and use arrays in your components. Let us see how to achieve that. Imagine you get this data structure from the server:</p><pre><code class="language-js">[{
+  id: &#x27;123&#x27;,
+  name: &#x27;Bob&#x27;
+},
+...]</code></pre><p>When this data is received you want to convert it to an object:</p><pre><code class="language-js">function setUsers({input, state}) {
+  const users = input.result.reduce((usersMap, user) =&gt; {
+    usersMap[user.id] = user
+
+    return usersMap
+  }, {})
+
+  state.set(&#x27;app.users&#x27;, users)
+}</code></pre><p>Now we have created a map of our users instead for easy lookup:</p><pre><code class="language-js">{
+  &#x27;123&#x27;: {
+    id: &#x27;123&#x27;,
+    name: &#x27;Bob&#x27;
+  },
+  ...
+}</code></pre><p>So let us show all the users in a <strong>Users</strong> component. A naive implementation would be to just grab all the users in the component, iterate over them and create a new <strong>User</strong> component for each user and pass in the user. We will soon see why. So let us use a Computed to do this right:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+
+export default compute(
+  state`app.users`,
+  (users) =&gt; {
+    return Object.keys(users)
+  }
+)</code></pre><p>So here we are returning only the keys of all the users. Inside our <strong>Users</strong> component we will only pass the key of the user to the children:</p><pre><code class="language-js">import {connect} from &#x27;cerebral-view-whatever&#x27;
+import usersKeys from &#x27;../../computed/usersKeys&#x27;
+import User from &#x27;../User&#x27;
+
+export default connect({
+  usersKeys
+},
+  function Users(props) {
+    return (
+      &lt;ul&gt;
+        {props.usersKeys.map((userKey) =&gt; (
+          &lt;User key={userKey} userKey={userKey} /&gt;
+        ))}
+      &lt;/ul&gt;
+    )
+  }
+)</code></pre><p>With this approach we can now bind each user specifically to the state it needs, meaning that we isolate the rendering when any of the users update. That means only the component responsible for a specific user will render when that user changes:</p><pre><code class="language-js">import {connect} from &#x27;cerebral/react&#x27;
+import {state, props} from &#x27;cerebral/tags&#x27;
+export default connect({
+  user: state`users.${props`userKey`}`
+},
+  function User(props) {
+    return (
+      &lt;li&gt;{props.user.name}&lt;/li&gt;
+    )
+  }
+)</code></pre><p>So this is one of the benefits we get. Optimized rendering. Now lets look what happens when we want to sort our users. Back in our computed:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+
+export default compute(
+  state`app.users`,
+  state`app.sortOrder`,
+  (users, sortOrder) =&gt; {
+    return Object.keys(users).sort((userAKey, userBKey) =&gt; {
+      const userA = users[userAKey]
+      const userB = users[userBKey]
+
+      if (userA.name.toLowerCase() &gt; userB.name.toLowerCase()) {
+        return sortOrder === &#x27;asc&#x27; ? -1 : 1
+      } else if (userA.name.toLowerCase() &lt; userB.name.toLowerCase()) {
+        return sortOrder === &#x27;asc&#x27; ? 1 : -1
+      }
+
+      return 0
+    })
+  }
+)</code></pre><p>Now we have a really good data structure for doing lookups of users, but we also have a powerful concept of producing an array of data that the component can use. The good thing is that these computed will only run when their depending state changes and they are in use in the component.</p><p>What is also important to remember here is that doing these kind of plain javascript computations is extremely fast, it is rendering the view that takes time.</p><h2 id="optimistic-updates">Optimistic updates</h2><p>But we can get other benefits from this as well. Instead of using the user ID as the key, we can create our own:</p><pre><code class="language-js">import uuid from &#x27;uuid&#x27;
+
+function setUsers({input, state}) {
+  const users = input.result.reduce((usersMap, user) =&gt; {
+    usersMap[uuid.v4()] = user
+
+    return usersMap
+  }, {})
+
+  state.set(&#x27;app.users&#x27;, users)
+}</code></pre><p>Everything works exactly the same, but now we have a client specific reference to our users, instead of ids. This allows us to do optimistic updates.</p><pre><code class="language-js">import uuid from &#x27;uuid&#x27;
+
+function addUser({input, state, output}) {
+  const newUserKey = uuid.v4()
+
+  state.set(`app.users.${newUserKey}`, {
+    id: null,
+    name: input.name
+  })
+
+  return {newUserKey}
+}</code></pre><p>We also return the new userKey to the signal so that actions after it can use it to update the user with an ID when the server responds etc.</p><p>If you look at the <a href="https://cerebral.github.io/todomvc" target="new">cerebral-todomvc</a> project you can see this pattern in action.</p></div></div></div><div class="docs-footer"><div class="docs-footer-column"><div class="docs-footer-header">ORGANIZATION</div><a class="docs-footer-link" href="https://github.com/cerebral/cerebral/graphs/contributors" target="_new">Contributors</a><a class="docs-footer-link" href="http://www.webpackbin.com" target="_new">www.webpackbin.com</a><a class="docs-footer-link" href="http://www.christianalfoni.com" target="_new">www.christianalfoni.com</a></div><div class="docs-footer-column"><div class="docs-footer-header">ARTICLES AND USEFUL LINKS</div><a class="docs-footer-link" href="http://medium.com/p/5793c08db2cc" target="_new">The story of Cerebral</a><a class="docs-footer-link" href="https://gist.github.com/christianalfoni/b08a99faa09df054afe87528a2134730" target="_new">An unlikely success story</a></div><div class="docs-footer-column"><div class="docs-footer-header">HELP</div><a class="docs-footer-link" href="https://github.com/cerebral/cerebral" target="_new">Cerebral github repo</a><a class="docs-footer-link" href="https://discord.gg/0kIweV4bd2bwwsvH" target="_new">Discoard chat</a></div></div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/scroll-detect.js"></script>
+  </body>
+</html>
