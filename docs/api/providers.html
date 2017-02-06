@@ -18,11 +18,11 @@ const controller = Controller({
       axios
     })
   ]
-})</code></pre><p>Now axios will be available on the context of any action. The context provider also wraps any methods and sends information to the debugger about their use.</p><p>Look at the <strong>community tools</strong> for other providers that can be used, or create your own.</p><h2 id="creating-a-provider">Creating a provider</h2><p>An example of a provider is the built in <strong>InputProvider</strong> of function-tree.</p><p>It looks something like this:</p><pre><code class="language-js">function InputProvider(context, functionDetails, payload) {
-  context.input = payload
+})</code></pre><p>Now axios will be available on the context of any action. The context provider also wraps any methods and sends information to the debugger about their use.</p><p>Look at the <strong>community tools</strong> for other providers that can be used, or create your own.</p><h2 id="creating-a-provider">Creating a provider</h2><p>An example of a provider is the <strong>PropsProvider</strong>.</p><p>It looks something like this:</p><pre><code class="language-js">function PropsProvider(context, functionDetails, payload) {
+  context.props = payload
 
   return context
-}</code></pre><p>The providers are called by <strong>function-tree</strong> with some arguments.</p><ul><li><strong>context</strong> is the current context object that will be passed into the function (action)</li><li><strong>functionDetails</strong> gives information about the function (action) that will run</li><li><strong>payload</strong> the current payload of the execution (signal)</li></ul><p>You can create a standalone provider simply by defining a function like the <strong>InputProvider</strong> in the first example. But you can also define a provider on a module. This allows you to combine providers and signals.</p><pre><code class="language-js">export default (module) =&gt; {
+}</code></pre><p>The providers are called by <strong>function-tree</strong> with some arguments.</p><ul><li><strong>context</strong> is the current context object that will be passed into the function (action)</li><li><strong>functionDetails</strong> gives information about the function (action) that will run</li><li><strong>payload</strong> the current payload of the execution (signal)</li></ul><p>You can create a standalone provider simply by defining a function like the <strong>PropsProvider</strong> in the first example. But you can also define a provider on a module. This allows you to combine providers and signals.</p><pre><code class="language-js">export default (module) =&gt; {
   const MODULE_PATH = module.path.join(&#x27;.&#x27;)
 
   return {
@@ -52,7 +52,7 @@ const controller = Controller({
   context.execution // Information on the function tree execution
   context.controller // The Cerebral controller
   context.debugger // If devtools is added, you can send messages to the debugger
-  context.input // Current payload
+  context.props // Current payload
   context.path // If any paths are defined after the action to be executed
 
   return context

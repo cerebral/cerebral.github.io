@@ -13,7 +13,7 @@
     state.get(&#x27;repos.cerebral.stargazers_count&#x27;) +
     state.get(&#x27;repos.addressbar.stargazers_count&#x27;)
   )
-}</code></pre><p>This is a perfectly okay approach for our simple scenario, but computing state like this can be tedious in large applications. We might want to use this state multiple places in our application and we want to make sure it is the same wherever we use it.</p><h2 id="computing">Computing</h2><p>In Cerebral we can automatically compute state by using <strong>compute</strong>. It is basically a function that takes any number of arguments to produce a value. Let us look at how it works with our scenario:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+}</code></pre><p>This is a perfectly okay approach for our simple scenario, but computing state like this can be tedious in large applications. We might want to use this state multiple places in our application and we want to make sure it is the same wherever we use it.</p><h2 id="computing">Computing</h2><p>In Cerebral, we can automatically compute state by using <strong>compute</strong>. It is basically a function that takes any number of arguments to produce a value. Let us look at how it works with our scenario:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
 import {state} from &#x27;cerebral/tags&#x27;
 
 export default compute(
@@ -23,7 +23,7 @@ export default compute(
       return currentCount + repos[repoKey].stargazers_count
     }, 0)
   }
-)</code></pre><p>We depend on our repos state. Then we just count the stars and return it. When the compute is used with a component it will automatically track whatever dependencies it has and only runs when any of those dependencies change. You can use computed for even more granular control of state and even component props dependencies, but you can read more about that later.</p><p>Let us finish this example. To do so please create a new folder named <em>./src/computeds</em> and save a file named <em>starsCount.js</em> containing the snippet we just looked at. Then we would like to use our computed both in the signal and we also want to show the count in our component.</p><h2 id="replacing-with-computed">Replacing with computed</h2><p>Let us remove the <strong>setStarsCount</strong> action and refactor our signal to rather grab the repos first and then we update the state in one go. This just to show you different strategies.</p><p>The first thing to notice is that our <em>getRepo</em> action factories no longer return paths, they just return values. So either they return a result using the repo name as key, or they will set an error.</p><p>We also use the <em>when</em> operator to figure out if we indeed have an error, diverging execution to show an error message. If that is not the case, we update our state tree on show the message.</p><p>Note here that we also updated the <em>toast</em> to allow no time to passed in, causing it to stick.</p><pre><code class="language-js">...
+)</code></pre><p>We depend on our repos state. Then we just count the stars and return it. When the compute is used with a component it will automatically track whatever dependencies it has and only runs when any of those dependencies change. You can use computed for even more granular control of the state and even component props dependencies, but you can read more about that later.</p><p>Let us finish this example. To do so please create a new folder named <em>./src/computeds</em> and save a file named <em>starsCount.js</em> containing the snippet we just looked at. Then we would like to use our computed both in the signal and we also want to show the count in our component.</p><h2 id="replacing-with-computed">Replacing with computed</h2><p>Let us remove the <strong>setStarsCount</strong> action and refactor our signal to rather grab the repos first and then we update the state in one go. This just to show you different strategies.</p><p>The first thing to notice is that our <em>getRepo</em> action factories no longer return paths, they just return values. So either they return a result using the repo name as the key, or they will set an error.</p><p>We also use the <em>when</em> operator to figure out if we indeed have an error, diverging execution to show an error message. If that is not the case, we update our state tree on show the message.</p><p>Note here that we also updated the <em>toast</em> to allow no time to passed in, causing it to stick.</p><pre><code class="language-js">...
 import starsCount from &#x27;./computeds/starsCount&#x27;
 ...
 {
@@ -40,7 +40,7 @@ import starsCount from &#x27;./computeds/starsCount&#x27;
       false: [
         set(state`repos.cerebral`, input`cerebral`),
         set(state`repos.addressbar`, input`addressbar`),
-        ...showToast(string`The repos have ${starsCount} stars`, 5000)    
+        ...showToast(string`The repos have ${starsCount} stars`, 5000)
       ]
     }
   ]

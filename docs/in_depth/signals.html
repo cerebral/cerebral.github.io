@@ -27,7 +27,7 @@ const signal = controller.getSignal(&#x27;somethingHappened&#x27;)
 signal()</code></pre><p>This signal triggers synchronously and you can pass it a payload.</p><pre><code class="language-js">...
 signal({
   foo: &#x27;bar&#x27;
-})</code></pre><p>This payload is brought into the signal execution and acts as the <strong>input</strong> of the signal. Typically you will not trigger signals manually this way, but rather from within a component.</p><pre><code class="language-js">connect({
+})</code></pre><p>This payload is brought into the signal execution and acts as the <strong>props</strong> of the signal. Typically you will not trigger signals manually this way, but rather from within a component.</p><pre><code class="language-js">connect({
   foo: state`app.foo`,
   somethingHappened: signal`app.somethingHappened`
 },

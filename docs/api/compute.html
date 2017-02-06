@@ -29,7 +29,7 @@ function myAction ({resolve}) {
 }</code></pre><p>You can even compose it into a Tag:</p><pre><code class="language-js">import computedFoo from &#x27;../computedFoo&#x27;
 import {state} from &#x27;cerebral/tags&#x27;
 
-state`${computedFoo}.bar`</code></pre><h2 id="getting-data">Getting data</h2><p>Compute can manually grab data related to where it is run. For example in <strong>connect</strong> you have access to both state and properties of the component. In a signal you would have access to state and the input to the signal. You do this by combining the <strong>get</strong> argument with a related tag:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+state`${computedFoo}.bar`</code></pre><h2 id="getting-data">Getting data</h2><p>Compute can manually grab data related to where it is run. For example in <strong>connect</strong> you have access to both state and properties of the component. In a signal you would have access to state and the props to the signal. You do this by combining the <strong>get</strong> argument with a related tag:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
 import {state, props} from &#x27;cerebral/tags&#x27;
 
 export default compute((get) =&gt; {

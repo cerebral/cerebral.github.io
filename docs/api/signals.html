@@ -22,16 +22,16 @@ const controller = Controller({
   }
 })</code></pre><p>A convention is to attach chains to signals. These chains typically have their own folder:</p><p><em>src/chains/updateData.js</em></p><pre><code class="language-js">import getData from &#x27;../actions/getData&#x27;
 import {set} from &#x27;cerebral/operators&#x27;
-import {state, input} from &#x27;cerebral/tags&#x27;
+import {state, props} from &#x27;cerebral/tags&#x27;
 
 export default [
   set(state`isLoading`, true),
   getData, {
     success: [
-      set(state`data`, input`result`)
+      set(state`data`, props`result`)
     ],
     error: [
-      set(state`error`, input`error`)
+      set(state`error`, props`error`)
     ]
   },
   set(state`isLoading`, false)
