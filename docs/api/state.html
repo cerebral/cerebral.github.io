@@ -19,13 +19,13 @@ const controller = Controller({
       name: &#x27;bar&#x27;
     }]
   }
-})</code></pre><h2 id="special-values-support">Special values support</h2><p>When building an application you often need to keep things like files and blobs in your state for further processing. Cerebral supports these kinds of values because they will never change, or changing them can be used with existing state API. This is the list of supported types:</p><ul><li><strong>File</strong></li><li><strong>FilesList</strong></li><li><strong>Blob</strong></li></ul><p>If you want to force Cerebral to support other types as well, you can do that with a devtools option. This is perfectly okay, but remember all state changes has to be done though the state API.</p><h2 id="get-state">Get state</h2><p>The only way to get state in your application is by connecting it to a component or grabbing it in an action.</p><pre><code class="language-js">function someAction({state}) {
+})</code></pre><h2 id="special-values-support">Special values support</h2><p>When building an application you often need to keep things like files and blobs in your state for further processing. Cerebral supports these kinds of values because they will never change, or changing them can be used with existing state API. This is the list of supported types:</p><ul><li><strong>File</strong></li><li><strong>FilesList</strong></li><li><strong>Blob</strong></li></ul><p>If you want to force Cerebral to support other types as well, you can do that with a devtools option. This is perfectly okay, but remember all state changes has to be done though the state API.</p><h2 id="get-state">Get state</h2><p>The only way to get state in your application is by connecting it to a component or grabbing it in an action.</p><pre><code class="language-js">function someAction({state, resolve}) {
   // Get all state
   const allState = state.get()
   // Get by path
   const stateAtSomePath = state.get(&#x27;some.path&#x27;)
   // Get computed state by passing in a computed
-  const computedState = state.compute(someComputed)
+  const computedState = resolve.value(someComputed)
 }</code></pre><h2 id="updating-state">Updating state</h2><p>The only way to update the state of your application is in an action. Here is a list of all possible state mutations you can do:</p><pre><code class="language-js">function someAction({state}) {
   // Set or replace a value
   state.set(&#x27;some.path&#x27;, &#x27;someValue&#x27;)
