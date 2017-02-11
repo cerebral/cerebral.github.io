@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/docs.css" />
   </head>
   <body>
-    <div id="app"><div class="docs-container"><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><span>install</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/install/index.html">Cerebral</a><a class="docs-navigation-subItem" href="/docs/install/boilerplate.html">Boilerplates</a><a class="docs-navigation-subItem" href="/docs/install/tools.html">Tools</a><a class="docs-navigation-subItem" href="/docs/install/function_tree.html">Function Tree</a></div></li><li class="docs-navigation-item"><span>tutorial</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/tutorial/index.html">Introduction</a><a class="docs-navigation-subItem" href="/docs/tutorial/define_state.html">Define State</a><a class="docs-navigation-subItem" href="/docs/tutorial/render_state.html">Render state</a><a class="docs-navigation-subItem" href="/docs/tutorial/update_state.html">Update state</a><a class="docs-navigation-subItem" href="/docs/tutorial/chains.html">Chains</a><a class="docs-navigation-subItem" href="/docs/tutorial/actions.html">Actions</a><a class="docs-navigation-subItem" href="/docs/tutorial/async_actions.html">Async actions</a><a class="docs-navigation-subItem" href="/docs/tutorial/paths.html">Paths</a><a class="docs-navigation-subItem" href="/docs/tutorial/compute_state.html">Compute state</a><a class="docs-navigation-subItem" href="/docs/tutorial/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/tutorial/routing.html">Routing</a><a class="docs-navigation-subItem" href="/docs/tutorial/modules.html">Modules</a></div></li><li class="docs-navigation-item"><span>in depth</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/in_depth/index.html">The architecture</a><a class="docs-navigation-subItem" href="/docs/in_depth/controller.html">Controller</a><a class="docs-navigation-subItem" href="/docs/in_depth/state.html">State</a><a class="docs-navigation-subItem" href="/docs/in_depth/signals.html">Signals</a><a class="docs-navigation-subItem" href="/docs/in_depth/chains_and_paths.html">Chains and paths</a><a class="docs-navigation-subItem" href="/docs/in_depth/actions.html">Actions</a><a class="docs-navigation-subItem" href="/docs/in_depth/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/in_depth/tags.html">Tags</a><a class="docs-navigation-subItem" href="/docs/in_depth/operators.html">Operators</a><a class="docs-navigation-subItem" href="/docs/in_depth/factories.html">Factories</a><a class="docs-navigation-subItem" href="/docs/in_depth/connect.html">Connect</a><a class="docs-navigation-subItem" href="/docs/in_depth/compute.html">Compute</a><a class="docs-navigation-subItem" href="/docs/in_depth/routing.html">Routing</a></div></li><li class="docs-navigation-item active"><span>best practices</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/best_practices/index.html">Organizing</a><a class="docs-navigation-subItem" href="/docs/best_practices/constants.html">Constants</a><a class="docs-navigation-subItem active" href="/docs/best_practices/testing.html">Testing</a><a class="docs-navigation-subItem" href="/docs/best_practices/load_initial_data.html">Load initial data</a><a class="docs-navigation-subItem" href="/docs/best_practices/storing_server_data.html">Storing server data</a><a class="docs-navigation-subItem" href="/docs/best_practices/lists.html">Lists</a><a class="docs-navigation-subItem" href="/docs/best_practices/modals.html">Modals</a><a class="docs-navigation-subItem" href="/docs/best_practices/feedback_messages.html">Feedback messages</a><a class="docs-navigation-subItem" href="/docs/best_practices/popups.html">Popups</a><a class="docs-navigation-subItem" href="/docs/best_practices/long_running_side_effects.html">Long running side effects</a><a class="docs-navigation-subItem" href="/docs/best_practices/server_side.html">Server side</a></div></li><li class="docs-navigation-item"><span>migration</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/migration/index.html">From 1.x to 2.x</a></div></li><li class="docs-navigation-item"><span>api</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/api/index.html">Controller</a><a class="docs-navigation-subItem" href="/docs/api/state.html">State</a><a class="docs-navigation-subItem" href="/docs/api/signals.html">Signals</a><a class="docs-navigation-subItem" href="/docs/api/tags.html">Tags</a><a class="docs-navigation-subItem" href="/docs/api/connect.html">Connect</a><a class="docs-navigation-subItem" href="/docs/api/modules.html">Modules</a><a class="docs-navigation-subItem" href="/docs/api/operators.html">Operators</a><a class="docs-navigation-subItem" href="/docs/api/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/api/compute.html">Compute</a><a class="docs-navigation-subItem" href="/docs/api/router.html">Router</a></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="#testing">Testing</a><ul><li><a href="#components">Components</a></li><li><a href="#actions">Actions</a></li><li><a href="#signals">Signals</a></li></ul></li></ul></div></div><div class="docs-doc"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/docs/docs/best_practices/testing.md" target="_new">Edit on Github</a></div><div class="docs-doc-content"><div style="background-color:#DD4A68;color:#fff;margin:10px;padding:5px 10px;border-radius:3px;">Docs are still being written and might not be up to date with API</div><h1 id="testing">Testing</h1><p>Cerebral makes it easy to test your application components and business logic.</p><h2 id="components">Components</h2><p>The <strong>Container</strong> you use to expose Cerebral to your components can also be used when testing, but you can also use the <strong>StateContainer</strong> which allows you to pass state down to your components as if it was extracted from the Cerebral controller.</p><pre><code class="language-js">import React from &#x27;react&#x27;
+    <div id="app"><div class="docs-container"><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><span>install</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/install/index.html">Cerebral</a><a class="docs-navigation-subItem" href="/docs/install/boilerplate.html">Boilerplates</a><a class="docs-navigation-subItem" href="/docs/install/tools.html">Tools</a><a class="docs-navigation-subItem" href="/docs/install/function_tree.html">Function Tree</a></div></li><li class="docs-navigation-item"><span>tutorial</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/tutorial/index.html">Introduction</a><a class="docs-navigation-subItem" href="/docs/tutorial/define_state.html">Define State</a><a class="docs-navigation-subItem" href="/docs/tutorial/render_state.html">Render state</a><a class="docs-navigation-subItem" href="/docs/tutorial/update_state.html">Update state</a><a class="docs-navigation-subItem" href="/docs/tutorial/chains.html">Chains</a><a class="docs-navigation-subItem" href="/docs/tutorial/actions.html">Actions</a><a class="docs-navigation-subItem" href="/docs/tutorial/async_actions.html">Async actions</a><a class="docs-navigation-subItem" href="/docs/tutorial/paths.html">Paths</a><a class="docs-navigation-subItem" href="/docs/tutorial/compute_state.html">Compute state</a><a class="docs-navigation-subItem" href="/docs/tutorial/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/tutorial/routing.html">Routing</a><a class="docs-navigation-subItem" href="/docs/tutorial/modules.html">Modules</a></div></li><li class="docs-navigation-item"><span>in depth</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/in_depth/index.html">The architecture</a><a class="docs-navigation-subItem" href="/docs/in_depth/controller.html">Controller</a><a class="docs-navigation-subItem" href="/docs/in_depth/state.html">State</a><a class="docs-navigation-subItem" href="/docs/in_depth/signals.html">Signals</a><a class="docs-navigation-subItem" href="/docs/in_depth/chains_and_paths.html">Chains and paths</a><a class="docs-navigation-subItem" href="/docs/in_depth/actions.html">Actions</a><a class="docs-navigation-subItem" href="/docs/in_depth/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/in_depth/tags.html">Tags</a><a class="docs-navigation-subItem" href="/docs/in_depth/operators.html">Operators</a><a class="docs-navigation-subItem" href="/docs/in_depth/factories.html">Factories</a><a class="docs-navigation-subItem" href="/docs/in_depth/connect.html">Connect</a><a class="docs-navigation-subItem" href="/docs/in_depth/compute.html">Compute</a><a class="docs-navigation-subItem" href="/docs/in_depth/routing.html">Routing</a></div></li><li class="docs-navigation-item active"><span>best practices</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/best_practices/index.html">Organizing</a><a class="docs-navigation-subItem" href="/docs/best_practices/constants.html">Constants</a><a class="docs-navigation-subItem active" href="/docs/best_practices/testing.html">Testing</a><a class="docs-navigation-subItem" href="/docs/best_practices/load_initial_data.html">Load initial data</a><a class="docs-navigation-subItem" href="/docs/best_practices/storing_server_data.html">Storing server data</a><a class="docs-navigation-subItem" href="/docs/best_practices/lists.html">Lists</a><a class="docs-navigation-subItem" href="/docs/best_practices/modals.html">Modals</a><a class="docs-navigation-subItem" href="/docs/best_practices/feedback_messages.html">Feedback messages</a><a class="docs-navigation-subItem" href="/docs/best_practices/popups.html">Popups</a><a class="docs-navigation-subItem" href="/docs/best_practices/long_running_side_effects.html">Long running side effects</a><a class="docs-navigation-subItem" href="/docs/best_practices/server_side.html">Server side</a></div></li><li class="docs-navigation-item"><span>migration</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/migration/index.html">From 1.x to 2.x</a></div></li><li class="docs-navigation-item"><span>api</span><div class="underline"></div><div class="docs-navigation-subItems"><a class="docs-navigation-subItem" href="/docs/api/index.html">Controller</a><a class="docs-navigation-subItem" href="/docs/api/state.html">State</a><a class="docs-navigation-subItem" href="/docs/api/signals.html">Signals</a><a class="docs-navigation-subItem" href="/docs/api/tags.html">Tags</a><a class="docs-navigation-subItem" href="/docs/api/connect.html">Connect</a><a class="docs-navigation-subItem" href="/docs/api/modules.html">Modules</a><a class="docs-navigation-subItem" href="/docs/api/operators.html">Operators</a><a class="docs-navigation-subItem" href="/docs/api/providers.html">Providers</a><a class="docs-navigation-subItem" href="/docs/api/compute.html">Compute</a><a class="docs-navigation-subItem" href="/docs/api/router.html">Router</a></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="#testing">Testing</a><ul><li><a href="#components">Components</a></li><li><a href="#computes">Computes</a><ul><li><a href="#example">Example</a></li></ul></li><li><a href="#actions">Actions</a><ul><li><a href="#example">Example</a></li></ul></li><li><a href="#signals">Signals</a><ul><li><a href="#example">Example</a></li></ul></li></ul></li></ul></div></div><div class="docs-doc"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/docs/docs/best_practices/testing.md" target="_new">Edit on Github</a></div><div class="docs-doc-content"><div style="background-color:#DD4A68;color:#fff;margin:10px;padding:5px 10px;border-radius:3px;">Docs are still being written and might not be up to date with API</div><h1 id="testing">Testing</h1><p>Cerebral makes it easy to test your application components and business logic.</p><h2 id="components">Components</h2><p>The <strong>Container</strong> you use to expose Cerebral to your components can also be used when testing, but you can also use the <strong>StateContainer</strong> which allows you to pass state down to your components as if it was extracted from the Cerebral controller.</p><pre><code class="language-js">import React from &#x27;react&#x27;
 import {mount} from &#x27;enzyme&#x27;
 import {StateContainer} from &#x27;cerebral/react&#x27;
 
@@ -26,64 +26,89 @@ describe(&#x27;&lt;Foo /&gt;&#x27;, () =&gt; {
     )
     expect(wrapper.find(&#x27;.foo&#x27;)).to.have.length(1)
   })
-})</code></pre><p>This approach allows you to pass down state wherever you want and ensure the components render as expected.</p><h2 id="actions">Actions</h2><p>Actions are just functions. You just have to give them what they operate on. It is just like testing pure functions.</p><p>Given the action:</p><pre><code class="language-js">function someAction({state, axios, path}) {
-  return axios.get(`/user/${state.get(&#x27;user.id&#x27;)}`)
-    .then((response) =&gt; path.success({user: response.data}))
-    .catch((error) =&gt; path.error({error: error.response.data}))
-}</code></pre><p>You can test it like:</p><pre><code class="language-js">import sinon from &#x27;sinon&#x27;
-import assert from &#x27;assert&#x27;
+})</code></pre><p>This approach allows you to pass down state wherever you want and ensure the components render as expected.</p><h2 id="computes">Computes</h2><p>The <code>runCompute</code> test helper accepts a <code>compute</code> and <code>fixtures</code> arguments and returns the compute output.</p><pre><code class="language-js">var result = runCompute(compute, state)</code></pre><p>The optional <code>fixture</code> argument should be an object that contains any of the following:</p><pre><code class="language-js">{
+  state: {}, // test state
+  props: {}  // props passed to the computed
+}</code></pre><h3 id="example">Example</h3><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+import {props, state} from &#x27;cerebral/tags&#x27;
+import {runCompute} from &#x27;cerebral/test&#x27;
 
-describe(&#x27;Something&#x27;, () =&gt; {
-  it(&#x27;should return object with user&#x27;, (done) =&gt; {
-    const mockedContext = {
-      axios: {get: Promise.resolve({data: {name: &#x27;Arne&#x27;}})},
-      path: {success: sinon.spy()},
-      state: {get() {}}
+import Multiply from &#x27;./Multiply&#x27;
+
+it(&#x27;should multiply by the specified number&#x27;, () =&gt; {
+  const multiply = Multiply(state`number`, props`number`)
+  const result = runCompute(multiply, {
+    state: { number: 5 },
+    props: { number: 2 }
+  })
+  assert.equal(result, 10)
+})</code></pre><h2 id="actions">Actions</h2><p>The <code>runAction</code> test helper accepts a <code>action</code> and <code>fixture</code> arguments and returns a promise.</p><pre><code class="language-js">runAction(action, fixture).then((result) =&gt; {})</code></pre><p>The optional <code>fixture</code> argument should be an object that contains any of the following:</p><pre><code class="language-js">{
+  state: {}, // test state
+  props: {}, // props passed to the action
+  // any other options that can be passed to the
+  // cerebral controller, including router, providers...
+}</code></pre><p>The <code>result</code> object passed when the promise resolves contains <code>state</code>, <code>controller</code>, <code>props</code> and <code>output</code> properties.</p><pre><code class="language-undefined">{
+  state,
+  controller,
+  props: {
+    // props data received by action
+  },
+  output: {
+    // action output data
+  }
+}</code></pre><h3 id="example">Example</h3><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+import {runAction} from &#x27;cerebral/test&#x27;
+
+import Increment from &#x27;./Increment&#x27;
+
+it(&#x27;should increment numbers in state&#x27;, () =&gt; {
+  const increment = Increment(state`number`)
+
+  return runAction(increment, { state: { number: 1 } })
+    .then(({state}) =&gt; assert.equal(state.number, 2))
+})</code></pre><h2 id="signals">Signals</h2><p>The <code>runSignal</code> test helper accepts a <code>signal</code> (chain of actions) and <code>fixture</code> arguments and returns a promise.</p><pre><code class="language-js">runSignal(signal, fixture. options).then((result) =&gt; {})</code></pre><p>The optional <code>fixture</code> argument should be an object that contains any of the following:</p><pre><code class="language-js">{
+  state: {}, // test state
+  props: {}, // props passed to the signal
+  // any other options that can be passed to the
+  // cerebral controller, including router, providers...
+}</code></pre><p>The optional <code>options</code> argument contain the the following options:</p><p><code>recordActions: true|false|&#x27;byName&#x27;</code></p><p>When <code>recordActions: true</code> is specified each action will record its props/output against its index within the signal action chain. When <code>recordActions: &#x27;byName&#x27;</code> is specified each action will record its output against an named property in the result.</p><p>The <code>result</code> object passed when the promise resolves contains <code>state</code>, <code>controller</code> and an object for each named action in the signal chain with the same name as the actions with <code>props</code> and <code>output</code> properties.</p><pre><code class="language-undefined">{
+  state,
+  controller,
+  &#x27;2&#x27;: {
+    props: {
+      // props data
+    },
+    output: {
+      // action output data
     }
-    someAction(mockedContext).then((result) =&gt; {
-      assert.ok(mockedContext.path.success.called)
-      assert.deepEqual(result, {user: {name: &#x27;Arne&#x27;}})
+  },
+  &#x27;1&#x27;: {
+    props: {
+      // props data
+    },
+    output: {
+      // action output data
+    }
+  }
+}</code></pre><h3 id="example">Example</h3><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+import {runSignal} from &#x27;cerebral/test&#x27;
+
+// the buttonClicked signal has two actions: validateForm and updateIsValid
+import buttonClicked from &#x27;./buttonClick&#x27;
+
+it(&#x27;should handle button clicks&#x27;, () =&gt; {
+  const fixture = {
+    state: { isValid: false },
+    props: { buttonName: &#x27;submit&#x27; }
+  }
+  return runSignal(buttonClicked, fixture, {recordActions: &#x27;byName&#x27;})
+    .then(({validateForm, updateIsValid, state}) =&gt; {
+      assert.equal(validateForm.props.buttonName, &#x27;submit&#x27;)
+      assert.equal(updateIsValid.props.isValid, true)
+      assert.equal(state.isValid, true)
     })
-  })
-})</code></pre><h2 id="signals">Signals</h2><p>To test signals you need to mock the context for all running actions. Since signals are defined decoupled from what is running them, you can define a new controller where you mock out whatever does side effects.</p><pre><code class="language-js">import sinon from &#x27;sinon&#x27;
-import assert from &#x27;assert&#x27;
-import {Controller} from &#x27;cerebral&#x27;
-import someChain from &#x27;../src/chains/someChain&#x27;
-
-describe(&#x27;Something&#x27;, () =&gt; {
-  it(&#x27;should get data&#x27;, (done) =&gt; {
-    const controller = Controller({
-      state: {
-        isLoading: false,
-        user: null
-      },
-      signals: {
-        testRun: someChain
-      },
-      providers: [
-        function (context) {
-          context.axios = {
-            get() {
-              assert.ok(controller.getState(&#x27;isLoading&#x27;))
-
-              return Promise.resolve({data: {name: &#x27;Arne&#x27;}})
-            }
-          }
-
-          return context
-        }
-      ]
-    })
-
-    controller.on(&#x27;signalEnd&#x27;, () =&gt; {
-      assert.deepEqual(controller.getState(), {
-        isLoading: false,
-        user: {name: &#x27;Arne&#x27;}
-      })
-      done()
-    })
-    controller.getSignal(&#x27;testRun&#x27;)()
-  })
 })</code></pre></div></div></div><div class="docs-footer"><div class="docs-footer-column"><div class="docs-footer-header">ORGANIZATION</div><a class="docs-footer-link" href="https://github.com/cerebral/cerebral/graphs/contributors" target="_new">Contributors</a><a class="docs-footer-link" href="http://www.webpackbin.com" target="_new">www.webpackbin.com</a><a class="docs-footer-link" href="http://www.christianalfoni.com" target="_new">www.christianalfoni.com</a></div><div class="docs-footer-column"><div class="docs-footer-header">ARTICLES AND USEFUL LINKS</div><a class="docs-footer-link" href="http://medium.com/p/5793c08db2cc" target="_new">The story of Cerebral</a><a class="docs-footer-link" href="https://gist.github.com/christianalfoni/b08a99faa09df054afe87528a2134730" target="_new">An unlikely success story</a></div><div class="docs-footer-column"><div class="docs-footer-header">HELP</div><a class="docs-footer-link" href="https://github.com/cerebral/cerebral" target="_new">Cerebral github repo</a><a class="docs-footer-link" href="https://discord.gg/0kIweV4bd2bwwsvH" target="_new">Discoard chat</a></div></div></div></div>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>

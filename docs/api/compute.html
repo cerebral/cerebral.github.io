@@ -38,7 +38,7 @@ export default compute((get) =&gt; {
 import {state, props} from &#x27;cerebral/tags&#x27;
 
 const computedItemUsers = compute(
-  state`items.${props`itemKey`}`),
+  state`items.${props`itemKey`}`,
   (item, get) =&gt; {
     return item.userIds.map((userId) =&gt; get(state`users.${userId}`))
   }
