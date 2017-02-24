@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/tools">tools</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger">☰</div><div class="docs-navigation-title mobile">developer guide</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item active mobile"><a href="/docs/developer_guide">developer guide</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/developer_guide/index.html">Introduction</a></li><li><a href="/docs/developer_guide/state.html">State</a></li><li><a href="/docs/developer_guide/connect.html">Components</a></li><li><a href="/docs/developer_guide/signals.html">Signals</a></li><li class="active"><a href="/docs/developer_guide/actions.html">Actions</a><ul><li><a href="#update-props">Update props</a></li><li><a href="#async">Async</a></li><li><a href="#tutorial">Tutorial</a><ul><li><a href="#create-an-action">Create an action</a></li><li><a href="#passing-a-payload">Passing a payload</a></li><li><a href="#challenge">Challenge</a></li></ul></li></ul></li><li><a href="/docs/developer_guide/operators.html">Operators</a></li><li><a href="/docs/developer_guide/factories.html">Factories</a></li><li><a href="/docs/developer_guide/paths.html">Paths</a></li><li><a href="/docs/developer_guide/compute.html">Compute</a></li><li><a href="/docs/developer_guide/routing.html">Routing</a></li><li><a href="/docs/developer_guide/organize.html">Organize</a></li><li><a href="/docs/developer_guide/providers.html">Providers</a></li><li><a href="/docs/developer_guide/test.html">Test</a></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/tools">tools</a></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/developer_guide/index.html">Introduction</a></li><li><a href="/docs/developer_guide/state.html">State</a></li><li><a href="/docs/developer_guide/connect.html">Components</a></li><li><a href="/docs/developer_guide/signals.html">Signals</a></li><li class="active"><a href="/docs/developer_guide/actions.html">Actions</a><ul><li><a href="#update-props">Update props</a></li><li><a href="#async">Async</a></li><li><a href="#tutorial">Tutorial</a><ul><li><a href="#create-an-action">Create an action</a></li><li><a href="#passing-a-payload">Passing a payload</a></li><li><a href="#challenge">Challenge</a></li></ul></li></ul></li><li><a href="/docs/developer_guide/operators.html">Operators</a></li><li><a href="/docs/developer_guide/factories.html">Factories</a></li><li><a href="/docs/developer_guide/paths.html">Paths</a></li><li><a href="/docs/developer_guide/compute.html">Compute</a></li><li><a href="/docs/developer_guide/routing.html">Routing</a></li><li><a href="/docs/developer_guide/organize.html">Organize</a></li><li><a href="/docs/developer_guide/providers.html">Providers</a></li><li><a href="/docs/developer_guide/test.html">Test</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/docs/docs/developer_guide/actions.md" target="_new">Edit on Github</a></div><h1 id="actions">Actions</h1><p>A signal runs actions and actions are actually just functions.</p><pre><code class="language-js">function iAmAnAction () {}</code></pre><p>That means you do not need any API to define an action. This makes actions highly testable.</p><p>Typically you use actions to change the state of the application or run other side effects.</p><pre><code class="language-js">function iAmAnAction ({props, state}) {
+  state.set(&#x27;some.path&#x27;, props.someValue)
+}</code></pre><pre><code class="language-js">function iAmAnAction ({http, path}) {
+  return http.get(&#x27;/someitems&#x27;)
+    .then(path.success)
+    .catch(path.error)
+}</code></pre><h2 id="update-props">Update props</h2><p>You update the props on the signal by returning an object form the action. This object will be merged with existing props.</p><pre><code class="language-js">function iAmAnAction () {
+  return {
+    newProp: &#x27;someValue&#x27;
+  }
+}</code></pre><h2 id="async">Async</h2><p>When actions return a promise the signal will hold execution until it is resolved. any resolved values will be merged in with props.</p><pre><code class="language-js">function iAmAnAction () {
+  return new Promise((resolve) =&gt; {
+    resolve({
+      newProp: &#x27;someValue&#x27;
+    })
+  })
+}</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://webpackbin-prod.firebaseapp.com//bins/-KdBPZwKFDQKkAcUqRte" target="new">load this BIN on Webpackbin</a></p><p>Signals can take a props-object which can then be accessed or processed by any subsequent action.</p><p>Let us say you have a user input which should get written to state.
+As we now know, the correct way to write any state change is to use <strong>signals</strong> with <strong>actions</strong>.</p><p>Just like we are able to grab the <strong>state</strong> from the context of an action, we can also grab the <strong>props</strong>. This props object can be populated when a signal triggers and it can be further extended using actions. Any object returned from an action will be merged into the current props and passed to the next action.</p><h3 id="create-an-action">Create an action</h3><p>Let us create a new action that will take a prop from the signal and add some exclamation marks.</p><pre><code class="language-js">function shoutIt ({props}) {
+  return {
+    message: `${props.message}!!!`
+  }
+}</code></pre><p>As you can see we grabbed the props just like we grabbed the state. The object we return from the action will be merged with the existing props. That means we are overriding the <strong>message</strong> with exclamation marks.</p><p>On our first <strong>set</strong> operator we rather now use a tag, <em>props</em>, to define that we want to set the message from the props.</p><pre><code class="language-js">...
+import {set, wait} from &#x27;cerebral/operators&#x27;
+import {state, props} from &#x27;cerebral/tags&#x27;
+...
+{
+  buttonClicked: [
+    shoutIt,
+    set(state`toast`, props`message`),
+    wait(4000),
+    set(state`toast`, null)
+  ]  
+}</code></pre><h3 id="passing-a-payload">Passing a payload</h3><p>Now we just need to change our button click to actually pass a message:</p><p><em>App.js</em></p><pre><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {state, signal} from &#x27;cerebral/tags&#x27;
+import Toast from &#x27;./Toast&#x27;
+
+export default connect({
+  title: state`title`,
+  subTitle: state`subTitle`,
+  buttonClicked: signal`buttonClicked`
+},
+  function App ({title, subTitle, buttonClicked}) {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;{title}&lt;/h1&gt;
+        &lt;h3&gt;{subTitle}&lt;/h3&gt;
+        &lt;button onClick={() =&gt; buttonClicked({
+          message: &#x27;Please shout me&#x27;
+        })}&gt;
+          Update state
+        &lt;/button&gt;
+        &lt;Toast /&gt;
+      &lt;/div&gt;
+    )
+  }
+)</code></pre><p>Now we are ready to test drive our changes. Click the button and you should see the toast message appear with three exclamation marks behind. Take some time to open up the <strong>debugger</strong> and explore the changes you’ve made. You can track the flow of the props object as it is passed into the action <em>Input:{}</em> and after the action has excecuted <em>Output: {}</em>. Keep in mind that the object returned from an action will be merged with the props object and handed over to the next action. You could just as easily use a different property for the shouted message.</p><h3 id="challenge">Challenge</h3><ul><li>Add another custom action which transforms the props value to Uppercase. You may override existing properties on the props or create a new one</li></ul><p>If it did not work try jumping to the next chapter or <a href="https://discord.gg/0kIweV4bd2bwwsvH" target="new">shout at us on Discord</a>.</p></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/mobile.js"></script>
+  </body>
+</html>

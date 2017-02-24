@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/tools">tools</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger">☰</div><div class="docs-navigation-title mobile">developer guide</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item active mobile"><a href="/docs/developer_guide">developer guide</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/developer_guide/index.html">Introduction</a></li><li><a href="/docs/developer_guide/state.html">State</a></li><li><a href="/docs/developer_guide/connect.html">Components</a></li><li><a href="/docs/developer_guide/signals.html">Signals</a></li><li><a href="/docs/developer_guide/actions.html">Actions</a></li><li><a href="/docs/developer_guide/operators.html">Operators</a></li><li><a href="/docs/developer_guide/factories.html">Factories</a></li><li><a href="/docs/developer_guide/paths.html">Paths</a></li><li class="active"><a href="/docs/developer_guide/compute.html">Compute</a><ul><li><a href="#getting-data">Getting data</a></li><li><a href="#composing">Composing</a></li><li><a href="#tutorial">Tutorial</a><ul><li><a href="#computing">Computing</a></li><li><a href="#replacing-with-computed">Replacing with computed</a></li></ul></li></ul></li><li><a href="/docs/developer_guide/routing.html">Routing</a></li><li><a href="/docs/developer_guide/organize.html">Organize</a></li><li><a href="/docs/developer_guide/providers.html">Providers</a></li><li><a href="/docs/developer_guide/test.html">Test</a></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/tools">tools</a></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/developer_guide/index.html">Introduction</a></li><li><a href="/docs/developer_guide/state.html">State</a></li><li><a href="/docs/developer_guide/connect.html">Components</a></li><li><a href="/docs/developer_guide/signals.html">Signals</a></li><li><a href="/docs/developer_guide/actions.html">Actions</a></li><li><a href="/docs/developer_guide/operators.html">Operators</a></li><li><a href="/docs/developer_guide/factories.html">Factories</a></li><li><a href="/docs/developer_guide/paths.html">Paths</a></li><li class="active"><a href="/docs/developer_guide/compute.html">Compute</a><ul><li><a href="#getting-data">Getting data</a></li><li><a href="#composing">Composing</a></li><li><a href="#tutorial">Tutorial</a><ul><li><a href="#computing">Computing</a></li><li><a href="#replacing-with-computed">Replacing with computed</a></li></ul></li></ul></li><li><a href="/docs/developer_guide/routing.html">Routing</a></li><li><a href="/docs/developer_guide/organize.html">Organize</a></li><li><a href="/docs/developer_guide/providers.html">Providers</a></li><li><a href="/docs/developer_guide/test.html">Test</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/docs/docs/developer_guide/compute.md" target="_new">Edit on Github</a></div><h1 id="compute">Compute</h1><p>Normally you use state directly from the state tree, but sometimes you need to compute values. Typically filtering lists, grabbing the projects of a user or other derived state.</p><p>Cerebral allows you to compute state that can be used in multiple contexts. Let us look at the signature:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+
+export default compute(() =&gt; {
+  return &#x27;foo&#x27;
+})</code></pre><p>You can now use this with <strong>connect</strong>:</p><pre><code class="language-js">import computedFoo from &#x27;../computedFoo&#x27;
+
+connect({
+  foo: computedFoo
+})</code></pre><p>You can use it with operators in a signal:</p><pre><code class="language-js">import computedFoo from &#x27;../computedFoo&#x27;
+import {set} from &#x27;cerebral/operators&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+
+export default [
+  set(state`foo`, computedFoo)
+]</code></pre><p>Or you can resolve it inside an action if you need to:</p><pre><code class="language-js">import computedFoo from &#x27;../computedFoo&#x27;
+
+function myAction ({resolve}) {
+  const foo = resolve.value(computedFoo)
+}</code></pre><p>You can even compose it into a Tag:</p><pre><code class="language-js">import computedFoo from &#x27;../computedFoo&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+
+state`${computedFoo}.bar`</code></pre><h2 id="getting-data">Getting data</h2><p>Compute can manually grab data related to where it is run. For example in <strong>connect</strong> you have access to both state and properties of the component. In a signal you would have access to state and the props to the signal. You do this by combining the <strong>get</strong> argument with a related tag:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+import {state, props} from &#x27;cerebral/tags&#x27;
+
+export default compute((get) =&gt; {
+  return get(state`foo`) + get(props`bar`)
+})</code></pre><p>Cerebral now knows what paths this computed is interested in and can optimize its need to run again to produce a changed value.</p><h2 id="composing">Composing</h2><p>What makes compute very powerful is its ability to compose tags and other compute. Any tags you pass as arguments will be passed in as a value to the next function in line. The last argument of the function is always the <strong>get</strong> function.</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+import {state, props} from &#x27;cerebral/tags&#x27;
+
+const computedItemUsers = compute(
+  state`items.${props`itemKey`}`,
+  (item, get) =&gt; {
+    return item.userIds.map((userId) =&gt; get(state`users.${userId}`))
+  }
+)
+
+// In connect
+connect({
+  users: computedItemUsers
+})</code></pre><p>It uses the <em>itemKey</em> property from the component to grab the actual item. Then it grab each user based on the userIds of the item. You can also compose multiple compute together.</p><pre><code class="language-js">connect({
+  item: compute(filteredList, onlyAwesome)
+})</code></pre><p>Here <em>filteredList</em> returns a list of filtered items, where <em>onlyAwesome</em> expects to receive a list and filters it again.</p><pre><code class="language-js">compute((list) =&gt; {
+  return list.filter((item) =&gt; item.isAwesome)
+})</code></pre><p>It is possible to combine tags and functions as many times as you would like:</p><pre><code class="language-js">compute(
+  state`currentItemKey`,
+  (currentItemKey, get) =&gt; {
+    return get(state`item.${currentItemKey}`)
+  },
+  state`isAwesome`,
+  (item, isAwesome) =&gt; {
+    return item.isAwesome === isAwesome
+  }
+)</code></pre><p>Typically you get away with most things using Tags, but compute will help you with any other scenario where more “umph” is needed.</p><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://webpackbin-prod.firebaseapp.com//bins/-KdBaa45GzVJFOxU69Gp" target="new">load this BIN on Webpackbin</a></p><p>In our application we want to sum up the number of stars. We have already implemented a naive approach, which we are going to refactor. We created an action which adds the count together:</p><pre><code class="language-js">function setStarsCount ({state}) {
+  state.set(&#x27;starsCount&#x27;,
+    state.get(&#x27;repos.cerebral.stargazers_count&#x27;) +
+    state.get(&#x27;repos.addressbar.stargazers_count&#x27;)
+  )
+}</code></pre><p>This is a perfectly okay approach for our simple scenario, but computing state like this can be tedious in large applications. We might want to use this state multiple places in our application and we want to make sure it is the same wherever we use it.</p><h3 id="computing">Computing</h3><p>In Cerebral, we can automatically compute state by using <strong>compute</strong>. It is basically a function that takes any number of arguments to produce a value. Let us look at how it works with our scenario:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+
+export default compute(
+  state`repos`,
+  function starsCount (repos) {
+    return Object.keys(repos).reduce((currentCount, repoKey) =&gt; {
+      return currentCount + repos[repoKey].stargazers_count
+    }, 0)
+  }
+)</code></pre><p>We depend on our repos state. Then we just count the stars and return it. When the compute is used with a component it will automatically track whatever dependencies it has and only runs when any of those dependencies change. You can use computed for even more granular control of the state and even component props dependencies, but you can read more about that later.</p><p>Let us finish this example. To do so please create a new file named <em>starsCount.js</em> containing the snippet we just looked at. Then we would like to use our computed both in the signal and we also want to show the count in our component.</p><h3 id="replacing-with-computed">Replacing with computed</h3><p>Let us remove the <strong>setStarsCount</strong> action and refactor our signal to rather grab the repos first and then we update the state in one go. This just to show you different strategies.</p><p>The first thing we need to do is refactor our <em>getRepo</em> action factories to no longer return paths, just values. So either they return a result using the repo name as the key, or they will set an error.</p><pre><code class="language-js">...
+function getRepo (repoName) {
+  function get ({http}) {
+    return http.get(`/repos/cerebral/${repoName}`)
+      .then((response) =&gt; {
+        return {[repoName]: response.result}
+      })
+      .catch((error) =&gt; {
+        return {error: error.result}
+      })
+  }
+
+  return get
+}
+...</code></pre><p>Then we change how our signal looks:</p><pre><code class="language-js">...
+import starsCount from &#x27;./computeds/starsCount&#x27;
+...
+{
+  buttonClicked: [
+    ...showToast(string`Loading data for repos...`),
+    [
+      getRepo(&#x27;cerebral&#x27;),
+      getRepo(&#x27;addressbar&#x27;)
+    ],
+    when(props`error`), {
+      &#x27;true&#x27;: [
+        ...showToast(string`Error: ${props`error`}`, 5000)
+      ],
+      &#x27;false&#x27;: [
+        set(state`repos.cerebral`, props`cerebral`),
+        set(state`repos.addressbar`, props`addressbar`),
+        ...showToast(string`The repos have ${starsCount} stars`, 5000)
+      ]
+    }
+  ]
+}
+...</code></pre><p>We also use the <em>when</em> operator to figure out if we indeed have an error, diverging execution to show an error message. If that is not the case, we update our state tree on show the message.</p><p>Note here that we also updated the <em>toast</em> to allow no time to passed in, causing it to stick.</p><p>You can use computeds with other computeds, directly in tags, with operators, in actions and in components. Lets update our <strong>App</strong> component:</p><pre><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {state, signal} from &#x27;cerebral/tags&#x27;
+import starsCount from &#x27;.starsCount&#x27;
+import Toast from &#x27;./Toast&#x27;
+
+export default connect({
+  title: state`title`,
+  subTitle: state`subTitle`,
+  buttonClicked: signal`buttonClicked`,
+  starsCount
+},
+  function App ({title, subTitle, buttonClicked, starsCount}) {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;{title}&lt;/h1&gt;
+        &lt;h2&gt;{subTitle}&lt;/h2&gt;
+        &lt;button onClick={() =&gt; buttonClicked()}&gt;
+          Update star count ({starsCount})
+        &lt;/button&gt;
+        &lt;Toast /&gt;
+      &lt;/div&gt;
+    )
+  }
+)</code></pre><p>Thats it for now regarding <em>Compute</em>. Of course summarizing some numbers is pretty simple stuff, but you can compute anything.</p><p>But now it has only been Cerebral stuff, what if you want to use other libraries in your action flow? Well, refill your coffee or open up another drink and enjoy the next chapter introducing <strong>the router</strong>.</p><p>If it did not work try jumping to the next chapter or <a href="https://discord.gg/0kIweV4bd2bwwsvH" target="new">shout at us on Discord</a>.</p></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/mobile.js"></script>
+  </body>
+</html>
