@@ -59,7 +59,9 @@ function updateSubtitle ({state}) {
 }
 
 const controller = Controller({
-  devtools: Devtools(),
+  devtools:  Devtools({
+    remoteDebugger: &#x27;127.0.0.1:8585&#x27;
+  }),
   state: {
     title: &#x27;Hello from Cerebral!&#x27;,
     subTitle: &#x27;Working on my state management&#x27;
