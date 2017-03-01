@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/tools">tools</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger">☰</div><div class="docs-navigation-title mobile">tools</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item mobile"><a href="/docs/developer_guide">developer guide</a></li><li class="docs-navigation-item active mobile"><a href="/docs/tools">tools</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/tools/index.html">cerebral-provider-http</a></li><li><a href="/docs/tools/firebase.html">cerebral-provider-firebase</a></li><li class="active"><a href="/docs/tools/useragent.html">cerebral-module-useragent</a><ul><li><a href="#install">install</a></li><li><a href="#description">description</a></li><li><a href="#instantiate">instantiate</a></li></ul></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/tools/index.html">cerebral-provider-http</a></li><li><a href="/docs/tools/firebase.html">cerebral-provider-firebase</a></li><li class="active"><a href="/docs/tools/useragent.html">cerebral-module-useragent</a><ul><li><a href="#install">install</a></li><li><a href="#description">description</a></li><li><a href="#instantiate">instantiate</a></li></ul></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/docs/docs/tools/useragent.md" target="_new">Edit on Github</a></div><h1 id="cerebral-module-useragent">cerebral-module-useragent</h1><h2 id="install">install</h2><p><code>npm install cerebral-module-useragent</code></p><h2 id="description">description</h2><p>The useragent module puts information about the browser into your state tree, and it also updates this information when this information changes.</p><ul><li>UA parser: browser and device</li><li>Window: size &amp; orientation</li><li>Media queries</li><li>Feature detection</li><li>Internet connectivity</li></ul><h2 id="instantiate">instantiate</h2><pre><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+import Useragent from &#x27;cerebral-module-useragent&#x27;
+
+const controller = Controller({
+  modules: {
+    useragent: Useragent({
+      // Use CSS media queries to determine
+      // custom sizes available in your model.
+      // They will be toggle between true/false in your
+      // model
+      media: {
+        small: &#x27;(min-width: 600px)&#x27;,
+        medium: &#x27;(min-width: 1024px)&#x27;,
+        large: &#x27;(min-width: 1440px)&#x27;,
+        portrait: &#x27;(orientation: portrait)&#x27;
+      },
+
+      // store all feature tests in model
+      feature: true,
+
+      parse: {
+        // parse useragent.browser from ua string
+        browser: true,
+        // parse useragent.device from ua string
+        device: true
+      },
+
+      // check the docs at: https://github.com/HubSpot/offline#advanced
+      offline: {
+        checkOnLoad: false,
+        interceptRequests: true,
+        reconnect: {
+          initialDelay: 3,
+          delay: 1.5
+        },
+        requests: false
+      },
+
+      // update window size on resize
+      window: true
+    })
+  }
+})</code></pre></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/mobile.js"></script>
+  </body>
+</html>
