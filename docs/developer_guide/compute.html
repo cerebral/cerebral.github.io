@@ -61,7 +61,7 @@ connect({
   (item, isAwesome) =&gt; {
     return item.isAwesome === isAwesome
   }
-)</code></pre><p>Typically you get away with most things using Tags, but compute will help you with any other scenario where more “umph” is needed.</p><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://webpackbin-prod.firebaseapp.com/bins/-KdBaa45GzVJFOxU69Gp" target="new">load this BIN on Webpackbin</a></p><p>In our application we want to sum up the number of stars. We have already implemented a naive approach, which we are going to refactor. We created an action which adds the count together:</p><pre><code class="language-js">function setStarsCount ({state}) {
+)</code></pre><p>Typically you get away with most things using Tags, but compute will help you with any other scenario where more “umph” is needed.</p><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBaa45GzVJFOxU69Gp" target="new">load this BIN on Webpackbin</a></p><p>In our application we want to sum up the number of stars. We have already implemented a naive approach, which we are going to refactor. We created an action which adds the count together:</p><pre><code class="language-js">function setStarsCount ({state}) {
   state.set(&#x27;starsCount&#x27;,
     state.get(&#x27;repos.cerebral.stargazers_count&#x27;) +
     state.get(&#x27;repos.addressbar.stargazers_count&#x27;)

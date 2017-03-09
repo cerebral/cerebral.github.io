@@ -25,7 +25,7 @@
       newProp: &#x27;someValue&#x27;
     })
   })
-}</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://webpackbin-prod.firebaseapp.com/bins/-KdBPZwKFDQKkAcUqRte" target="new">load this BIN on Webpackbin</a></p><p>Signals can take a props-object which can then be accessed or processed by any subsequent action.</p><p>Let us say you have a user input which should get written to state.
+}</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBPZwKFDQKkAcUqRte" target="new">load this BIN on Webpackbin</a></p><p>Signals can take a props-object which can then be accessed or processed by any subsequent action.</p><p>Let us say you have a user input which should get written to state.
 As we now know, the correct way to write any state change is to use <strong>signals</strong> with <strong>actions</strong>.</p><p>Just like we are able to grab the <strong>state</strong> from the context of an action, we can also grab the <strong>props</strong>. This props object can be populated when a signal triggers and it can be further extended using actions. Any object returned from an action will be merged into the current props and passed to the next action.</p><h3 id="create-an-action">Create an action</h3><p>Let us create a new action that will take a prop from the signal and add some exclamation marks.</p><pre><code class="language-js">function shoutIt ({props}) {
   return {
     message: `${props.message}!!!`
