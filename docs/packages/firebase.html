@@ -33,7 +33,7 @@ const controller = Controller({
     .then(path.success)
     .catch(path.error)
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {props} from &#x27;cerebral/tags&#x27;
-import {set} from &#x27;cerebral-provider-firebase&#x27;
+import {set} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   set(&#x27;foo.bar&#x27;, props`foo`), {
@@ -48,7 +48,7 @@ export default [
     .then(path.success)
     .catch(path.error)
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {props} from &#x27;cerebral/tags&#x27;
-import {update} from &#x27;cerebral-provider-firebase&#x27;
+import {update} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   update(&#x27;some.path&#x27;, {
@@ -65,7 +65,7 @@ export default [
     .then(path.success)
     .catch(path.error)
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {state} from &#x27;cerebral/tags&#x27;
-import {push} from &#x27;cerebral-provider-firebase&#x27;
+import {push} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   push(&#x27;users&#x27;, state`newUser`), {
@@ -77,7 +77,7 @@ export default [
     .then(path.success)
     .catch(path.error)
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {props, string} from &#x27;cerebral/tags&#x27;
-import {remove} from &#x27;cerebral-provider-firebase&#x27;
+import {remove} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   remove(string`users.${props`userKey`}`), {
@@ -103,7 +103,7 @@ export default [
       }
     })
     .catch(path.error)
-}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {transaction} from &#x27;cerebral-provider-firebase&#x27;
+}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {transaction} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 function transactionFunction(currentData){
   if (currentData === null) {
@@ -122,7 +122,7 @@ export default [
   return firebase.value(&#x27;someKey.foo&#x27;)
     .then(path.success)
     .catch(path.error);
-}</code></pre><p>The result will be available as <code>{ key: &#x27;foo&#x27;, value: &#x27;bar&#x27; }</code>. Or <code>{ error: &#x27;error message&#x27;}</code>.</p><p><em>factory</em></p><pre><code class="language-javascript">import {value} from &#x27;cerebral-provider-firebase&#x27;
+}</code></pre><p>The result will be available as <code>{ key: &#x27;foo&#x27;, value: &#x27;bar&#x27; }</code>. Or <code>{ error: &#x27;error message&#x27;}</code>.</p><p><em>factory</em></p><pre><code class="language-javascript">import {value} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   value(&#x27;foo.bar&#x27;), {
@@ -135,7 +135,7 @@ export default [
   });
 }</code></pre><p>This will <strong>NOT</strong> immediately grab the value and trigger the signal passed, the first event is discarded for more predictable behaviour. To grab existing value, just use <code>value</code>.</p><p>To stop listening for updates to the value:</p><pre><code class="language-js">function someAction({ firebase }) {
   firebase.off(&#x27;someKey.foo&#x27;, &#x27;onValue&#x27;, &#x27;someModule.fooUpdated&#x27;);
-}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {onValue} from &#x27;cerebral-provider-firebase&#x27;
+}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {onValue} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   onValue(&#x27;foo.bar&#x27;, &#x27;some.signal&#x27;)
@@ -154,7 +154,7 @@ export default [
 }</code></pre><p>This will immediately grab and trigger the signal <code>posts.postAdded</code> for every post grabbed. Note this is just registering a listener, not returning a value from the action. The signal is triggered with the payload: <code>{ key: &#x27;someKey&#x27;, value: {} }</code>.</p><p>To stop listening for updates to the posts:</p><pre><code class="language-js">function someAction({ firebase }) {
   firebase.off(&#x27;posts&#x27;, &#x27;onChildAdded&#x27;, &#x27;posts.postAdded&#x27;);
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {state} from &#x27;cerebral/tags&#x27;
-import {onChildAdded} from &#x27;cerebral-provider-firebase&#x27;
+import {onChildAdded} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   onChildAdded(&#x27;foo.bar&#x27;, &#x27;some.signal&#x27;, {
@@ -167,7 +167,7 @@ export default [
   });
 }</code></pre><p>This will trigger the signal <code>posts.postRemoved</code> whenever a post is removed from the selection. The signal is triggered with the payload: <code>{ key: &#x27;someKey&#x27; }</code>.</p><p>To stop listening:</p><pre><code class="language-js">function someAction({ firebase }) {
   firebase.off(&#x27;posts&#x27;, &#x27;onChildRemoved&#x27;, &#x27;posts.postRemoved&#x27;);
-}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {onChildRemoved} from &#x27;cerebral-provider-firebase&#x27;
+}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {onChildRemoved} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   onChildRemoved(&#x27;foo.bar&#x27;, &#x27;some.signal&#x27;, {
@@ -179,7 +179,7 @@ export default [
   });
 }</code></pre><p>This will trigger the signal <code>posts.postChanged</code> whenever a post is changed in the selection. The signal is triggered with the payload: <code>{ key: &#x27;someKey&#x27;, value: {} }</code>.</p><p>To stop listening:</p><pre><code class="language-js">function someAction({ firebase }) {
   firebase.off(&#x27;posts&#x27;, &#x27;onChildChanged&#x27;, &#x27;posts.postChanged&#x27;);
-}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {onChildChanged} from &#x27;cerebral-provider-firebase&#x27;
+}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {onChildChanged} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   onChildChanged(&#x27;foo.bar&#x27;, &#x27;some.signal&#x27;, {
@@ -193,7 +193,7 @@ export default [
     .then(path.success)
     .catch(path.error);
 }</code></pre><p>This will add a task at <code>queue/tasks</code>. There is no output from a resolved task, it just resolves when the action has been processed.</p><p><em>factory</em></p><pre><code class="language-javascript">import {state, props} from &#x27;cerebral/tags&#x27;
-import {task} from &#x27;cerebral-provider-firebase&#x27;
+import {task} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   task(&#x27;some_task&#x27;, {
@@ -207,7 +207,7 @@ export default [
   return firebase.getUser()
     .then(path.success)
     .catch(path.error);
-}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {getUser} from &#x27;cerebral-provider-firebase&#x27;
+}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {getUser} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   getUser(), {
@@ -218,7 +218,7 @@ export default [
   return firebase.signInAnonymously()
     .then(path.success)
     .catch(path.error);
-}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {signInAnonymously} from &#x27;cerebral-provider-firebase&#x27;
+}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {signInAnonymously} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   signInAnonymously(), {
@@ -233,7 +233,7 @@ export default [
     .then(path.success)
     .catch(path.error);
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {state} from &#x27;cerebral/tags&#x27;
-import {createUserWithEmailAndPassword} from &#x27;cerebral-provider-firebase&#x27;
+import {createUserWithEmailAndPassword} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   createUserWithEmailAndPassword(state`newUser.email`, state`newUser.password`), {
@@ -248,7 +248,7 @@ export default [
     .then(path.success)
     .catch(path.error);
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {props} from &#x27;cerebral/tags&#x27;
-import {signInWithEmailAndPassword} from &#x27;cerebral-provider-firebase&#x27;
+import {signInWithEmailAndPassword} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   signInWithEmailAndPassword(props`email`, props`password`), {
@@ -263,7 +263,7 @@ export default [
     .then(path.success)
     .catch(path.error);
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {state} from &#x27;cerebral/tags&#x27;
-import {signInWithFacebook} from &#x27;cerebral-provider-firebase&#x27;
+import {signInWithFacebook} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   signInWithFacebook({
@@ -281,7 +281,7 @@ Just use <code>signInWithGoogle</code> or <code>signInWithGithub</code> instead 
     .then(path.success)
     .catch(path.error);
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {state} from &#x27;cerebral/tags&#x27;
-import {linkWithFacebook} from &#x27;cerebral-provider-firebase&#x27;
+import {linkWithFacebook} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   linkWithFacebook({
@@ -295,7 +295,7 @@ Just use <code>linkWithGoogle</code> or <code>linkWithGithub</code> instead of <
   return firebase.signOut()
     .then(path.success)
     .catch(path.error);
-}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {signOut} from &#x27;cerebral-provider-firebase&#x27;
+}</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {signOut} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   signOut(), {
@@ -307,7 +307,7 @@ export default [
     .then(path.success)
     .catch(path.error);
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {state} from &#x27;cerebral/tags&#x27;
-import {sendPasswordResetEmail} from &#x27;cerebral-provider-firebase&#x27;
+import {sendPasswordResetEmail} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   sendPasswordResetEmail(state`user.email`), {
@@ -317,19 +317,19 @@ export default [
 ]</code></pre><h3 id="setondisconnect">setOnDisconnect</h3><p>Sets a value when Firebase detects user has disconnected.</p><p><em>action</em></p><pre><code class="language-js">function someAction({ firebase, state }) {
   firebase.setOnDisconnect(`activeUsers.${state.get(&#x27;app.user.uid&#x27;)}`, &#x27;someValue&#x27;)
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {state} from &#x27;cerebral/tags&#x27;
-import {setOnDisconnect} from &#x27;cerebral-provider-firebase&#x27;
+import {setOnDisconnect} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   setOnDisconnect(string`activeUsers.${state`app.user.uid`}`, null)
 ]</code></pre><h3 id="cancelondisconnect">cancelOnDisconnect</h3><p>Cancel setting a value when Firebase detects disconnect.</p><p><em>action</em></p><pre><code class="language-js">function someAction({ firebase, state }) {
   firebase.cancelOnDisconnect()
 }</code></pre><p><em>factory</em></p><pre><code class="language-javascript">import {state} from &#x27;cerebral/tags&#x27;
-import {cancelOnDisconnect} from &#x27;cerebral-provider-firebase&#x27;
+import {cancelOnDisconnect} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   cancelOnDisconnect()
 ]</code></pre><h3 id="put">put</h3><p>Upload a new file at the given location. Please note that the file is <strong>not</strong> stored inside the realtime database but into Google Cloud Storage (please consult filrebase documentation). This means that you need to take care of storage security as well.</p><p>The options expect a progress field that can be either a signal (that will be called with <code>progress</code>, <code>totalBytes</code> and <code>bytesTransferred</code>) or a state path to directly set <code>progress</code> value.</p><p>Note that <code>put</code> expects a folder as first argument and will use the name of the provided file. If you want to control the filename, add this in the options. In this case, make sure to respect file type and extension…</p><p>On success, <code>props</code> contains an <code>url</code> and the <code>filename</code>.</p><pre><code class="language-js">import {props, signal, state, string} from &#x27;cerebral/tags&#x27;
-import {put} from &#x27;cerebral-provider-firebase&#x27;
+import {put} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 // we expect props.file to contain a file provided by
 // a user in an &lt;input type=&#x27;file&#x27; /&gt;
@@ -344,7 +344,7 @@ export default [
     error: []
   }
 ]</code></pre><h3 id="delete">delete</h3><p>Use <code>delete</code> to remove an uploaded file. Specify the containing folder and filename.</p><pre><code class="language-js">import {props, state, string} from &#x27;cerebral/tags&#x27;
-import {put} from &#x27;cerebral-provider-firebase&#x27;
+import {put} from &#x27;cerebral-provider-firebase/operators&#x27;
 
 export default [
   firebase.delete(

@@ -29,8 +29,11 @@ function myAction ({resolve}) {
   const foo = resolve.value(computedFoo)
 }</code></pre><p>You can even compose it into a Tag:</p><pre><code class="language-js">import computedFoo from &#x27;../computedFoo&#x27;
 import {state} from &#x27;cerebral/tags&#x27;
+import {set} from &#x27;cerebral/operators&#x27;
 
-state`${computedFoo}.bar`</code></pre><h2 id="getting-data">Getting data</h2><p>Compute can manually grab data related to where it is run. For example in <strong>connect</strong> you have access to both state and properties of the component. In a signal you would have access to state and the props to the signal. You do this by combining the <strong>get</strong> argument with a related tag:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+export default [
+  set(state`${computedFoo}.bar`, &#x27;baz&#x27;)
+]</code></pre><h2 id="getting-data">Getting data</h2><p>Compute can manually grab data related to where it is run. For example in <strong>connect</strong> you have access to both state and properties of the component. In a signal you would have access to state and the props to the signal. You access these manually by combining the <strong>get</strong> argument with a related tag:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
 import {state, props} from &#x27;cerebral/tags&#x27;
 
 export default compute((get) =&gt; {
@@ -71,7 +74,7 @@ import {state} from &#x27;cerebral/tags&#x27;
 
 export default compute(
   state`repos`,
-  function starsCount (repos) {
+  (repos) =&gt; {
     return Object.keys(repos).reduce((currentCount, repoKey) =&gt; {
       return currentCount + repos[repoKey].stargazers_count
     }, 0)
@@ -134,7 +137,7 @@ export default connect({
       &lt;/div&gt;
     )
   }
-)</code></pre><p>Thats it for now regarding <em>Compute</em>. Of course summarizing some numbers is pretty simple stuff, but you can compute anything.</p><p>But now it has only been Cerebral stuff, what if you want to use other libraries in your action flow? Well, refill your coffee or open up another drink and enjoy the next chapter introducing <strong>the router</strong>.</p><p>If it did not work try jumping to the next chapter or <a href="https://discord.gg/0kIweV4bd2bwwsvH" target="new">shout at us on Discord</a>.</p></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
+)</code></pre><p>Thats it for now regarding <em>Compute</em>. Of course summarizing some numbers is pretty simple stuff, but you can compute anything.</p><p>If it did not work try jumping to the next chapter or <a href="https://discord.gg/0kIweV4bd2bwwsvH" target="new">shout at us on Discord</a>.</p></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <script src="/search.js"></script>
