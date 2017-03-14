@@ -94,7 +94,7 @@ function getRepo (repoName) {
   return get
 }
 ...</code></pre><p>Then we change how our signal looks:</p><pre><code class="language-js">...
-import starsCount from &#x27;./computeds/starsCount&#x27;
+import starsCount from &#x27;./starsCount&#x27;
 ...
 {
   buttonClicked: [
@@ -108,7 +108,7 @@ import starsCount from &#x27;./computeds/starsCount&#x27;
       &#x27;false&#x27;: [
         set(state`repos.cerebral`, props`cerebral`),
         set(state`repos.addressbar`, props`addressbar`),
-        showToast(string`The repos have ${starsCount} stars`, 5000)
+        showToast(string`The repos have ${starsCount} stars`, 5000, &#x27;success&#x27;)
       ]
     }
   ]

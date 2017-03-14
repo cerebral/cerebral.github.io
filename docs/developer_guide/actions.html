@@ -33,15 +33,13 @@ As we now know, the correct way to write any state change is to use <strong>sign
 }</code></pre><p>As you can see we grabbed the props just like we grabbed the state. The object we return from the action will be merged with the existing props. That means we are overriding the <strong>message</strong> with exclamation marks.</p><p>We also add an action for setting the toast.</p><pre><code class="language-js">function setToast ({state, props}) {
   state.set(&#x27;toast&#x27;, props.message)
 }</code></pre><pre><code class="language-js">...
-import {set, wait} from &#x27;cerebral/operators&#x27;
-import {state, props} from &#x27;cerebral/tags&#x27;
-...
 {
   buttonClicked: [
     shoutIt,
     setToast
   ]  
-}</code></pre><h3 id="passing-a-payload">Passing a payload</h3><p>Now we just need to change our button click to actually pass a message:</p><p><em>App.js</em></p><pre><code class="language-js">import React from &#x27;react&#x27;
+}
+...</code></pre><h3 id="passing-a-payload">Passing a payload</h3><p>Now we just need to change our button click to actually pass a message:</p><p><em>App.js</em></p><pre><code class="language-js">import React from &#x27;react&#x27;
 import {connect} from &#x27;cerebral/react&#x27;
 import {state, signal} from &#x27;cerebral/tags&#x27;
 import Toast from &#x27;./Toast&#x27;

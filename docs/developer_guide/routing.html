@@ -14,22 +14,22 @@ import Router from &#x27;cerebral-router&#x27;
 
 const controller = Controller({
   router: Router({
-    routes: {}, // Route definitions
+    routes: [], // Route definitions
     query: false, // Query support
     onlyHash: false, // Use hash urls
     baseUrl: &#x27;/&#x27; // Only handle url changes on nested path
   })
 })</code></pre><h2 id="defining-routes">Defining routes</h2><p>Routes in Cerebral does not affect the components, they affect signals. The signals puts your application in a specific state and then your components decides what to render based on that state. So the router is completely decoupled from your components. This is a very good thing because a route can now translate to any kind of state changes and side effects.</p><p>Let us create a small app:</p><pre><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
 import Router from &#x27;cerebral-router&#x27;
-import HomeModule from &#x27;./modules/Home&#x27;
-import PostsModule from &#x27;./modules/Posts&#x27;
+import HomeModule from &#x27;./modules/home&#x27;
+import PostsModule from &#x27;./modules/posts&#x27;
 
 const controller = Controller({
   router: Router({
-    routes: {
-      &#x27;/&#x27;: &#x27;home.routed&#x27;,
-      &#x27;/posts&#x27;: &#x27;posts.routed&#x27;
-    }
+    routes: [
+      {path: &#x27;/&#x27;, signal: &#x27;home.routed&#x27;},
+      {path: &#x27;/posts&#x27;, signal: &#x27;posts.routed&#x27;}
+    ]
   }),
   state: {
     currentPage: &#x27;home&#x27;

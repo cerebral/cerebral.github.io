@@ -83,7 +83,7 @@ connect({
   subTitle: state`subTitle`
 },
   ...
-)</code></pre><p>As you can see the App-Component depends on <strong>subTitle</strong>. That means it will render automatically whenever <strong>subTitle</strong> changes. Because our <strong>updateSubtitle</strong> function changes the path <strong>subTitle</strong>, Cerebral just knows which components need to update and thus there is no dirty checking or other value comparison needed.</p><p>To trigger the signal we need to wire up a click-handler on a button and add our signal <strong>buttonClicked</strong> to the <strong>connect(..)</strong> method:</p><p><em>App.js</em></p><pre><code class="language-js">import React from &#x27;react&#x27;
+)</code></pre><p>As you can see the App-Component depends on <strong>subTitle</strong>. That means it will render automatically whenever <strong>subTitle</strong> changes.</p><p>To trigger the signal we need to wire up a click-handler on a button and add our signal <strong>buttonClicked</strong> to the <strong>connect(..)</strong> method:</p><p><em>App.js</em></p><pre><code class="language-js">import React from &#x27;react&#x27;
 import {connect} from &#x27;cerebral/react&#x27;
 import {state, signal} from &#x27;cerebral/tags&#x27;
 
