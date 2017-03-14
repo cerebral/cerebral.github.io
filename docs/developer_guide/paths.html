@@ -82,7 +82,7 @@ const controller = Controller(...)</code></pre><p>The path <strong>success</stro
   Update state
 &lt;/button&gt;
 ...</code></pre><h3 id="parallel-execution">Parallel execution</h3><p>But there is an issue here. Did you notice that the message <em>Loading data for repo…</em> is blocking the execution for 2 seconds? It would be nice to indicate to Cerebral that actions can execute in parallel.</p><p>Replace your signal with the following snippet:</p><pre><code class="language-js">...
-import {parallel, sequence} from &#x27;cerebral&#x27;
+import {Controller, sequence, parallel} from &#x27;cerebral&#x27;
 ...
 
 {
