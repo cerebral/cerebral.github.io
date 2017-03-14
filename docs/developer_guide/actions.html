@@ -25,8 +25,9 @@
       newProp: &#x27;someValue&#x27;
     })
   })
-}</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBPZwKFDQKkAcUqRte" target="new">load this BIN on Webpackbin</a></p><p>Signals can take a props-object which can then be accessed or processed by any subsequent action.</p><p>Let us say you have a user input which should get written to state.
-As we now know, the correct way to write any state change is to use <strong>signals</strong> with <strong>actions</strong>.</p><p>Just like we are able to grab the <strong>state</strong> from the context of an action, we can also grab the <strong>props</strong>. This props object can be populated when a signal triggers and it can be further extended using actions. Any object returned from an action will be merged into the current props and passed to the next action.</p><h3 id="create-an-action">Create an action</h3><p>Let us create a new action that will take a prop from the signal and add some exclamation marks.</p><pre><code class="language-js">function shoutIt ({props}) {
+}</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBPZwKFDQKkAcUqRte" target="new">load this BIN on Webpackbin</a></p><p>If you run this bin right away you will see a message popping up after clicking the button.
+Now let us customize the existing <strong>signal</strong> by adding a custom <strong>action</strong> in between the sequence.</p><p>Signals can take a props-object which can then be accessed or processed by any subsequent action.</p><p>Let us say you have a user input which should get written to state.
+As we now know, the correct way to write any state change is to use <strong>signals</strong> with <strong>actions</strong>.</p><p>Just like we are able to grab the <strong>state</strong> from the context of an action, we can also grab the <strong>props</strong>. This props object can be populated when a signal triggers and it can be further extended using actions. Any object returned from an action will be merged into the current props and passed to the next action.</p><h3 id="create-an-action">Create an action</h3><p>Let us create a new action inside <em>controller.js</em> that will take a prop from the signal and add some exclamation marks.</p><pre><code class="language-js">function shoutIt ({props}) {
   return {
     message: `${props.message}!!!`
   }
@@ -39,31 +40,13 @@ As we now know, the correct way to write any state change is to use <strong>sign
     setToast
   ]  
 }
-...</code></pre><h3 id="passing-a-payload">Passing a payload</h3><p>Now we just need to change our button click to actually pass a message:</p><p><em>App.js</em></p><pre><code class="language-js">import React from &#x27;react&#x27;
-import {connect} from &#x27;cerebral/react&#x27;
-import {state, signal} from &#x27;cerebral/tags&#x27;
-import Toast from &#x27;./Toast&#x27;
-
-export default connect({
-  title: state`title`,
-  subTitle: state`subTitle`,
-  buttonClicked: signal`buttonClicked`
-},
-  function App ({title, subTitle, buttonClicked}) {
-    return (
-      &lt;div&gt;
-        &lt;h1&gt;{title}&lt;/h1&gt;
-        &lt;h3&gt;{subTitle}&lt;/h3&gt;
+...</code></pre><h3 id="passing-a-payload">Passing a payload</h3><p>Now we just need to change our button click to actually pass a message:</p><p><em>App.js</em></p><pre><code class="language-js">        ...
         &lt;button onClick={() =&gt; buttonClicked({
           message: &#x27;Please shout me&#x27;
         })}&gt;
           Update state
         &lt;/button&gt;
-        &lt;Toast /&gt;
-      &lt;/div&gt;
-    )
-  }
-)</code></pre><p>Now we are ready to test drive our changes. Click the button and you should see the toast message appear with three exclamation marks behind. Take some time to open up the <strong>debugger</strong> and explore the changes you’ve made. You can track the flow of the props object as it is passed into the action <em>props:{}</em> and after the action has excecuted <em>output: {}</em>. Keep in mind that the object returned from an action will be merged with the props object and handed over to the next action. You could just as easily use a different property for the shouted message.</p><h3 id="challenge">Challenge</h3><ul><li>Add another custom action which transforms the props value to Uppercase. You may override existing properties on the props or create a new one</li></ul><p>If it did not work try jumping to the next chapter or <a href="https://discord.gg/0kIweV4bd2bwwsvH" target="new">shout at us on Discord</a>.</p></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
+        ...</code></pre><p>Now we are ready to test drive our changes. Click the button and you should see the toast message appear with three exclamation marks behind. Take some time to open up the <strong>debugger</strong> and explore the changes you’ve made. You can track the flow of the props object as it is passed into the action <em>props:{}</em> and after the action has excecuted <em>output: {}</em>. Keep in mind that the object returned from an action will be merged with the props object and handed over to the next action. You could just as easily use a different property for the shouted message.</p><h3 id="challenge">Challenge</h3><ul><li>Add another custom action which transforms the props value to Uppercase. You may override existing properties on the props or create a new one</li></ul><p>If it did not work try jumping to the next chapter or <a href="https://discord.gg/0kIweV4bd2bwwsvH" target="new">shout at us on Discord</a>.</p></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <script src="/search.js"></script>

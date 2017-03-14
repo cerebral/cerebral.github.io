@@ -28,7 +28,7 @@ helloBob() // Logs: &quot;Hello there Bob&quot;</code></pre><p>In Cerebral you w
   }
 
   return hasUserRole
-}</code></pre><p>So this factory can now be used in any chain:</p><pre><code class="language-js">import hasUserRole from &#x27;../factories/hasUserRole&#x27;
+}</code></pre><p>So this factory can now be used in any sequence:</p><pre><code class="language-js">import hasUserRole from &#x27;../factories/hasUserRole&#x27;
 
 export default [
   hasUserRole(&#x27;admin&#x27;), {
@@ -51,7 +51,8 @@ function someAction () {}
 export default [
   someAction,
   showMessage(&#x27;Hello there!&#x27;, 500)
-]</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBPZwKFDQKkAcUqRte" target="new">load this BIN on Webpackbin</a></p><p>Let us look at how the <strong>wait</strong> operator is defined:</p><pre><code class="language-js">function waitFactory (ms) {
+]</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBPZwKFDQKkAcUqRte" target="new">load this BIN on Webpackbin</a></p><p>To see how <strong>factories</strong> are defined you may also check out the already existing code inside cerebral itself. 
+E.g. that is how the <strong>wait</strong> operator looks like:</p><pre><code class="language-js">function waitFactory (ms) {
   function wait () {
     return new Promise((resolve) =&gt; {
       setTimeout(resolve, ms)
@@ -59,7 +60,7 @@ export default [
   }
 
   return wait
-}</code></pre><p>We have just defined a <strong>factory</strong>. A function that returns an action. The action itself (wait) returns a promise. This promise is what tells the signal to hold its execution until it is resolved.</p><p>Let us create our own custom <strong>showToast</strong> factory. It will return a sequence of actions. As you can see we have moved the operators we defined previously into this array, using the arguments passed into the factory. As an example we want to name this sequence of actions, so instead of using an array we rather use the <strong>sequence</strong> function. They are exactly the same, only the function allows us to pass in a name as the first argument:</p><pre><code class="language-js">import {sequence} from &#x27;cerebral&#x27;
+}</code></pre><p>You can see that a <strong>factory</strong> is just a function that returns another function which we call <strong>action</strong>. The action itself (wait) returns a promise. This promise is what tells the signal to hold its execution until it is resolved. Because <strong>wait</strong> is quite a common operation it’s already included as an operator in the default</p><p>Let us create our own custom <strong>showToast</strong> factory. It will return a sequence of actions. As you can see we have moved the operators we defined previously into this array, using the arguments passed into the factory. As an example we want to name this sequence of actions, so instead of using an array we rather use the <strong>sequence</strong> function. They are exactly the same, only the function allows us to pass in a name as the first argument:</p><pre><code class="language-js">import {sequence} from &#x27;cerebral&#x27;
 ...
 function showToast(message, ms) {
   return sequence(&#x27;showToast&#x27;, [

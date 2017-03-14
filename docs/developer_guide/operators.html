@@ -57,9 +57,9 @@ export default [
     user: [],
     otherwise: []
   }
-]</code></pre><p>As you can see <strong>operators</strong> are a powerful concept that allows you to describe how your application executes and changes its state. Other tools in the Cerebral ecosystem also has its own operators for running side effects like HTTP requests, Firebase requests etc. Most of your application can actually be described with operators.</p><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBHyLJDefteJy0s821" target="new">load this BIN on Webpackbin</a></p><p>Let us first change out our actions with an operators instead. Since we did a <em>set</em>, we change it out with the <strong>set</strong> operator. Operators also take advantage of the tags. In this case, the first argument uses a tag to target our state. The second argument uses a tag to grab the message from the props passed into the signal.</p><p>Now lets add a <strong>wait</strong> operator and another <strong>set</strong> to close our toast message after a few seconds. So go ahead and change our <strong>buttonClicked</strong> signal in <em>App.js</em> to:</p><pre><code class="language-js">...
+]</code></pre><p>As you can see <strong>operators</strong> are a powerful concept that allows you to describe how your application executes and changes its state. Other tools in the Cerebral ecosystem also has its own operators for running side effects like HTTP requests, Firebase requests etc. Most of your application can actually be described with operators.</p><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBHyLJDefteJy0s821" target="new">load this BIN on Webpackbin</a></p><p>Let us first change out our actions with an operators instead. Since we did a <em>set</em>, we change it out with the <strong>set</strong> operator. Operators also take advantage of the tags. In this case, the first argument uses a tag to target our state. The second argument uses a tag to grab the message from the props passed into the signal.</p><p>Now lets add a <strong>wait</strong> operator and another <strong>set</strong> to close our toast message after a few seconds. So go ahead and change our <strong>buttonClicked</strong> signal in <em>controller.js</em> to:</p><pre><code class="language-js">...
 import {set, wait} from &#x27;cerebral/operators&#x27;
-import {state} from &#x27;cerebral/tags&#x27;
+import {state, props} from &#x27;cerebral/tags&#x27;
 ...
 {
   buttonClicked: [
@@ -67,7 +67,7 @@ import {state} from &#x27;cerebral/tags&#x27;
     wait(4000),
     set(state`toast`, null)
   ]
-}</code></pre><p>Now when we check again in the debugger you will see all the 3 actions executed when signal <em>buttonClicked</em> got triggered.</p><p>Still speaking of the debugger did you notice the <strong>props: {}</strong> in front of every action executed? Looks quite empty. Let us look at that in the next chapter! If it did not work try jumping to the next chapter or <a href="https://discord.gg/0kIweV4bd2bwwsvH" target="new">shout at us on Discord</a>.</p></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
+}</code></pre><p>Now when we check again in the debugger you will see all the 3 actions executed when signal <em>buttonClicked</em> got triggered.</p><p>If it did not work try jumping to the next chapter or <a href="https://discord.gg/0kIweV4bd2bwwsvH" target="new">shout at us on Discord</a>.</p></div></div></div><div style="z-index:99;background-color:#DD4A68;color:#fff;padding:5px 10px;position:fixed;width:100%;bottom:0;left:0;">Docs are still being written and might not be up to date with API</div></div></div>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <script src="/search.js"></script>

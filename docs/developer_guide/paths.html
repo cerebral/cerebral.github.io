@@ -33,7 +33,7 @@ export default [
       foo: &#x27;bar&#x27;
     }))
   })
-}</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBUBNJyrfqL3c6VHkr" target="new">load this BIN on Webpackbin</a></p><p>In the previous chapter we introduced async actions. But what about the following scenario: “User gets data async from a server, server responds with either a success or error”. To handle not only the so called <em>Happy Path</em> we should also allow our signals to branch out into a different flows depending on the result of the previous action.</p><h3 id="http-provider">Http Provider</h3><p>So let us build that scenario introducing <em>cerebral-http-provider</em>. <em>cerebral-http-provider</em> is a simple http-provider which enables you to request data from servers. You could have used any other HTTP library if you wanted to. We have already added it as a configuration of the controller. The concept of <strong>Providers</strong> will be covered in more detail in the next chapter.</p><p>To handle any kind of diverging execution in a signal we can use the concept of <strong>paths</strong>. A simple signal using paths and a sample async action named <em>getData</em> could look like this:</p><pre><code class="language-js">Controller({
+}</code></pre><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBUBNJyrfqL3c6VHkr" target="new">load this BIN on Webpackbin</a></p><p>In the previous chapter we introduced async actions. But what about the following scenario: “User gets data async from a server, server responds with either a success or error”. To handle not only the so called <em>Happy Path</em> we should also allow our signals to branch out into a different flows depending on the result of the previous action.</p><h3 id="http-provider">Http Provider</h3><p>So let us build that scenario introducing <em>cerebral-http-provider</em>. <em>cerebral-http-provider</em> is a simple http-provider which enables you to request data from servers. You could have used any other HTTP library if you wanted to. We have already added it as a configuration of the controller. The concept of <strong>Providers</strong> will be covered in more detail in one of the next chapters.</p><p>To handle any kind of diverging execution in a signal we can use the concept of <strong>paths</strong>. A simple signal using paths and a sample async action named <em>getData</em> could look like this:</p><pre><code class="language-js">Controller({
   signals: {
     submitClicked:[
       getData, {
@@ -81,15 +81,18 @@ const controller = Controller(...)</code></pre><p>The path <strong>success</stro
 &lt;button onClick={() =&gt; buttonClicked({repo: &#x27;cerebral&#x27;})}&gt;
   Update state
 &lt;/button&gt;
-...</code></pre><h3 id="parallel-execution">Parallel execution</h3><p>But there is an issue here. Did you notice that the message <em>Loading data for repo…</em> is blocking the execution for 2 seconds? It would be nice to indicate to Cerebral that actions can execute in parallel.</p><p>Replace your signal with the following snippet:</p><pre><code class="language-js">{
+...</code></pre><h3 id="parallel-execution">Parallel execution</h3><p>But there is an issue here. Did you notice that the message <em>Loading data for repo…</em> is blocking the execution for 2 seconds? It would be nice to indicate to Cerebral that actions can execute in parallel.</p><p>Replace your signal with the following snippet:</p><pre><code class="language-js">...
+import {parallel, sequence} from &#x27;cerebral&#x27;
+...
+
+{
   buttonClicked: parallel([
     showToast(string`Loading data for repo: ${props`repo`}`, 2000),
     getRepo, {
       success: showToast(
-        string`
-         How cool is that. ${props`repo`}
-         has ${props`data.subscribers_count`}
-         subscribers and ${props`data.stargazers_count`}
+        string`How cool is that. ${props`repo`}
+         has ${props`result.subscribers_count`}
+         subscribers and ${props`result.stargazers_count`}
          stars!
         `,
         5000,
@@ -97,7 +100,7 @@ const controller = Controller(...)</code></pre><p>The path <strong>success</stro
       ),
       error: showToast(
         string`
-          Ooops something went wrong: ${props`data.message`}
+          Ooops something went wrong: ${props`result.message`}
         `,
         5000,
         &#x27;error&#x27;
@@ -109,10 +112,9 @@ import {set, merge, debounce} from &#x27;cerebral/operators&#x27;
 import {state, props, string} from &#x27;cerebral/tags&#x27;
 ...
 const toastDebounce = debounce.shared()
-function showToast (message, ms, type = null) {
+function showToast (message, ms) {
   return sequence(&#x27;showToast&#x27;, [
-    // We use merge as it supports evaluating tags in an object
-    merge(state`toast`, {type, message}),
+    set(state`toast`, message),
     toastDebounce(ms), {
       continue: [
         set(state`toast`, null)

@@ -69,7 +69,7 @@ connect({
     state.get(&#x27;repos.cerebral.stargazers_count&#x27;) +
     state.get(&#x27;repos.addressbar.stargazers_count&#x27;)
   )
-}</code></pre><p>This is a perfectly okay approach for our simple scenario, but computing state like this can be tedious in large applications. We might want to use this state multiple places in our application and we want to make sure it is the same wherever we use it.</p><h3 id="computing">Computing</h3><p>In Cerebral, we can automatically compute state by using <strong>compute</strong>. It is basically a function that takes any number of arguments to produce a value. Let us look at how it works with our scenario:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
+}</code></pre><p>This is a perfectly okay approach for our simple scenario, but computing state like this can be tedious in large applications. We might want to use this state multiple places in our application and we want to make sure it is the same wherever we use it.</p><h3 id="computing">Computing</h3><p>In Cerebral, we can automatically compute state by using <strong>compute</strong>. It is basically a function that takes any number of arguments to produce a value. Let us look at how it works with our scenario. Please add another file called <em>starsCount.js</em> to the bin and copy the following snippet into it:</p><pre><code class="language-js">import {compute} from &#x27;cerebral&#x27;
 import {state} from &#x27;cerebral/tags&#x27;
 
 export default compute(
@@ -79,7 +79,7 @@ export default compute(
       return currentCount + repos[repoKey].stargazers_count
     }, 0)
   }
-)</code></pre><p>We depend on our repos state. Then we just count the stars and return it. When the compute is used with a component it will automatically track whatever dependencies it has and only runs when any of those dependencies change.</p><p>Let us finish this example. To do so please create a new file named <em>starsCount.js</em> containing the snippet we just looked at. Then we would like to use our computed both in the signal and we also want to show the count in our component.</p><h3 id="replacing-with-computed">Replacing with computed</h3><p>Let us remove the <strong>setStarsCount</strong> action and refactor our signal to rather grab the repos first and then we update the state in one go. This just to show you different strategies.</p><p>The first thing we need to do is refactor our <em>getRepo</em> action factories to no longer return paths, just values. So either they return a result using the repo name as the key, or they will set an error.</p><pre><code class="language-js">...
+)</code></pre><p>We depend on our repos state. Then we just count the stars and return it. When the compute is used with a component it will automatically track whatever dependencies it has and only runs when any of those dependencies change.</p><p>Let us finish this example. To do so please create a new file named <em>starsCount.js</em> containing the snippet we just looked at. Then we would like to use our computed both in the signal and we also want to show the count in our component.</p><h3 id="replacing-with-computed">Replacing with computed</h3><p>Let us remove the <strong>setStarsCount</strong> action and refactor our signal to rather grab the repos first and then we update the state in one go. This just to show you different strategies.</p><p>Check out the refactoring of our <em>getRepo</em> action. the factory no longer return paths, just values. So either they return a result using the repo name as the key, or they will set an error.</p><pre><code class="language-js">...
 function getRepo (repoName) {
   function get ({http}) {
     return http.get(`/repos/cerebral/${repoName}`)
@@ -93,7 +93,7 @@ function getRepo (repoName) {
 
   return get
 }
-...</code></pre><p>Then we change how our signal looks:</p><pre><code class="language-js">...
+...</code></pre><p>We can change now the signal to look like:</p><pre><code class="language-js">...
 import starsCount from &#x27;./starsCount&#x27;
 ...
 {
@@ -116,7 +116,7 @@ import starsCount from &#x27;./starsCount&#x27;
 ...</code></pre><p>We also use the <em>when</em> operator to figure out if we indeed have an error, diverging execution to show an error message. If that is not the case, we update our state tree and show the message.</p><p>Note here that we also updated the <em>toast</em> to allow no time to passed in, causing it to stick.</p><p>You can use computeds with other computeds, directly in tags, with operators, in actions and in components. Lets update our <strong>App</strong> component:</p><pre><code class="language-js">import React from &#x27;react&#x27;
 import {connect} from &#x27;cerebral/react&#x27;
 import {state, signal} from &#x27;cerebral/tags&#x27;
-import starsCount from &#x27;.starsCount&#x27;
+import starsCount from &#x27;./starsCount&#x27;
 import Toast from &#x27;./Toast&#x27;
 
 export default connect({
