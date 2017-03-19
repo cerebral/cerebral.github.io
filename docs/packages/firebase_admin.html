@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/packages">packages</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger">☰</div><div class="docs-navigation-title mobile">packages</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item mobile"><a href="/docs/developer_guide">developer guide</a></li><li class="docs-navigation-item active mobile"><a href="/docs/packages">packages</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/packages/index.html">cerebral-provider-http</a></li><li><a href="/docs/packages/firebase.html">cerebral-provider-firebase</a></li><li><a href="/docs/packages/useragent.html">cerebral-module-useragent</a></li><li><a href="/docs/packages/forms.html">cerebral-provider-forms</a></li><li><a href="/docs/packages/storage.html">cerebral-provider-storage</a></li><li><a href="/docs/packages/function_tree.html">function-tree</a></li><li class="active"><a href="/docs/packages/firebase_admin.html">function-tree-firebase-admin</a><ul><li><a href="#install">install</a></li><li><a href="#description">description</a></li><li><a href="#provider">Provider</a><ul><li><a href="#value">value</a></li><li><a href="#transaction">transaction</a></li><li><a href="#set">set</a></li><li><a href="#push">push</a></li><li><a href="#update">update</a></li><li><a href="#createkey">createKey</a></li><li><a href="#deleteuser">deleteUser</a></li><li><a href="#remove">remove</a></li></ul></li><li><a href="#taskrunner">TaskRunner</a></li><li><a href="#testtasks">TestTasks</a></li></ul></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/packages/index.html">cerebral-provider-http</a></li><li><a href="/docs/packages/firebase.html">cerebral-provider-firebase</a></li><li><a href="/docs/packages/useragent.html">cerebral-module-useragent</a></li><li><a href="/docs/packages/forms.html">cerebral-provider-forms</a></li><li><a href="/docs/packages/storage.html">cerebral-provider-storage</a></li><li><a href="/docs/packages/function_tree.html">function-tree</a></li><li class="active"><a href="/docs/packages/firebase_admin.html">function-tree-firebase-admin</a><ul><li><a href="#install">install</a></li><li><a href="#description">description</a></li><li><a href="#provider">Provider</a><ul><li><a href="#value">value</a></li><li><a href="#transaction">transaction</a></li><li><a href="#set">set</a></li><li><a href="#push">push</a></li><li><a href="#update">update</a></li><li><a href="#createkey">createKey</a></li><li><a href="#deleteuser">deleteUser</a></li><li><a href="#remove">remove</a></li></ul></li><li><a href="#taskrunner">TaskRunner</a></li><li><a href="#testtasks">TestTasks</a></li></ul></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/packages/firebase_admin.md" target="_new">Edit on Github</a></div><h1 id="function-tree-firebase-admin">function-tree-firebase-admin</h1><h2 id="install">install</h2><p><code>npm install function-tree-firebase-admin@next --save --save-exact</code></p><h2 id="description">description</h2><p>The firebase admin package for function-tree allows you to easily handle Firebase Queues. With the Cerebral debugger you will even be able to merge execution data cross client/server. This package helps you set up a <strong>TaskRunner</strong> which combines a function tree definition of your choice with a Firebase Queue reference.</p><h2 id="provider">Provider</h2><p>First you create a function tree with the Firebase provider. You will need to add the Devtools with the same port as the client to merge execution.</p><pre><code class="language-js">const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
+const Devtools = require(&#x27;function-tree/devtools&#x27;)
+const FirebaseProvider = require(&#x27;function-tree-firebase-admin&#x27;).Provider
+
+const devtools = Devtools({
+  // Connect to same port as the client to merge execution
+  remoteDebugger: &#x27;localhost:8787&#x27;
+})
+
+const runTask = new FunctionTree([
+  devtools.Provider(),
+  FirebaseProvider({
+    serviceAccount: {} // your service account details
+    databaseURL: &#x27;&#x27;, // Your database url
+  })
+  /* Your other providers */
+])
+
+devtools.watchExecution(runTask)
+
+module.exports = runTask</code></pre><h3 id="value">value</h3><p>Get value. Outputs {key: ‘theKey’, value: ‘theValue’}.</p><pre><code class="language-js">function updateItems (context) {
+  return context.firebase.value(&#x27;some/path&#x27;)
+    .then(context.path.success)
+    .catch(context.path.error)
+}</code></pre><h3 id="transaction">transaction</h3><p>Run a transaction.</p><pre><code class="language-js">function updateItems (context) {
+  return context.firebase.transaction(&#x27;some/path&#x27;, (maybeValue) =&gt; {
+    if (!maybeValue) {
+      return &#x27;bar&#x27;
+    }
+
+    return context.props.data.foo
+  })
+    .then(context.path.success)
+    .catch(context.path.error)
+}</code></pre><h3 id="set">set</h3><p>Set new data.</p><pre><code class="language-js">function addItem (context) {
+  return context.firebase.set(`items/${context.props.data.itemKey}`, context.props.data.item)
+    .then(context.path.success)
+    .catch(context.path.error)
+}</code></pre><h3 id="push">push</h3><p>Push new data.</p><pre><code class="language-js">function addItem (context) {
+  return context.firebase.push(&#x27;items&#x27;, context.props.data.item)
+    .then(context.path.success)
+    .catch(context.path.error)
+}</code></pre><h3 id="update">update</h3><p>Update multiple paths.</p><pre><code class="language-js">function updateItems (context) {
+  return context.firebase.update({
+    &#x27;items/1&#x27;: context.props.data.item1Data,
+    &#x27;items/2&#x27;: context.props.data.item2Data
+  })
+    .then(context.path.success)
+    .catch(context.path.error)
+}</code></pre><h3 id="createkey">createKey</h3><p>Create a new Firebase key at some path.</p><pre><code class="language-js">function authenticate (context) {
+  const newKey = context.firebase.createKey(&#x27;some/path&#x27;)
+}</code></pre><h3 id="deleteuser">deleteUser</h3><p>Delete a user from Firebase.</p><pre><code class="language-js">function deleteProfile (context) {
+  return context.firebase.deleteUser(context.props.uid)
+    .then(context.path.success)
+    .catch(context.path.error)
+}</code></pre><h3 id="remove">remove</h3><p>Remove key.</p><pre><code class="language-js">function removeItem (context) {
+  return context.firebase.remove(`items/${context.props.itemKey}`)
+    .then(context.path.success)
+    .catch(context.path.error)
+}</code></pre><h2 id="taskrunner">TaskRunner</h2><p>The TaskRunner is responsible for registering Firebase Queues with your defined specs and what trees should run when new tasks arrive in Firebase. The TaskRunner also automatically authenticates the tasks using <strong>verifyIdToken</strong>.</p><pre><code class="language-js">const runTask = require(&#x27;./runTask&#x27;)
+const firebase = require(&#x27;firebase-admin&#x27;)
+const username = require(&#x27;username&#x27;)
+const TaskRunner = require(&#x27;function-tree-firebase-admin&#x27;).TaskRunner
+
+module.exports = new TaskRunner({
+  // If you are using a specPrefix on the client during development
+  // you will have to use it here as well, to pick up the correct
+  // queue tasks. It is automatically removed in production
+  specPrefix: username.sync(),
+
+  // An array of specs and corresponding trees to run
+  tasks: [{
+    specId: &#x27;some_spec_name&#x27;,
+    numWorkers: 100,
+    tree: [
+      /* Some tree to run */
+    ]
+  }],
+
+  // The function tree that executes the tasks
+  run: runTask,
+
+  // A reference in Firebase to your queue
+  queueRef: firebase.database().ref(&#x27;queue&#x27;)
+});</code></pre><p>When a task runs you have access to the following <strong>props</strong>:</p><pre><code class="language-js">function someFunc (context) {
+  context.props.uid // Uid of user who made the task
+  context.props.data // Data passed from client
+  context.props.task.resolve // Resolve the task
+  context.props.task.reject // Reject the task
+}</code></pre><h2 id="testtasks">TestTasks</h2><p>You can easily test tasks. The TestTasks includes a local <a href="https://github.com/urish/firebase-server" target="new">firebase-server</a> and allows you to define a state of your Firebase instance before running tasks and assert its state after the tasks are run.</p><pre><code class="language-js">const TestTasks = require(&#x27;function-tree-firebase-admin&#x27;).TestTasks
+
+const testTasks = new TestTasks([
+  /* Any mocked providers */
+])
+
+module.exports = testTasks</code></pre><p>In your test framework of choice:</p><pre><code class="language-js">const someTreeToRun = require(&#x27;./someTreeToRun&#x27;)
+const test = require(&#x27;./testTasks&#x27;);
+const assert = require(&#x27;assert&#x27;);
+
+describe(&#x27;example&#x27;, () =&gt; {
+  it(&#x27;should test for foo&#x27;, (done) =&gt; {
+    const runTest = test.create({
+      foo: &#x27;bar&#x27;
+    }, {
+      // The tree to be run
+      task: someTreeToRun,
+
+      // Data to pass into tree execution
+      data: {
+        bip: &#x27;bop&#x27;
+      }
+    }, (data) =&gt; {
+      assert.equal(data.foo, &#x27;bar&#x27;)
+    });
+
+    runTest(done)
+  })
+})</code></pre><p>Run multiple tasks:</p><pre><code class="language-js">const someTreeToRun = require(&#x27;./someTreeToRun&#x27;)
+const test = require(&#x27;./testTasks&#x27;);
+const assert = require(&#x27;assert&#x27;);
+
+describe(&#x27;example&#x27;, () =&gt; {
+  it(&#x27;should test for foo&#x27;, (done) =&gt; {
+    const runTest = test.create({
+      foo: &#x27;bar&#x27;
+    }, [{
+      task: someTreeToRun,
+      data: {
+        foo: &#x27;bop&#x27;
+      },
+      // You can do assertions between running tasks
+      assert (data) {
+        assert.equal(data.foo, &#x27;bop&#x27;)
+      }
+    }, {
+      task: someTreeToRun,
+      data: {
+        foo: &#x27;bap&#x27;
+      }
+    }], (data) =&gt; {
+      assert.equal(data.foo, &#x27;bap&#x27;)
+    });
+
+    runTest(done)
+  })
+})</code></pre></div></div></div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/mobile.js"></script>
+  </body>
+</html>
