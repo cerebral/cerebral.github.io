@@ -29,8 +29,7 @@ import someAction from &#x27;../actions/someAction&#x27;
 
 export default sequence(&#x27;my sequence&#x27;, [
   someAction
-])</code></pre><p>You can compose a sequence into existing sequence. The debugger will show this composition:</p><pre><code class="language-js">import {sequence} from &#x27;cerebral&#x27;
-import someAction from &#x27;../actions/someAction&#x27;
+])</code></pre><p>You can compose a sequence into existing sequence. The debugger will show this composition:</p><pre><code class="language-js">import someAction from &#x27;../actions/someAction&#x27;
 import someOtherSequence from &#x27;./someOtherSequence&#x27;
 
 export default [
