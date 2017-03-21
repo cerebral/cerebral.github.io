@@ -3,10 +3,11 @@ html, body {
   margin: 0;
   font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   color: #333;
+  height: 100%;
 }
 
 #app {
-
+  height: 100%;
 }
 
 .button {
@@ -57,26 +58,19 @@ h3, h4, h5, h6 {
 
 .beta {
   position: fixed;
-  top: -10px;
-  left: -40px;
+  top: 10px;
+  left: -30px;
   transform: rotate(-45deg);
   background-color: #DD4A68;
   color: #FFF;
-  width: 75px;
   padding: 5px 40px;
-  z-index: 99999;
+  z-index: 90;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1240px) {
   .beta {
-    position: absolute;
-    top: 25px;
     left: auto;
-    right: -70px;
+    right: -30px;
     transform: rotate(45deg);
-    background-color: #DD4A68;
-    color: #FFF;
-    padding: 5px 40px;
-    z-index: 99999;
   }
 }
