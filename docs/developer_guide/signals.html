@@ -79,7 +79,8 @@ const controller = Controller({
   signals: {
     buttonClicked: updateSubtitle
   }
-})</code></pre><p>We now defined a signal named <strong>buttonClicked</strong>. The signal tells us “what happened to make this signal run”. What we want to happen when this signal triggers is to update the <strong>subTitle</strong> in our state with a static value. We do this by pointing to our <em>subTitle</em> function. Normally you would define this signal in a separate file.</p><p>As you can see functions in a signal receives an argument, which we <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="new">destructure</a> to grab the <em>state</em>. The argument itself is called the <strong>context</strong>. So <strong>state</strong> is on the <strong>context</strong>, as we can see here:</p><pre><code class="language-js">...
+})
+...</code></pre><p>We now defined a signal named <strong>buttonClicked</strong>. The signal tells us “what happened to make this signal run”. What we want to happen when this signal triggers is to update the <strong>subTitle</strong> in our state with a static value. We do this by pointing to our <em>subTitle</em> function. Normally you would define this signal in a separate file.</p><p>As you can see functions in a signal receives an argument, which we <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment" target="new">destructure</a> to grab the <em>state</em>. The argument itself is called the <strong>context</strong>. So <strong>state</strong> is on the <strong>context</strong>, as we can see here:</p><pre><code class="language-js">...
 function updateSubtitle ({state}) {
   state.set(&#x27;subTitle&#x27;, &#x27;Updating some state&#x27;)
 }

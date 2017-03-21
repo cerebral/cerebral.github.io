@@ -39,7 +39,7 @@ As we now know, the correct way to write any state change is to use <strong>sign
   }
 }</code></pre><p>As you can see we grabbed the props just like we grabbed the state. The object we return from the action will be merged with the existing props. That means we are overriding the <strong>message</strong> with exclamation marks.</p><p>We also add an action for setting the toast.</p><pre><code class="language-js">function setToast ({state, props}) {
   state.set(&#x27;toast&#x27;, props.message)
-}</code></pre><pre><code class="language-js">...
+}</code></pre><p>Then we wire those actions together in our buttonClicked-<strong>signal</strong></p><pre><code class="language-js">...
 {
   buttonClicked: [
     shoutIt,
