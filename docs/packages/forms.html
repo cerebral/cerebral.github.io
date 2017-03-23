@@ -88,6 +88,23 @@ export default connect({
     // Get all fields
     form.getFields()
   }
+)</code></pre><p>You can also use the <strong>field*</strong> computed, pointing to the field.</p><pre><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {field} from &#x27;cerebral-provider-forms&#x27;
+
+export default connect({
+  field: field(state`path.to.form.name`)
+},
+  function MyForm ({field}) {
+    // Value of some field
+    field.value
+    // A true/false if field has a value
+    field.hasValue
+    // A true/false if field has been changed
+    field.isPristine
+    // A true/false if field is valid
+    field.isValid
+  }
 )</code></pre><h2 id="provider">provider</h2><p>You can also access your forms in actions.</p><pre><code class="language-js">function myAction ({forms}) {
   const form = forms.get(&#x27;path.to.form&#x27;)
 }</code></pre><h3 id="tojson">toJSON</h3><p>Typically you want to convert your forms to a plain value structure.</p><pre><code class="language-js">function myAction ({forms}) {
