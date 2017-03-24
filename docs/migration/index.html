@@ -150,7 +150,7 @@ myAction.async = true</code></pre><p>In Cerebral 2 you you must resolve or rejec
   state.compute(someComputed.props({foo: &#x27;bar&#x27;}))
 }</code></pre><p>This works the same in context for 2.x</p><pre><code class="language-js">connect({
   foo: someComputed,
-  foo2: someComputed.props({foo: &#x27;bar&#x27;})
+  foo2: someComputedFactory({foo: &#x27;bar&#x27;})
 })</code></pre><h2 id="providers-(outdates-services)">Providers (outdates services)</h2><p>In 1.x you could add services that would be available to you in the actions. Typically, you would do something like this in 1.x</p><pre><code class="language-js">import someExternalApi from &#x27;some-external-api&#x27;
 
 export default (options = {}) =&gt; module =&gt; {

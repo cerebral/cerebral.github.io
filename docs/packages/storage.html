@@ -21,8 +21,9 @@ import StorageProvider from &#x27;cerebral-provider-storage&#x27;
 
 const controller = Controller({
   providers: [StorageProvider({
-    // default, &quot;sessionStorage&quot; is alternative
-    target: &#x27;localStorage&#x27;
+    // instance of storage, can be window.localStorage / localStorage
+    // or window.sessionStorage / sessionStorage
+    target: localStorage
     // Serializes and parses to JSON by default
     json: true,
     // Synchronize state when it changes

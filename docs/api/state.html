@@ -42,7 +42,7 @@
   state.concat(&#x27;some.path&#x27;, [&#x27;someValueA&#x27;, &#x27;someValueB&#x27;])
   // Splices arrays
   state.splice(&#x27;some.path&#x27;, 2, 1)
-}</code></pre><h2 id="special-values-support">Special values support</h2><p>When building an application you often need to keep things like files and blobs in your state for further processing. Cerebral supports these kinds of values because they will never change, or changing them can be used with existing state API. This is the list of supported types:</p><ul><li><strong>File</strong></li><li><strong>FilesList</strong></li><li><strong>Blob</strong></li></ul><p>If you want to force Cerebral to support other types as well, you can do that with a devtools option. This is perfectly okay, but remember all state changes has to be done through the state API.</p></div></div></div></div></div>
+}</code></pre><h2 id="special-values-support">Special values support</h2><p>When building an application you often need to keep things like files and blobs in your state for further processing. Cerebral supports these kinds of values because they will never change, or changing them can be used with existing state API. This is the list of supported types:</p><ul><li><strong>File</strong></li><li><strong>FilesList</strong></li><li><strong>Blob</strong></li><li><strong>ImageData</strong></li><li><strong>RegExp</strong></li></ul><p>If you want to force Cerebral to support other types as well, you can do that with a devtools option. This is perfectly okay, but remember all state changes has to be done through the state API.</p></div></div></div></div></div>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <script src="/search.js"></script>

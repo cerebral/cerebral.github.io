@@ -88,14 +88,14 @@ export default connect({
     // Get all fields
     form.getFields()
   }
-)</code></pre><p>You can also use the <strong>field*</strong> computed, pointing to the field.</p><pre><code class="language-js">import React from &#x27;react&#x27;
+)</code></pre><p>You can also use the <strong>field</strong> computed, pointing to the field.</p><pre><code class="language-js">import React from &#x27;react&#x27;
 import {connect} from &#x27;cerebral/react&#x27;
 import {field} from &#x27;cerebral-provider-forms&#x27;
 
 export default connect({
   field: field(state`path.to.form.name`)
 },
-  function MyForm ({field}) {
+  function MyField ({field}) {
     // Value of some field
     field.value
     // A true/false if field has a value

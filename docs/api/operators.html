@@ -68,14 +68,16 @@ export default [
   doSomethingAfterWaiting
 ]</code></pre><p>If you need to wait while executing in parallel, you should use a <code>continue</code>
 path to isolate the actions to be run:</p><pre><code class="language-js">import {wait} from &#x27;cerebral/operators&#x27;
+import {parallel} from &#x27;cerebral&#x27;
 
-export default [
-  [ // this runs in parallel
+export default 
+  someAction,
+  parallel(&#x27;my parallel with wait&#x27;, [
     wait(200), {
       continue: [doSomethingAfterWaiting]
     },
     otherActionInParallel
-  ]
+  ])
 ]</code></pre><h3 id="when">when</h3><p>Run signal path depending on a truth value or function evaluation.</p><pre><code class="language-js">import {when} from &#x27;cerebral/operators&#x27;
 
 export default [
