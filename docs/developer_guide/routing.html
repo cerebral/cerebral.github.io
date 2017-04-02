@@ -21,7 +21,7 @@ import Router from &#x27;cerebral-router&#x27;
 const controller = Controller({
   modules: {
     router: Router({
-      routes: [], // Route definitions
+      routes: {}, // Route definitions
       query: false, // Query support
       onlyHash: false, // Use hash urls
       baseUrl: &#x27;/&#x27; // Only handle url changes on nested path
@@ -41,9 +41,9 @@ const controller = Controller({
     posts: PostsModule,
 
     router: Router({
-      routes: [
-        {path: &#x27;/&#x27;, signal: &#x27;home.routed&#x27;},
-        {path: &#x27;/posts&#x27;, signal: &#x27;posts.routed&#x27;}
+      routes: {
+        &#x27;/&#x27;: &#x27;home.routed&#x27;,
+        &#x27;/posts&#x27;: &#x27;posts.routed&#x27;,
       ]
     }),
   }
