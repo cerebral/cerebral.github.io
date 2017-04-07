@@ -68,15 +68,23 @@ import Devtools from &#x27;function-tree/devtools&#x27;
 // const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
 // const Devtools = require(&#x27;function-tree/devtools&#x27;).Devtools
 
+const devtools = new Devtools({
+  // Set url of remote debugger
+  remoteDebugger: &#x27;localhost:8585&#x27;,
+
+  // By default debugger tries to reconnect when it is not active
+  reconnect: true
+})
 const ft = new FunctionTree([])
 
-// Pass the instance of function-tree to debug. You can
-// optionally pass an array of function-trees
-if (process.env.NODE_ENV !== &#x27;production&#x27;) {
-  Devtools(ft, {
-    remoteDebugger: &#x27;localhost:8585&#x27;
-  })  
-}</code></pre><p>You can use it when creating providers to easily wrap their usage:</p><pre><code class="language-js">function MyProvider (options = {}) {
+// Add your function tree to the debugger
+devtools.add(ft)
+
+// If you are not going to use it anymore, remove it
+devtools.remove(ft)
+
+// Remove all function trees from debugger
+devtools.destroy()</code></pre><p>You can use it when creating providers to easily wrap their usage:</p><pre><code class="language-js">function MyProvider (options = {}) {
   let cachedProvider = null
 
   function createProvider (context) {
