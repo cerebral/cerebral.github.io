@@ -177,21 +177,21 @@ export default connect({
       set(state`repos.addressbar`, props`addressbar`),
       showToast(string`The repos have ${starsCount} stars`, 5000, &#x27;success&#x27;)  
     ],
-    catch: showToast(string`Error: ${props`error.message`}`, 5000)
+    catch: new Map([
+      [HttpProviderError, showToast(string`Error: ${props`error.message`}`, 5000)]
+    ])
   }
 }
 ...</code></pre><p>Now you can test-drive your changes. You should see the first tab activated. Now go to the debugger and change <em>activeTab</em> state to ‘repos’ and you will see the second tab. If you click the tabs you will actually trigger the signals which appear in the debugger. Nice! But what has this to do with Routing?</p><h3 id="introducing-the-router">Introducing the router</h3><p>Traditional routers are a wrapper around your components and they manipulate what components to display based on the URL. That is not how routing works in Cerebral. In Cerebral you connect URLs to signals. So:</p><ol><li>A URL is hit or changed</li><li>The respective signal is triggered putting your application in the correct state</li><li>The components now renders based on the state of the application</li></ol><p>This is a really good thing because most route changes require quite a few state changes and side effects, like server requests, to be run. This is exactly what signals do so well.</p><p>Let us introduce <strong>cerebral-router</strong> to our project by adding an import to the top of our <em>controller.js</em>:</p><pre><code class="language-js">import Router from &#x27;cerebral-router&#x27;</code></pre><p>And go ahead by doing the router config as follows inside the controller:</p><pre><code class="language-js">...
 const controller = Controller({
   ...
-  modules: {
-    router: Router({
-      routes: [
-        {path: &#x27;/&#x27;, signal: &#x27;homeClicked&#x27;},
-        {path: &#x27;/repos&#x27;, signal: &#x27;reposClicked&#x27;}
-      ],
-      onlyHash: true
-    })
-  },
+  router: Router({
+    routes: {
+      &#x27;/&#x27;: &#x27;homeClicked&#x27;,
+      &#x27;/repos&#x27;: &#x27;reposClicked&#x27;
+    },
+    onlyHash: true
+  }),
   ...
 })
 ...</code></pre><p>As you can see, defining <em>routes</em> is as easy as linking them to <em>signals</em>. When you save and load up the BIN again you can go to the address bar and change the url to <strong>/#/repos</strong>. You will now see the signal triggers and the repos content is shown. This is exactly what happens when you click the tab as well.</p><h3 id="challenge">Challenge</h3><p>Go to your browsers address bar and enter an invalid route like: <em>/#/foo</em> and press Enter. Now check the log! The challenge is to add another route which catches those <em>unknown</em> routes, runs a signal and display a toast with an error. You probably need to read some more docs on the router to make this work.</p></div></div></div></div></div>

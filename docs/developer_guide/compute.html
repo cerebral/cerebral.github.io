@@ -110,21 +110,19 @@ export default compute(
       return currentCount + repos[repoKey].stargazers_count
     }, 0)
   }
-)</code></pre><p>We depend on our repos state. Then we just count the stars and return it. When the compute is used with a component it will automatically track whatever dependencies it has and only runs when any of those dependencies change.</p><p>Now we would like to use our computed in the signal, and we want to show the count in our component.</p><h3 id="replacing-with-computed">Replacing with computed</h3><p>Let us remove the <strong>setStarsCount</strong> action and refactor our signal to instead grab the repos first, then we update the state in one go. This just to show you different strategies.</p><p>Check out the refactoring of our <em>getRepo</em> action. The factory is no longer return paths. So either we return a result using the repo name as the key, or we throw an error.</p><pre><code class="language-js">...
+)</code></pre><p>We depend on our repos state. Then we just count the stars and return it. When the compute is used with a component it will automatically track whatever dependencies it has and only runs when any of those dependencies change.</p><p>Now we would like to use our computed in the signal, and we want to show the count in our component.</p><h3 id="replacing-with-computed">Replacing with computed</h3><p>Let us remove the <strong>setStarsCount</strong> action and refactor our signal to instead grab the repos first, then we update the state in one go. This just to show you different strategies.</p><p>Check out the refactoring of our <em>getRepo</em> action. The factory is no longer returning paths. We just return a payload to the signal if the request is successful. That means any errors will be thrown from the HTTP provider.</p><pre><code class="language-js">...
 function getRepo (repoName) {
   function get ({http}) {
     return http.get(`/repos/cerebral/${repoName}`)
       .then((response) =&gt; {
         return {[repoName]: response.result}
       })
-      .catch(() =&gt; {
-        throw new Error(&#x27;REQUEST_ERROR&#x27;)
-      })
   }
 
   return get
 }
 ...</code></pre><p>We can change now the signal to look like:</p><pre><code class="language-js">...
+import HttpProvider, {HttpProviderError} from &#x27;cerebral-provider-http&#x27;
 import starsCount from &#x27;./starsCount&#x27;
 ...
 {
@@ -139,10 +137,12 @@ import starsCount from &#x27;./starsCount&#x27;
       set(state`repos.addressbar`, props`addressbar`),
       showToast(string`The repos have ${starsCount} stars`, 5000, &#x27;success&#x27;)
     ],
-    catch: showToast(string`Error: ${props`error.message`}`, 5000)
+    catch: new Map([
+      [HttpProviderError, showToast(string`Error: ${props`error.message`}`, 5000)]
+    ])
   }
 }
-...</code></pre><p>We have now defined our signal in two parts. The happy path and what to do if an error is thrown (catch). You can even define types of errors you want to be catched, but you can read more about that in the API documentation.</p><p>Note here that we also updated the <em>toast</em> to allow no time to be passed in, causing it to stick.</p><p>You can use computeds with other computeds, directly in tags, with operators, in actions and in components. Lets update our <strong>App</strong> component:</p><pre><code class="language-js">import React from &#x27;react&#x27;
+...</code></pre><p>We have now defined our signal in two parts. The happy path and what to do if an error is thrown (catch). We use a JavaScript <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map" target="new">map</a> to define what errors we are interested in being thrown, in this case an http provider error, and what logic to run when that happens. That means all other errors will be thrown to console as normal.</p><p>Note here that we also updated the <em>toast</em> to allow no time to be passed in, causing it to stick.</p><p>You can use computeds with other computeds, directly in tags, with operators, in actions and in components. Lets update our <strong>App</strong> component:</p><pre><code class="language-js">import React from &#x27;react&#x27;
 import {connect} from &#x27;cerebral/react&#x27;
 import {state, signal} from &#x27;cerebral/tags&#x27;
 import starsCount from &#x27;./starsCount&#x27;
