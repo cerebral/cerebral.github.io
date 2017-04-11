@@ -49,10 +49,15 @@ module.exports = runTask</code></pre><h3 id="value">value</h3><p>Get value. Outp
   return context.firebase.set(`items/${context.props.data.itemKey}`, context.props.data.item)
 }</code></pre><h3 id="push">push</h3><p>Push new data. Outputs {key: ‘keyAdded’}.</p><pre><code class="language-js">function addItem (context) {
   return context.firebase.push(&#x27;items&#x27;, context.props.data.item)
-}</code></pre><h3 id="update">update</h3><p>Update multiple paths. Outputs nothing.</p><pre><code class="language-js">function updateItems (context) {
+}</code></pre><h3 id="update">update</h3><p>Update multiple paths from top level or at specific path. Outputs nothing.</p><pre><code class="language-js">function updateItems (context) {
   return context.firebase.update({
     &#x27;items/1&#x27;: context.props.data.item1Data,
     &#x27;items/2&#x27;: context.props.data.item2Data
+  })
+}</code></pre><pre><code class="language-js">function updateItems (context) {
+  return context.firebase.update(&#x27;items&#x27;, {
+    &#x27;1&#x27;: context.props.data.item1Data,
+    &#x27;2&#x27;: context.props.data.item2Data
   })
 }</code></pre><h3 id="createkey">createKey</h3><p>Create a new Firebase key at some path.</p><pre><code class="language-js">function authenticate (context) {
   const newKey = context.firebase.createKey(&#x27;some/path&#x27;)
