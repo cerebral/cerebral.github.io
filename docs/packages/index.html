@@ -60,7 +60,10 @@ const controller = Controller({
       }
     }
   })
-})</code></pre><h3 id="geturl">getUrl</h3><pre><code class="language-js">function myAction({router}) {
+})</code></pre><p>When a mapped signal triggers it will trigger with a payload if either <strong>params</strong> are defined on the route or the url has a <strong>query</strong>. For example <em>/items/123?showUser=true</em> will produce the following payload to the signal, available on the <strong>props</strong> :</p><pre><code class="language-js">{
+  itemId: &#x27;123&#x27;,
+  showUser: true
+}</code></pre><h3 id="geturl">getUrl</h3><pre><code class="language-js">function myAction({router}) {
   // If url is &quot;http://localhost:3000/items?foo=bar&quot;, returns &quot;/items?foo=bar&quot;
   router.getUrl()
 }</code></pre><h3 id="geturlbase">getUrlBase</h3><pre><code class="language-js">function myAction({router}) {

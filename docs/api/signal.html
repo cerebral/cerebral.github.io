@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/images/favicons/manifest.json">
+    <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/packages">packages</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">api</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item mobile"><a href="/docs/developer_guide">developer guide</a></li><li class="docs-navigation-item mobile"><a href="/docs/packages">packages</a></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item active mobile"><a href="/docs/api">api</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/api/index.html">Controller</a></li><li><a href="/docs/api/action.html">Action</a></li><li class="active"><a href="/docs/api/signal.html">Signal</a><ul><li><a href="#async">Async</a></li><li><a href="#sequence">Sequence</a></li><li><a href="#parallel">Parallel</a></li><li><a href="#paths">Paths</a></li></ul></li><li><a href="/docs/api/devtools.html">Devtools</a></li><li><a href="/docs/api/state.html">State</a></li><li><a href="/docs/api/tags.html">Tags</a></li><li><a href="/docs/api/container.html">Container</a></li><li><a href="/docs/api/connect.html">Connect</a></li><li><a href="/docs/api/modules.html">Modules</a></li><li><a href="/docs/api/operators.html">Operators</a></li><li><a href="/docs/api/providers.html">Providers</a></li><li><a href="/docs/api/compute.html">Compute</a></li><li><a href="/docs/api/statecontainer.html">StateContainer</a></li></ul></div></div></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/api/index.html">Controller</a></li><li><a href="/docs/api/action.html">Action</a></li><li class="active"><a href="/docs/api/signal.html">Signal</a><ul><li><a href="#async">Async</a></li><li><a href="#sequence">Sequence</a></li><li><a href="#parallel">Parallel</a></li><li><a href="#paths">Paths</a></li></ul></li><li><a href="/docs/api/devtools.html">Devtools</a></li><li><a href="/docs/api/state.html">State</a></li><li><a href="/docs/api/tags.html">Tags</a></li><li><a href="/docs/api/container.html">Container</a></li><li><a href="/docs/api/connect.html">Connect</a></li><li><a href="/docs/api/modules.html">Modules</a></li><li><a href="/docs/api/operators.html">Operators</a></li><li><a href="/docs/api/providers.html">Providers</a></li><li><a href="/docs/api/compute.html">Compute</a></li><li><a href="/docs/api/statecontainer.html">StateContainer</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/api/signal.md" target="_new">Edit on Github</a></div><h1 id="signal">Signal</h1><p>Signals are just arrays:</p><pre><code class="language-js">export default []</code></pre><p>You populate these arrays with actions:</p><pre><code class="language-js">export default [
+  someAction,
+  set(state`foo`, &#x27;bar&#x27;)
+]</code></pre><p>You can attach signals at the controller level:</p><pre><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+import somethingHappened from &#x27;./signals/somethingHappened&#x27;
+
+const Controller({
+  signals: {
+    somethingHappened
+  }
+})</code></pre><p>Or you define them with modules:</p><pre><code class="language-js">import somethingHappened from &#x27;./signals/somethingHappened&#x27;
+
+export default {
+  signals: {
+    somethingHappened
+  }
+}</code></pre><pre><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+import app from &#x27;./modules/app&#x27;
+
+const Controller({
+  modules: {
+    app
+  }
+})</code></pre><h2 id="async">Async</h2><p>By default signals run completely synchronous, but an action might run asynchronously thus making the signal async. When an action returns a promise it means it runs async.</p><pre><code class="language-js">function myAction () {
+  return Promise.resolve()
+}</code></pre><p>You could also use an <strong>async</strong> function:</p><pre><code class="language-js">async function myAction () {
+  return {foo: &#x27;bar&#x27;}
+}</code></pre><h2 id="sequence">Sequence</h2><p>Simple format of a sequence is to use an array literal, as explained above. Actions are run one after the other. If the action returns a promise Cerebral will wait until it resolves before moving to the next action:</p><pre><code class="language-js">import someAction from &#x27;../actions/someAction&#x27;
+
+export default [
+  someAction
+]</code></pre><p>The array is converted to a sequence, but you can also be explicit about it:</p><pre><code class="language-js">import {sequence} from &#x27;cerebral&#x27;
+import someAction from &#x27;../actions/someAction&#x27;
+
+export default sequence([
+  someAction
+])</code></pre><p>You can name a sequence, which will be displayed in debugger:</p><pre><code class="language-js">import {sequence} from &#x27;cerebral&#x27;
+import someAction from &#x27;../actions/someAction&#x27;
+
+export default sequence(&#x27;my sequence&#x27;, [
+  someAction
+])</code></pre><p>You can compose a sequence into existing sequence. The debugger will show this composition:</p><pre><code class="language-js">import someAction from &#x27;../actions/someAction&#x27;
+import someOtherSequence from &#x27;./someOtherSequence&#x27;
+
+export default [
+  someAction,
+  someOtherSequence
+]</code></pre><h2 id="parallel">Parallel</h2><p>Cerebral can not truly run actions in parallel (JavaScript is single threaded), but it can trigger multiple asynchronous actions at the same time, just like <strong>Promise.all</strong>. That means when Cerebral triggers actions defined within a parallel, it will not wait if a promise is returned, it will just move on to the next action. When all actions within a parallel is resolved it will move to the action after the parallel definition, if any:</p><pre><code class="language-js">import {parallel} from &#x27;cerebral&#x27;
+import someAsyncAction from &#x27;../actions/someAsyncAction&#x27;
+import someOtherAsyncAction from &#x27;../actions/someOtherAsyncAction&#x27;
+
+export default parallel([
+  someAsyncAction,
+  someOtherAsyncAction
+])</code></pre><p>You can name a parallel, which will be displayed in debugger:</p><pre><code class="language-js">import {parallel} from &#x27;cerebral&#x27;
+import someAsyncAction from &#x27;../actions/someAsyncAction&#x27;
+import someOtherAsyncAction from &#x27;../actions/someOtherAsyncAction&#x27;
+
+export default parallel(&#x27;my parallel&#x27;, [
+  someAsyncAction,
+  someOtherAsyncAction
+])</code></pre><p>You can compose parallel into any existing sequence:</p><pre><code class="language-js">import {parallel} from &#x27;cerebral&#x27;
+import someAction from &#x27;../actions/someAction&#x27;
+import someAsyncAction from &#x27;../actions/someAsyncAction&#x27;
+import someOtherAsyncAction from &#x27;../actions/someOtherAsyncAction&#x27;
+
+export default [
+  someAction,
+  parallel(&#x27;my parallel&#x27;, [
+    someAsyncAction,
+    someOtherAsyncAction
+  ])
+]</code></pre><h2 id="paths">Paths</h2><p>You can diverge execution by defining paths in your signal.</p><pre><code class="language-js">export default [
+  httpGet(&#x27;/items&#x27;), {
+    success: [],
+    error: []
+  }
+]</code></pre><p>The action returned by <strong>httpGet</strong> will now have access to a success and an error path and can call those based on the result of the http request.</p><p>You can define any path to execute:</p><pre><code class="language-js">export default [
+  myAction, {
+    foo: [],
+    bar: [],
+    bananas: [],
+    apples: []
+  }
+]</code></pre><p>When these paths are defined you will have access to corresponding paths in the action preceding the paths:</p><pre><code class="language-js">function myAction ({path}) {
+  path.foo
+  path.bar
+  path.bananas
+  path.apples
+}</code></pre><p>To actually diverge down the path you have to call it and return it from the action:</p><pre><code class="language-js">function myAction ({path}) {
+  return path.foo()
+}</code></pre><p>Optionally pass a payload:</p><pre><code class="language-js">function myAction ({path}) {
+  return path.bananas({foo: &#x27;bar&#x27;})
+}</code></pre><p>With promises you just return it the same way:</p><pre><code class="language-js">function myAction ({someProvider, path}) {
+  return someProvider.doAsync()
+    .then((result) =&gt; path.bananas({data: result.data}))
+}</code></pre></div></div></div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/mobile.js"></script>
+  </body>
+</html>
