@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/docs.css" />
   </head>
   <body>
-    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/packages">packages</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">api</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item mobile"><a href="/docs/developer_guide">developer guide</a></li><li class="docs-navigation-item mobile"><a href="/docs/packages">packages</a></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item active mobile"><a href="/docs/api">api</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/api/index.html">Controller</a></li><li><a href="/docs/api/action.html">Action</a></li><li><a href="/docs/api/signal.html">Signal</a></li><li><a href="/docs/api/devtools.html">Devtools</a></li><li><a href="/docs/api/state.html">State</a></li><li><a href="/docs/api/tags.html">Tags</a></li><li><a href="/docs/api/container.html">Container</a></li><li><a href="/docs/api/connect.html">Connect</a></li><li><a href="/docs/api/modules.html">Modules</a></li><li><a href="/docs/api/operators.html">Operators</a></li><li class="active"><a href="/docs/api/providers.html">Providers</a></li><li><a href="/docs/api/compute.html">Compute</a></li><li><a href="/docs/api/statecontainer.html">StateContainer</a></li></ul></div></div></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/api/index.html">Controller</a></li><li><a href="/docs/api/action.html">Action</a></li><li><a href="/docs/api/signal.html">Signal</a></li><li><a href="/docs/api/devtools.html">Devtools</a></li><li><a href="/docs/api/state.html">State</a></li><li><a href="/docs/api/tags.html">Tags</a></li><li><a href="/docs/api/container.html">Container</a></li><li><a href="/docs/api/connect.html">Connect</a></li><li><a href="/docs/api/modules.html">Modules</a></li><li><a href="/docs/api/operators.html">Operators</a></li><li class="active"><a href="/docs/api/providers.html">Providers</a></li><li><a href="/docs/api/compute.html">Compute</a></li><li><a href="/docs/api/statecontainer.html">StateContainer</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/api/providers.md" target="_new">Edit on Github</a></div><h1 id="providers">Providers</h1><p>Providers are functions that runs before any action in any signal. Their purpose is to define and sometimes manipulate the context passed into every action. The providers run before every action, meaning that each action has a unique context object.</p><p>To add something to the context you create a provider:</p><pre><code class="language-js">function MyProvider (context, functionDetails, payload, prevPayload) {
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/packages">packages</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">api</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item mobile"><a href="/docs/developer_guide">developer guide</a></li><li class="docs-navigation-item mobile"><a href="/docs/packages">packages</a></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item active mobile"><a href="/docs/api">api</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/api/index.html">Controller</a></li><li><a href="/docs/api/action.html">Action</a></li><li><a href="/docs/api/signal.html">Signal</a></li><li><a href="/docs/api/devtools.html">Devtools</a></li><li><a href="/docs/api/state.html">State</a></li><li><a href="/docs/api/tags.html">Tags</a></li><li><a href="/docs/api/container.html">Container</a></li><li><a href="/docs/api/connect.html">Connect</a></li><li><a href="/docs/api/modules.html">Modules</a></li><li><a href="/docs/api/operators.html">Operators</a></li><li class="active"><a href="/docs/api/providers.html">Providers</a><ul><li><a href="#example-provider">Example provider</a></li></ul></li><li><a href="/docs/api/compute.html">Compute</a></li><li><a href="/docs/api/statecontainer.html">StateContainer</a></li></ul></div></div></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/api/index.html">Controller</a></li><li><a href="/docs/api/action.html">Action</a></li><li><a href="/docs/api/signal.html">Signal</a></li><li><a href="/docs/api/devtools.html">Devtools</a></li><li><a href="/docs/api/state.html">State</a></li><li><a href="/docs/api/tags.html">Tags</a></li><li><a href="/docs/api/container.html">Container</a></li><li><a href="/docs/api/connect.html">Connect</a></li><li><a href="/docs/api/modules.html">Modules</a></li><li><a href="/docs/api/operators.html">Operators</a></li><li class="active"><a href="/docs/api/providers.html">Providers</a><ul><li><a href="#example-provider">Example provider</a></li></ul></li><li><a href="/docs/api/compute.html">Compute</a></li><li><a href="/docs/api/statecontainer.html">StateContainer</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/api/providers.md" target="_new">Edit on Github</a></div><h1 id="providers">Providers</h1><p>Providers are functions that runs before any action in any signal. Their purpose is to define and sometimes manipulate the context passed into every action. The providers run before every action, meaning that each action has a unique context object.</p><p>Providers are created with a function:</p><pre><code class="language-js">function MyProvider (context, functionDetails, payload, prevPayload) {
   // The current context object, which can be mutated
   context
 
@@ -30,7 +30,13 @@
 
   // You have to return the context after it has bee mutated
   return context
-}</code></pre><p>There are a few things already available on the context when your provider runs:</p><pre><code class="language-js">function MyProvider(context) {
+}</code></pre><p>This function needs to be listed in the <strong>providers</strong> property of the controller to be registered:</p><pre><code class="language-js">Controller({
+  providers: [MyProvider]
+})</code></pre><p>Ability to add a single provider is also available in modules:</p><pre><code class="language-js">{
+  state: {},
+  signals: {},
+  provider: MyProvider
+}</code></pre><p>There are a few things already available on the context when your provider runs:</p><pre><code class="language-js">function MyProvider (context) {
   context.execution // Information on the function tree execution
   context.controller // The Cerebral controller
   context.debugger // If devtools is added, you can send messages to the debugger
@@ -40,7 +46,47 @@
   context.resolve // Resolve values and tag paths
 
   return context
-}</code></pre></div></div></div></div></div>
+}</code></pre><h2 id="example-provider">Example provider</h2><pre><code class="language-js">// We create a factory, allowing you to pass in options to it
+function GreetProviderFactory (options = {}) {
+  // We use a variable to cache the created provider
+  let cachedProvider = null
+
+  // Just some custom code to handle an option
+  let exclamationMarks = &#x27;&#x27;
+
+  for (let x = 0; x &lt; options.numberOfExclamationMarks || 0; x++) {
+    exclamationMarks += &#x27;!&#x27;
+  }
+
+  // This is the function that creates the provider,
+  // typically just an object with some methods
+  function createProvider (context) {
+    return {
+      hello (name) {
+        return `Hello, ${name}${exclamationMarks}`
+      }
+    }
+  }
+
+  // The function that is run by Cerebral, providing the context
+  // for you to attach your provider to
+  function GreetProvider (context) =&gt; {
+    context.greet = cachedProvider = (cachedProvider || createProvider(context))
+
+    // You can wrap the provider with the debugger
+    // to show information about its usage in the debugger
+    if (context.debugger) {
+      context.debugger.wrapProvider(&#x27;greet&#x27;)
+    }
+
+    // Always return the context after mutating it
+    return context
+  }
+
+  return GreetProvider
+}
+
+export default GreetProviderFactory</code></pre></div></div></div></div></div>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <script src="/search.js"></script>

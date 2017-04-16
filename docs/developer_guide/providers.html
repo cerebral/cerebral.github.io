@@ -15,67 +15,32 @@
 <link rel="stylesheet" href="/docs.css" />
   </head>
   <body>
-    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/packages">packages</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">developer guide</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item active mobile"><a href="/docs/developer_guide">developer guide</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/developer_guide/index.html">Introduction</a></li><li><a href="/docs/developer_guide/state.html">State</a></li><li><a href="/docs/developer_guide/connect.html">Components</a></li><li><a href="/docs/developer_guide/signals.html">Signals</a></li><li><a href="/docs/developer_guide/actions.html">Actions</a></li><li><a href="/docs/developer_guide/operators.html">Operators</a></li><li><a href="/docs/developer_guide/factories.html">Factories</a></li><li><a href="/docs/developer_guide/paths.html">Paths</a></li><li><a href="/docs/developer_guide/compute.html">Compute</a></li><li><a href="/docs/developer_guide/routing.html">Routing</a></li><li><a href="/docs/developer_guide/organize.html">Organize</a></li><li class="active"><a href="/docs/developer_guide/providers.html">Providers</a><ul><li><a href="#just-add-a-tool">Just add a tool</a></li><li><a href="#creating-a-provider">Creating a provider</a></li></ul></li><li><a href="/docs/developer_guide/errors.html">Errors</a></li><li><a href="/docs/developer_guide/test.html">Test</a></li><li><a href="/docs/developer_guide/collaborate.html">Collaborate</a></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/packages">packages</a></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/developer_guide/index.html">Introduction</a></li><li><a href="/docs/developer_guide/state.html">State</a></li><li><a href="/docs/developer_guide/connect.html">Components</a></li><li><a href="/docs/developer_guide/signals.html">Signals</a></li><li><a href="/docs/developer_guide/actions.html">Actions</a></li><li><a href="/docs/developer_guide/operators.html">Operators</a></li><li><a href="/docs/developer_guide/factories.html">Factories</a></li><li><a href="/docs/developer_guide/paths.html">Paths</a></li><li><a href="/docs/developer_guide/compute.html">Compute</a></li><li><a href="/docs/developer_guide/routing.html">Routing</a></li><li><a href="/docs/developer_guide/organize.html">Organize</a></li><li class="active"><a href="/docs/developer_guide/providers.html">Providers</a><ul><li><a href="#just-add-a-tool">Just add a tool</a></li><li><a href="#creating-a-provider">Creating a provider</a></li></ul></li><li><a href="/docs/developer_guide/errors.html">Errors</a></li><li><a href="/docs/developer_guide/test.html">Test</a></li><li><a href="/docs/developer_guide/collaborate.html">Collaborate</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/developer_guide/providers.md" target="_new">Edit on Github</a></div><h1 id="providers">Providers</h1><p>Providers are added to the context of every action executed by a signal. Providers can be everything from a tool you are already using, to something Cerebral specific. The point of providers is to separate side effects from execution. That means you can create all the logic you want with chains and actions without creating any dependencies to other tools. This makes them highly testable and generally gives you more flexibility.</p><h2 id="just-add-a-tool">Just add a tool</h2><p>If you are using libraries where you want access to everything they provide you can simply add them as a provider using an object:</p><pre><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
-import {ContextProvider} from &#x27;cerebral/providers&#x27;
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/get_started">get started</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/developer_guide">developer guide</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/packages">packages</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/migration">migration</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">developer guide</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/get_started">get started</a></li><li class="docs-navigation-item active mobile"><a href="/docs/developer_guide">developer guide</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/developer_guide/index.html">Introduction</a></li><li><a href="/docs/developer_guide/state.html">State</a></li><li><a href="/docs/developer_guide/connect.html">Components</a></li><li><a href="/docs/developer_guide/signals.html">Signals</a></li><li><a href="/docs/developer_guide/actions.html">Actions</a></li><li><a href="/docs/developer_guide/operators.html">Operators</a></li><li><a href="/docs/developer_guide/factories.html">Factories</a></li><li><a href="/docs/developer_guide/paths.html">Paths</a></li><li><a href="/docs/developer_guide/compute.html">Compute</a></li><li><a href="/docs/developer_guide/routing.html">Routing</a></li><li><a href="/docs/developer_guide/organize.html">Organize</a></li><li class="active"><a href="/docs/developer_guide/providers.html">Providers</a><ul><li><a href="#just-add-a-tool">Just add a tool</a></li><li><a href="#creating-a-provider">Creating a provider</a></li></ul></li><li><a href="/docs/developer_guide/errors.html">Errors</a></li><li><a href="/docs/developer_guide/test.html">Test</a></li><li><a href="/docs/developer_guide/collaborate.html">Collaborate</a></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/packages">packages</a></li><li class="docs-navigation-item mobile"><a href="/docs/migration">migration</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/developer_guide/index.html">Introduction</a></li><li><a href="/docs/developer_guide/state.html">State</a></li><li><a href="/docs/developer_guide/connect.html">Components</a></li><li><a href="/docs/developer_guide/signals.html">Signals</a></li><li><a href="/docs/developer_guide/actions.html">Actions</a></li><li><a href="/docs/developer_guide/operators.html">Operators</a></li><li><a href="/docs/developer_guide/factories.html">Factories</a></li><li><a href="/docs/developer_guide/paths.html">Paths</a></li><li><a href="/docs/developer_guide/compute.html">Compute</a></li><li><a href="/docs/developer_guide/routing.html">Routing</a></li><li><a href="/docs/developer_guide/organize.html">Organize</a></li><li class="active"><a href="/docs/developer_guide/providers.html">Providers</a><ul><li><a href="#just-add-a-tool">Just add a tool</a></li><li><a href="#creating-a-provider">Creating a provider</a></li></ul></li><li><a href="/docs/developer_guide/errors.html">Errors</a></li><li><a href="/docs/developer_guide/test.html">Test</a></li><li><a href="/docs/developer_guide/collaborate.html">Collaborate</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/developer_guide/providers.md" target="_new">Edit on Github</a></div><h1 id="providers">Providers</h1><p>Providers are added to the context of every action executed by a signal. Providers can be everything from a tool you are already using, to something Cerebral specific. The point of providers is to separate side effects from execution. That means you can create all the logic you want in actions without creating any dependencies to other tools. This makes them highly testable and generally gives you more flexibility.</p><h2 id="just-add-a-tool">Just add a tool</h2><p>If you are using libraries where you want access to everything they provide you can simply add them as a provider using an object:</p><pre><code class="language-js">import {Controller, provide} from &#x27;cerebral&#x27;
 import axios from &#x27;axios&#x27;
 import uuid from &#x27;uuid&#x27;
 
 const controller = Controller({
-  providers: [{axios, uuid}]
+  providers: [
+    provide(&#x27;http&#x27;, axios),
+    provide(&#x27;id&#x27;, uuid.v4)
+  ]
 })</code></pre><p>Note that some tools has a very complex API that is difficult for Cerebral to analyze. With these kinds of tools it is a better idea to create your own provider, exposing APIs that you actually use from the original tool.</p><h2 id="creating-a-provider">Creating a provider</h2><p>You can use providers for pretty much anything, though typically it is to handle some kind of side effect. Examples of providers is <a href="https://github.com/cerebral/cerebral/tree/master/packages/cerebral-provider-storage" target="new">cerebral-provider-storage</a>, <a href="https://github.com/cerebral/cerebral/tree/master/packages/cerebral-provider-firebase" target="new">cerebral-provider-firebase</a> and <a href="https://github.com/cerebral/cerebral/tree/master/packages/cerebral-provider-http" target="new">cerebral-provider-http</a>.</p><p>To use a provider with Cerebral you put it in the providers array:</p><pre><code class="language-js">const controller = Controller({
   providers: [
     StorageProvider(),
     HttpProvider(),
-    FirebaseProvider(),
+    FirebaseProvider()
+  ]
+})</code></pre><p>The <strong>provide</strong> factory helps you add your own providers in a simple way:</p><pre><code class="language-js">import {Controller, provide} from &#x27;cerebral&#x27;
 
-    // Let us create this
-    GreetProvider({
-      numberOfExclamationMarks: 3
+const controller = Controller({
+  providers: [
+    provide(&#x27;someProvider&#x27;, {
+      foo: &#x27;bar&#x27;
     })
   ]
-})</code></pre><p>The convention on creating a provider looks like this:</p><pre><code class="language-js">// We create a factory, allowing you to pass in options to it
-function GreetProviderFactory (options = {}) {
-  // We use a variable to cache the created provider
-  let cachedProvider = null
-
-  // Just some custom code to handle an option
-  let exclamationMarks = &#x27;&#x27;
-
-  for (let x = 0; x &lt; options.numberOfExclamationMarks || 0; x++) {
-    exclamationMarks += &#x27;!&#x27;
-  }
-
-  // This is the function that creates the provider,
-  // typically just an object with some methods
-  function createProvider (context) {
-    return {
-      hello (name) {
-        return `Hello, ${name}${exclamationMarks}`
-      }
-    }
-  }
-
-  // The function that is run by Cerebral, providing the context
-  // for you to attach your provider to
-  function GreetProvider (context) =&gt; {
-    context.greet = cachedProvider = (cachedProvider || createProvider(context))
-
-    // You can wrap the provider with the debugger
-    // to show information about its usage in the debugger
-    if (context.debugger) {
-      context.debugger.wrapProvider(&#x27;greet&#x27;)
-    }
-
-    // Always return the context after mutating it
-    return context
-  }
-
-  return GreetProvider
-}
-
-export default GreetProviderFactory</code></pre><p>Now this provider is available to any action:</p><pre><code class="language-js">function myAction ({greet}) {
-  greet.hello(&#x27;Thor&#x27;) // &quot;Hello Thor!!!&quot;
-}</code></pre><p>As mentioned above we use providers to separate side effects from execution, allowing us to provider our own custom API to our application.</p></div></div></div></div></div>
+})</code></pre><p>When using the <strong>provide</strong> factory the provider will automatically be wrapped by the Cerebral devtools, to track its usage in the debugger.</p><p>Now this provider is available to any action:</p><pre><code class="language-js">function myAction ({someProvider}) {
+  someProvider.foo // &quot;bar&quot;
+}</code></pre><p>As mentioned above we use providers to separate side effects from execution, allowing us to provide our own custom API to our application. The <strong>provide</strong> factory simplifies adding a provider, you can get more control by defining your own provider function. Look at the API docs for more information.</p></div></div></div></div></div>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <script src="/search.js"></script>
