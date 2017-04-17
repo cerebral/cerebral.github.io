@@ -49,7 +49,9 @@ const controller = Controller({
     [FirebaseProviderError, []],
     [HttpProviderError, []]
   ])
-})</code></pre><h2 id="creating-an-error-type">Creating an error type</h2><p>JavaScript has a base error class of <strong>Error</strong>. When you create your own error types it makes sense to extend <strong>Error</strong>. This is only recently supported in browsers, but you can use <a href="https://github.com/loganfsmyth/babel-plugin-transform-builtin-extend" target="new">babel-plugin-transform-builtin-extend</a> to make sure extending errors works correctly.</p><pre><code class="language-js">class AppError extends Error {
+})</code></pre><h2 id="creating-an-error-type">Creating an error type</h2><p>JavaScript has a base error class of <strong>Error</strong>. When you create your own error types it makes sense to extend <strong>Error</strong>. This is only recently supported in browsers, but you can use <a href="https://www.npmjs.com/package/es6-error" target="new">es6-error</a> to make sure extending errors works correctly.</p><pre><code class="language-js">import ES6Error from &#x27;es6-error&#x27;
+
+class AppError extends ES6Error {
   constructor(message) {
     super(message)
     this.name = &#x27;AppError&#x27;
