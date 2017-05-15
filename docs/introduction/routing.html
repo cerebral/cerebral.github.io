@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/images/favicons/manifest.json">
+    <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item active"><a href="/docs/introduction">introduction</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/addons">addons</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/resources">resources</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">introduction</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item active mobile"><a href="/docs/introduction">introduction</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/introduction/index.html">What is Cerebral?</a></li><li><a href="/docs/introduction/the_architecture.html">The architecture</a></li><li><a href="/docs/introduction/install.html">Install</a></li><li><a href="/docs/introduction/debugger.html">Debugger</a></li><li><a href="/docs/introduction/view_type.html">Choosing a view type</a></li><li><a href="/docs/introduction/state.html">State</a></li><li><a href="/docs/introduction/connect.html">Components</a></li><li><a href="/docs/introduction/signals.html">Signals</a></li><li><a href="/docs/introduction/actions.html">Actions</a></li><li><a href="/docs/introduction/operators.html">Operators</a></li><li><a href="/docs/introduction/factories.html">Factories</a></li><li><a href="/docs/introduction/paths.html">Paths</a></li><li><a href="/docs/introduction/compute.html">Compute</a></li><li class="active"><a href="/docs/introduction/routing.html">Routing</a><ul><li><a href="#defining-routes">Defining routes</a></li><li><a href="#render-based-on-state">Render based on state</a></li><li><a href="#tutorial">Tutorial</a><ul><li><a href="#adding-some-tabs">Adding some tabs</a></li><li><a href="#introducing-the-router">Introducing the router</a></li><li><a href="#challenge">Challenge</a></li></ul></li></ul></li><li><a href="/docs/introduction/organize.html">Organize</a></li><li><a href="/docs/introduction/providers.html">Providers</a></li><li><a href="/docs/introduction/errors.html">Errors</a></li><li><a href="/docs/introduction/test.html">Test</a></li><li><a href="/docs/introduction/production.html">Production</a></li><li><a href="/docs/introduction/collaborate.html">Collaborate</a></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li><li class="docs-navigation-item mobile"><a href="/docs/addons">addons</a></li><li class="docs-navigation-item mobile"><a href="/docs/resources">resources</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/introduction/index.html">What is Cerebral?</a></li><li><a href="/docs/introduction/the_architecture.html">The architecture</a></li><li><a href="/docs/introduction/install.html">Install</a></li><li><a href="/docs/introduction/debugger.html">Debugger</a></li><li><a href="/docs/introduction/view_type.html">Choosing a view type</a></li><li><a href="/docs/introduction/state.html">State</a></li><li><a href="/docs/introduction/connect.html">Components</a></li><li><a href="/docs/introduction/signals.html">Signals</a></li><li><a href="/docs/introduction/actions.html">Actions</a></li><li><a href="/docs/introduction/operators.html">Operators</a></li><li><a href="/docs/introduction/factories.html">Factories</a></li><li><a href="/docs/introduction/paths.html">Paths</a></li><li><a href="/docs/introduction/compute.html">Compute</a></li><li class="active"><a href="/docs/introduction/routing.html">Routing</a><ul><li><a href="#defining-routes">Defining routes</a></li><li><a href="#render-based-on-state">Render based on state</a></li><li><a href="#tutorial">Tutorial</a><ul><li><a href="#adding-some-tabs">Adding some tabs</a></li><li><a href="#introducing-the-router">Introducing the router</a></li><li><a href="#challenge">Challenge</a></li></ul></li></ul></li><li><a href="/docs/introduction/organize.html">Organize</a></li><li><a href="/docs/introduction/providers.html">Providers</a></li><li><a href="/docs/introduction/errors.html">Errors</a></li><li><a href="/docs/introduction/test.html">Test</a></li><li><a href="/docs/introduction/production.html">Production</a></li><li><a href="/docs/introduction/collaborate.html">Collaborate</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/introduction/routing.md" target="_new">Edit on Github</a></div><h1 id="routing">Routing</h1><p>Typically applications use a router. To instantiate the Cerebral router, install it as a separate package and add to the controller:</p><pre><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+import Router from &#x27;@cerebral/router&#x27;
+
+const controller = Controller({
+  router: Router({
+    routes: {}, // Route definitions
+    query: false, // Query support
+    onlyHash: false, // Use hash urls
+    baseUrl: &#x27;/&#x27; // Only handle url changes on nested path
+  })
+})</code></pre><h2 id="defining-routes">Defining routes</h2><p>Routes in Cerebral do not affect the components, they affect signals. The signals put your application in a specific state and then your components decide what to render based on that state. So the router is completely decoupled from your components. This is a very good thing because a route can now translate to any kind of state changes and side effects.</p><p>Let us create a small app:</p><pre><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+import Router from &#x27;@cerebral/router&#x27;
+import HomeModule from &#x27;./modules/home&#x27;
+import PostsModule from &#x27;./modules/posts&#x27;
+
+const controller = Controller({
+  state: {
+    currentPage: &#x27;home&#x27;
+  },
+  router: Router({
+    routes: {
+      &#x27;/&#x27;: &#x27;home.routed&#x27;,
+      &#x27;/posts&#x27;: &#x27;posts.routed&#x27;
+    }
+  }),
+  modules: {
+    home: HomeModule,
+    posts: PostsModule
+  }
+})</code></pre><p>As we can see, when the root route is hit we want to trigger a signal that says that home is routed:</p><p><em>modules/Home/index.js</em></p><pre><code class="language-js">import {set} from &#x27;cerebral/operators&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+
+export default {
+  signals: {
+    routed: set(state`currentPage`, &#x27;home&#x27;)
+  }
+}</code></pre><p>The <strong>/posts</strong> route points to a different module and signal.</p><p><em>modules/Posts/index.js</em></p><pre><code class="language-js">import {set} from &#x27;cerebral/operators&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+
+export default {
+  signals: {
+    routed: set(state`currentPage`, &#x27;posts&#x27;)
+  }
+}</code></pre><h2 id="render-based-on-state">Render based on state</h2><p>So we do not render anything based on the route. We render based on state, like we do with everything else. A route never affects the components, it only affects the state.</p><p><em>components/App/index.js</em></p><pre><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+import Home from &#x27;../Home&#x27;
+import Posts from &#x27;../Posts&#x27;
+
+const pages = {
+  home: Home,
+  posts: Posts
+}
+
+export default connect({
+  currentPage: state`currentPage`
+},
+  function App(props) {
+    const Page = pages[props.currentPage]
+
+    return &lt;Page /&gt;
+  }
+)</code></pre><p>So this was simple page handling routing, but you can imagine that a route does not have to be a page change. It can be opening a modal, highlight some item or whatever. You are completely free to structure this. If some data fetching was needed before changing the page you would just put this in the signal.</p><h2 id="tutorial">Tutorial</h2><p><strong>Before you start,</strong> <a href="https://www.webpackbin.com/bins/-KdBeIDJoRv0PQlF7uWU" target="new">load this BIN on Webpackbin</a></p><p>Now that our tutorial UI gets more complex it is a good idea to separate it a little bit. We want a home tab and a repos tab. Our two repos should load when we click the repos tab or hit the url directly.</p><h3 id="adding-some-tabs">Adding some tabs</h3><p>Let us introduce the tabs first. We will just shove everything into our one component. Normally you would split this up into multiple components of course. You would probably also use JavaScript to map over a list of tabs or something similar, but let us be explicit now. Please change <em>App.js</em> to:</p><pre><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {state, signal} from &#x27;cerebral/tags&#x27;
+import Toast from &#x27;./Toast&#x27;
+
+export default connect({
+  title: state`title`,
+  subTitle: state`subTitle`,
+  repos: state`repos`,
+  activeTab: state`activeTab`,
+  homeClicked: signal`homeClicked`,
+  reposClicked: signal`reposClicked`
+},
+  function App ({
+    title,
+    subTitle,
+    repos,
+    activeTab,
+    homeClicked,
+    reposClicked
+  }) {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;{title}&lt;/h1&gt;
+        &lt;h2&gt;{subTitle}&lt;/h2&gt;
+        &lt;div&gt;
+          &lt;div className=&#x27;tabs&#x27;&gt;
+            &lt;div
+              onClick={() =&gt; homeClicked()}
+              className={`tab ${
+                activeTab === &#x27;home&#x27; ? &#x27;tab-active&#x27; : &#x27;&#x27;
+              }`}
+            &gt;
+              Home
+            &lt;/div&gt;
+            &lt;div
+              onClick={() =&gt; reposClicked()}
+              className={`tab ${
+                activeTab === &#x27;repos&#x27; ? &#x27;tab-active&#x27; : &#x27;&#x27;
+              }`}
+            &gt;
+              Repos
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;br /&gt;
+          {
+            activeTab === &#x27;home&#x27; ? (
+              &lt;div&gt;
+                Some awesome home page content
+              &lt;/div&gt;   
+            ) : null
+          }
+          {
+            activeTab === &#x27;repos&#x27; ? (
+              &lt;div&gt;
+                &lt;ul&gt;
+                  {Object.keys(repos).map((repoKey, index) =&gt; {
+                    const name = repos[repoKey].name
+                    const count = repos[repoKey].stargazers_count
+
+                    return (
+                      &lt;li key={index}&gt;
+                        {name} ({count})
+                      &lt;/li&gt;
+                    )
+                  })}
+               &lt;/ul&gt;
+              &lt;/div&gt;   
+            ) : null
+          }
+        &lt;/div&gt;
+        &lt;Toast /&gt;
+      &lt;/div&gt;
+    )
+  }
+)</code></pre><p>We also need to add new state in <em>controller.js</em>:</p><pre><code class="language-js">...
+{
+  title: &#x27;Hello from Cerebral!&#x27;,
+  subTitle: &#x27;Working on my state management&#x27;,
+  toast: null,
+  repos: {},
+  activeTab: &#x27;home&#x27;
+}
+...</code></pre><p>And update the signals as well:</p><pre><code class="language-js">...
+{
+  homeClicked: [
+    set(state`activeTab`, &#x27;home&#x27;)
+  ],
+  reposClicked: {
+    signal: [
+      set(state`activeTab`, &#x27;repos&#x27;),
+      showToast(string`Loading data for repo: ${props`repo`}`),
+      parallel([
+        getRepo(&#x27;cerebral&#x27;),
+        getRepo(&#x27;addressbar&#x27;)
+      ]),
+      set(state`repos.cerebral`, props`cerebral`),
+      set(state`repos.addressbar`, props`addressbar`),
+      showToast(string`The repos have ${starsCount} stars`, 5000, &#x27;success&#x27;)  
+    ],
+    catch: new Map([
+      [HttpProviderError, showToast(string`Error: ${props`error.message`}`, 5000)]
+    ])
+  }
+}
+...</code></pre><p>Now you can test drive your changes. You should see the first tab activated. Now go to the debugger and change <em>activeTab</em> state to ‘repos’ and you will see the second tab. If you click the tabs you will actually trigger the signals which appear in the debugger. Nice! But what has this to do with Routing?</p><h3 id="introducing-the-router">Introducing the router</h3><p>Traditional routers are a wrapper around your components and they manipulate what components to display based on the URL. That is not how routing works in Cerebral. In Cerebral you connect URLs to signals. So:</p><ol><li>A URL is hit or changed</li><li>The respective signal is triggered putting your application in the correct state</li><li>The components now renders based on the state of the application</li></ol><p>This is a really good thing because most route changes require quite a few state changes and side effects, like server requests, to be run. This is exactly what signals do so well.</p><p>Let us introduce <strong>@cerebral/router</strong> to our project by adding an import to the top of our <em>controller.js</em>:</p><pre><code class="language-js">import Router from &#x27;@cerebral/router&#x27;</code></pre><p>And go ahead by doing the router config as follows inside the controller:</p><pre><code class="language-js">...
+const controller = Controller({
+  ...
+  router: Router({
+    routes: {
+      &#x27;/&#x27;: &#x27;homeClicked&#x27;,
+      &#x27;/repos&#x27;: &#x27;reposClicked&#x27;
+    },
+    onlyHash: true
+  }),
+  ...
+})
+...</code></pre><p>As you can see, defining <em>routes</em> is as easy as linking them to <em>signals</em>. When you save and load up the BIN again you can go to the address bar and change the url to <strong>/#/repos</strong>. You will now see the signal triggers and the repos content is shown. This is exactly what happens when you click the tab as well.</p><h3 id="challenge">Challenge</h3><p>Go to your browsers address bar and enter an invalid route like: <em>/#/foo</em> and press Enter. Now check the log! The challenge is to add another route which catches those <em>unknown</em> routes, runs a signal and display a toast with an error. You probably need to read some more docs on the router to make this work.</p></div></div></div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/mobile.js"></script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/images/favicons/manifest.json">
+    <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item active"><a href="/docs/introduction">introduction</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/addons">addons</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/resources">resources</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">introduction</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item active mobile"><a href="/docs/introduction">introduction</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/introduction/index.html">What is Cerebral?</a></li><li><a href="/docs/introduction/the_architecture.html">The architecture</a></li><li><a href="/docs/introduction/install.html">Install</a></li><li class="active"><a href="/docs/introduction/debugger.html">Debugger</a><ul><li><a href="#signals">Signals</a></li><li><a href="#mutations">Mutations</a></li><li><a href="#components">Components</a></li><li><a href="#state-tree">State tree</a></li></ul></li><li><a href="/docs/introduction/view_type.html">Choosing a view type</a></li><li><a href="/docs/introduction/state.html">State</a></li><li><a href="/docs/introduction/connect.html">Components</a></li><li><a href="/docs/introduction/signals.html">Signals</a></li><li><a href="/docs/introduction/actions.html">Actions</a></li><li><a href="/docs/introduction/operators.html">Operators</a></li><li><a href="/docs/introduction/factories.html">Factories</a></li><li><a href="/docs/introduction/paths.html">Paths</a></li><li><a href="/docs/introduction/compute.html">Compute</a></li><li><a href="/docs/introduction/routing.html">Routing</a></li><li><a href="/docs/introduction/organize.html">Organize</a></li><li><a href="/docs/introduction/providers.html">Providers</a></li><li><a href="/docs/introduction/errors.html">Errors</a></li><li><a href="/docs/introduction/test.html">Test</a></li><li><a href="/docs/introduction/production.html">Production</a></li><li><a href="/docs/introduction/collaborate.html">Collaborate</a></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li><li class="docs-navigation-item mobile"><a href="/docs/addons">addons</a></li><li class="docs-navigation-item mobile"><a href="/docs/resources">resources</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/introduction/index.html">What is Cerebral?</a></li><li><a href="/docs/introduction/the_architecture.html">The architecture</a></li><li><a href="/docs/introduction/install.html">Install</a></li><li class="active"><a href="/docs/introduction/debugger.html">Debugger</a><ul><li><a href="#signals">Signals</a></li><li><a href="#mutations">Mutations</a></li><li><a href="#components">Components</a></li><li><a href="#state-tree">State tree</a></li></ul></li><li><a href="/docs/introduction/view_type.html">Choosing a view type</a></li><li><a href="/docs/introduction/state.html">State</a></li><li><a href="/docs/introduction/connect.html">Components</a></li><li><a href="/docs/introduction/signals.html">Signals</a></li><li><a href="/docs/introduction/actions.html">Actions</a></li><li><a href="/docs/introduction/operators.html">Operators</a></li><li><a href="/docs/introduction/factories.html">Factories</a></li><li><a href="/docs/introduction/paths.html">Paths</a></li><li><a href="/docs/introduction/compute.html">Compute</a></li><li><a href="/docs/introduction/routing.html">Routing</a></li><li><a href="/docs/introduction/organize.html">Organize</a></li><li><a href="/docs/introduction/providers.html">Providers</a></li><li><a href="/docs/introduction/errors.html">Errors</a></li><li><a href="/docs/introduction/test.html">Test</a></li><li><a href="/docs/introduction/production.html">Production</a></li><li><a href="/docs/introduction/collaborate.html">Collaborate</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/introduction/debugger.md" target="_new">Edit on Github</a></div><h1 id="debugger">Debugger</h1><p>Cerebral has a powerful development tool. It knows about all the state in your application, all the state updates, side effects run, state paths currently active in your components and when they render. All the things Cerebral helps you with, it visualizes in the debugger.</p><p>Because Cerebral can run on different environments and you might want to manage multiple apps, the debugger is a standalone application. This also opens up for further helpful tools beyond just debugging. It is an <a href="https://electron.atom.io/" target="new">Electron</a> application that connects to your application through websockets. You can add multiple apps to it and if you are using function-tree on the server you can even merge execution data on client and the server.</p><p>Download and extract the zip for your target OS:</p><ul><li><a href="https://docs.google.com/uc?id=0B1pYKovu9UpybHRMRm9YZU10WUU&amp;amp;export=download" target="new">Download debugger for MAC</a></li><li><a href="https://docs.google.com/uc?id=0B1pYKovu9UpyU0lkU2UyWklMV28&amp;amp;export=download" target="new">Download debugger for WINDOWS</a></li><li><a href="https://docs.google.com/uc?id=0B1pYKovu9UpyWE85UWVHNFRCQkk&amp;amp;export=download" target="new">Download debugger for LINUX</a></li></ul><p>You initialize the devtools by adding it to the controller.</p><pre><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+import Devtools from &#x27;cerebral/devtools&#x27;
+
+const controller = Controller({
+  // You do not want to run the devtools in production as it
+  // requires a bit of processing and memory to send data from
+  // your application
+  devtools: (
+    process.env.NODE_ENV === &#x27;production&#x27; ?
+      null
+    :
+      Devtools({
+        // If running standalone debugger. Some environments
+        // might require 127.0.0.1 or computer IP address
+        remoteDebugger: &#x27;localhost:8585&#x27;,
+
+        // By default the devtools tries to reconnect
+        // to debugger when it can not be reached, but
+        // you can turn it off
+        reconnect: true
+      })
+  )
+})
+
+export default controller</code></pre><h2 id="signals">Signals</h2><p>The signals tab in the debugger gives you a chronological list of signals triggered. Every signal tells you what actions were run, what mutations were run related to the action and what other side effects like HTTP and Firebase was triggered. You will also see how your signals are composed together in different action groups, parallel execution.</p><p><img src="/images/signals.png"/></p><h2 id="mutations">Mutations</h2><p>The mutations tab gives you a chronological list of mutations performed. Since signals can be asynchronous, mutations might happen cross signals. In this list you can double click a mutation to time travel to that point in time.</p><p><img src="/images/mutations.png"/></p><h2 id="components">Components</h2><p>The components tab gives you a list of all currently connected components in your app and what state dependencies they have. You also have a list of latest renders. This list contains what paths changed and what components was affected by the change.</p><p><img src="/images/components.png"/></p><h2 id="state-tree">State tree</h2><p>The state tree tab gives you complete overview of the state of your application. You can explore it and make changes to the state directly to see how it affects your application.</p><p><img src="/images/state_tree.png"/></p></div></div></div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/mobile.js"></script>
+  </body>
+</html>
