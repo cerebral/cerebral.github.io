@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/docs.css" />
   </head>
   <body>
-    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/introduction">introduction</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/addons">addons</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/resources">resources</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">addons</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/introduction">introduction</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li><li class="docs-navigation-item active mobile"><a href="/docs/addons">addons</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/addons/index.html">@cerebral/router</a></li><li><a href="/docs/addons/http.html">@cerebral/http</a></li><li><a href="/docs/addons/firebase.html">@cerebral/firebase</a></li><li><a href="/docs/addons/useragent.html">@cerebral/useragent</a></li><li><a href="/docs/addons/forms.html">@cerebral/forms</a></li><li><a href="/docs/addons/storage.html">@cerebral/storage</a></li><li><a href="/docs/addons/firebase_admin.html">@cerebral/firebase-admin</a></li><li class="active"><a href="/docs/addons/function_tree.html">function-tree</a><ul><li><a href="#install">Install</a></li><li><a href="#description">Description</a></li><li><a href="#api">API</a><ul><li><a href="#instantiate">instantiate</a></li></ul></li><li><a href="#errors">errors</a><ul><li><a href="#functiontreeerror-(base)">FunctionTreeError (base)</a></li><li><a href="#functiontreeexecutionerror">FunctionTreeExecutionError</a></li><li><a href="#devtools">devtools</a></li><li><a href="#sequence">sequence</a></li><li><a href="#parallel">parallel</a></li><li><a href="#context">context</a><ul><li><a href="#props">props</a></li><li><a href="#path">path</a></li></ul></li><li><a href="#error">error</a></li><li><a href="#provider">provider</a><ul><li><a href="#stopexecutionprovider">StopExecutionProvider</a></li></ul></li><li><a href="#events">events</a></li></ul></li></ul></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/resources">resources</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/addons/index.html">@cerebral/router</a></li><li><a href="/docs/addons/http.html">@cerebral/http</a></li><li><a href="/docs/addons/firebase.html">@cerebral/firebase</a></li><li><a href="/docs/addons/useragent.html">@cerebral/useragent</a></li><li><a href="/docs/addons/forms.html">@cerebral/forms</a></li><li><a href="/docs/addons/storage.html">@cerebral/storage</a></li><li><a href="/docs/addons/firebase_admin.html">@cerebral/firebase-admin</a></li><li class="active"><a href="/docs/addons/function_tree.html">function-tree</a><ul><li><a href="#install">Install</a></li><li><a href="#description">Description</a></li><li><a href="#api">API</a><ul><li><a href="#instantiate">instantiate</a></li></ul></li><li><a href="#errors">errors</a><ul><li><a href="#functiontreeerror-(base)">FunctionTreeError (base)</a></li><li><a href="#functiontreeexecutionerror">FunctionTreeExecutionError</a></li><li><a href="#devtools">devtools</a></li><li><a href="#sequence">sequence</a></li><li><a href="#parallel">parallel</a></li><li><a href="#context">context</a><ul><li><a href="#props">props</a></li><li><a href="#path">path</a></li></ul></li><li><a href="#error">error</a></li><li><a href="#provider">provider</a><ul><li><a href="#stopexecutionprovider">StopExecutionProvider</a></li></ul></li><li><a href="#events">events</a></li></ul></li></ul></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/packages/function-tree/README.md" target="_new">Edit on Github</a></div><h1 id="function-tree">function-tree</h1><h2 id="install">Install</h2><p><strong>NPM</strong></p><p><code>npm install function-tree@next --save --save-exact</code></p><p><strong>YARN</strong></p><p><code>yarn add function-tree@next --exact</code></p><h2 id="description">Description</h2><p>Function-tree is the what Cerebral extends to create its signal implementation. Basically a function-tree allows you to execute a tree of functions. You can use the Cerebral debugger to debug function tree execution in any JS environment.</p><p>Function-tree is somewhat in the same family as Rxjs and Promises. The main difference is that Rxjs and Promises  are based on value transformation. That means only the value returned from the previous function is available in the next. This works when you indeed want to transform values, but events in your application are rarely about value transformation, they are about running side effects and going through one of multiple execution paths. Function tree embraces the fact that most of what we do in application development is running side effects.</p><p>Rxjs and Promises are also about execution control, but neither of them have declarative conditional execution paths, you have to write an <em>IF</em> or <em>SWITCH</em> statement or decouple streams. With function tree you are able to diverge the execution down paths just as declaratively as functions. This helps readability.</p><h2 id="api">API</h2><h3 id="instantiate">instantiate</h3><pre><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/introduction">introduction</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/addons">addons</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/resources">resources</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">addons</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/introduction">introduction</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li><li class="docs-navigation-item active mobile"><a href="/docs/addons">addons</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/addons/index.html">@cerebral/router</a></li><li><a href="/docs/addons/http.html">@cerebral/http</a></li><li><a href="/docs/addons/firebase.html">@cerebral/firebase</a></li><li><a href="/docs/addons/useragent.html">@cerebral/useragent</a></li><li><a href="/docs/addons/forms.html">@cerebral/forms</a></li><li><a href="/docs/addons/storage.html">@cerebral/storage</a></li><li><a href="/docs/addons/firebase_admin.html">@cerebral/firebase-admin</a></li><li class="active"><a href="/docs/addons/function_tree.html">function-tree</a><ul><li><a href="#install">Install</a></li><li><a href="#description">Description</a></li><li><a href="#api">API</a><ul><li><a href="#instantiate">instantiate</a></li></ul></li><li><a href="#errors">errors</a><ul><li><a href="#functiontreeerror-(base)">FunctionTreeError (base)</a></li><li><a href="#functiontreeexecutionerror">FunctionTreeExecutionError</a></li><li><a href="#devtools">devtools</a></li><li><a href="#sequence">sequence</a></li><li><a href="#parallel">parallel</a></li><li><a href="#context">context</a><ul><li><a href="#props">props</a></li><li><a href="#path">path</a></li></ul></li><li><a href="#error">error</a></li><li><a href="#provider">provider</a><ul><li><a href="#stopexecutionprovider">StopExecutionProvider</a></li></ul></li><li><a href="#events">events</a></li></ul></li></ul></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/resources">resources</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/addons/index.html">@cerebral/router</a></li><li><a href="/docs/addons/http.html">@cerebral/http</a></li><li><a href="/docs/addons/firebase.html">@cerebral/firebase</a></li><li><a href="/docs/addons/useragent.html">@cerebral/useragent</a></li><li><a href="/docs/addons/forms.html">@cerebral/forms</a></li><li><a href="/docs/addons/storage.html">@cerebral/storage</a></li><li><a href="/docs/addons/firebase_admin.html">@cerebral/firebase-admin</a></li><li class="active"><a href="/docs/addons/function_tree.html">function-tree</a><ul><li><a href="#install">Install</a></li><li><a href="#description">Description</a></li><li><a href="#api">API</a><ul><li><a href="#instantiate">instantiate</a></li></ul></li><li><a href="#errors">errors</a><ul><li><a href="#functiontreeerror-(base)">FunctionTreeError (base)</a></li><li><a href="#functiontreeexecutionerror">FunctionTreeExecutionError</a></li><li><a href="#devtools">devtools</a></li><li><a href="#sequence">sequence</a></li><li><a href="#parallel">parallel</a></li><li><a href="#context">context</a><ul><li><a href="#props">props</a></li><li><a href="#path">path</a></li></ul></li><li><a href="#error">error</a></li><li><a href="#provider">provider</a><ul><li><a href="#stopexecutionprovider">StopExecutionProvider</a></li></ul></li><li><a href="#events">events</a></li></ul></li></ul></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/../../node_modules/function-tree/README.md" target="_new">Edit on Github</a></div><h1>function-tree</h1><h2>Install</h2><p><strong>NPM</strong></p><p><code>npm install function-tree --save</code></p><p><strong>YARN</strong></p><p><code>yarn add function-tree</code></p><h2>Description</h2><p>Function-tree is the what Cerebral extends to create its signal implementation. Basically a function-tree allows you to execute a tree of functions. You can use the Cerebral debugger to debug function tree execution in any JS environment.</p><p>Function-tree is somewhat in the same family as Rxjs and Promises. The main difference is that Rxjs and Promises  are based on value transformation. That means only the value returned from the previous function is available in the next. This works when you indeed want to transform values, but events in your application are rarely about value transformation, they are about running side effects and going through one of multiple execution paths. Function tree embraces the fact that most of what we do in application development is running side effects.</p><p>Rxjs and Promises are also about execution control, but neither of them have declarative conditional execution paths, you have to write an <em>IF</em> or <em>SWITCH</em> statement or decouple streams. With function tree you are able to diverge the execution down paths just as declaratively as functions. This helps readability.</p><h2>API</h2><h3>instantiate</h3><pre class="language-js"><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
 // Node:
 // const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
 
@@ -37,11 +37,11 @@ ft.run([
 
   // A serialized version of the error. Name, message and stack, or custom error serialization
   error.payload.error
-})</code></pre><p>You can also add multiple custom context providers by using an array:</p><pre><code class="language-js">const ft = new FunctionTree([{
+})</code></pre><p>You can also add multiple custom context providers by using an array:</p><pre class="language-js"><code class="language-js">const ft = new FunctionTree([{
     // add side effect libraries to context
   },
   SomeCustomProvider()
-])</code></pre><h2 id="errors">errors</h2><h3 id="functiontreeerror-(base)">FunctionTreeError (base)</h3><pre><code class="language-js">import {FunctionTreeError} from &#x27;function-tree&#x27;
+])</code></pre><h2>errors</h2><h3>FunctionTreeError (base)</h3><pre class="language-js"><code class="language-js">import {FunctionTreeError} from &#x27;function-tree&#x27;
 // Node:
 // const FunctionTreeError = require(&#x27;function-tree&#x27;).FunctionTreeError
 
@@ -50,7 +50,7 @@ ft.run([
   name: &#x27;FunctionTreeError&#x27;,
   message: &#x27;Some function-tree error&#x27;
   stack: &#x27;...&#x27;  
-}</code></pre><h3 id="functiontreeexecutionerror">FunctionTreeExecutionError</h3><pre><code class="language-js">import {FunctionTreeExecutionError} from &#x27;function-tree&#x27;
+}</code></pre><h3>FunctionTreeExecutionError</h3><pre class="language-js"><code class="language-js">import {FunctionTreeExecutionError} from &#x27;function-tree&#x27;
 // Node:
 // const FunctionTreeExecutionError = require(&#x27;function-tree&#x27;).FunctionTreeExecutionError
 
@@ -62,7 +62,7 @@ ft.run([
   funcDetails: {name: &#x27;someFunction&#x27;, functionIndex: 5},
   payload: {foo: &#x27;bar&#x27;},
   stack: &#x27;...&#x27;  
-}</code></pre><h3 id="devtools">devtools</h3><p>Download the function tree standalone debugger for <a href="https://drive.google.com/file/d/0B1pYKovu9Upyb1Bkdm5IbkdBN3c/view?usp=sharing" target="new">Mac</a>, <a href="https://drive.google.com/file/d/0B1pYKovu9UpyMGRRbG45dWR6R1k/view?usp=sharing" target="new">Windows</a> or <a href="https://drive.google.com/file/d/0B1pYKovu9UpyMFQ5dEdnSy1aN0E/view?usp=sharing" target="new">Linux</a>.</p><pre><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
+}</code></pre><h3>devtools</h3><p>Download the function tree standalone debugger for <a href="https://drive.google.com/file/d/0B1pYKovu9Upyb1Bkdm5IbkdBN3c/view?usp=sharing" target="new">Mac</a>, <a href="https://drive.google.com/file/d/0B1pYKovu9UpyMGRRbG45dWR6R1k/view?usp=sharing" target="new">Windows</a> or <a href="https://drive.google.com/file/d/0B1pYKovu9UpyMFQ5dEdnSy1aN0E/view?usp=sharing" target="new">Linux</a>.</p><pre class="language-js"><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
 import Devtools from &#x27;function-tree/devtools&#x27;
 // Node:
 // const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
@@ -84,7 +84,7 @@ devtools.add(ft)
 devtools.remove(ft)
 
 // Remove all function trees from debugger
-devtools.destroy()</code></pre><p>You can use it when creating providers to easily wrap their usage:</p><pre><code class="language-js">function MyProvider (options = {}) {
+devtools.destroy()</code></pre><p>You can use it when creating providers to easily wrap their usage:</p><pre class="language-js"><code class="language-js">function MyProvider (options = {}) {
   let cachedProvider = null
 
   function createProvider (context) {
@@ -103,13 +103,13 @@ devtools.destroy()</code></pre><p>You can use it when creating providers to easi
 
     return context
   }
-}</code></pre><h3 id="sequence">sequence</h3><p>You can use an array literal to define a sequence of functions.</p><pre><code class="language-js">function someFunction (context) {}
+}</code></pre><h3>sequence</h3><p>You can use an array literal to define a sequence of functions.</p><pre class="language-js"><code class="language-js">function someFunction (context) {}
 function someOtherFunction (context) {}
 
 module.exports = [
   someFunction,
   someOtherFunction
-]</code></pre><p>Or you can be explicit by using the <strong>sequence</strong> function:</p><pre><code class="language-js">import {sequence} from &#x27;function-tree&#x27;
+]</code></pre><p>Or you can be explicit by using the <strong>sequence</strong> function:</p><pre class="language-js"><code class="language-js">import {sequence} from &#x27;function-tree&#x27;
 // Node:
 // const sequence = require(&#x27;function-tree&#x27;).sequence
 
@@ -119,7 +119,7 @@ function someOtherFunction (context) {}
 module.exports = sequence([
   someFunction,
   someOtherFunction
-])</code></pre><p>The first argument to <strong>sequence</strong> can be a string, which names the sequence. This will be shown in the debugger. If it is the root sequence it will be used as the name of the execution itself.</p><pre><code class="language-js">import {sequence} from &#x27;function-tree&#x27;
+])</code></pre><p>The first argument to <strong>sequence</strong> can be a string, which names the sequence. This will be shown in the debugger. If it is the root sequence it will be used as the name of the execution itself.</p><pre class="language-js"><code class="language-js">import {sequence} from &#x27;function-tree&#x27;
 // Node:
 // const sequence = require(&#x27;function-tree&#x27;).sequence
 
@@ -129,7 +129,7 @@ function someOtherFunction (context) {}
 module.exports = sequence(&#x27;My awesome sequence&#x27;, [
   someFunction,
   someOtherFunction
-])</code></pre><h3 id="parallel">parallel</h3><pre><code class="language-js">import {parallel} from &#x27;function-tree&#x27;
+])</code></pre><h3>parallel</h3><pre class="language-js"><code class="language-js">import {parallel} from &#x27;function-tree&#x27;
 // Node:
 // const sequence = require(&#x27;function-tree&#x27;).parallel
 
@@ -139,7 +139,7 @@ function someOtherFunction (context) {}
 module.exports = parallel([
   someFunction,
   someOtherFunction
-])</code></pre><p>Even though <strong>someFunction</strong> returns a Promise, <strong>someOtherFunction</strong> will be run immediately.</p><h3 id="context">context</h3><h4 id="props">props</h4><pre><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
+])</code></pre><p>Even though <strong>someFunction</strong> returns a Promise, <strong>someOtherFunction</strong> will be run immediately.</p><h3>context</h3><h4>props</h4><pre class="language-js"><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
 // Node:
 // const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
 
@@ -152,7 +152,7 @@ const tree = [
   funcA
 ]
 
-ft.run(tree, {foo: &#x27;bar&#x27;})</code></pre><h4 id="path">path</h4><p>The path is only available on the context when the function can diverge the execution down a path.</p><pre><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
+ft.run(tree, {foo: &#x27;bar&#x27;})</code></pre><h4>path</h4><p>The path is only available on the context when the function can diverge the execution down a path.</p><pre class="language-js"><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
 // Node:
 // const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
 
@@ -190,7 +190,7 @@ const tree = [
   }
 ]
 
-ft.run(tree, {foo: &#x27;bar&#x27;})</code></pre><h3 id="error">error</h3><pre><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
+ft.run(tree, {foo: &#x27;bar&#x27;})</code></pre><h3>error</h3><pre class="language-js"><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
 // Node:
 // const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
 const ft = new FunctionTree([])
@@ -207,7 +207,7 @@ ft.run(tree, (error, execution, payload) =&gt; {
   if (error) {
     // There is an error
   }
-})</code></pre><h3 id="provider">provider</h3><p>A provider gives you access to the current context and other information about the execution. It is required that you return the context or a mutated version of it.</p><pre><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
+})</code></pre><h3>provider</h3><p>A provider gives you access to the current context and other information about the execution. It is required that you return the context or a mutated version of it.</p><pre class="language-js"><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
 // Node:
 // const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
 
@@ -233,7 +233,7 @@ function MyProvider(context, functionDetails, payload) {
 
 const ft = new FunctionTree([
   MyProvider
-])</code></pre><p>Providers lets us do some pretty amazing things. The debugger for <strong>function-tree</strong> is actually just a provider that sends information to the debugger about execution and exposes an API for other providers to send their own data to the debugger.</p><h4 id="stopexecutionprovider">StopExecutionProvider</h4><p>By using a condition you can tell the function tree to stop executions.</p><pre><code class="language-js">import {StopExecutionProvider} from &#x27;function-tree&#x27;
+])</code></pre><p>Providers lets us do some pretty amazing things. The debugger for <strong>function-tree</strong> is actually just a provider that sends information to the debugger about execution and exposes an API for other providers to send their own data to the debugger.</p><h4>StopExecutionProvider</h4><p>By using a condition you can tell the function tree to stop executions.</p><pre class="language-js"><code class="language-js">import {StopExecutionProvider} from &#x27;function-tree&#x27;
 // Node:
 // const StopExecutionProvider = require(&#x27;function-tree&#x27;).StopExecutionProvider
 
@@ -243,7 +243,7 @@ const ft = new FunctionTree([
       return context.props.stop
     }
   })
-])</code></pre><p>If the condition returns true the execution will throw an error and stop.</p><h3 id="events">events</h3><p>The execute function is also an event emitter.</p><pre><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
+])</code></pre><p>If the condition returns true the execution will throw an error and stop.</p><h3>events</h3><p>The execute function is also an event emitter.</p><pre class="language-js"><code class="language-js">import FunctionTree from &#x27;function-tree&#x27;
 // Node:
 // const FunctionTree = require(&#x27;function-tree&#x27;).FunctionTree
 
