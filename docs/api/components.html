@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cerebral Docs</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/images/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/images/favicons/manifest.json">
+    <link rel="mask-icon" href="/images/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+<link rel="stylesheet" href="/main.css" />
+<link rel="stylesheet" href="/prism.css" />
+<link rel="stylesheet" href="/docs.css" />
+  </head>
+  <body>
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/introduction">introduction</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/api">api</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/addons">addons</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/resources">resources</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">api</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/introduction">introduction</a></li><li class="docs-navigation-item active mobile"><a href="/docs/api">api</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/api/index.html">Controller</a></li><li><a href="/docs/api/action.html">Action</a></li><li><a href="/docs/api/signal.html">Signal</a></li><li><a href="/docs/api/devtools.html">Devtools</a></li><li><a href="/docs/api/state.html">State</a></li><li><a href="/docs/api/tags.html">Tags</a></li><li class="active"><a href="/docs/api/components.html">Components</a><ul><li><a href="#react">React</a></li><li><a href="#inferno">Inferno</a></li><li><a href="#preact-(beta)">Preact (BETA)</a></li><li><a href="#angularjs-(beta)">Angularjs (BETA)</a></li><li><a href="#vue-(beta)">Vue (BETA)</a></li><li><a href="#composing-dependencies">Composing dependencies</a></li><li><a href="#optimize-rendering">Optimize rendering</a></li></ul></li><li><a href="/docs/api/module.html">Module</a></li><li><a href="/docs/api/operators.html">Operators</a></li><li><a href="/docs/api/providers.html">Providers</a></li><li><a href="/docs/api/compute.html">Compute</a></li><li><a href="/docs/api/universalcontroller.html">Universal Controller</a></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/addons">addons</a></li><li class="docs-navigation-item mobile"><a href="/docs/resources">resources</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/api/index.html">Controller</a></li><li><a href="/docs/api/action.html">Action</a></li><li><a href="/docs/api/signal.html">Signal</a></li><li><a href="/docs/api/devtools.html">Devtools</a></li><li><a href="/docs/api/state.html">State</a></li><li><a href="/docs/api/tags.html">Tags</a></li><li class="active"><a href="/docs/api/components.html">Components</a><ul><li><a href="#react">React</a></li><li><a href="#inferno">Inferno</a></li><li><a href="#preact-(beta)">Preact (BETA)</a></li><li><a href="#angularjs-(beta)">Angularjs (BETA)</a></li><li><a href="#vue-(beta)">Vue (BETA)</a></li><li><a href="#composing-dependencies">Composing dependencies</a></li><li><a href="#optimize-rendering">Optimize rendering</a></li></ul></li><li><a href="/docs/api/module.html">Module</a></li><li><a href="/docs/api/operators.html">Operators</a></li><li><a href="/docs/api/providers.html">Providers</a></li><li><a href="/docs/api/compute.html">Compute</a></li><li><a href="/docs/api/universalcontroller.html">Universal Controller</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/api/components.md" target="_new">Edit on Github</a></div><h1 id="components">Components</h1><h2 id="react">React</h2><p><a href="https://facebook.github.io/react/" target="new">Website</a></p><p><strong>NPM</strong></p><p><code>npm install react react-dom babel-preset-react --save</code></p><p><strong>YARN</strong></p><p><code>yarn add react react-dom babel-preset-react</code></p><pre class="language-js"><code class="language-js">import React from &#x27;react&#x27;
+import {render} from &#x27;react-dom&#x27;
+import {Controller} from &#x27;cerebral&#x27;
+import {Container} from &#x27;cerebral/react&#x27;
+import App from &#x27;./App&#x27;
+
+const controller = Controller({
+  state: {
+    foo: &#x27;bar&#x27;
+  }
+})
+
+render((
+  &lt;Container controller={controller}&gt;
+    &lt;App /&gt;
+  &lt;/Container&gt;
+), document.querySelector(&#x27;#app&#x27;))</code></pre><pre class="language-js"><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {state, signal} from &#x27;cerebral/tags&#x27;
+
+// Stateless
+export default connect({
+  foo: state`foo`,
+  click: signal`clicked`
+},
+  function MyComponent ({foo, click}) {
+    return &lt;div onClick={() =&gt; click()}&gt;{foo}&lt;/div&gt;
+  }
+)
+
+// Stateful
+export default connect({
+  foo: state`foo`,
+  click: signal`clicked`
+},
+  class MyComponent extends React.Component {
+    render () {
+      return &lt;div onClick={() =&gt; this.props.click()}&gt;{this.props.foo}&lt;/div&gt;
+    }
+  }
+)</code></pre><p>You can add an additional function to connect that gives you full control of properties of the component and dependencies. The returned object from this function will be the exact props passed into the component.</p><pre class="language-js"><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {signal, state} from &#x27;cerebral/tags&#x27;
+
+export default connect({
+  foo: state`app.foo`,
+  clicked: signal`app.somethingClicked`
+}, (dependencyProps, ownProps, resolve) =&gt; {
+  const path = resolve.path(state`entities.foo.{ownProps}`) // we can resolve values or path here. Note: it&#x27;s not tracked as dependency
+  return {
+    foo: `Label: ${foo}`,                                   // values from state could be transformed here
+    onClick: (e) =&gt; clicked({ id: ownProps.id })            // signals calls could be bound here, so component uses it as general callback
+  }
+},
+  function App({foo, onClick}) {
+    return &lt;div onClick={onClick}&gt;{foo}&lt;/div&gt;
+  }
+)</code></pre><p><strong>dependencyProps</strong> are the props you connected.</p><p><strong>props</strong> are the props passed into the component by the parent.</p><p><strong>resolve</strong> allows you to resolve computed etc., just like resolve in actions.</p><h2 id="inferno">Inferno</h2><p><a href="http://infernojs.org/" target="new">Website</a></p><p><strong>NPM</strong></p><p><code>npm install inferno inferno-component inferno-create-element babel-plugin-inferno --save</code></p><p><strong>YARN</strong></p><p><code>yarn add inferno inferno-component inferno-create-element babel-plugin-inferno</code></p><pre class="language-js"><code class="language-js">import Inferno from &#x27;react&#x27;
+import {Controller} from &#x27;cerebral&#x27;
+import {Container} from &#x27;cerebral/inferno&#x27;
+import App from &#x27;./App&#x27;
+
+const controller = Controller({
+  state: {
+    foo: &#x27;bar&#x27;
+  }
+})
+
+Inferno.render((
+  &lt;Container controller={controller}&gt;
+    &lt;App /&gt;
+  &lt;/Container&gt;
+), document.querySelector(&#x27;#app&#x27;))</code></pre><pre class="language-js"><code class="language-js">import Inferno from &#x27;inferno&#x27;
+import Component from &#x27;inferno-component&#x27;
+import {connect} from &#x27;cerebral/inferno&#x27;
+import {state, signal} from &#x27;cerebral/tags&#x27;
+
+// Stateless
+export default connect({
+  foo: state`foo`,
+  click: signal`clicked`
+},
+  function MyComponent ({foo, click}) {
+    return &lt;div onClick={() =&gt; click()}&gt;{foo}&lt;/div&gt;
+  }
+)
+
+// Stateful
+export default connect({
+  foo: state`foo`,
+  click: signal`clicked`
+},
+  class MyComponent extends Component {
+    render () {
+      return &lt;div onClick={() =&gt; this.props.click()}&gt;{this.props.foo}&lt;/div&gt;
+    }
+  }
+)</code></pre><h2 id="preact-(beta)">Preact (BETA)</h2><p><a href="https://github.com/developit/preact" target="new">Website</a></p><p><strong>NPM</strong></p><p><code>npm install preact babel-plugin-transform-react-jsx --save</code></p><p><strong>YARN</strong></p><p><code>yarn add preact babel-plugin-transform-react-jsx</code></p><pre class="language-js"><code class="language-js">import {h, render} from &#x27;preact&#x27;
+import {Controller} from &#x27;cerebral&#x27;
+import {Container} from &#x27;cerebral/preact&#x27;
+import App from &#x27;./App&#x27;
+
+const controller = Controller({
+  state: {
+    foo: &#x27;bar&#x27;
+  }
+})
+
+render((
+  &lt;Container controller={controller}&gt;
+    &lt;App /&gt;
+  &lt;/Container&gt;
+), document.querySelector(&#x27;#app&#x27;))</code></pre><pre class="language-js"><code class="language-js">import {h, Component} from &#x27;preact&#x27;
+import {connect} from &#x27;cerebral/preact&#x27;
+import {state, signal} from &#x27;cerebral/tags&#x27;
+
+export default connect({
+  foo: state`foo`,
+  click: signal`clicked`
+},
+  class MyComponent extends Component {
+    render ({foo, click}) {
+      return &lt;div onClick={() =&gt; click()}&gt;{foo}&lt;/div&gt;
+    }
+  }
+)</code></pre><h2 id="angularjs-(beta)">Angularjs (BETA)</h2><p><a href="https://angularjs.org/" target="new">Website</a></p><p><strong>NPM</strong></p><p><code>npm install angular --save</code></p><p><strong>YARN</strong></p><p><code>yarn add angular</code></p><pre class="language-js"><code class="language-js">import angular from &#x27;angular&#x27;
+import {addModule} from &#x27;cerebral/angularjs&#x27;
+
+addModule(angular)
+
+angular.module(&#x27;app&#x27;, [&#x27;cerebral&#x27;])
+  .config(function (cerebralProvider) {
+    cerebralProvider.configure({
+      state: {
+        foo: &#x27;bar&#x27;
+      },
+
+      // Special controller property to expose core
+      // angular services to your signals
+      services: [&#x27;$http&#x27;, &#x27;$timeout&#x27;]
+    })
+  })</code></pre><pre class="language-js"><code class="language-js">import angular from &#x27;angular&#x27;
+import {connect} from &#x27;cerebral/angularjs&#x27;
+import {state, signal} from &#x27;cerebral/tags&#x27;
+
+angular.component(&#x27;myComponent&#x27;, {
+  template: &#x27;&lt;div ng-click=&quot;click()&quot;&gt;{{foo}}&lt;/div&gt;&#x27;,
+  controller: connect({
+    foo: state`foo`,
+    click: signal`clicked`
+  }, function MyController () {
+    // Optionally add custom behaviour to controller
+  })
+})</code></pre><h2 id="vue-(beta)">Vue (BETA)</h2><p><a href="https://vuejs.org/" target="new">Website</a></p><p><strong>NPM</strong></p><p><code>npm install vue --save</code></p><p><strong>YARN</strong></p><p><code>yarn add vue</code></p><pre class="language-js"><code class="language-js">import Vue from &#x27;vue/dist/vue&#x27;
+import {Controller} from &#x27;cerebral&#x27;
+import {Container, connect} from &#x27;cerebral/vue&#x27;
+
+const controller = Controller({
+  state: {
+    foo: &#x27;bar&#x27;
+  }
+})
+
+ var app = new Vue({
+  el: &#x27;#app&#x27;,
+  components: {
+    container: Container(controller),
+    &#x27;my-component&#x27;: MyComponent
+  }
+})</code></pre><p><strong>Note!</strong> The HTML of the root element must use the <em>container</em>:</p><pre class="language-html"><code class="language-html">&lt;div id=&quot;app&quot;&gt;
+  &lt;container&gt;
+    &lt;my-component&gt;&lt;/my-component&gt;
+  &lt;/container&gt;
+&lt;/div&gt;</code></pre><pre class="language-js"><code class="language-js">import {connect} from &#x27;cerebral/vue&#x27;
+import {state, signal} from &#x27;cerebral/tags&#x27;
+
+export default connect({
+  foo: state`foo`,
+  click: signal`clicked`
+}, {
+  template: &#x27;&lt;div v-on:click=&quot;click()&quot;&gt;{{foo}}&lt;/div&gt;&#x27;
+})</code></pre><h2 id="composing-dependencies">Composing dependencies</h2><p>You can compose your dependencies with other tags. Like collect state based on a property passed to the component. Or maybe grab state based on some other state.</p><pre class="language-js"><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {state, props} from &#x27;cerebral/tags&#x27;
+
+export default connect({
+  isLoading: state`${props`module`}.isLoading`
+},
+  function App(props) {
+    props.isLoading
+  }
+)</code></pre><h2 id="optimize-rendering">Optimize rendering</h2><p>Due to Cerebrals “render on path change” it is possible to optimize component rendering.</p><pre class="language-js"><code class="language-js">import React from &#x27;react&#x27;
+import {connect} from &#x27;cerebral/react&#x27;
+import {state} from &#x27;cerebral/tags&#x27;
+
+export default connect({
+  list: state`app.array.*`,
+  map: state`app.map.*`,
+},
+  function App (props) {
+    props.list // [0, 1, 2, 3]
+    props.map // [&#x27;foo&#x27;, &#x27;bar&#x27;]
+  }
+)</code></pre><p>This component will only render when any keys are added or removed, meaning that nested change to a child does not cause a new render.</p></div></div></div></div></div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
+<script src="/search.js"></script>
+<script src="/mobile.js"></script>
+  </body>
+</html>

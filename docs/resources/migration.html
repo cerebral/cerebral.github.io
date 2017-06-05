@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/docs.css" />
   </head>
   <body>
-    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/introduction">introduction</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/addons">addons</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/resources">resources</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">resources</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/introduction">introduction</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li><li class="docs-navigation-item mobile"><a href="/docs/addons">addons</a></li><li class="docs-navigation-item active mobile"><a href="/docs/resources">resources</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/resources/index.html">Cerebral in detail</a></li><li><a href="/docs/resources/boilerplates.html">Boilerplates</a></li><li class="active"><a href="/docs/resources/migration.html">Migration</a><ul><li><a href="#controller">Controller</a></li><li><a href="#modules">Modules</a></li><li><a href="#operators">Operators</a></li><li><a href="#signals">Signals</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li><li><a href="#actions">Actions</a><ul><li><a href="#1.x">1.x</a></li></ul></li><li><a href="#providers-(outdates-services)">Providers (outdates services)</a></li><li><a href="#views">Views</a></li><li><a href="#model">Model</a></li><li><a href="#strict-render-mode">Strict render mode</a></li><li><a href="#devtools">Devtools</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li><li><a href="#router">Router</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li></ul></li><li><a href="/docs/resources/articles.html">Articles</a></li><li><a href="/docs/resources/videos.html">Videos</a></li><li><a href="/docs/resources/projects.html">Cerebral projects</a></li></ul></div></div></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/resources/index.html">Cerebral in detail</a></li><li><a href="/docs/resources/boilerplates.html">Boilerplates</a></li><li class="active"><a href="/docs/resources/migration.html">Migration</a><ul><li><a href="#controller">Controller</a></li><li><a href="#modules">Modules</a></li><li><a href="#operators">Operators</a></li><li><a href="#signals">Signals</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li><li><a href="#actions">Actions</a><ul><li><a href="#1.x">1.x</a></li></ul></li><li><a href="#providers-(outdates-services)">Providers (outdates services)</a></li><li><a href="#views">Views</a></li><li><a href="#model">Model</a></li><li><a href="#strict-render-mode">Strict render mode</a></li><li><a href="#devtools">Devtools</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li><li><a href="#router">Router</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li></ul></li><li><a href="/docs/resources/articles.html">Articles</a></li><li><a href="/docs/resources/videos.html">Videos</a></li><li><a href="/docs/resources/projects.html">Cerebral projects</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/resources/migration.md" target="_new">Edit on Github</a></div><h1>Migration</h1><p>When migrating from 1.x to 2.x you need to take the following under consideration.</p><ul><li>There are no models left to choose from. Cerebral now comes with one model.</li><li>Services have been removed in favor of function-tree/providers.</li></ul><h2>Controller</h2><p>Instead of choosing your model and connecting to the <em>Controller</em> as in 1.x as shown below</p><pre class="language-js"><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/introduction">introduction</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/addons">addons</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/resources">resources</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">resources</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/introduction">introduction</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li><li class="docs-navigation-item mobile"><a href="/docs/addons">addons</a></li><li class="docs-navigation-item active mobile"><a href="/docs/resources">resources</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/resources/index.html">Cerebral in detail</a></li><li><a href="/docs/resources/boilerplates.html">Boilerplates</a></li><li class="active"><a href="/docs/resources/migration.html">Migration</a><ul><li><a href="#controller">Controller</a></li><li><a href="#modules">Modules</a></li><li><a href="#operators">Operators</a></li><li><a href="#signals">Signals</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li><li><a href="#actions">Actions</a><ul><li><a href="#1.x">1.x</a></li></ul></li><li><a href="#providers-(outdates-services)">Providers (outdates services)</a></li><li><a href="#views">Views</a></li><li><a href="#model">Model</a></li><li><a href="#strict-render-mode">Strict render mode</a></li><li><a href="#devtools">Devtools</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li><li><a href="#router">Router</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li></ul></li><li><a href="/docs/resources/articles.html">Articles</a></li><li><a href="/docs/resources/videos.html">Videos</a></li><li><a href="/docs/resources/projects.html">Cerebral projects</a></li></ul></div></div></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/resources/index.html">Cerebral in detail</a></li><li><a href="/docs/resources/boilerplates.html">Boilerplates</a></li><li class="active"><a href="/docs/resources/migration.html">Migration</a><ul><li><a href="#controller">Controller</a></li><li><a href="#modules">Modules</a></li><li><a href="#operators">Operators</a></li><li><a href="#signals">Signals</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li><li><a href="#actions">Actions</a><ul><li><a href="#1.x">1.x</a></li></ul></li><li><a href="#providers-(outdates-services)">Providers (outdates services)</a></li><li><a href="#views">Views</a></li><li><a href="#model">Model</a></li><li><a href="#strict-render-mode">Strict render mode</a></li><li><a href="#devtools">Devtools</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li><li><a href="#router">Router</a><ul><li><a href="#1.x">1.x</a></li><li><a href="#2.x">2.x</a></li></ul></li></ul></li><li><a href="/docs/resources/articles.html">Articles</a></li><li><a href="/docs/resources/videos.html">Videos</a></li><li><a href="/docs/resources/projects.html">Cerebral projects</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/docs/resources/migration.md" target="_new">Edit on Github</a></div><h1 id="migration">Migration</h1><p>When migrating from 1.x to 2.x you need to take the following under consideration.</p><ul><li>There are no models left to choose from. Cerebral now comes with one model.</li><li>Services have been removed in favor of function-tree/providers.</li></ul><h2 id="controller">Controller</h2><p>Instead of choosing your model and connecting to the <em>Controller</em> as in 1.x as shown below</p><pre class="language-js"><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
 import Model from &#x27;cerebral/models/immutable&#x27;
 
 const controller = Controller(Model({
@@ -30,7 +30,7 @@ const controller = Controller({
   }
 })
 
-export default controller</code></pre><p><strong>controller.getSignals()</strong> is removed from 2.x so favor <strong>controller.getSignal(‘some.signal’)</strong> instead.</p><h2>Modules</h2><p>In 1.x you would have done something like this</p><pre class="language-js"><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+export default controller</code></pre><p><strong>controller.getSignals()</strong> is removed from 2.x so favor <strong>controller.getSignal(‘some.signal’)</strong> instead.</p><h2 id="modules">Modules</h2><p>In 1.x you would have done something like this</p><pre class="language-js"><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
 import Model from &#x27;cerebral/models/immutable&#x27;
 
 import Home from &#x27;./modules/Home&#x27;
@@ -81,12 +81,12 @@ export default {
   signals: {
     newItemTitleSubmitted: submitNewItemTitle
   }
-}</code></pre><h2>Operators</h2><p>The biggest change to Cerebral 2.x is the operators. You can read more about them in the Operators docs. They have become very powerful and you can create your own operators. Operators in Cerebral 2.x has been moved into core Cerebral. You can still use the old operators if you want by installing them via npm.</p><pre class="language-js"><code class="language-js">npm install cerebral-operators --save</code></pre><p>The new operators now use tagged template literals and you can reduce number of actions and instead use the new operators. Here is a quick sample. As you can see you import them from ‘cerebral/operators’</p><pre class="language-js"><code class="language-js">import {set} from &#x27;cerebral/operators&#x27;
+}</code></pre><h2 id="operators">Operators</h2><p>The biggest change to Cerebral 2.x is the operators. You can read more about them in the Operators docs. They have become very powerful and you can create your own operators. Operators in Cerebral 2.x has been moved into core Cerebral. You can still use the old operators if you want by installing them via npm.</p><pre class="language-js"><code class="language-js">npm install cerebral-operators --save</code></pre><p>The new operators now use tagged template literals and you can reduce number of actions and instead use the new operators. Here is a quick sample. As you can see you import them from ‘cerebral/operators’</p><pre class="language-js"><code class="language-js">import {set} from &#x27;cerebral/operators&#x27;
 import {state, props} from &#x27;cerebral/tags&#x27;
 
 export default [
   set(state`foo.bar`, props`bar`)
-]</code></pre><p>Other operators include: wait, when, equals, debounce, push, pop, shift, toggle, unset, splice</p><h2>Signals</h2><p>You handle signals mostly the same way as in 1.x. You can describe signals in a module or in the controller directly.</p><h3>1.x</h3><pre class="language-js"><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+]</code></pre><p>Other operators include: wait, when, equals, debounce, push, pop, shift, toggle, unset, splice</p><h2 id="signals">Signals</h2><p>You handle signals mostly the same way as in 1.x. You can describe signals in a module or in the controller directly.</p><h3 id="1.x">1.x</h3><pre class="language-js"><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
 import Model from &#x27;cerebral-model-immutable&#x27;
 import doSomething from &#x27;./chains/doSomething&#x27;
 import updateField from &#x27;./chains/updateField&#x27;
@@ -96,7 +96,7 @@ const controller = Controller(Model({}))
 controller.addSignals({
   buttonClicked: doSomething,
   fieldChanged: { immediate: true, chain: updateField }
-})</code></pre><h3>2.x</h3><pre class="language-js"><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
+})</code></pre><h3 id="2.x">2.x</h3><pre class="language-js"><code class="language-js">import {Controller} from &#x27;cerebral&#x27;
 import doSomething from &#x27;./chains/doSomething&#x27;
 import updateField from &#x27;./chains/updateField&#x27;
 
@@ -105,7 +105,7 @@ const controller = Controller({
     buttonClicked: doSomething,
     fieldChanged: updateField
   }
-})</code></pre><p>One note when using signals is that the <strong>immediate</strong> option is gone. This keeps the api cleaner.</p><h2>Actions</h2><p>Since cerebral 2.x is using <strong>function-tree</strong> under the hood we have other, more powerful options than before. The state is the same, but output is gone and input is renamed to props. You can just return an object from the action that will be available in the props for the next action. You can also return a <strong>path</strong> that is a new concept in Cerebral 2.x and outdates output. <strong>path</strong> is used to determine the execution path for your chain. You do no longer have services as an argument in the context, use providers instead.</p><h3>1.x</h3><pre class="language-js"><code class="language-js">function myAction({props, state, output, services}) {
+})</code></pre><p>One note when using signals is that the <strong>immediate</strong> option is gone. This keeps the api cleaner.</p><h2 id="actions">Actions</h2><p>Since cerebral 2.x is using <strong>function-tree</strong> under the hood we have other, more powerful options than before. The state is the same, but output is gone and input is renamed to props. You can just return an object from the action that will be available in the props for the next action. You can also return a <strong>path</strong> that is a new concept in Cerebral 2.x and outdates output. <strong>path</strong> is used to determine the execution path for your chain. You do no longer have services as an argument in the context, use providers instead.</p><h3 id="1.x">1.x</h3><pre class="language-js"><code class="language-js">function myAction({props, state, output, services}) {
 
 }</code></pre><p>In 2.x you have the following. Instead of services you hook up providers that supersedes services.</p><pre class="language-js"><code class="language-js">function myAction({props, state, path /*, myProvider, otherProvider */ }) {
 
@@ -151,7 +151,7 @@ myAction.async = true</code></pre><p>In Cerebral 2 you you must resolve or rejec
 }</code></pre><p>This works the same in context for 2.x</p><pre class="language-js"><code class="language-js">connect({
   foo: someComputed,
   foo2: someComputedFactory({foo: &#x27;bar&#x27;})
-})</code></pre><h2>Providers (outdates services)</h2><p>In 1.x you could add services that would be available to you in the actions. Typically, you would do something like this in 1.x</p><pre class="language-js"><code class="language-js">import someExternalApi from &#x27;some-external-api&#x27;
+})</code></pre><h2 id="providers-(outdates-services)">Providers (outdates services)</h2><p>In 1.x you could add services that would be available to you in the actions. Typically, you would do something like this in 1.x</p><pre class="language-js"><code class="language-js">import someExternalApi from &#x27;some-external-api&#x27;
 
 export default (options = {}) =&gt; module =&gt; {
 
@@ -188,7 +188,7 @@ const controller = Controller({
   }
 })</code></pre><p>Now instead of having services in the context object in an action you would have the <strong>axios</strong> object.</p><pre class="language-js"><code class="language-js">function myAction({axios}) {
 
-}</code></pre><h2>Views</h2><p>How you import view specific packages has changed. In 1.x you would import Container like this.</p><pre class="language-js"><code class="language-js">import controller from &#x27;./controller.js&#x27;
+}</code></pre><h2 id="views">Views</h2><p>How you import view specific packages has changed. In 1.x you would import Container like this.</p><pre class="language-js"><code class="language-js">import controller from &#x27;./controller.js&#x27;
 import React from &#x27;react&#x27;
 import {render} from &#x27;react-dom&#x27;
 import {Container} from &#x27;cerebral-view-react&#x27;
@@ -265,11 +265,11 @@ const controller = Controller({
   options: {
      signalsProp: true
    }
-})</code></pre><h2>Model</h2><p>The following functions have been removed from Cerebral 2.x when using state inside an action</p><ul><li>logModel</li><li>export</li><li>findWhere</li><li>keys</li><li>import</li><li>toJs</li><li>toJson</li></ul><h2>Strict render mode</h2><p>To setup strict render mode in 1.x for React was specified as follows.</p><pre class="language-js"><code class="language-js">render(
+})</code></pre><h2 id="model">Model</h2><p>The following functions have been removed from Cerebral 2.x when using state inside an action</p><ul><li>logModel</li><li>export</li><li>findWhere</li><li>keys</li><li>import</li><li>toJs</li><li>toJson</li></ul><h2 id="strict-render-mode">Strict render mode</h2><p>To setup strict render mode in 1.x for React was specified as follows.</p><pre class="language-js"><code class="language-js">render(
   &lt;Container controller={controller} strict&gt;
     &lt;App/&gt;
   &lt;/Container&gt;
-, document.querySelector(&#x27;#app&#x27;))</code></pre><p>In 2.x this is the only mode</p><h2>Devtools</h2><p>The devtools has changed as well. Go to chrome store and install cerebral2 debugger. The setup has slightly changed from 1.x to 2.x as well as the import.</p><h3>1.x</h3><pre class="language-js"><code class="language-js">import Controller from &#x27;cerebral&#x27;
+, document.querySelector(&#x27;#app&#x27;))</code></pre><p>In 2.x this is the only mode</p><h2 id="devtools">Devtools</h2><p>The devtools has changed as well. Go to chrome store and install cerebral2 debugger. The setup has slightly changed from 1.x to 2.x as well as the import.</p><h3 id="1.x">1.x</h3><pre class="language-js"><code class="language-js">import Controller from &#x27;cerebral&#x27;
 import Model from &#x27;cerebral/model/immutable&#x27;
 import Devtools from &#x27;cerebral-module-devtools&#x27;
 
@@ -279,7 +279,7 @@ controller.addModules({
   devtools: process.env.NODE_ENV === &#x27;production&#x27; ? () =&gt; {} : Devtools()
 })
 
-export default controller</code></pre><h3>2.x</h3><pre class="language-js"><code class="language-js">import Controller from &#x27;cerebral&#x27;
+export default controller</code></pre><h3 id="2.x">2.x</h3><pre class="language-js"><code class="language-js">import Controller from &#x27;cerebral&#x27;
 import Devtools from &#x27;cerebral/devtools&#x27;
 
 const controller = Controller({
@@ -289,7 +289,7 @@ const controller = Controller({
   }
 })
 
-export default controller</code></pre><h2>Router</h2><p>The router now defines its routes with an array</p><h3>1.x</h3><pre class="language-js"><code class="language-js">import Controller from &#x27;cerebral&#x27;
+export default controller</code></pre><h2 id="router">Router</h2><p>The router now defines its routes with an array</p><h3 id="1.x">1.x</h3><pre class="language-js"><code class="language-js">import Controller from &#x27;cerebral&#x27;
 import Model from &#x27;cerebral/model/immutable&#x27;
 import Router from &#x27;cerebral-module-router&#x27;
 
@@ -305,7 +305,7 @@ controller.addModules({
   }
 })
 
-export default controller</code></pre><h3>2.x</h3><pre class="language-js"><code class="language-js">import Controller from &#x27;cerebral&#x27;
+export default controller</code></pre><h3 id="2.x">2.x</h3><pre class="language-js"><code class="language-js">import Controller from &#x27;cerebral&#x27;
 import Router from &#x27;@cerebral/router&#x27;
 
 const controller = Controller({
