@@ -13,448 +13,449 @@
 <link rel="stylesheet" href="/main.css" />
 <link rel="stylesheet" href="/prism.css" />
 <link rel="stylesheet" href="/docs.css" />
+<link rel="stylesheet" href="/nav.css" />
+<link rel="stylesheet" href="/search.css" />
   </head>
   <body>
-    <div id="app"><div class="docs-container"><div class="beta">beta</div><div id="navigation" class="docs-navigation"><ul class="docs-navigation-menu"><li class="docs-navigation-item"><a href="/docs/introduction">introduction</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/api">api</a><div class="underline"></div></li><li class="docs-navigation-item active"><a href="/docs/addons">addons</a><div class="underline"></div></li><li class="docs-navigation-item"><a href="/docs/resources">resources</a><div class="underline"></div></li></ul><div class="docs-search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result" class="docs-search-result"></div></div><div class="docs-icons"><a href="https://github.com/cerebral/cerebral" class="docs-icon" target="_new"><div class="docs-icon-github"></div>github repo</a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="docs-icon" target="_new"><div class="docs-icon-discord"></div>chat</a><a href="http://cerebral-website.herokuapp.com/" class="docs-icon" target="_new" style="color:#DD4A68;">old website</a></div></div><div id="navigation-mobile" class="docs-navigation mobile"><div id="hamburger" class="docs-navigation-hamburger"></div><div class="docs-navigation-title mobile">addons</div><div class="docs-navigation-float mobile"><ul class="docs-navigation-menu mobile"><li class="docs-navigation-item mobile"><a href="/docs/introduction">introduction</a></li><li class="docs-navigation-item mobile"><a href="/docs/api">api</a></li><li class="docs-navigation-item active mobile"><a href="/docs/addons">addons</a><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/addons/index.html">@cerebral/router</a></li><li><a href="/docs/addons/http.html">@cerebral/http</a></li><li><a href="/docs/addons/firebase.html">@cerebral/firebase</a></li><li><a href="/docs/addons/useragent.html">@cerebral/useragent</a></li><li class="active"><a href="/docs/addons/forms.html">@cerebral/forms</a><ul><li><a href="#install">install</a></li><li><a href="#description">description</a></li><li><a href="#instantiate">instantiate</a></li><li><a href="#form">form</a></li><li><a href="#field">field</a></li><li><a href="#nesting">nesting</a></li><li><a href="#compute">compute</a></li><li><a href="#provider">provider</a><ul><li><a href="#tojson">toJSON</a></li><li><a href="#reset">reset</a></li><li><a href="#updaterules">updateRules</a></li><li><a href="#updateerrormessages">updateErrorMessages</a></li></ul></li><li><a href="#defaultvalue">defaultValue</a></li><li><a href="#isrequired">isRequired</a></li><li><a href="#isvaluerules">isValueRules</a></li><li><a href="#operators">operators</a><ul><li><a href="#setfield">setField</a></li><li><a href="#isvalidform">isValidForm</a></li><li><a href="#resetform">resetForm</a></li></ul></li><li><a href="#validationrules">validationRules</a><ul><li><a href="#regexp">regexp</a></li><li><a href="#isexisty">isExisty</a></li><li><a href="#isundefined">isUndefined</a></li><li><a href="#isempty">isEmpty</a></li><li><a href="#isemail">isEmail</a></li><li><a href="#isurl">isUrl</a></li><li><a href="#istrue">isTrue</a></li><li><a href="#isfalse">isFalse</a></li><li><a href="#isnumeric">isNumeric</a></li><li><a href="#isalpha">isAlpha</a></li><li><a href="#isalphanumeric">isAlphanumeric</a></li><li><a href="#isint">isInt</a></li><li><a href="#isfloat">isFloat</a></li><li><a href="#iswords">isWords</a></li><li><a href="#isspecialwords">isSpecialWords</a></li><li><a href="#islength:number">isLength:Number</a></li><li><a href="#equals:value">equals:Value</a></li><li><a href="#equalsfield:field">equalsField:Field</a></li><li><a href="#maxlength:number">maxLength:Number</a></li><li><a href="#minlength:number">minLength:Number</a></li><li><a href="#isvalue">isValue</a></li></ul></li></ul></li><li><a href="/docs/addons/storage.html">@cerebral/storage</a></li><li><a href="/docs/addons/firebase_admin.html">@cerebral/firebase-admin</a></li><li><a href="/docs/addons/function_tree.html">function-tree</a></li></ul></div></div></li><li class="docs-navigation-item mobile"><a href="/docs/resources">resources</a></li></ul></div></div><div class="docs-content"><div class="docs-toc"><div class="docs-toc-content"><div><strong>Table of contents</strong></div><ul><li><a href="/docs/addons/index.html">@cerebral/router</a></li><li><a href="/docs/addons/http.html">@cerebral/http</a></li><li><a href="/docs/addons/firebase.html">@cerebral/firebase</a></li><li><a href="/docs/addons/useragent.html">@cerebral/useragent</a></li><li class="active"><a href="/docs/addons/forms.html">@cerebral/forms</a><ul><li><a href="#install">install</a></li><li><a href="#description">description</a></li><li><a href="#instantiate">instantiate</a></li><li><a href="#form">form</a></li><li><a href="#field">field</a></li><li><a href="#nesting">nesting</a></li><li><a href="#compute">compute</a></li><li><a href="#provider">provider</a><ul><li><a href="#tojson">toJSON</a></li><li><a href="#reset">reset</a></li><li><a href="#updaterules">updateRules</a></li><li><a href="#updateerrormessages">updateErrorMessages</a></li></ul></li><li><a href="#defaultvalue">defaultValue</a></li><li><a href="#isrequired">isRequired</a></li><li><a href="#isvaluerules">isValueRules</a></li><li><a href="#operators">operators</a><ul><li><a href="#setfield">setField</a></li><li><a href="#isvalidform">isValidForm</a></li><li><a href="#resetform">resetForm</a></li></ul></li><li><a href="#validationrules">validationRules</a><ul><li><a href="#regexp">regexp</a></li><li><a href="#isexisty">isExisty</a></li><li><a href="#isundefined">isUndefined</a></li><li><a href="#isempty">isEmpty</a></li><li><a href="#isemail">isEmail</a></li><li><a href="#isurl">isUrl</a></li><li><a href="#istrue">isTrue</a></li><li><a href="#isfalse">isFalse</a></li><li><a href="#isnumeric">isNumeric</a></li><li><a href="#isalpha">isAlpha</a></li><li><a href="#isalphanumeric">isAlphanumeric</a></li><li><a href="#isint">isInt</a></li><li><a href="#isfloat">isFloat</a></li><li><a href="#iswords">isWords</a></li><li><a href="#isspecialwords">isSpecialWords</a></li><li><a href="#islength:number">isLength:Number</a></li><li><a href="#equals:value">equals:Value</a></li><li><a href="#equalsfield:field">equalsField:Field</a></li><li><a href="#maxlength:number">maxLength:Number</a></li><li><a href="#minlength:number">minLength:Number</a></li><li><a href="#isvalue">isValue</a></li></ul></li></ul></li><li><a href="/docs/addons/storage.html">@cerebral/storage</a></li><li><a href="/docs/addons/firebase_admin.html">@cerebral/firebase-admin</a></li><li><a href="/docs/addons/function_tree.html">function-tree</a></li></ul></div></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/packages/node_modules/@cerebral/forms/README.md" target="_new">Edit on Github</a></div><h1 id="@cerebral/forms">@cerebral/forms</h1><h2 id="install">install</h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/forms --save</code></p><p><strong>YARN</strong></p><p><code>yarn add @cerebral/forms</code></p><h2 id="description">description</h2><p>The forms provider allows you to easily compute forms based on a number of rules. Easily add new rules, error messages and, if you want, add whatever you want to your fields for custom logic.</p><h2 id="instantiate">instantiate</h2><pre class="language-javascript"><code class="language-javascript">import {Controller} from &#x27;cerebral&#x27;
-import FormsProvider from &#x27;@cerebral/forms&#x27;
+    <div id="app"><div id="docs-container"><div id="nav_mobile-header"><div id="hamburger"></div><div id="nav_mobile-title" title="addons ▸ @cerebral/forms">addons ▸ @cerebral/forms</div></div><div id="nav"><div id="nav_header"><div id="nav_search"><input type="text" id="search-docs" placeholder="search..."/><div id="search-result"></div></div><a href="https://github.com/cerebral/cerebral" class="nav_button" target="_new" title="GitHub"><div class="nav_button-github"></div></a><a href="https://discord.gg/0kIweV4bd2bwwsvH" class="nav_button" target="_new" title="Chat"><div class="nav_button-discord"></div></a><div id="nav_flag">beta</div></div><ul><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link nav_main "><a href="/docs/introduction">introduction</a></div><ul><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/introduction/index.html">The architecture</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/index.html#the-architecture-vision">Vision</a></div></li><li><div class="nav_link"><a href="/docs/introduction/index.html#the-architecture-store-state">Store state</a></div></li><li><div class="nav_link"><a href="/docs/introduction/index.html#the-architecture-render-state">Render state</a></div></li><li><div class="nav_link"><a href="/docs/introduction/index.html#the-architecture-update-state">Update state</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/introduction/install.html">Install</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/install.html#install-boilerplate">Boilerplate</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/introduction/debugger.html">Debugger</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/debugger.html#debugger-install">Install</a></div></li><li><div class="nav_link"><a href="/docs/introduction/debugger.html#debugger-signals">Signals</a></div></li><li><div class="nav_link"><a href="/docs/introduction/debugger.html#debugger-mutations">Mutations</a></div></li><li><div class="nav_link"><a href="/docs/introduction/debugger.html#debugger-components">Components</a></div></li><li><div class="nav_link"><a href="/docs/introduction/debugger.html#debugger-state-tree">State tree</a></div></li><li><div class="nav_link"><a href="/docs/introduction/debugger.html#debugger-initialize">Initialize</a></div></li></ul></li><li><div class="nav_link "><a href="/docs/introduction/state.html">State</a></div></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/introduction/signals.html">Signals</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/signals.html#signals-operators">Operators</a></div></li><li><div class="nav_link"><a href="/docs/introduction/signals.html#signals-paths">Paths</a></div></li><li><div class="nav_link"><a href="/docs/introduction/signals.html#signals-props">Props</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/introduction/signals.html#signals-actions">Actions</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/signals.html#signals-actions-update-props">Update props</a></div></li><li><div class="nav_link"><a href="/docs/introduction/signals.html#signals-actions-async">Async</a></div></li><li><div class="nav_link"><a href="/docs/introduction/signals.html#signals-actions-paths">Paths</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/introduction/signals.html#signals-parallel-execution">Parallel execution</a></div></li><li><div class="nav_link"><a href="/docs/introduction/signals.html#signals-composing">Composing</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/introduction/providers.html">Providers</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/providers.html#providers-the-default-providers">The default providers</a></div></li><li><div class="nav_link"><a href="/docs/introduction/providers.html#providers-adding-a-provider">Adding a provider</a></div></li><li><div class="nav_link"><a href="/docs/introduction/providers.html#providers-creating-a-provider">Creating a provider</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/introduction/modules.html">Modules</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/modules.html#modules-submodules">Submodules</a></div></li><li><div class="nav_link"><a href="/docs/introduction/modules.html#modules-provider">Provider</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/introduction/errors.html">Errors</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/errors.html#errors-catching-errors">Catching errors</a></div></li><li><div class="nav_link"><a href="/docs/introduction/errors.html#errors-catching-globally">Catching globally</a></div></li><li><div class="nav_link"><a href="/docs/introduction/errors.html#errors-creating-an-error-type">Creating an error type</a></div></li></ul></li><li><div class="nav_link "><a href="/docs/introduction/components.html">Components</a></div></li><li><div class="nav_link "><a href="/docs/introduction/compute.html">Compute</a></div></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/introduction/test.html">Test</a></div><ul><li><div class="nav_link"><a href="/docs/introduction/test.html#test-cerebraltest">CerebralTest</a></div></li><li><div class="nav_link"><a href="/docs/introduction/test.html#test-signals">Signals</a></div></li><li><div class="nav_link"><a href="/docs/introduction/test.html#test-actions">Actions</a></div></li><li><div class="nav_link"><a href="/docs/introduction/test.html#test-computed">Computed</a></div></li><li><div class="nav_link"><a href="/docs/introduction/test.html#test-components">Components</a></div></li></ul></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link nav_main "><a href="/docs/api">api</a></div><ul><li><div class="nav_link "><a href="/docs/api/index.html">Devtools</a></div></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/api/controller.html">Controller</a></div><ul><li><div class="nav_link"><a href="/docs/api/controller.html#controller-errors">Errors</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/api/controller.html#controller-methods">Methods</a></div><ul><li><div class="nav_link"><a href="/docs/api/controller.html#controller-methods-getstate">getState</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-methods-getsignal">getSignal</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-methods-getmodel">getModel</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-methods-flush">flush</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-methods-runsignal">runSignal</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-methods-addmodule">addModule</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-methods-removemodule">removeModule</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/api/controller.html#controller-events">Events</a></div><ul><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-initialized">initialized</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-flush">flush</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-start">start</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-end">end</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-pathstart">pathStart</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-pathend">pathEnd</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-functionstart">functionStart</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-functionend">functionEnd</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-asyncfunction">asyncFunction</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-parallelstart">parallelStart</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-parallelprogress">parallelProgress</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-parallelend">parallelEnd</a></div></li><li><div class="nav_link"><a href="/docs/api/controller.html#controller-events-remember">remember</a></div></li></ul></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/api/state.html">State</a></div><ul><li><div class="nav_link"><a href="/docs/api/state.html#state-get-state">Get state</a></div></li><li><div class="nav_link"><a href="/docs/api/state.html#state-updating-state">Updating state</a></div></li><li><div class="nav_link"><a href="/docs/api/state.html#state-special-values-support">Special values support</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/api/signal.html">Signal</a></div><ul><li><div class="nav_link"><a href="/docs/api/signal.html#signal-async">Async</a></div></li><li><div class="nav_link"><a href="/docs/api/signal.html#signal-sequence">Sequence</a></div></li><li><div class="nav_link"><a href="/docs/api/signal.html#signal-parallel">Parallel</a></div></li><li><div class="nav_link"><a href="/docs/api/signal.html#signal-paths">Paths</a></div></li><li><div class="nav_link"><a href="/docs/api/signal.html#signal-errors">Errors</a></div></li></ul></li><li><div class="nav_link "><a href="/docs/api/tags.html">Tags</a></div></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/api/operators.html">Operators</a></div><ul><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators">State operators</a></div><ul><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-concat">concat</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-merge">merge</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-pop">pop</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-push">push</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-set">set</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-shift">shift</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-splice">splice</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-toggle">toggle</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-unset">unset</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-unshift">unshift</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-state-operators-increment">increment</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/api/operators.html#operators-flow-control-operators">Flow control operators</a></div><ul><li><div class="nav_link"><a href="/docs/api/operators.html#operators-flow-control-operators-equals">equals</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-flow-control-operators-debounce">debounce</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-flow-control-operators-wait">wait</a></div></li><li><div class="nav_link"><a href="/docs/api/operators.html#operators-flow-control-operators-when">when</a></div></li></ul></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/api/action.html">Action</a></div><ul><li><div class="nav_link"><a href="/docs/api/action.html#action-props">Props</a></div></li><li><div class="nav_link"><a href="/docs/api/action.html#action-state">State</a></div></li><li><div class="nav_link"><a href="/docs/api/action.html#action-path">Path</a></div></li><li><div class="nav_link"><a href="/docs/api/action.html#action-resolve">Resolve</a></div></li><li><div class="nav_link"><a href="/docs/api/action.html#action-controller">Controller</a></div></li><li><div class="nav_link"><a href="/docs/api/action.html#action-execution">Execution</a></div></li></ul></li><li><div class="nav_link "><a href="/docs/api/module.html">Module</a></div></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/api/providers.html">Providers</a></div><ul><li><div class="nav_link"><a href="/docs/api/providers.html#providers-example-provider">Example provider</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/api/components.html">Components</a></div><ul><li><div class="nav_link"><a href="/docs/api/components.html#components-react">React</a></div></li><li><div class="nav_link"><a href="/docs/api/components.html#components-inferno">Inferno</a></div></li><li><div class="nav_link"><a href="/docs/api/components.html#components-preact-(beta)">Preact (BETA)</a></div></li><li><div class="nav_link"><a href="/docs/api/components.html#components-angularjs-(beta)">Angularjs (BETA)</a></div></li><li><div class="nav_link"><a href="/docs/api/components.html#components-vue-(beta)">Vue (BETA)</a></div></li><li><div class="nav_link"><a href="/docs/api/components.html#components-composing-dependencies">Composing dependencies</a></div></li><li><div class="nav_link"><a href="/docs/api/components.html#components-optimize-rendering">Optimize rendering</a></div></li></ul></li><li><div class="nav_link "><a href="/docs/api/compute.html">Compute</a></div></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/api/universalcontroller.html">Universal Controller</a></div><ul><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/api/universalcontroller.html#universal-controller-methods">Methods</a></div><ul><li><div class="nav_link"><a href="/docs/api/universalcontroller.html#universal-controller-methods-run">run</a></div></li><li><div class="nav_link"><a href="/docs/api/universalcontroller.html#universal-controller-methods-getscript">getScript</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/api/universalcontroller.html#universal-controller-render">Render</a></div></li><li><div class="nav_link"><a href="/docs/api/universalcontroller.html#universal-controller-es6-on-server">ES6 on server</a></div></li></ul></li></ul></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link nav_main nav_open"><a href="/docs/addons">addons</a></div><ul><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/addons/index.html">@cerebral/router</a></div><ul><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-install">Install</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-description">Description</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api">API</a></div><ul><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-instantiate">instantiate</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-routes">routes</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-geturl">getUrl</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-geturlbase">getUrlBase</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-geturlquery">getUrlQuery</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-goto">goTo</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-redirect">redirect</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-reload">reload</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-redirecttosignal">redirectToSignal</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-experimental">EXPERIMENTAL</a></div><ul><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-experimental-mapping">mapping</a></div></li><li><div class="nav_link"><a href="/docs/addons/index.html#@cerebral/router-api-experimental-computed-mapping">computed mapping</a></div></li></ul></li></ul></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/addons/http.html">@cerebral/http</a></div><ul><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-install">install</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-description">description</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-instantiate">instantiate</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-error">error</a></div><ul><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-error-httpprovidererror">HttpProviderError</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-request">request</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-get">get</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-post">post</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-put">put</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-patch">patch</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-delete">delete</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-uploadfile">uploadFile</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-abort">abort</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-response">response</a></div></li><li><div class="nav_link"><a href="/docs/addons/http.html#@cerebral/http-cors">cors</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/addons/firebase.html">@cerebral/firebase</a></div><ul><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-install">install</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-description">description</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-instantiate">instantiate</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-error">error</a></div><ul><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-error-firebaseprovidererror-(base)">FirebaseProviderError (base)</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-error-firebaseproviderauthenticationerror">FirebaseProviderAuthenticationError</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-set">set</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-update">update</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-push">push</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-remove">remove</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-transaction">transaction</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-value">value</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-onvalue">onValue</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-onchildadded">onChildAdded</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-onchildremoved">onChildRemoved</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-onchildchanged">onChildChanged</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-off">off</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-task">task</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-getuser">getUser</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-signinanonymously">signInAnonymously</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-createuserwithemailandpassword">createUserWithEmailAndPassword</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-signinwithemailandpassword">signInWithEmailAndPassword</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-signinwith{provider}">signInWith{PROVIDER}</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-signinwithcustomtoken">signInWithCustomToken</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-linkwithfacebook{provider}">linkWithFacebook{PROVIDER}</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-signout">signOut</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-sendpasswordresetemail">sendPasswordResetEmail</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-setondisconnect">setOnDisconnect</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-cancelondisconnect">cancelOnDisconnect</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-put">put</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase.html#@cerebral/firebase-delete">delete</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/addons/useragent.html">@cerebral/useragent</a></div><ul><li><div class="nav_link"><a href="/docs/addons/useragent.html#@cerebral/useragent-install">install</a></div></li><li><div class="nav_link"><a href="/docs/addons/useragent.html#@cerebral/useragent-description">description</a></div></li><li><div class="nav_link"><a href="/docs/addons/useragent.html#@cerebral/useragent-instantiate">instantiate</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link nav_open"><a href="/docs/addons/forms.html">@cerebral/forms</a></div><ul><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-install">install</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-description">description</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-instantiate">instantiate</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-form">form</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-field">field</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-nesting">nesting</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-compute">compute</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-provider">provider</a></div><ul><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-provider-tojson">toJSON</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-provider-reset">reset</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-provider-updaterules">updateRules</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-provider-updateerrormessages">updateErrorMessages</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-defaultvalue">defaultValue</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-isrequired">isRequired</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-isvaluerules">isValueRules</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-operators">operators</a></div><ul><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-operators-setfield">setField</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-operators-isvalidform">isValidForm</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-operators-resetform">resetForm</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules">validationRules</a></div><ul><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-regexp">regexp</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isexisty">isExisty</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isundefined">isUndefined</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isempty">isEmpty</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isemail">isEmail</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isurl">isUrl</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-istrue">isTrue</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isfalse">isFalse</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isnumeric">isNumeric</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isalpha">isAlpha</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isalphanumeric">isAlphanumeric</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isint">isInt</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isfloat">isFloat</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-iswords">isWords</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isspecialwords">isSpecialWords</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-islength:number">isLength:Number</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-equals:value">equals:Value</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-equalsfield:field">equalsField:Field</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-maxlength:number">maxLength:Number</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-minlength:number">minLength:Number</a></div></li><li><div class="nav_link"><a href="/docs/addons/forms.html#@cerebral/forms-validationrules-isvalue">isValue</a></div></li></ul></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/addons/storage.html">@cerebral/storage</a></div><ul><li><div class="nav_link"><a href="/docs/addons/storage.html#@cerebral/storage-install">install</a></div></li><li><div class="nav_link"><a href="/docs/addons/storage.html#@cerebral/storage-description">description</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/storage.html#@cerebral/storage-api">API</a></div><ul><li><div class="nav_link"><a href="/docs/addons/storage.html#@cerebral/storage-api-instantiate">instantiate</a></div></li><li><div class="nav_link"><a href="/docs/addons/storage.html#@cerebral/storage-api-set">set</a></div></li><li><div class="nav_link"><a href="/docs/addons/storage.html#@cerebral/storage-api-get">get</a></div></li><li><div class="nav_link"><a href="/docs/addons/storage.html#@cerebral/storage-api-remove">remove</a></div></li></ul></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/addons/firebase_admin.html">@cerebral/firebase-admin</a></div><ul><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-install">install</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-description">description</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider">Provider</a></div><ul><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider-value">value</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider-transaction">transaction</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider-set">set</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider-push">push</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider-update">update</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider-createkey">createKey</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider-deleteuser">deleteUser</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-provider-remove">remove</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-task">task</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-queuehandler">QueueHandler</a></div></li><li><div class="nav_link"><a href="/docs/addons/firebase_admin.html#@cerebral/firebase-admin-testtasks">TestTasks</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/addons/function_tree.html">function-tree</a></div><ul><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-install">Install</a></div></li><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-description">Description</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-api">API</a></div><ul><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-api-instantiate">instantiate</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors">errors</a></div><ul><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-functiontreeerror-(base)">FunctionTreeError (base)</a></div></li><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-functiontreeexecutionerror">FunctionTreeExecutionError</a></div></li><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-devtools">devtools</a></div></li><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-sequence">sequence</a></div></li><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-parallel">parallel</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-context">context</a></div><ul><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-context-props">props</a></div></li><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-context-path">path</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-error">error</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-provider">provider</a></div><ul><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-provider-stopexecutionprovider">StopExecutionProvider</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/addons/function_tree.html#function-tree-errors-events">events</a></div></li></ul></li></ul></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link nav_main "><a href="/docs/resources">resources</a></div><ul><li><div class="nav_link "><a href="/docs/resources/index.html">Cerebral in depth</a></div></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/resources/boilerplates.html">Boilerplates</a></div><ul><li><div class="nav_link"><a href="/docs/resources/boilerplates.html#boilerplates-create-react-app">create-react-app</a></div></li><li><div class="nav_link"><a href="/docs/resources/boilerplates.html#boilerplates-saitodisse/cerebral2-boilerplates">saitodisse/cerebral2-boilerplates</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle"/><span class="nav_toggle-label"></span><div class="nav_link "><a href="/docs/resources/migration.html">Migration</a></div><ul><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-controller">Controller</a></div></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-modules">Modules</a></div></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-operators">Operators</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/resources/migration.html#migration-signals">Signals</a></div><ul><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-signals-1.x">1.x</a></div></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-signals-2.x">2.x</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/resources/migration.html#migration-actions">Actions</a></div><ul><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-actions-1.x">1.x</a></div></li></ul></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-providers-(outdates-services)">Providers (outdates services)</a></div></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-views">Views</a></div></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-model">Model</a></div></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-strict-render-mode">Strict render mode</a></div></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/resources/migration.html#migration-devtools">Devtools</a></div><ul><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-devtools-1.x">1.x</a></div></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-devtools-2.x">2.x</a></div></li></ul></li><li><input type="checkbox" class="nav_toggle" checked=""/><span class="nav_toggle-label"></span><div class="nav_link"><a href="/docs/resources/migration.html#migration-router">Router</a></div><ul><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-router-1.x">1.x</a></div></li><li><div class="nav_link"><a href="/docs/resources/migration.html#migration-router-2.x">2.x</a></div></li></ul></li></ul></li><li><div class="nav_link "><a href="/docs/resources/articles.html">Articles</a></div></li><li><div class="nav_link "><a href="/docs/resources/videos.html">Videos</a></div></li><li><div class="nav_link "><a href="/docs/resources/projects.html">Cerebral projects</a></div></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/master/packages/node_modules/@cerebral/forms/README.md" target="_new">Edit on Github</a></div><h1 id="@cerebral/forms">@cerebral/forms</h1><h2 id="@cerebral/forms-install">install</h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/forms</code></p><h2 id="@cerebral/forms-description">description</h2><p>The forms provider allows you to easily compute forms based on a number of rules. Easily add new rules, error messages and, if you want, add whatever you want to your fields for custom logic.</p><h2 id="@cerebral/forms-instantiate">instantiate</h2><pre><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> FormsProvider <span class="token keyword">from</span> <span class="token string">'@cerebral/forms'</span>
 
-const controller = Controller({
-  providers: [
-    FormsProvider({
-      // Add additional rules
-      rules: {
-        myAddedRule (value, arg, get) {
-          // value of the field
+<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  providers<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token function">FormsProvider</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// Add additional rules</span>
+      rules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        myAddedRule <span class="token punctuation">(</span>value<span class="token punctuation">,</span> arg<span class="token punctuation">,</span> <span class="token keyword">get</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// value of the field</span>
           value
-          // arg passed to the rule
+          <span class="token comment" spellcheck="true">// arg passed to the rule</span>
           arg
-          // The &quot;get&quot; argument from computed. Use it to grab
-          // state or props passed to component. The component
-          // will track use of these dependencies for rerender
-          get
+          <span class="token comment" spellcheck="true">// The "get" argument from computed. Use it to grab</span>
+          <span class="token comment" spellcheck="true">// state or props passed to component. The component</span>
+          <span class="token comment" spellcheck="true">// will track use of these dependencies for rerender</span>
+          <span class="token keyword">get</span>
 
-          return true
-        }
-      },
+          <span class="token keyword">return</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-      // errorMessage property added to field when invalid with the following rules
-      errorMessages: {
-        minLength (value, minLength) {
-          return `The length is ${value.length}, should be equal or more than ${minLength}`
-        }
-      }
-    })
-  ]
-})</code></pre><h2 id="form">form</h2><p>A form is just an object in the state tree:</p><pre class="language-js"><code class="language-js">{
-  myForm: {}
-}</code></pre><h2 id="field">field</h2><p>A field is just an object with a <code>value</code> property:</p><pre class="language-js"><code class="language-js">{
-  myForm: {
-    myField: {
-      value: &#x27;&#x27;
-    }
-  }
-}</code></pre><h2 id="nesting">nesting</h2><p>You can nest this however you want, even with array:</p><pre class="language-js"><code class="language-js">{
-  myForm: {
-    firstName: {value: &#x27;&#x27;},
-    lastName: {value: &#x27;&#x27;},
-    address: [{
-      street: {value: &#x27;&#x27;},
-      zipCode: {value: &#x27;&#x27;}
-    }],
-    interests: {
-      books: {value: false},
-      films: {value: false}
-    }
-  }
-}</code></pre><h2 id="compute">compute</h2><p>To use a form you use the <strong>form</strong> computed, pointing to the form. Typically:</p><pre class="language-js"><code class="language-js">import React from &#x27;react&#x27;
-import {connect} from &#x27;cerebral/react&#x27;
-import {form} from &#x27;@cerebral/forms&#x27;
+      <span class="token comment" spellcheck="true">// errorMessage property added to field when invalid with the following rules</span>
+      errorMessages<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        minLength <span class="token punctuation">(</span>value<span class="token punctuation">,</span> minLength<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`The length is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token punctuation">.</span>length<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, should be equal or more than </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>minLength<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2 id="@cerebral/forms-form">form</h2><p>A form is just an object in the state tree:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-field">field</h2><p>A field is just an object with a <code>value</code> property:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    myField<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      value<span class="token punctuation">:</span> <span class="token string">''</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-nesting">nesting</h2><p>You can nest this however you want, even with array:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    lastName<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    address<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+      street<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      zipCode<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    interests<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      books<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      films<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-compute">compute</h2><p>To use a form you use the <strong>form</strong> computed, pointing to the form. Typically:</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>form<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms'</span>
 
-export default connect({
-  form: form(state`path.to.form`)
-},
-  function MyForm ({form}) {
-    // Value of some field
-    form.someField.value
-    // A true/false if field has a value
-    form.someField.hasValue
-    // A true/false if field has been changed
-    form.someField.isPristine
-    // A true/false if field is valid
-    form.someField.isValid
-    // The name of the rule that failed
-    form.someField.failedRule.name
-    // Any arg you passed to the failing rule
-    form.someField.failedRule.arg
-    // If you have defined global error messages and field is invalid
-    form.someField.errorMessage
-    // Get all invalid fields
-    form.getInvalidFields()
-    // Get all fields
-    form.getFields()
-  }
-)</code></pre><p>You can also use the <strong>field</strong> computed, pointing to the field. This will optimize rendering as only the field will render on change.</p><pre class="language-js"><code class="language-js">import React from &#x27;react&#x27;
-import {connect} from &#x27;cerebral/react&#x27;
-import {field} from &#x27;@cerebral/forms&#x27;
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  form<span class="token punctuation">:</span> <span class="token function">form</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`path.to.form`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> MyForm <span class="token punctuation">(</span><span class="token punctuation">{</span>form<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Value of some field</span>
+    form<span class="token punctuation">.</span>someField<span class="token punctuation">.</span>value
+    <span class="token comment" spellcheck="true">// A true/false if field has a value</span>
+    form<span class="token punctuation">.</span>someField<span class="token punctuation">.</span>hasValue
+    <span class="token comment" spellcheck="true">// A true/false if field has been changed</span>
+    form<span class="token punctuation">.</span>someField<span class="token punctuation">.</span>isPristine
+    <span class="token comment" spellcheck="true">// A true/false if field is valid</span>
+    form<span class="token punctuation">.</span>someField<span class="token punctuation">.</span>isValid
+    <span class="token comment" spellcheck="true">// The name of the rule that failed</span>
+    form<span class="token punctuation">.</span>someField<span class="token punctuation">.</span>failedRule<span class="token punctuation">.</span>name
+    <span class="token comment" spellcheck="true">// Any arg you passed to the failing rule</span>
+    form<span class="token punctuation">.</span>someField<span class="token punctuation">.</span>failedRule<span class="token punctuation">.</span>arg
+    <span class="token comment" spellcheck="true">// If you have defined global error messages and field is invalid</span>
+    form<span class="token punctuation">.</span>someField<span class="token punctuation">.</span>errorMessage
+    <span class="token comment" spellcheck="true">// Get all invalid fields</span>
+    form<span class="token punctuation">.</span><span class="token function">getInvalidFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true">// Get all fields</span>
+    form<span class="token punctuation">.</span><span class="token function">getFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span></code></pre><p>You can also use the <strong>field</strong> computed, pointing to the field. This will optimize rendering as only the field will render on change.</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>field<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms'</span>
 
-export default connect({
-  field: field(state`path.to.form.name`)
-},
-  function MyField ({field}) {
-    // Value of some field
-    field.value
-    // A true/false if field has a value
-    field.hasValue
-    // A true/false if field has been changed
-    field.isPristine
-    // A true/false if field is valid
-    field.isValid
-  }
-)</code></pre><h2 id="provider">provider</h2><p>You can also access your forms in actions.</p><pre class="language-js"><code class="language-js">function myAction ({forms}) {
-  const form = forms.get(&#x27;path.to.form&#x27;)
-}</code></pre><h3 id="tojson">toJSON</h3><p>Typically you want to convert your forms to a plain value structure.</p><pre class="language-js"><code class="language-js">function myAction ({forms}) {
-  const form = forms.toJSON(&#x27;path.to.form&#x27;)
-}</code></pre><p>This form will now have the structure of:</p><pre class="language-js"><code class="language-js">{
-  myField: &#x27;theValue&#x27;,
-  address: {
-    street: &#x27;street value&#x27;,
-    zipCode: &#x27;zip code value&#x27;
-  }
-}</code></pre><h3 id="reset">reset</h3><p>Reset the form to its default values (or empty string by default).</p><pre class="language-js"><code class="language-js">function myAction ({forms}) {
-  forms.reset(&#x27;path.to.form&#x27;)
-}</code></pre><h3 id="updaterules">updateRules</h3><p>Dynamically update available rules:</p><pre class="language-js"><code class="language-js">function myAction ({forms}) {
-  forms.updateRules({
-    someNewRule () {}
-  })
-}</code></pre><h3 id="updateerrormessages">updateErrorMessages</h3><p>Dynamically update global error messages:</p><pre class="language-js"><code class="language-js">function myAction ({forms}) {
-  forms.updateErrorMessages({
-    someRule () {}
-  })
-}</code></pre><h2 id="defaultvalue">defaultValue</h2><p>You can define a default value for your fields. When the form is <strong>reset</strong>, it will put back the default value:</p><pre class="language-js"><code class="language-js">{
-  myForm: {
-    firstName: {
-      value: &#x27;&#x27;,
-      defaultValue: &#x27;Ben&#x27;
-    }
-  }
-}</code></pre><h2 id="isrequired">isRequired</h2><p>Define field as required. This will make the field invalid if there is no value. By default forms identifies a value or not
-using the <strong>isValue</strong> rule. You can change this rule if you want, look below.</p><pre class="language-js"><code class="language-js">{
-  myForm: {
-    firstName: {
-      value: &#x27;&#x27;,
-      isRequired: true
-    }
-  }
-}</code></pre><h2 id="isvaluerules">isValueRules</h2><p>You can change what defines a field as having a value. For example if your value is an array, you can use the <strong>minLength</strong> rule to
-define a required minimum of 3 items in the array.</p><pre class="language-js"><code class="language-js">{
-  myForm: {
-    interests: {
-      value: [],
-      isRequired: true,
-      isValueRules: [&#x27;minLength:3&#x27;]
-    }
-  }
-}</code></pre><h2 id="operators">operators</h2><h3 id="setfield">setField</h3><p>When you change the value of a field you will need to use this operator. Note that you point to the field, not the field value.</p><pre class="language-js"><code class="language-js">import {state, props} from &#x27;cerebral/tags&#x27;
-import {setField} from &#x27;@cerebral/forms/operators&#x27;
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  field<span class="token punctuation">:</span> <span class="token function">field</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`path.to.form.name`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> MyField <span class="token punctuation">(</span><span class="token punctuation">{</span>field<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Value of some field</span>
+    field<span class="token punctuation">.</span>value
+    <span class="token comment" spellcheck="true">// A true/false if field has a value</span>
+    field<span class="token punctuation">.</span>hasValue
+    <span class="token comment" spellcheck="true">// A true/false if field has been changed</span>
+    field<span class="token punctuation">.</span>isPristine
+    <span class="token comment" spellcheck="true">// A true/false if field is valid</span>
+    field<span class="token punctuation">.</span>isValid
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span></code></pre><h2 id="@cerebral/forms-provider">provider</h2><p>You can also access your forms in actions.</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> form <span class="token operator">=</span> forms<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'path.to.form'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-provider-tojson">toJSON</h3><p>Typically you want to convert your forms to a plain value structure.</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> form <span class="token operator">=</span> forms<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token string">'path.to.form'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre><p>This form will now have the structure of:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myField<span class="token punctuation">:</span> <span class="token string">'theValue'</span><span class="token punctuation">,</span>
+  address<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    street<span class="token punctuation">:</span> <span class="token string">'street value'</span><span class="token punctuation">,</span>
+    zipCode<span class="token punctuation">:</span> <span class="token string">'zip code value'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-provider-reset">reset</h3><p>Reset the form to its default values (or empty string by default).</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  forms<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token string">'path.to.form'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-provider-updaterules">updateRules</h3><p>Dynamically update available rules:</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  forms<span class="token punctuation">.</span><span class="token function">updateRules</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    someNewRule <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-provider-updateerrormessages">updateErrorMessages</h3><p>Dynamically update global error messages:</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  forms<span class="token punctuation">.</span><span class="token function">updateErrorMessages</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    someRule <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-defaultvalue">defaultValue</h2><p>You can define a default value for your fields. When the form is <strong>reset</strong>, it will put back the default value:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      defaultValue<span class="token punctuation">:</span> <span class="token string">'Ben'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-isrequired">isRequired</h2><p>Define field as required. This will make the field invalid if there is no value. By default forms identifies a value or not
+using the <strong>isValue</strong> rule. You can change this rule if you want, look below.</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      isRequired<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-isvaluerules">isValueRules</h2><p>You can change what defines a field as having a value. For example if your value is an array, you can use the <strong>minLength</strong> rule to
+define a required minimum of 3 items in the array.</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    interests<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+      isRequired<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      isValueRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-operators">operators</h2><h3 id="@cerebral/forms-operators-setfield">setField</h3><p>When you change the value of a field you will need to use this operator. Note that you point to the field, not the field value.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>setField<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
 
-export default [
-  setField(state`my.form.field`, props`value`)
-]</code></pre><h3 id="isvalidform">isValidForm</h3><p>Diverge execution based on validity of a form.</p><pre class="language-js"><code class="language-js">import {state} from &#x27;cerebral/tags&#x27;
-import {isValidForm} from &#x27;@cerebral/forms/operators&#x27;
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token function">setField</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form.field`</span></span><span class="token punctuation">,</span> props<span class="token template-string"><span class="token string">`value`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/forms-operators-isvalidform">isValidForm</h3><p>Diverge execution based on validity of a form.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>isValidForm<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
 
-export default [
-  isValidForm(state`my.form`) {
-    true: [],
-    false: []
-  }
-]</code></pre><h3 id="resetform">resetForm</h3><p>Reset a form.</p><pre class="language-js"><code class="language-js">import {state} from &#x27;cerebral/tags&#x27;
-import {resetForm} from &#x27;@cerebral/forms/operators&#x27;
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token function">isValidForm</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form`</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token boolean">true</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token boolean">false</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/forms-operators-resetform">resetForm</h3><p>Reset a form.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>resetForm<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
 
-export default [
-  resetForm(state`my.form`)
-]</code></pre><h2 id="validationrules">validationRules</h2><p>You add validation rules on the field:</p><pre class="language-js"><code class="language-js">{
-  myForm: {
-    firstName: {
-      value: &#x27;&#x27;,
-      validationRules: [&#x27;minLength:3&#x27;]
-    }
-  }
-}</code></pre><h3 id="regexp">regexp</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;foo&#x27;, // valid
-    validationRules: [/foo/]
-  },
-  field2: {
-    value: &#x27;bar&#x27;, // not valid
-    validationRules: [/foo/]
-  }
-}</code></pre><h3 id="isexisty">isExisty</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: 0, // valid
-    validationRules: [&#x27;isExisty&#x27;]
-  },
-  field2: {
-    value: [], // valid
-    validationRules: [&#x27;isExisty&#x27;]
-  },
-  field3: {
-    value: null, // not valid
-    validationRules: [&#x27;isExisty&#x27;]
-  }
-}</code></pre><h3 id="isundefined">isUndefined</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: undefined, // valid
-    validationRules: [&#x27;isUndefined&#x27;]
-  },
-  field2: {
-    value: &#x27;hello&#x27;, // not valid
-    validationRules: [&#x27;isUndefined&#x27;]
-  },
-  field3: {
-    value: 123, // not valid
-    validationRules: [&#x27;isUndefined&#x27;]
-  }
-}</code></pre><h3 id="isempty">isEmpty</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;&#x27;, // valid
-    validationRules: [&#x27;isEmpty&#x27;]
-  },
-  field2: {
-    value: &#x27;hello&#x27;, // not valid
-    validationRules: [&#x27;isEmpty&#x27;]
-  },
-  field3: {
-    value: 123, // not valid
-    validationRules: [&#x27;isEmpty&#x27;]
-  }
-}</code></pre><h3 id="isemail">isEmail</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;ho@hep.co&#x27;, // valid
-    validationRules: [&#x27;isEmail&#x27;]
-  },
-  field2: {
-    value: &#x27;hello@&#x27;, // not valid
-    validationRules: [&#x27;isEmail&#x27;]
-  },
-  field3: {
-    value: &#x27;hel.co&#x27;, // not valid
-    validationRules: [&#x27;isEmail&#x27;]
-  }
-}</code></pre><h3 id="isurl">isUrl</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;http://www.test.com&#x27;, // valid
-    validationRules: [&#x27;isUrl&#x27;]
-  },
-  field2: {
-    value: &#x27;http://www&#x27;, // not valid
-    validationRules: [&#x27;isUrl&#x27;]
-  },
-  field3: {
-    value: &#x27;http//www&#x27;, // not valid
-    validationRules: [&#x27;isUrl&#x27;]
-  }
-}</code></pre><h3 id="istrue">isTrue</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: true, // valid
-    validationRules: [&#x27;isTrue&#x27;]
-  },
-  field2: {
-    value: &#x27;true&#x27;, // not valid
-    validationRules: [&#x27;isTrue&#x27;]
-  },
-  field3: {
-    value: false, // not valid
-    validationRules: [&#x27;isTrue&#x27;]
-  }
-}</code></pre><h3 id="isfalse">isFalse</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: false, // valid
-    validationRules: [&#x27;isFalse&#x27;]
-  },
-  field2: {
-    value: &#x27;false&#x27;, // not valid
-    validationRules: [&#x27;isFalse&#x27;]
-  },
-  field3: {
-    value: true, // not valid
-    validationRules: [&#x27;isFalse&#x27;]
-  }
-}</code></pre><h3 id="isnumeric">isNumeric</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;123&#x27;, // valid
-    validationRules: [&#x27;isNumeric&#x27;]
-  },
-  field2: {
-    value: 123, // valid
-    validationRules: [&#x27;isNumeric&#x27;]
-  },
-  field3: {
-    value: &#x27;123abc&#x27;, // not valid
-    validationRules: [&#x27;isNumeric&#x27;]
-  }
-}</code></pre><h3 id="isalpha">isAlpha</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;abc&#x27;, // valid
-    validationRules: [&#x27;isAlpha&#x27;]
-  },
-  field2: {
-    value: &#x27;AbC&#x27;, // valid
-    validationRules: [&#x27;isAlpha&#x27;]
-  },
-  field3: {
-    value: &#x27;123abc&#x27;, // not valid
-    validationRules: [&#x27;isAlpha&#x27;]
-  }
-}</code></pre><h3 id="isalphanumeric">isAlphanumeric</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;123abc&#x27;, // valid
-    validationRules: [&#x27;isAlphanumeric&#x27;]
-  },
-  field2: {
-    value: &#x27;123&#x27;, // valid
-    validationRules: [&#x27;isAlphanumeric&#x27;]
-  },
-  field3: {
-    value: &#x27;123+abc&#x27;, // not valid
-    validationRules: [&#x27;isAlphanumeric&#x27;]
-  }
-}</code></pre><h3 id="isint">isInt</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;123&#x27;, // valid
-    validationRules: [&#x27;isInt&#x27;]
-  },
-  field2: {
-    value: 123, // valid
-    validationRules: [&#x27;isInt&#x27;]
-  },
-  field3: {
-    value: &#x27;22.5&#x27;, // not valid
-    validationRules: [&#x27;isInt&#x27;]
-  }
-}</code></pre><h3 id="isfloat">isFloat</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;22.5&#x27;, // valid
-    validationRules: [&#x27;isFloat&#x27;]
-  },
-  field2: {
-    value: 22.5, // valid
-    validationRules: [&#x27;isFloat&#x27;]
-  },
-  field3: {
-    value: &#x27;22&#x27;, // not valid
-    validationRules: [&#x27;isFloat&#x27;]
-  }
-}</code></pre><h3 id="iswords">isWords</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;hey there&#x27;, // valid
-    validationRules: [&#x27;isWords&#x27;]
-  },
-  field2: {
-    value: &#x27;wut åäö&#x27;, // not valid
-    validationRules: [&#x27;isWords&#x27;]
-  },
-  field3: {
-    value: &#x27;hm 123&#x27;, // not valid
-    validationRules: [&#x27;isWords&#x27;]
-  }
-}</code></pre><h3 id="isspecialwords">isSpecialWords</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;hey there&#x27;, // valid
-    validationRules: [&#x27;isSpecialWords&#x27;]
-  },
-  field2: {
-    value: &#x27;some  åäö&#x27;, // valid
-    validationRules: [&#x27;isSpecialWords&#x27;]
-  },
-  field3: {
-    value: &#x27;hm 123&#x27;, // not valid
-    validationRules: [&#x27;isSpecialWords&#x27;]
-  }
-}</code></pre><h3 id="islength:number">isLength:Number</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;hey&#x27;, // valid
-    validationRules: [&#x27;isLength:3&#x27;]
-  },
-  field2: {
-    value: [&#x27;foo&#x27;, &#x27;bar&#x27;], // valid
-    validationRules: [&#x27;isLength:2&#x27;]
-  },
-  field3: {
-    value: &#x27;hm 123&#x27;, // not valid
-    validationRules: [&#x27;isLength:3&#x27;]
-  }
-}</code></pre><h3 id="equals:value">equals:Value</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: 123, // valid
-    validationRules: [&#x27;equals:123&#x27;]
-  },
-  field2: {
-    value: &#x27;123&#x27;, // valid
-    validationRules: [&#x27;equals:&quot;123&quot;&#x27;]
-  },
-  field3: {
-    value: [], // not valid
-    validationRules: [&#x27;equals:[]&#x27;]
-  }
-}</code></pre><h3 id="equalsfield:field">equalsField:Field</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;foo&#x27;, // valid
-    validationRules: [&#x27;equalsField:field2&#x27;]
-  },
-  field2: {
-    value: &#x27;foo&#x27;, // valid
-    validationRules: [&#x27;equalsField:field1&#x27;]
-  },
-  field3: {
-    value: &#x27;bar&#x27;, // not valid
-    validationRules: [&#x27;equalsField:field2&#x27;]
-  }
-}</code></pre><h3 id="maxlength:number">maxLength:Number</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;123&#x27;, // valid
-    validationRules: [&#x27;maxLength:3&#x27;]
-  },
-  field2: {
-    value: &#x27;fo&#x27;, // valid
-    validationRules: [&#x27;maxLength:3&#x27;]
-  },
-  field3: {
-    value: [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;, &#x27;mip&#x27;], // not valid
-    validationRules: [&#x27;maxLength:3&#x27;]
-  }
-}</code></pre><h3 id="minlength:number">minLength:Number</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;123&#x27;, // valid
-    validationRules: [&#x27;minLength:3&#x27;]
-  },
-  field2: {
-    value: &#x27;fo&#x27;, // not valid
-    validationRules: [&#x27;minLength:3&#x27;]
-  },
-  field3: {
-    value: [&#x27;foo&#x27;, &#x27;bar&#x27;, &#x27;baz&#x27;, &#x27;mip&#x27;], // valid
-    validationRules: [&#x27;minLength:3&#x27;]
-  }
-}</code></pre><h3 id="isvalue">isValue</h3><pre class="language-js"><code class="language-js">{
-  field1: {
-    value: &#x27;test&#x27;, // valid
-    validationRules: [&#x27;isValue&#x27;]
-  },
-  field2: {
-    value: [], // not valid
-    validationRules: [&#x27;isValue&#x27;]
-  },
-  field3: {
-    value: null, // not valid
-    validationRules: [&#x27;isValue&#x27;]
-  },
-  field3: {
-    value: false, // not valid
-    validationRules: [&#x27;isValue&#x27;]
-  }
-}</code></pre></div></div></div></div></div>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token function">resetForm</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form`</span></span><span class="token punctuation">)</span>
+<span class="token punctuation">]</span></code></pre><h2 id="@cerebral/forms-validationrules">validationRules</h2><p>You add validation rules on the field:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    firstName<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
+      validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-regexp">regexp</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">/</span>foo<span class="token operator">/</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">/</span>foo<span class="token operator">/</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isexisty">isExisty</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isExisty'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isExisty'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isExisty'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isundefined">isUndefined</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> undefined<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUndefined'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUndefined'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUndefined'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isempty">isEmpty</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmpty'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hello'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmpty'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmpty'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isemail">isEmail</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'ho@hep.co'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmail'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hello@'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmail'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hel.co'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmail'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isurl">isUrl</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'http://www.test.com'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUrl'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'http://www'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUrl'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'http//www'</span><span class="token punctuation">,</span> <span class="token operator">/</span><span class="token operator">/</span> not valid
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUrl'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-istrue">isTrue</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isTrue'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'true'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isTrue'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isTrue'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isfalse">isFalse</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFalse'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'false'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFalse'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFalse'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isnumeric">isNumeric</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isNumeric'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isNumeric'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isNumeric'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isalpha">isAlpha</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlpha'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'AbC'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlpha'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlpha'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isalphanumeric">isAlphanumeric</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlphanumeric'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlphanumeric'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123+abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlphanumeric'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isint">isInt</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isInt'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isInt'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'22.5'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isInt'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isfloat">isFloat</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'22.5'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFloat'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">22.5</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFloat'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'22'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFloat'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-iswords">isWords</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hey there'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isWords'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'wut åäö'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isWords'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hm 123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isWords'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isspecialwords">isSpecialWords</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hey there'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isSpecialWords'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'some  åäö'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isSpecialWords'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hm 123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isSpecialWords'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-islength:number">isLength:Number</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hey'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isLength:3'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isLength:2'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'hm 123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isLength:3'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-equals:value">equals:Value</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equals:123'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equals:"123"'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equals:[]'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-equalsfield:field">equalsField:Field</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equalsField:field2'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equalsField:field1'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equalsField:field2'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-maxlength:number">maxLength:Number</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'maxLength:3'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'fo'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'maxLength:3'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> <span class="token string">'mip'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'maxLength:3'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-minlength:number">minLength:Number</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'fo'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> <span class="token string">'mip'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isvalue">isValue</h3><pre><code class="language-js"><span class="token punctuation">{</span>
+  field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isValue'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field2<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isValue'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isValue'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  field3<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
+    validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isValue'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div></div></div></div>
     
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js"></script>
 <script src="/search.js"></script>
 <script src="/mobile.js"></script>
   </body>
