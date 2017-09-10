@@ -29,11 +29,13 @@
         databaseURL<span class="token punctuation">:</span> <span class="token string">'{databaseURL}'</span><span class="token punctuation">,</span>
         storageBucket<span class="token punctuation">:</span> <span class="token string">'{storageBucket}'</span>
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token comment" spellcheck="true">// When using tasks and firebase queue you can prefix</span>
-      <span class="token comment" spellcheck="true">// the specs triggered. This is useful in development</span>
-      <span class="token comment" spellcheck="true">// when multiple developers are working on the</span>
-      <span class="token comment" spellcheck="true">// same instance</span>
-      specPrefix<span class="token punctuation">:</span> <span class="token string">'CJ'</span>
+      <span class="token comment" spellcheck="true">// Tasks related options:</span>
+      <span class="token comment" spellcheck="true">// Prefix the specs triggered. This is useful in</span>
+      <span class="token comment" spellcheck="true">// development when multiple developers are working</span>
+      <span class="token comment" spellcheck="true">// on the same instance.</span>
+      specPrefix<span class="token punctuation">:</span> <span class="token string">'CJ'</span><span class="token punctuation">,</span>
+      <span class="token comment" spellcheck="true">// Use a different queue path.</span>
+      queuePath<span class="token punctuation">:</span> <span class="token string">'myqueue'</span> <span class="token comment" spellcheck="true">// default = 'queue'</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p><strong>Important notes</strong></p><ul><li><p>The Cerebral firebase provider uses <strong>dot</strong> notation to keep consistency with Cerebral itself</p></li><li><p>All factories supports template tags, allowing you to dynamically create paths and points to values</p></li></ul><h2 id="@cerebral/firebase-cancelondisconnect">cancelOnDisconnect</h2><p>Cancel setting a value when Firebase detects disconnect.</p><h3 id="@cerebral/firebase-cancelondisconnect-action">action</h3><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">someAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> firebase<span class="token punctuation">,</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
