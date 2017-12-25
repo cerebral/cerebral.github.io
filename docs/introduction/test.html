@@ -474,6 +474,8 @@
                   nav_childless" href="/docs/migration/index.html#4.0-compute">Compute</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-cerebralerror">CerebralError</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-module-state-changes">Module state changes</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/index.html#4.0-testing">Testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/index.html#4.0-routing">Routing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="test">Test</h1><p>Cerebral makes it easy to test your application components and business logic.</p><h2 id="test-components">Components<a href="#test-components">∞</a></h2><p>The <strong>Container</strong> you use to expose Cerebral to your components can also be used when testing. This is beneficial if you want to test
 a section of your UI interacts correctly with the controller.</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> mount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'enzyme'</span>
@@ -534,21 +536,17 @@ a section of your UI interacts correctly with the controller.</p><pre><code clas
 <span class="token keyword">import</span> math <span class="token keyword">from</span> <span class="token string">'./math'</span>
 
 <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should accumulate a count'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> cerebral <span class="token operator">=</span> <span class="token function">CerebralTest</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      math
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> cerebral <span class="token operator">=</span> <span class="token function">CerebralTest</span><span class="token punctuation">(</span>math<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// Expects a Module</span>
 
-  cerebral<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token string">'math.count'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  cerebral<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token string">'count'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 
-  <span class="token keyword">return</span> cerebral<span class="token punctuation">.</span><span class="token function">runSignal</span><span class="token punctuation">(</span><span class="token string">'math.plusOne'</span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> cerebral<span class="token punctuation">.</span><span class="token function">runSignal</span><span class="token punctuation">(</span><span class="token string">'plusOne'</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>math<span class="token punctuation">.</span>count<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+      assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>count<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
 
-      <span class="token keyword">return</span> cerebral<span class="token punctuation">.</span><span class="token function">runSignal</span><span class="token punctuation">(</span><span class="token string">'math.plus'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> cerebral<span class="token punctuation">.</span><span class="token function">runSignal</span><span class="token punctuation">(</span><span class="token string">'plus'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> value<span class="token punctuation">:</span> <span class="token number">2</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-          assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>cerebral<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token string">'math.count'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
+          assert<span class="token punctuation">.</span><span class="token function">equal</span><span class="token punctuation">(</span>cerebral<span class="token punctuation">.</span><span class="token function">getState</span><span class="token punctuation">(</span><span class="token string">'count'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>Note that state initialized in a module takes precedence over the state property of a fixture. Example:</p><pre><code class="language-js"><span class="token keyword">const</span> fixture <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -565,17 +563,13 @@ a section of your UI interacts correctly with the controller.</p><pre><code clas
 <span class="token keyword">import</span> math <span class="token keyword">from</span> <span class="token string">'./math'</span>
 
 <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'should accumulate a count'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> cerebral <span class="token operator">=</span> <span class="token function">CerebralTest</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      math
-    <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> cerebral <span class="token operator">=</span> <span class="token function">CerebralTest</span><span class="token punctuation">(</span>math<span class="token punctuation">,</span> <span class="token punctuation">{</span>
     recordActions<span class="token punctuation">:</span> <span class="token string">'byName'</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-  cerebral<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token string">'math.count'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
+  cerebral<span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token string">'count'</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span>
 
-  <span class="token keyword">return</span> cerebral<span class="token punctuation">.</span><span class="token function">runSignal</span><span class="token punctuation">(</span><span class="token string">'math.plusOne'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> cerebral<span class="token punctuation">.</span><span class="token function">runSignal</span><span class="token punctuation">(</span><span class="token string">'plusOne'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     incrementBy<span class="token punctuation">:</span> <span class="token number">1</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span> increment <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>

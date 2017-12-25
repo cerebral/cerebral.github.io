@@ -474,32 +474,35 @@
                   nav_childless" href="/docs/migration/index.html#4.0-compute">Compute</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-cerebralerror">CerebralError</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-module-state-changes">Module state changes</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/router">@cerebral/router</h1><h2 id="@cerebral/router-install">Install<a href="#@cerebral/router-install">∞</a></h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/router</code></p><h2 id="@cerebral/router-description">Description<a href="#@cerebral/router-description">∞</a></h2><p>The router of Cerebral does not affect your view layer. A url change triggers a signal that puts your application in the correct state. Your view just reacts to this state, like any other state change.</p><p>Read more about the router in the <a href="https://www.jsblog.io/articles/christianalfoni/cerebral_in_depth_routing" target="new">Cerebral in depth - Routing</a> article.</p><h2 id="@cerebral/router-instantiate">Instantiate<a href="#@cerebral/router-instantiate">∞</a></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+                  nav_childless" href="/docs/migration/index.html#4.0-testing">Testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/index.html#4.0-routing">Routing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/router">@cerebral/router</h1><h2 id="@cerebral/router-install">Install<a href="#@cerebral/router-install">∞</a></h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/router</code></p><h2 id="@cerebral/router-description">Description<a href="#@cerebral/router-description">∞</a></h2><p>The router of Cerebral does not affect your view layer. A url change triggers a signal that puts your application in the correct state. Your view just reacts to this state, like any other state change.</p><p>Read more about the router in the <a href="https://www.jsblog.io/articles/christianalfoni/cerebral_in_depth_routing" target="new">Cerebral in depth - Routing</a> article.</p><h2 id="@cerebral/router-instantiate">Instantiate<a href="#@cerebral/router-instantiate">∞</a></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Controller<span class="token punctuation">,</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'@cerebral/router'</span>
 
-<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    router<span class="token punctuation">:</span> <span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// Define routes and point to signals</span>
-      routes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-        path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
-        signal<span class="token punctuation">:</span> <span class="token string">'app.homeRouted'</span>
-      <span class="token punctuation">}</span><span class="token punctuation">]</span>
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Define routes and point to signals</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
+    path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+    signal<span class="token punctuation">:</span> <span class="token string">'app.homeRouted'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">]</span>
 
-      <span class="token comment" spellcheck="true">// Only react to hash urls</span>
-      onlyHash<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Only react to hash urls</span>
+  onlyHash<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
 
-      <span class="token comment" spellcheck="true">// Set a base url, if your app lives on a subpath</span>
-      baseUrl<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Set a base url, if your app lives on a subpath</span>
+  baseUrl<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
 
-      <span class="token comment" spellcheck="true">// Will allow none matching routes on same origin to run as normal</span>
-      allowEscape<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Will allow none matching routes on same origin to run as normal</span>
+  allowEscape<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
 
-      <span class="token comment" spellcheck="true">// Will make the router not run the initial route</span>
-      preventAutostart<span class="token punctuation">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2 id="@cerebral/router-getorigin">getOrigin<a href="#@cerebral/router-getorigin">∞</a></h2><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Will make the router not run the initial route</span>
+  preventAutostart<span class="token punctuation">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span></code></pre><h2 id="@cerebral/router-getorigin">getOrigin<a href="#@cerebral/router-getorigin">∞</a></h2><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// If url is "http://localhost:3000/items?foo=bar", returns "http://localhost:3000"</span>
   router<span class="token punctuation">.</span><span class="token function">getOrigin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre><h2 id="@cerebral/router-getpath">getPath<a href="#@cerebral/router-getpath">∞</a></h2><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>

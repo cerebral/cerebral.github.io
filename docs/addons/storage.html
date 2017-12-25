@@ -474,28 +474,32 @@
                   nav_childless" href="/docs/migration/index.html#4.0-compute">Compute</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-cerebralerror">CerebralError</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-module-state-changes">Module state changes</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/index.html#4.0-testing">Testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/index.html#4.0-routing">Routing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/storage">@cerebral/storage</h1><h2 id="@cerebral/storage-install">Install<a href="#@cerebral/storage-install">∞</a></h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/storage</code></p><h2 id="@cerebral/storage-description">Description<a href="#@cerebral/storage-description">∞</a></h2><p>This module exposes local storage or session storage as a provider,
-where it by default parses and serializes to JSON.</p><h2 id="@cerebral/storage-instantiate">Instantiate<a href="#@cerebral/storage-instantiate">∞</a></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+where it by default parses and serializes to JSON.</p><h2 id="@cerebral/storage-instantiate">Instantiate<a href="#@cerebral/storage-instantiate">∞</a></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module<span class="token punctuation">,</span> Controller <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> StorageModule <span class="token keyword">from</span> <span class="token string">'@cerebral/storage'</span>
 
-<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    storage<span class="token punctuation">:</span> <span class="token function">StorageModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// instance of storage, can be window.localStorage / localStorage,</span>
-      <span class="token comment" spellcheck="true">// window.sessionStorage / sessionStorage, or asyncStorage on</span>
-      <span class="token comment" spellcheck="true">// react native. Async storage API is automatically managed</span>
-      target<span class="token punctuation">:</span> localStorage
-      <span class="token comment" spellcheck="true">// Serializes and parses to JSON by default</span>
-      json<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-      <span class="token comment" spellcheck="true">// Synchronize state when it changes</span>
-      sync<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token string">'someStorageKey'</span><span class="token punctuation">:</span> <span class="token string">'some.state.path'</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      <span class="token comment" spellcheck="true">// Set prefix for storagekey "somePrefix.someStorageKey"</span>
-      prefix<span class="token punctuation">:</span> <span class="token string">'somePrefix'</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2 id="@cerebral/storage-error">error<a href="#@cerebral/storage-error">∞</a></h2><h3 id="@cerebral/storage-error-storageprovidererror">StorageProviderError<a href="#@cerebral/storage-error-storageprovidererror">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>StorageProviderError<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/storage'</span>
+<span class="token keyword">const</span> storage <span class="token operator">=</span> <span class="token function">StorageModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// instance of storage, can be window.localStorage / localStorage,</span>
+  <span class="token comment" spellcheck="true">// window.sessionStorage / sessionStorage, or asyncStorage on</span>
+  <span class="token comment" spellcheck="true">// react native. Async storage API is automatically managed</span>
+  target<span class="token punctuation">:</span> localStorage<span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Serializes and parses to JSON by default</span>
+  json<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Synchronize state when it changes</span>
+  sync<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'someStorageKey'</span><span class="token punctuation">:</span> <span class="token string">'some.state.path'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Set prefix for storagekey "somePrefix.someStorageKey"</span>
+  prefix<span class="token punctuation">:</span> <span class="token string">'somePrefix'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> storage <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span></code></pre><h2 id="@cerebral/storage-error">error<a href="#@cerebral/storage-error">∞</a></h2><h3 id="@cerebral/storage-error-storageprovidererror">StorageProviderError<a href="#@cerebral/storage-error-storageprovidererror">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>StorageProviderError<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/storage'</span>
 
 <span class="token comment" spellcheck="true">// Error structure</span>
 <span class="token punctuation">{</span>

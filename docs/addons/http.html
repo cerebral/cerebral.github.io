@@ -474,6 +474,8 @@
                   nav_childless" href="/docs/migration/index.html#4.0-compute">Compute</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-cerebralerror">CerebralError</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-module-state-changes">Module state changes</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/index.html#4.0-testing">Testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/index.html#4.0-routing">Routing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/http">@cerebral/http</h1><h2 id="@cerebral/http-install">Install<a href="#@cerebral/http-install">∞</a></h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/http</code></p><h2 id="@cerebral/http-description">Description<a href="#@cerebral/http-description">∞</a></h2><p>The HTTP provider exposes the ability to do HTTP requests both in actions and directly in signals. It supports <strong>cors</strong> and file upload, with progress handling. It default to <strong>json</strong>, but you can configure it to whatever you want.</p><p>Read more about http in the <a href="https://www.jsblog.io/articles/christianalfoni/cerebral_in_depth_http" target="new">Cerebral in depth - Http</a> article.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">,</span> string<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
@@ -481,27 +483,29 @@
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpGet</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/${props`</span></span>itemKey<span class="token template-string"><span class="token string">`}`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`app.currentItem`</span></span><span class="token punctuation">,</span> props<span class="token template-string"><span class="token string">`result`</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">]</span></code></pre><p>All factories of HTTP provider supports template tags.</p><h2 id="@cerebral/http-instantiate">Instantiate<a href="#@cerebral/http-instantiate">∞</a></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token punctuation">]</span></code></pre><p>All factories of HTTP provider supports template tags.</p><h2 id="@cerebral/http-instantiate">Instantiate<a href="#@cerebral/http-instantiate">∞</a></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">,</span> Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> HttpProvider <span class="token keyword">from</span> <span class="token string">'@cerebral/http'</span>
 
-<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  providers<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// Prefix all requests with this url</span>
-      baseUrl<span class="token punctuation">:</span> <span class="token string">'https://api.github.com'</span><span class="token punctuation">,</span>
+<span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// Prefix all requests with this url</span>
+  baseUrl<span class="token punctuation">:</span> <span class="token string">'https://api.github.com'</span><span class="token punctuation">,</span>
 
-      <span class="token comment" spellcheck="true">// Any default headers to pass on requests</span>
-      headers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/json; charset=UTF-8'</span><span class="token punctuation">,</span>
-        <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span>
-      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment" spellcheck="true">// Any default headers to pass on requests</span>
+  headers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/json; charset=UTF-8'</span><span class="token punctuation">,</span>
+    <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-      <span class="token comment" spellcheck="true">// When talking to cross origin (cors), pass cookies</span>
-      <span class="token comment" spellcheck="true">// if set to true</span>
-      withCredentials<span class="token punctuation">:</span> <span class="token boolean">false</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>You can update these default options in an action:</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">updateDefaultHttpOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// When talking to cross origin (cors), pass cookies</span>
+  <span class="token comment" spellcheck="true">// if set to true</span>
+  withCredentials<span class="token punctuation">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  providers<span class="token punctuation">:</span> <span class="token punctuation">{</span> http <span class="token punctuation">}</span>  
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span></code></pre><p>You can update these default options in an action:</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">updateDefaultHttpOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   http<span class="token punctuation">.</span><span class="token function">updateOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Updated options</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
