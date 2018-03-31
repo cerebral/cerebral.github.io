@@ -583,9 +583,7 @@
   signals<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     somethingHappened<span class="token punctuation">:</span> sequences<span class="token punctuation">.</span>doSomething
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">catch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">[</span>FirebaseProviderError<span class="token punctuation">,</span> sequences<span class="token punctuation">.</span>catchFirebaseError<span class="token punctuation">]</span>
-  <span class="token punctuation">]</span>
+  <span class="token keyword">catch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>FirebaseProviderError<span class="token punctuation">,</span> sequences<span class="token punctuation">.</span>catchFirebaseError<span class="token punctuation">]</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>We basically tell the module that we are interested in any errors thrown by the Firebase Provider. Then we point to the sequence of actions we want to handle it. An error will be passed in to the sequence of actions handling the error:</p><pre><code class="language-js"><span class="token punctuation">{</span>
   foo<span class="token punctuation">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// already on payload</span>
   error<span class="token punctuation">:</span> <span class="token punctuation">{</span>

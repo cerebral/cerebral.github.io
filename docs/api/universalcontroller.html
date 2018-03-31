@@ -582,13 +582,17 @@
 
 <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">UniversalController</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
 
-controller<span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    state<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'app.isAwesome'</span><span class="token punctuation">,</span> props<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+controller
+  <span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>
+      <span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        state<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'app.isAwesome'</span><span class="token punctuation">,</span> props<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// I am done running</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>You can run a predefined signal, which is defined inside a controller module as well:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> UniversalController <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
@@ -596,11 +600,9 @@ controller<span class="token punctuation">.</span><span class="token function">r
 
 <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">UniversalController</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
 
-controller
-  <span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token string">'app.aSignal'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// I am done running</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p><strong>NOTE!</strong> You should instantiate the controller for each run you want to do.</p><h3 id="universal-controller-methods-setstate">setState<a href="#universal-controller-methods-setstate">∞</a></h3><p>Finally, you can (synchronously) set a value inside the state directly, using a path:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> UniversalController <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+controller<span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token string">'app.aSignal'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token comment" spellcheck="true">// I am done running</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p><strong>NOTE!</strong> You should instantiate the controller for each run you want to do.</p><h3 id="universal-controller-methods-setstate">setState<a href="#universal-controller-methods-setstate">∞</a></h3><p>Finally, you can (synchronously) set a value inside the state directly, using a path:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> UniversalController <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> app <span class="token keyword">from</span> <span class="token string">'./app'</span>
 
 <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">UniversalController</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
@@ -610,11 +612,9 @@ controller<span class="token punctuation">.</span><span class="token function">s
 
 <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">UniversalController</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
 
-controller
-  <span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token string">'app.aSignal'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    controller<span class="token punctuation">.</span><span class="token function">getChanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// {"app.isAwesome": true}</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h3 id="universal-controller-methods-getscript">getScript<a href="#universal-controller-methods-getscript">∞</a></h3><p>When the client side application loads it will do its first render with the default state, meaning that if the server updated the state this is now out of sync. Using the <strong>getScript</strong> method you will get a script tag you can inject into the <em>HEAD</em> of the returned HTML. Cerebral will use this to bring your client side application state up to date with the server.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> UniversalController <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+controller<span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token string">'app.aSignal'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  controller<span class="token punctuation">.</span><span class="token function">getChanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// {"app.isAwesome": true}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h3 id="universal-controller-methods-getscript">getScript<a href="#universal-controller-methods-getscript">∞</a></h3><p>When the client side application loads it will do its first render with the default state, meaning that if the server updated the state this is now out of sync. Using the <strong>getScript</strong> method you will get a script tag you can inject into the <em>HEAD</em> of the returned HTML. Cerebral will use this to bring your client side application state up to date with the server.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> UniversalController <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> app <span class="token keyword">from</span> <span class="token string">'./app'</span>
 <span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span>
 
@@ -633,16 +633,22 @@ controller
 
 <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">UniversalController</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
 
-controller<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
-  <span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    state<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'app.isAwesome'</span><span class="token punctuation">,</span> props<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
+controller
+  <span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>
+    <span class="token punctuation">[</span>
+      <span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        state<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'app.isAwesome'</span><span class="token punctuation">,</span> props<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> index <span class="token operator">=</span> indexTemplate
-      <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'{{CEREBRAL_SCRIPT}}'</span><span class="token punctuation">,</span> controller<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">const</span> index <span class="token operator">=</span> indexTemplate<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>
+      <span class="token string">'{{CEREBRAL_SCRIPT}}'</span><span class="token punctuation">,</span>
+      controller<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2 id="universal-controller-render">Render<a href="#universal-controller-render">∞</a></h2><p>Depending on the view layer of your choice you can bring all of this together:</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> express <span class="token keyword">from</span> <span class="token string">'express'</span>
 <span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span>
@@ -659,19 +665,25 @@ controller<span class="token punctuation">.</span><span class="token function">r
 server<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">UniversalController</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
 
-  controller<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>loadApp<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  controller
+    <span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>loadApp<span class="token punctuation">,</span> <span class="token punctuation">{</span>
       query<span class="token punctuation">:</span> req<span class="token punctuation">.</span>query<span class="token punctuation">,</span>
       useragent<span class="token punctuation">:</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'user-agent'</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-        <span class="token keyword">const</span> index <span class="token operator">=</span> indexTemplate
-          <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'{{CEREBRAL_SCRIPT}}'</span><span class="token punctuation">,</span> controller<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-          <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'{{APP}}'</span><span class="token punctuation">,</span> <span class="token function">renderToString</span><span class="token punctuation">(</span>
-            <span class="token operator">&lt;</span>Container controller<span class="token operator">=</span><span class="token punctuation">{</span>controller<span class="token punctuation">}</span><span class="token operator">></span><span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>Container<span class="token operator">></span>
-          <span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> index <span class="token operator">=</span> indexTemplate
+        <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'{{CEREBRAL_SCRIPT}}'</span><span class="token punctuation">,</span> controller<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>
+          <span class="token string">'{{APP}}'</span><span class="token punctuation">,</span>
+          <span class="token function">renderToString</span><span class="token punctuation">(</span>
+            <span class="token operator">&lt;</span>Container controller<span class="token operator">=</span><span class="token punctuation">{</span>controller<span class="token punctuation">}</span><span class="token operator">></span>
+              <span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">></span>
+            <span class="token operator">&lt;</span><span class="token operator">/</span>Container<span class="token operator">></span>
+          <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span>
 
-        res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
-      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      res<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 server<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span></code></pre><h2 id="universal-controller-es6-on-server">ES6 on server<a href="#universal-controller-es6-on-server">∞</a></h2><p>Take a look at the <a href="https://github.com/cerebral/cerebral/tree/master/demos/universal" target="new">demo application</a> to see how you can run modern javascript, also with JSX, on the server. Demo does not include building for production, but you would typically use Webpack as normal for the client and just babel for the server. Or you can use Webpack there as well. If you are not using JSX you will probably get away with no transpiling on the server.</p><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/api/universalcontroller.md" target="_new">Edit on Github</a></div></div></div></div></div>

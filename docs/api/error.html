@@ -580,7 +580,7 @@ The <strong>catch</strong> handler defined on the module will propagate up to pa
 
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">MyError</span> <span class="token keyword">extends</span> <span class="token class-name">CerebralError</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></code></pre><p>The error is thrown like this:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> MyError <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./errors'</span>
 
-<span class="token keyword">function</span> someAction <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">someAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">MyError</span><span class="token punctuation">(</span><span class="token string">'Some message'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// any details</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -592,9 +592,7 @@ The <strong>catch</strong> handler defined on the module will propagate up to pa
   signals<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     somethingHappened<span class="token punctuation">:</span> sequences<span class="token punctuation">.</span>doThis
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">catch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">[</span>MyError<span class="token punctuation">,</span> sequences<span class="token punctuation">.</span>handleError<span class="token punctuation">]</span>
-  <span class="token punctuation">]</span>
+  <span class="token keyword">catch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>MyError<span class="token punctuation">,</span> sequences<span class="token punctuation">.</span>handleError<span class="token punctuation">]</span><span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/api/error.md" target="_new">Edit on Github</a></div></div></div></div></div>
     
 <script src="/search.js"></script>

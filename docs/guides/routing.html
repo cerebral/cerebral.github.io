@@ -574,40 +574,45 @@
                   nav_childless" href="/docs/migration/index.html#4.0-module-state-changes">Module state changes</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-testing">Testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-routing">Routing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="routing">Routing</h1><p>If you are not familiar with how Cerebral does its routing we can start off by telling you that it is different than traditional routing. Traditional routers map url changes to views/components. The Cerebral router maps urls to signals. So, why change the behaviour?</p><p>Every event in your application triggers a signal that normally leads to one or multiple state changes. This is not special to Cerebral, this is how all applications work. A url change is also an event in your application, just like a button click or a websocket message. In Cerebral you treat URL changes the same way as any other event in your application, with a signal. The router does not affect your view/components layer at all. The benefit of this approach is consistency and flexibility. You can make a url change be anything you want.</p><h2 id="routing-adding-the-router">Adding the router<a href="#routing-adding-the-router">∞</a></h2><p>The router is its own package, <strong>@cerebral/router</strong>. You instantiate it simply by adding it to the root Cerebral module:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="routing">Routing</h1><p>If you are not familiar with how Cerebral does its routing we can start off by telling you that it is different than traditional routing. Traditional routers map url changes to views/components. The Cerebral router maps urls to signals. So, why change the behaviour?</p><p>Every event in your application triggers a signal that normally leads to one or multiple state changes. This is not special to Cerebral, this is how all applications work. A url change is also an event in your application, just like a button click or a websocket message. In Cerebral you treat URL changes the same way as any other event in your application, with a signal. The router does not affect your view/components layer at all. The benefit of this approach is consistency and flexibility. You can make a url change be anything you want.</p><h2 id="routing-adding-the-router">Adding the router<a href="#routing-adding-the-router">∞</a></h2><p>The router is its own package, <strong>@cerebral/router</strong>. You instantiate it simply by adding it to the root Cerebral module:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'@cerebral/router'</span>
 
 <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
-    signal<span class="token punctuation">:</span> <span class="token string">'rootRouted'</span> 
-  <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+      signal<span class="token punctuation">:</span> <span class="token string">'rootRouted'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>This means that when the root url is hit the signal <strong>rootRouted</strong> will trigger.</p><h2 id="routing-simple-page-transitions">Simple page transitions<a href="#routing-simple-page-transitions">∞</a></h2><p>Let us imagine that our application has 2 pages:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>This means that when the root url is hit the signal <strong>rootRouted</strong> will trigger.</p><h2 id="routing-simple-page-transitions">Simple page transitions<a href="#routing-simple-page-transitions">∞</a></h2><p>Let us imagine that our application has 2 pages:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'cerebral-router'</span>
 
 <span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
-    signal<span class="token punctuation">:</span> <span class="token string">'rootRouted'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> <span class="token string">'/items'</span><span class="token punctuation">,</span>
-    signal<span class="token punctuation">:</span> <span class="token string">'itemsRouted'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+      signal<span class="token punctuation">:</span> <span class="token string">'rootRouted'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/items'</span><span class="token punctuation">,</span>
+      signal<span class="token punctuation">:</span> <span class="token string">'itemsRouted'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>How do we make our components render each page? Well, first of all we need a state that tells our components what page to display. Let us also add the two signals which will set the correct page:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>How do we make our components render each page? Well, first of all we need a state that tells our components what page to display. Let us also add the two signals which will set the correct page:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">set</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 <span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span><span class="token punctuation">,</span>
   state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     currentPage<span class="token punctuation">:</span> <span class="token string">'home'</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -616,8 +621,8 @@
     itemsRouted<span class="token punctuation">:</span> <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`currentPage`</span></span><span class="token punctuation">,</span> <span class="token string">'items'</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>As you can see we moved the router to its own file, this is recommended. We now have state that represents what page we are on, let us use it in a component to display the correct page:</p><p><em>App.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/react'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
 <span class="token keyword">import</span> Home <span class="token keyword">from</span> <span class="token string">'./Home'</span>
 <span class="token keyword">import</span> Items <span class="token keyword">from</span> <span class="token string">'./Items'</span>
@@ -627,10 +632,11 @@
   items<span class="token punctuation">:</span> Items
 <span class="token punctuation">}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  currentPage<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`currentPage`</span></span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">function</span> App <span class="token punctuation">(</span><span class="token punctuation">{</span>currentPage<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    currentPage<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`currentPage`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span> currentPage <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> Page <span class="token operator">=</span> pages<span class="token punctuation">[</span>currentPage<span class="token punctuation">]</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
@@ -639,14 +645,14 @@
       <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
     <span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">)</span></code></pre><p>The url triggers an event, which triggers a signal, which sets the application in the correct state. The components now update and renders based on the current state of the application. With Cerebral you think about url changes as any other event in your application.</p><h2 id="routing-loading-data-on-url-change">Loading data on url change<a href="#routing-loading-data-on-url-change">∞</a></h2><p>The great thing about urls firing off signals is that you can run any side effect you need, also deciding when the page change actually occurs. Lets say the items page needed to grab the items to be listed. We add a couple of new states related to this and update our signal:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-<span class="token keyword">import</span> HttpProvider<span class="token punctuation">,</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token punctuation">)</span></code></pre><p>The url triggers an event, which triggers a signal, which sets the application in the correct state. The components now update and renders based on the current state of the application. With Cerebral you think about url changes as any other event in your application.</p><h2 id="routing-loading-data-on-url-change">Loading data on url change<a href="#routing-loading-data-on-url-change">∞</a></h2><p>The great thing about urls firing off signals is that you can run any side effect you need, also deciding when the page change actually occurs. Lets say the items page needed to grab the items to be listed. We add a couple of new states related to this and update our signal:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">set</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> HttpProvider<span class="token punctuation">,</span> <span class="token punctuation">{</span> httpGet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 <span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span><span class="token punctuation">,</span>
   providers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     http<span class="token punctuation">:</span> <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -665,14 +671,14 @@
       <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`isLoadingItems`</span></span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>So now we change the page immediately and we indicate that we are loading the items before getting them. But we could flip this around:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-<span class="token keyword">import</span> HttpProvider<span class="token punctuation">,</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>So now we change the page immediately and we indicate that we are loading the items before getting them. But we could flip this around:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">set</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> HttpProvider<span class="token punctuation">,</span> <span class="token punctuation">{</span> httpGet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 <span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span><span class="token punctuation">,</span>
   providers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     http<span class="token punctuation">:</span> <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -691,21 +697,18 @@
       <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`currentPage`</span></span><span class="token punctuation">,</span> <span class="token string">'items'</span><span class="token punctuation">)</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>Now we rather indicate with a state that we are preparing some data for a page. This could for example show a progress animation at the top of the page, typically what you see on Youtube and linkedIn. When the data is ready, the page is changed.</p><p>This already shows you the flexibility of treating url changes as events in your app instead of making it part of your component tree.</p><h2 id="routing-dry-up-code-with-factories">Dry up code with factories<a href="#routing-dry-up-code-with-factories">∞</a></h2><p>Factories is an important concept in Cerebral and we can clean up our code a little bit:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-<span class="token keyword">import</span> HttpProvider<span class="token punctuation">,</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>Now we rather indicate with a state that we are preparing some data for a page. This could for example show a progress animation at the top of the page, typically what you see on Youtube and linkedIn. When the data is ready, the page is changed.</p><p>This already shows you the flexibility of treating url changes as events in your app instead of making it part of your component tree.</p><h2 id="routing-dry-up-code-with-factories">Dry up code with factories<a href="#routing-dry-up-code-with-factories">∞</a></h2><p>Factories is an important concept in Cerebral and we can clean up our code a little bit:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">set</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> HttpProvider<span class="token punctuation">,</span> <span class="token punctuation">{</span> httpGet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 <span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span>
 
-<span class="token keyword">function</span> changePage <span class="token punctuation">(</span>page<span class="token punctuation">,</span> continueSequence <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token punctuation">[</span>
-    <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`currentPage`</span></span><span class="token punctuation">,</span> page<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    continueSequence
-  <span class="token punctuation">]</span>
+<span class="token keyword">function</span> <span class="token function">changePage</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> continueSequence <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`currentPage`</span></span><span class="token punctuation">,</span> page<span class="token punctuation">)</span><span class="token punctuation">,</span> continueSequence<span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span><span class="token punctuation">,</span>
   providers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     http<span class="token punctuation">:</span> <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -723,16 +726,17 @@
       <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`isLoadingItems`</span></span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
     <span class="token punctuation">]</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>We have now created a factory that allows us to define what page to change to. We did not clean up a lot here, but the <strong>changePage</strong> factory might do many different things related to moving from one page to an other.</p><h2 id="routing-initial-data">Initial data<a href="#routing-initial-data">∞</a></h2><p>We have already looked at how to load data on a specific url event, the <strong>/items</strong> url, where we load the items. But sometimes you want to load some initial data no matter what url is triggered. We could implement this logic into <strong>changePage</strong> like this:</p><p><em>changePage.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">,</span> when<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>We have now created a factory that allows us to define what page to change to. We did not clean up a lot here, but the <strong>changePage</strong> factory might do many different things related to moving from one page to an other.</p><h2 id="routing-initial-data">Initial data<a href="#routing-initial-data">∞</a></h2><p>We have already looked at how to load data on a specific url event, the <strong>/items</strong> url, where we load the items. But sometimes you want to load some initial data no matter what url is triggered. We could implement this logic into <strong>changePage</strong> like this:</p><p><em>changePage.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">set</span><span class="token punctuation">,</span> when <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> httpGet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 
-<span class="token keyword">function</span> changePage <span class="token punctuation">(</span>page<span class="token punctuation">,</span> continueSequence <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">changePage</span><span class="token punctuation">(</span>page<span class="token punctuation">,</span> continueSequence <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">[</span>
     <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`currentPage`</span></span><span class="token punctuation">,</span> page<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token function">when</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`hasLoadedInitialData`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-      <span class="token string">'true'</span><span class="token punctuation">:</span> continueSequence<span class="token punctuation">,</span>
-      <span class="token string">'false'</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token function">when</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`hasLoadedInitialData`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token boolean">true</span><span class="token punctuation">:</span> continueSequence<span class="token punctuation">,</span>
+      <span class="token boolean">false</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
         <span class="token function">httpGet</span><span class="token punctuation">(</span><span class="token string">'/initialdata'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`initialData`</span></span><span class="token punctuation">,</span> props<span class="token template-string"><span class="token string">`result`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
         <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`hasLoadedInitialData`</span></span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -742,17 +746,17 @@
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> changePage</code></pre><p>But you might not want to load initial data on all page changes. Maybe you have a welcome page, or an about page. Going directly to those should not load the initial data. To solve it you would just create a separate factory for it:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-<span class="token keyword">import</span> HttpProvider<span class="token punctuation">,</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> changePage</code></pre><p>But you might not want to load initial data on all page changes. Maybe you have a welcome page, or an about page. Going directly to those should not load the initial data. To solve it you would just create a separate factory for it:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">set</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> HttpProvider<span class="token punctuation">,</span> <span class="token punctuation">{</span> httpGet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 <span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span>
 <span class="token keyword">import</span> changePage <span class="token keyword">from</span> <span class="token string">'./factories/changePage'</span>
 <span class="token keyword">import</span> withInitialData <span class="token keyword">from</span> <span class="token string">'./factories/withInitialData'</span>
 <span class="token keyword">import</span> itemsRouted <span class="token keyword">from</span> <span class="token string">'./signals/itemsRouted'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span><span class="token punctuation">,</span>
   providers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     http<span class="token punctuation">:</span> <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -767,7 +771,7 @@
     homeRouted<span class="token punctuation">:</span> <span class="token function">changePage</span><span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     itemsRouted<span class="token punctuation">:</span> <span class="token function">changePage</span><span class="token punctuation">(</span><span class="token string">'items'</span><span class="token punctuation">,</span> <span class="token function">withInitialData</span><span class="token punctuation">(</span>itemsRouted<span class="token punctuation">)</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2 id="routing-authentication">Authentication<a href="#routing-authentication">∞</a></h2><p>In our simple application we want the user to be authenticated only when moving to <strong>/items</strong>.</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2 id="routing-authentication">Authentication<a href="#routing-authentication">∞</a></h2><p>In our simple application we want the user to be authenticated only when moving to <strong>/items</strong>.</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span>
 <span class="token keyword">import</span> HttpProvider <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 <span class="token keyword">import</span> changePage <span class="token keyword">from</span> <span class="token string">'./factories/changePage'</span>
@@ -775,7 +779,7 @@
 <span class="token keyword">import</span> itemsRouted <span class="token keyword">from</span> <span class="token string">'./signals/itemsRouted'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span><span class="token punctuation">,</span>
   providers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     http<span class="token punctuation">:</span> <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -789,20 +793,21 @@
     homeRouted<span class="token punctuation">:</span> <span class="token function">changePage</span><span class="token punctuation">(</span><span class="token string">'home'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     itemsRouted<span class="token punctuation">:</span> <span class="token function">authenticate</span><span class="token punctuation">(</span><span class="token function">changePage</span><span class="token punctuation">(</span><span class="token string">'items'</span><span class="token punctuation">,</span> itemsRouted<span class="token punctuation">)</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>As you can see we again use a factory, only we wrap <strong>changePage</strong>. That way we do not even change the page if the authentication fails. The authenticate factory could look something like this:</p><p><em>authenticate.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">,</span> when<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>redirect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/router/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>As you can see we again use a factory, only we wrap <strong>changePage</strong>. That way we do not even change the page if the authentication fails. The authenticate factory could look something like this:</p><p><em>authenticate.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">set</span><span class="token punctuation">,</span> when <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> redirect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/router/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
-<span class="token keyword">function</span> authenticate <span class="token punctuation">(</span>continueSequence<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">authenticate</span><span class="token punctuation">(</span>continueSequence<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token punctuation">[</span>
-    <span class="token function">when</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`user`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-      <span class="token string">'true'</span><span class="token punctuation">:</span> continueSequence<span class="token punctuation">,</span>
-      <span class="token string">'false'</span><span class="token punctuation">:</span> <span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+    <span class="token function">when</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`user`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token boolean">true</span><span class="token punctuation">:</span> continueSequence<span class="token punctuation">,</span>
+      <span class="token boolean">false</span><span class="token punctuation">:</span> <span class="token function">redirect</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> authenticate</code></pre><p>We just check to see if we have a user and continue the sequence of actions if we do. If not, we redirect back to front page. This is of course simplified and you might do lots of different things here, but the point is that you can easily compose this factory into whatever signal you want to prevent it from moving on when the user is not authenticated.</p><h2 id="routing-nested-routes">Nested routes<a href="#routing-nested-routes">∞</a></h2><p>So what if we wanted to bind a route to show a single item? The single item is not a page by its own, it is a modal inside our <strong>items</strong> page. The way we solve this is simply by composing. We run the same logic as opening the <strong>items</strong> and then we add the logic for opening a single item:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> authenticate</code></pre><p>We just check to see if we have a user and continue the sequence of actions if we do. If not, we redirect back to front page. This is of course simplified and you might do lots of different things here, but the point is that you can easily compose this factory into whatever signal you want to prevent it from moving on when the user is not authenticated.</p><h2 id="routing-nested-routes">Nested routes<a href="#routing-nested-routes">∞</a></h2><p>So what if we wanted to bind a route to show a single item? The single item is not a page by its own, it is a modal inside our <strong>items</strong> page. The way we solve this is simply by composing. We run the same logic as opening the <strong>items</strong> and then we add the logic for opening a single item:</p><p><em>app/index.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> router <span class="token keyword">from</span> <span class="token string">'./router'</span>
 <span class="token keyword">import</span> HttpProvider <span class="token keyword">from</span> <span class="token string">'@cerebral/http'</span>
 <span class="token keyword">import</span> changePage <span class="token keyword">from</span> <span class="token string">'./factories/changePage'</span>
@@ -811,7 +816,7 @@
 <span class="token keyword">import</span> itemRouted <span class="token keyword">from</span> <span class="token string">'./signals/itemRouted'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>router<span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span> router <span class="token punctuation">}</span><span class="token punctuation">,</span>
   providers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     http<span class="token punctuation">:</span> <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -831,20 +836,24 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p><em>router.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> Router <span class="token keyword">from</span> <span class="token string">'@cerebral/router'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
-    signal<span class="token punctuation">:</span> <span class="token string">'rootRouted'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> <span class="token string">'/items'</span><span class="token punctuation">,</span>
-    signal<span class="token punctuation">:</span> <span class="token string">'itemsRouted'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    path<span class="token punctuation">:</span> <span class="token string">'/items/:id'</span><span class="token punctuation">,</span>
-    signal<span class="token punctuation">:</span> <span class="token string">'itemRouted'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">]</span>
+  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/'</span><span class="token punctuation">,</span>
+      signal<span class="token punctuation">:</span> <span class="token string">'rootRouted'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/items'</span><span class="token punctuation">,</span>
+      signal<span class="token punctuation">:</span> <span class="token string">'itemsRouted'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      path<span class="token punctuation">:</span> <span class="token string">'/items/:id'</span><span class="token punctuation">,</span>
+      signal<span class="token punctuation">:</span> <span class="token string">'itemRouted'</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>There are thousands of way to handle urls, related side effects and UI. The Cerebral router gives you freedom to compose how all this fits together without constraints. It is up to you to build your “lego blocks” and put them together in a way that makes sense for your application.</p><h2 id="routing-animate-transitions">Animate transitions<a href="#routing-animate-transitions">∞</a></h2><p>So a fancy feature of routing is to transition one route to the next with an animation. This is not integrated into the Cerebral router, because there is no need to. You would handle this like any state transition. For example with a React Transition Group we could change our <strong>App</strong> component to animate between the pages instead:</p><p><em>App.js</em></p><pre><code class="language-jsx"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> CSSTransitionGroup <span class="token keyword">from</span> <span class="token string">'react-transition-group/CSSTransitionGroup'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/react'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
 <span class="token keyword">import</span> Home <span class="token keyword">from</span> <span class="token string">'./Home'</span>
 <span class="token keyword">import</span> Items <span class="token keyword">from</span> <span class="token string">'./Items'</span>
@@ -854,10 +863,11 @@
   items<span class="token punctuation">:</span> Items
 <span class="token punctuation">}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  currentPage<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`currentPage`</span></span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">function</span> App <span class="token punctuation">(</span><span class="token punctuation">{</span>currentPage<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    currentPage<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`currentPage`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span> currentPage <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> Page <span class="token operator">=</span> pages<span class="token punctuation">[</span>currentPage<span class="token punctuation">]</span>
 
     <span class="token keyword">return</span> <span class="token punctuation">(</span>

@@ -580,18 +580,20 @@
 <span class="token keyword">import</span> controller <span class="token keyword">from</span> <span class="token string">'./controller'</span>
 <span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App'</span>
 
-<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">(</span>
+<span class="token function">render</span><span class="token punctuation">(</span>
   <span class="token operator">&lt;</span>Container controller<span class="token operator">=</span><span class="token punctuation">{</span>controller<span class="token punctuation">}</span><span class="token operator">></span>
     <span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">></span>
-  <span class="token operator">&lt;</span><span class="token operator">/</span>Container<span class="token operator">></span>
-<span class="token punctuation">)</span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre><p>When you connect a component like this…</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Container<span class="token operator">></span><span class="token punctuation">,</span>
+  document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+<span class="token punctuation">)</span></code></pre><p>When you connect a component like this…</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  title<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`title`</span></span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">function</span> MyComponent <span class="token punctuation">(</span><span class="token punctuation">{</span>title<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`title`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token function">MyComponent</span><span class="token punctuation">(</span><span class="token punctuation">{</span> title <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
       <span class="token operator">&lt;</span>div<span class="token operator">></span>
         <span class="token operator">&lt;</span>h1<span class="token operator">></span><span class="token punctuation">{</span>title<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
