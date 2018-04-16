@@ -589,7 +589,7 @@
   <span class="token keyword">return</span> <span class="token punctuation">{</span>
     state<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>This information can be useful in more complex setups where your module wants to listen for the <em>initialized</em> event of the controller for example.</p><h2 id="modules-submodules">Submodules<a href="#modules-submodules">∞</a></h2><p>A module can also use a <strong>modules</strong> property to attach nested modules.</p><pre><code class="language-js"><span class="token keyword">import</span> foo <span class="token keyword">from</span> <span class="token string">'./modules/foo'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>This information can be useful in more complex setups where your module wants to listen for the <em>initialized</em> event of the controller for example.</p><h2>Submodules<a href="#modules-submodules">∞</a><span id="modules-submodules"> </span></h2><p>A module can also use a <strong>modules</strong> property to attach nested modules.</p><pre><code class="language-js"><span class="token keyword">import</span> foo <span class="token keyword">from</span> <span class="token string">'./modules/foo'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   state<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>

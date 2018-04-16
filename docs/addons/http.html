@@ -574,14 +574,14 @@
                   nav_childless" href="/docs/migration/index.html#4.0-module-state-changes">Module state changes</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-testing">Testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-routing">Routing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/http">@cerebral/http</h1><h2 id="@cerebral/http-install">Install<a href="#@cerebral/http-install">∞</a></h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/http</code></p><h2 id="@cerebral/http-description">Description<a href="#@cerebral/http-description">∞</a></h2><p>The HTTP provider exposes the ability to do HTTP requests both in actions and directly in signals. It supports <strong>cors</strong> and file upload, with progress handling. It default to <strong>json</strong>, but you can configure it to whatever you want.</p><p>Read more about http in the <a href="https://www.jsblog.io/articles/christianalfoni/cerebral_in_depth_http" target="new">Cerebral in depth - Http</a> article.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span><span class="token keyword">set</span><span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">,</span> string<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/http">@cerebral/http</h1><h2>Install<a href="#@cerebral/http-install">∞</a><span id="@cerebral/http-install"> </span></h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/http</code></p><h2>Description<a href="#@cerebral/http-description">∞</a><span id="@cerebral/http-description"> </span></h2><p>The HTTP provider exposes the ability to do HTTP requests both in actions and directly in signals. It supports <strong>cors</strong> and file upload, with progress handling. It default to <strong>json</strong>, but you can configure it to whatever you want.</p><p>Read more about http in the <a href="https://www.jsblog.io/articles/christianalfoni/cerebral_in_depth_http" target="new">Cerebral in depth - Http</a> article.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> <span class="token keyword">set</span> <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> httpGet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props<span class="token punctuation">,</span> string <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpGet</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/${props`</span></span>itemKey<span class="token template-string"><span class="token string">`}`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`app.currentItem`</span></span><span class="token punctuation">,</span> props<span class="token template-string"><span class="token string">`result`</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">]</span></code></pre><p>All factories of HTTP provider supports template tags.</p><h2 id="@cerebral/http-instantiate">Instantiate<a href="#@cerebral/http-instantiate">∞</a></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">,</span> Module<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token punctuation">]</span></code></pre><p>All factories of HTTP provider supports template tags.</p><h2>Instantiate<a href="#@cerebral/http-instantiate">∞</a><span id="@cerebral/http-instantiate"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Controller<span class="token punctuation">,</span> Module <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> HttpProvider <span class="token keyword">from</span> <span class="token string">'@cerebral/http'</span>
 
 <span class="token keyword">const</span> http <span class="token operator">=</span> <span class="token function">HttpProvider</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -591,7 +591,7 @@
   <span class="token comment" spellcheck="true">// Any default headers to pass on requests</span>
   headers<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token string">'Content-Type'</span><span class="token punctuation">:</span> <span class="token string">'application/json; charset=UTF-8'</span><span class="token punctuation">,</span>
-    <span class="token string">'Accept'</span><span class="token punctuation">:</span> <span class="token string">'application/json'</span>
+    Accept<span class="token punctuation">:</span> <span class="token string">'application/json'</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
   <span class="token comment" spellcheck="true">// When talking to cross origin (cors), pass cookies</span>
@@ -606,33 +606,35 @@
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  providers<span class="token punctuation">:</span> <span class="token punctuation">{</span> http <span class="token punctuation">}</span>  
+  providers<span class="token punctuation">:</span> <span class="token punctuation">{</span> http <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span></code></pre><p>You can update these default options in an action:</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">updateDefaultHttpOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span></code></pre><p>You can update these default options in an action:</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">updateDefaultHttpOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span> http <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   http<span class="token punctuation">.</span><span class="token function">updateOptions</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Updated options</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/http-abort">abort<a href="#@cerebral/http-abort">∞</a></h2><p>You can abort any running request, causing the request to resolve as status code <strong>0</strong> and sets the type to <strong>abort</strong> on the error object.</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">searchItems</span><span class="token punctuation">(</span><span class="token punctuation">{</span>input<span class="token punctuation">,</span> state<span class="token punctuation">,</span> path<span class="token punctuation">,</span> http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h2>abort<a href="#@cerebral/http-abort">∞</a><span id="@cerebral/http-abort"> </span></h2><p>You can abort any running request, causing the request to resolve as status code <strong>0</strong> and sets the type to <strong>abort</strong> on the error object.</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">searchItems</span><span class="token punctuation">(</span><span class="token punctuation">{</span> input<span class="token punctuation">,</span> state<span class="token punctuation">,</span> path<span class="token punctuation">,</span> http <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   http<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token string">'/items*'</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// regexp string</span>
-  <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`/items?query=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>input<span class="token punctuation">.</span>query<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
+  <span class="token keyword">return</span> http
+    <span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`/items?query=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>input<span class="token punctuation">.</span>query<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span>success<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
       <span class="token keyword">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'abort'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">return</span> path<span class="token punctuation">.</span><span class="token function">abort</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       <span class="token punctuation">}</span>
 
-      <span class="token keyword">return</span> path<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">{</span>error<span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span> path<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">{</span> error <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  searchItems<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  searchItems<span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
     success<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     error<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     abort<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre><h2 id="@cerebral/http-cors">cors<a href="#@cerebral/http-cors">∞</a></h2><p>Cors has been turned into a “black box” by jQuery. Cors is actually a very simple concept, but due to a lot of confusion of “Request not allowed”, <strong>cors</strong> has been an option to help out. In HttpProvider we try to give you the insight to understand how cors actually works.</p><p>Cors has nothing to do with the client. The only client configuration related to cors is the <strong>withCredentials</strong> option, which makes sure cookies are passed to the cross origin server. The only requirement for cors to work is that you pass the correct <strong>Content-Type</strong>. Now, this depends on the server in question. Some servers allows any content-type, others require a specific one. These are the typical ones:</p><ul><li>text/plain</li><li>application/x-www-form-urlencoded</li><li>application/json; charset=UTF-8</li></ul><p>Note that this is only related to the <strong>request</strong>. If you want to define what you want as response, you set the <strong>Accept</strong> header, which is <em>application/json</em> by default.</p><h2 id="@cerebral/http-errors">errors<a href="#@cerebral/http-errors">∞</a></h2><h3 id="@cerebral/http-errors-httpprovidererror">HttpProviderError<a href="#@cerebral/http-errors-httpprovidererror">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>HttpProviderError<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http'</span>
+<span class="token punctuation">]</span></code></pre><h2>cors<a href="#@cerebral/http-cors">∞</a><span id="@cerebral/http-cors"> </span></h2><p>Cors has been turned into a “black box” by jQuery. Cors is actually a very simple concept, but due to a lot of confusion of “Request not allowed”, <strong>cors</strong> has been an option to help out. In HttpProvider we try to give you the insight to understand how cors actually works.</p><p>Cors has nothing to do with the client. The only client configuration related to cors is the <strong>withCredentials</strong> option, which makes sure cookies are passed to the cross origin server. The only requirement for cors to work is that you pass the correct <strong>Content-Type</strong>. Now, this depends on the server in question. Some servers allows any content-type, others require a specific one. These are the typical ones:</p><ul><li>text/plain</li><li>application/x-www-form-urlencoded</li><li>application/json; charset=UTF-8</li></ul><p>Note that this is only related to the <strong>request</strong>. If you want to define what you want as response, you set the <strong>Accept</strong> header, which is <em>application/json</em> by default.</p><h2>errors<a href="#@cerebral/http-errors">∞</a><span id="@cerebral/http-errors"> </span></h2><h3>HttpProviderError<a href="#@cerebral/http-errors-httpprovidererror">∞</a><span id="@cerebral/http-errors-httpprovidererror"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>HttpProviderError<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http'</span>
 
 <span class="token comment" spellcheck="true">// Error structure</span>
 <span class="token punctuation">{</span>
@@ -647,8 +649,9 @@
   stack<span class="token punctuation">:</span> <span class="token string">'...'</span>
 <span class="token punctuation">}</span></code></pre><p>This error is available in the following scenarios:</p><ul><li>Inside an action</li></ul><pre><code class="language-js"><span class="token keyword">function</span> someAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/something'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>error <span class="token operator">=</span><span class="token operator">></span> <span class="token operator">...</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><ul><li>Going down an error path</li></ul><pre><code class="language-js"><span class="token punctuation">[</span>
-  <span class="token function">httpGet</span><span class="token punctuation">(</span><span class="token string">'/something'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><ul><li>Going down an error path</li></ul><pre><code class="language-js"><span class="token punctuation">;</span><span class="token punctuation">[</span>
+  <span class="token function">httpGet</span><span class="token punctuation">(</span><span class="token string">'/something'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
     success<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     error<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token comment" spellcheck="true">// {error: ...}</span>
@@ -660,35 +663,35 @@
 <span class="token punctuation">]</span>
 
 <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token keyword">catch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
-    <span class="token punctuation">[</span>HttpProviderError<span class="token punctuation">,</span> errorCatched<span class="token punctuation">]</span>
-  <span class="token punctuation">]</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2 id="@cerebral/http-delete">delete<a href="#@cerebral/http-delete">∞</a></h2><h3 id="@cerebral/http-delete-action">action<a href="#@cerebral/http-delete-action">∞</a></h3><pre><code class="language-js"><span class="token keyword">function</span> someDeleteAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">catch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">[</span>HttpProviderError<span class="token punctuation">,</span> errorCatched<span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2>delete<a href="#@cerebral/http-delete">∞</a><span id="@cerebral/http-delete"> </span></h2><h3>action<a href="#@cerebral/http-delete-action">∞</a><span id="@cerebral/http-delete-action"> </span></h3><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">someDeleteAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> http <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-  <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token string">'/items/1'</span><span class="token punctuation">,</span> query<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> http
+    <span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token string">'/items/1'</span><span class="token punctuation">,</span> query<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>response<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> response <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>error<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> error <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/http-delete-operator">operator<a href="#@cerebral/http-delete-operator">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpDelete<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token punctuation">}</span></code></pre><h3>operator<a href="#@cerebral/http-delete-operator">∞</a><span id="@cerebral/http-delete-operator"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpDelete <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token function">httpDelete</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/${state`</span></span>currentItemId<span class="token template-string"><span class="token string">`}`</span></span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">/*
+                            PROPS: {
+                              response: {...}
+                            }
+                          */</span>
+<span class="token punctuation">]</span></code></pre><h3>operator with paths<a href="#@cerebral/http-delete-operator-with-paths">∞</a><span id="@cerebral/http-delete-operator-with-paths"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpDelete <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpDelete</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/${state`</span></span>currentItemId<span class="token template-string"><span class="token string">`}`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token comment" spellcheck="true">/*
-    PROPS: {
-      response: {...}
-    }
-  */</span>
-<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/http-delete-operator-with-paths">operator with paths<a href="#@cerebral/http-delete-operator-with-paths">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpDelete<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  <span class="token function">httpDelete</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/${state`</span></span>currentItemId<span class="token template-string"><span class="token string">`}`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span>
     success<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token comment" spellcheck="true">/* PROPS: {response: {...}} */</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -707,30 +710,32 @@
       <span class="token comment" spellcheck="true">/* PROPS: {response/error: {...}} */</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre><h2 id="@cerebral/http-get">get<a href="#@cerebral/http-get">∞</a></h2><h3 id="@cerebral/http-get-action">action<a href="#@cerebral/http-get-action">∞</a></h3><pre><code class="language-js"><span class="token keyword">function</span> someGetAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">]</span></code></pre><h2>get<a href="#@cerebral/http-get">∞</a><span id="@cerebral/http-get"> </span></h2><h3>action<a href="#@cerebral/http-get-action">∞</a><span id="@cerebral/http-get-action"> </span></h3><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">someGetAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> http <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> query <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-  <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> query<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> http
+    <span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> query<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>someResponse<span class="token punctuation">:</span> response<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> someResponse<span class="token punctuation">:</span> response <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>someError<span class="token punctuation">:</span> error<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> someError<span class="token punctuation">:</span> error <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/http-get-operator">operator<a href="#@cerebral/http-get-operator">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token punctuation">}</span></code></pre><h3>operator<a href="#@cerebral/http-get-operator">∞</a><span id="@cerebral/http-get-operator"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpGet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token function">httpGet</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">/*
+                            PROPS: {
+                              response: {...}
+                            }
+                          */</span>
+<span class="token punctuation">]</span></code></pre><p>On error this will throw to the signal or global catch handler.</p><h3>operator with paths<a href="#@cerebral/http-get-operator-with-paths">∞</a><span id="@cerebral/http-get-operator-with-paths"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpGet <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpGet</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token comment" spellcheck="true">/*
-    PROPS: {
-      response: {...}
-    }
-  */</span>
-<span class="token punctuation">]</span></code></pre><p>On error this will throw to the signal or global catch handler.</p><h3 id="@cerebral/http-get-operator-with-paths">operator with paths<a href="#@cerebral/http-get-operator-with-paths">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpGet<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  <span class="token function">httpGet</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span>
     success<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token comment" spellcheck="true">/* PROPS: {response: {...}} */</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -749,32 +754,34 @@
       <span class="token comment" spellcheck="true">/* PROPS: {response/error: {...}} */</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre><h2 id="@cerebral/http-patch">patch<a href="#@cerebral/http-patch">∞</a></h2><h3 id="@cerebral/http-patch-action">action<a href="#@cerebral/http-patch-action">∞</a></h3><pre><code class="language-js"><span class="token keyword">function</span> somePatchAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">]</span></code></pre><h2>patch<a href="#@cerebral/http-patch">∞</a><span id="@cerebral/http-patch"> </span></h2><h3>action<a href="#@cerebral/http-patch-action">∞</a><span id="@cerebral/http-patch-action"> </span></h3><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">somePatchAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> http <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-  <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token function">patch</span><span class="token punctuation">(</span><span class="token string">'/items/1'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> http
+    <span class="token punctuation">.</span><span class="token function">patch</span><span class="token punctuation">(</span><span class="token string">'/items/1'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>response<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> response <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>error<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> error <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/http-patch-operator">operator<a href="#@cerebral/http-patch-operator">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpPatch<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">,</span> string<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token punctuation">}</span></code></pre><h3>operator<a href="#@cerebral/http-patch-operator">∞</a><span id="@cerebral/http-patch-operator"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpPatch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props<span class="token punctuation">,</span> string <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token function">httpPatch</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/${props`</span></span>itemId<span class="token template-string"><span class="token string">`}`</span></span><span class="token punctuation">,</span> state<span class="token template-string"><span class="token string">`patchData`</span></span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">/*
+                            PROPS: {
+                              response: {...}
+                            }
+                          */</span>
+<span class="token punctuation">]</span></code></pre><h3>operator with paths<a href="#@cerebral/http-patch-operator-with-paths">∞</a><span id="@cerebral/http-patch-operator-with-paths"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpPatch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props<span class="token punctuation">,</span> string <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpPatch</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/${props`</span></span>itemId<span class="token template-string"><span class="token string">`}`</span></span><span class="token punctuation">,</span> state<span class="token template-string"><span class="token string">`patchData`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token comment" spellcheck="true">/*
-    PROPS: {
-      response: {...}
-    }
-  */</span>
-<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/http-patch-operator-with-paths">operator with paths<a href="#@cerebral/http-patch-operator-with-paths">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpPatch<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">,</span> string<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  <span class="token function">httpPatch</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/${props`</span></span>itemId<span class="token template-string"><span class="token string">`}`</span></span><span class="token punctuation">,</span> state<span class="token template-string"><span class="token string">`patchData`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span>
     success<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token comment" spellcheck="true">/* PROPS: {response: {...}} */</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -793,38 +800,40 @@
       <span class="token comment" spellcheck="true">/* PROPS: {response/error: {...}} */</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre><h2 id="@cerebral/http-post">post<a href="#@cerebral/http-post">∞</a></h2><h3 id="@cerebral/http-post-action">action<a href="#@cerebral/http-post-action">∞</a></h3><pre><code class="language-js"><span class="token keyword">function</span> somePostAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">]</span></code></pre><h2>post<a href="#@cerebral/http-post">∞</a><span id="@cerebral/http-post"> </span></h2><h3>action<a href="#@cerebral/http-post-action">∞</a><span id="@cerebral/http-post-action"> </span></h3><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">somePostAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> http <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-  <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> http
+    <span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>response<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> response <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>error<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> error <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/http-post-operator">operator<a href="#@cerebral/http-post-operator">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpPost<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token punctuation">}</span></code></pre><h3>operator<a href="#@cerebral/http-post-operator">∞</a><span id="@cerebral/http-post-operator"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpPost <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token function">httpPost</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> props<span class="token template-string"><span class="token string">`itemTitle`</span></span><span class="token punctuation">,</span>
+    foo<span class="token punctuation">:</span> <span class="token string">'bar'</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">/*
+                            PROPS: {
+                              response: {...}
+                            }
+                          */</span>
+<span class="token punctuation">]</span></code></pre><h3>operator with paths<a href="#@cerebral/http-post-operator-with-paths">∞</a><span id="@cerebral/http-post-operator-with-paths"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpPost <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpPost</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     title<span class="token punctuation">:</span> props<span class="token template-string"><span class="token string">`itemTitle`</span></span><span class="token punctuation">,</span>
     foo<span class="token punctuation">:</span> <span class="token string">'bar'</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token comment" spellcheck="true">/*
-    PROPS: {
-      response: {...}
-    }
-  */</span>
-<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/http-post-operator-with-paths">operator with paths<a href="#@cerebral/http-post-operator-with-paths">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpPost<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  <span class="token function">httpPost</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> props<span class="token template-string"><span class="token string">`itemTitle`</span></span><span class="token punctuation">,</span>
-    foo<span class="token punctuation">:</span> <span class="token string">'bar'</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span>
     success<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token comment" spellcheck="true">/* PROPS: {response: {...}} */</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -843,34 +852,36 @@
       <span class="token comment" spellcheck="true">/* PROPS: {response/error: {...}} */</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre><h2 id="@cerebral/http-put">put<a href="#@cerebral/http-put">∞</a></h2><h3 id="@cerebral/http-put-action">action<a href="#@cerebral/http-put-action">∞</a></h3><pre><code class="language-js"><span class="token keyword">function</span> somePutAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">]</span></code></pre><h2>put<a href="#@cerebral/http-put">∞</a><span id="@cerebral/http-put"> </span></h2><h3>action<a href="#@cerebral/http-put-action">∞</a><span id="@cerebral/http-put-action"> </span></h3><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">somePutAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> http <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token keyword">const</span> options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
-  <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">'/items/1'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+  <span class="token keyword">return</span> http
+    <span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">'/items/1'</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>response<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> response <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>error<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> error <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/http-put-operator">operator<a href="#@cerebral/http-put-operator">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpPut<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token punctuation">}</span></code></pre><h3>operator<a href="#@cerebral/http-put-operator">∞</a><span id="@cerebral/http-put-operator"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpPut <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
+  <span class="token function">httpPut</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// data object</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token comment" spellcheck="true">/*
+                            PROPS: {
+                              response: {...}
+                            }
+                          */</span>
+<span class="token punctuation">]</span></code></pre><h3>operator with paths<a href="#@cerebral/http-put-operator-with-paths">∞</a><span id="@cerebral/http-put-operator-with-paths"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpPut <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpPut</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// data object</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  <span class="token comment" spellcheck="true">/*
-    PROPS: {
-      response: {...}
-    }
-  */</span>
-<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/http-put-operator-with-paths">operator with paths<a href="#@cerebral/http-put-operator-with-paths">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpPut<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  <span class="token function">httpPut</span><span class="token punctuation">(</span><span class="token string">'/items'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// data object</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span>
     success<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token comment" spellcheck="true">/* PROPS: {response: {...}} */</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -889,11 +900,11 @@
       <span class="token comment" spellcheck="true">/* PROPS: {response/error: {...}} */</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre><h2 id="@cerebral/http-responses">responses<a href="#@cerebral/http-responses">∞</a></h2><p>There are two types of responses from the HTTP provider. A <strong>response</strong> and an <strong>error</strong> of type <em>HttpProviderError</em>. A <strong>response</strong> will be received on status codes 200-299. Everything else is an <strong>error</strong>.</p><h3 id="@cerebral/http-responses-response">response<a href="#@cerebral/http-responses-response">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">]</span></code></pre><h2>responses<a href="#@cerebral/http-responses">∞</a><span id="@cerebral/http-responses"> </span></h2><p>There are two types of responses from the HTTP provider. A <strong>response</strong> and an <strong>error</strong> of type <em>HttpProviderError</em>. A <strong>response</strong> will be received on status codes 200-299. Everything else is an <strong>error</strong>.</p><h3>response<a href="#@cerebral/http-responses-response">∞</a><span id="@cerebral/http-responses-response"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   result<span class="token punctuation">:</span> <span class="token string">'the response body'</span><span class="token punctuation">,</span>
   headers<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
   status<span class="token punctuation">:</span> <span class="token number">200</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/http-responses-error">error<a href="#@cerebral/http-responses-error">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>error<a href="#@cerebral/http-responses-error">∞</a><span id="@cerebral/http-responses-error"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   name<span class="token punctuation">:</span> <span class="token string">'HttpProviderError'</span><span class="token punctuation">,</span>
   type<span class="token punctuation">:</span> <span class="token string">'http | abort | timeout'</span><span class="token punctuation">,</span>
   message<span class="token punctuation">:</span> <span class="token string">'Some potential error message'</span><span class="token punctuation">,</span>
@@ -901,7 +912,7 @@
   status<span class="token punctuation">:</span> <span class="token number">500</span><span class="token punctuation">,</span>
   headers<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
   stack<span class="token punctuation">:</span> <span class="token string">'...'</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/http-request">request<a href="#@cerebral/http-request">∞</a></h2><pre><code class="language-js"><span class="token keyword">function</span> someGetAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h2>request<a href="#@cerebral/http-request">∞</a><span id="@cerebral/http-request"> </span></h2><pre><code class="language-js"><span class="token keyword">function</span> someGetAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Any http method</span>
     method<span class="token punctuation">:</span> <span class="token string">'GET'</span><span class="token punctuation">,</span>
@@ -926,26 +937,28 @@
     <span class="token comment" spellcheck="true">// triggers on request progress. Passes {progress: 45} etc.</span>
     onProgress<span class="token punctuation">:</span> <span class="token keyword">null</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/http-uploadfile">uploadFile<a href="#@cerebral/http-uploadfile">∞</a></h2><h3 id="@cerebral/http-uploadfile-action">action<a href="#@cerebral/http-uploadfile-action">∞</a></h3><pre><code class="language-js"><span class="token keyword">function</span> someDeleteAction <span class="token punctuation">(</span><span class="token punctuation">{</span>http<span class="token punctuation">,</span> props<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token function">uploadFile</span><span class="token punctuation">(</span><span class="token string">'/upload'</span><span class="token punctuation">,</span> props<span class="token punctuation">.</span>files<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">'filename.png'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Default to "files"</span>
-    data<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Additional form data</span>
-    headers<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-    onProgress<span class="token punctuation">:</span> <span class="token string">'some.signal.path'</span> <span class="token comment" spellcheck="true">// Upload progress</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre><h2>uploadFile<a href="#@cerebral/http-uploadfile">∞</a><span id="@cerebral/http-uploadfile"> </span></h2><h3>action<a href="#@cerebral/http-uploadfile-action">∞</a><span id="@cerebral/http-uploadfile-action"> </span></h3><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">someDeleteAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> http<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> http
+    <span class="token punctuation">.</span><span class="token function">uploadFile</span><span class="token punctuation">(</span><span class="token string">'/upload'</span><span class="token punctuation">,</span> props<span class="token punctuation">.</span>files<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'filename.png'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Default to "files"</span>
+      data<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// Additional form data</span>
+      headers<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+      onProgress<span class="token punctuation">:</span> <span class="token string">'some.signal.path'</span> <span class="token comment" spellcheck="true">// Upload progress</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span>response<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>response<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> response <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
     <span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-      <span class="token keyword">return</span> <span class="token punctuation">{</span>error<span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> error <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/http-uploadfile-operator">operator<a href="#@cerebral/http-uploadfile-operator">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpUploadFile<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token punctuation">}</span></code></pre><h3>operator<a href="#@cerebral/http-uploadfile-operator">∞</a><span id="@cerebral/http-uploadfile-operator"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpUploadFile <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpUploadFile</span><span class="token punctuation">(</span><span class="token string">'/uploads'</span><span class="token punctuation">,</span> props<span class="token template-string"><span class="token string">`file`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     name<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`currentFileName`</span></span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
     success<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token comment" spellcheck="true">/* PROPS: {response: {...}} */</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
@@ -961,18 +974,18 @@
       <span class="token comment" spellcheck="true">/* PROPS: {response/error: {...}} */</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/http-uploadfile-operator-with-paths">operator with paths<a href="#@cerebral/http-uploadfile-operator-with-paths">∞</a></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>httpUploadFile<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token punctuation">]</span></code></pre><h3>operator with paths<a href="#@cerebral/http-uploadfile-operator-with-paths">∞</a><span id="@cerebral/http-uploadfile-operator-with-paths"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> httpUploadFile <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/http/operators'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
   <span class="token function">httpUploadFile</span><span class="token punctuation">(</span><span class="token string">'/uploads'</span><span class="token punctuation">,</span> props<span class="token template-string"><span class="token string">`file`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
     name<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`currentFileName`</span></span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token comment" spellcheck="true">/*
-    PROPS: {
-      response: {...}
-    }
-  */</span>
+                            PROPS: {
+                              response: {...}
+                            }
+                          */</span>
 <span class="token punctuation">]</span></code></pre><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/packages/node_modules/@cerebral/http/README.md" target="_new">Edit on Github</a></div></div></div></div></div>
     
 <script src="/search.js"></script>

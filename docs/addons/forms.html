@@ -574,7 +574,7 @@
                   nav_childless" href="/docs/migration/index.html#4.0-module-state-changes">Module state changes</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-testing">Testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-routing">Routing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/forms">@cerebral/forms</h1><h2 id="@cerebral/forms-install">Install<a href="#@cerebral/forms-install">∞</a></h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/forms</code></p><h2 id="@cerebral/forms-description">Description<a href="#@cerebral/forms-description">∞</a></h2><p>Forms are one of the most complex state management challenges out there. Before Cerebral was created I spent a lot of time developing <a href="https://github.com/formsy/formsy-react" target="new">formsy-react</a>, which is a library that tries to solve forms with internal state. With the release of Cerebral we got a chance to explore the space of solving forms complexity with external state instead. To this day I have a hard time recommending a solution and you should <strong>not</strong> see this addon as “the official way of managing forms with Cerebral”. There is nothing wrong thinking of a form as a very complex input where you only pass data into Cerebral on the submit of the form.</p><h2 id="@cerebral/forms-instantiate">Instantiate<a href="#@cerebral/forms-instantiate">∞</a></h2><pre><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/forms">@cerebral/forms</h1><h2>Install<a href="#@cerebral/forms-install">∞</a><span id="@cerebral/forms-install"> </span></h2><p><strong>NPM</strong></p><p><code>npm install @cerebral/forms</code></p><h2>Description<a href="#@cerebral/forms-description">∞</a><span id="@cerebral/forms-description"> </span></h2><p>Forms are one of the most complex state management challenges out there. Before Cerebral was created I spent a lot of time developing <a href="https://github.com/formsy/formsy-react" target="new">formsy-react</a>, which is a library that tries to solve forms with internal state. With the release of Cerebral we got a chance to explore the space of solving forms complexity with external state instead. To this day I have a hard time recommending a solution and you should <strong>not</strong> see this addon as “the official way of managing forms with Cerebral”. There is nothing wrong thinking of a form as a very complex input where you only pass data into Cerebral on the submit of the form.</p><h2>Instantiate<a href="#@cerebral/forms-instantiate">∞</a><span id="@cerebral/forms-instantiate"> </span></h2><pre><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Controller <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> FormsProvider <span class="token keyword">from</span> <span class="token string">'@cerebral/forms'</span>
 
 <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -582,7 +582,7 @@
     <span class="token function">FormsProvider</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
       <span class="token comment" spellcheck="true">// Add additional rules</span>
       rules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        myAddedRule <span class="token punctuation">(</span>value<span class="token punctuation">,</span> arg<span class="token punctuation">,</span> <span class="token keyword">get</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">myAddedRule</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> arg<span class="token punctuation">,</span> <span class="token keyword">get</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
           <span class="token comment" spellcheck="true">// value of the field</span>
           value
           <span class="token comment" spellcheck="true">// arg passed to the rule</span>
@@ -598,20 +598,23 @@
 
       <span class="token comment" spellcheck="true">// errorMessage property added to field when invalid with the following rules</span>
       errorMessages<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        minLength <span class="token punctuation">(</span>value<span class="token punctuation">,</span> minLength<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`The length is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>value<span class="token punctuation">.</span>length<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, should be equal or more than </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>minLength<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+        <span class="token function">minLength</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> minLength<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`The length is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>
+            value<span class="token punctuation">.</span>length
+          <span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">, should be equal or more than </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>minLength<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
         <span class="token punctuation">}</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">]</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2 id="@cerebral/forms-compute">compute<a href="#@cerebral/forms-compute">∞</a></h2><p>To use a form you use the <strong>form</strong> computed, pointing to the form. Typically:</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/react'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>form<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2>compute<a href="#@cerebral/forms-compute">∞</a><span id="@cerebral/forms-compute"> </span></h2><p>To use a form you use the <strong>form</strong> computed, pointing to the form. Typically:</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> form <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  form<span class="token punctuation">:</span> <span class="token function">form</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`path.to.form`</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">function</span> MyForm <span class="token punctuation">(</span><span class="token punctuation">{</span>form<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    form<span class="token punctuation">:</span> <span class="token function">form</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`path.to.form`</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token function">MyForm</span><span class="token punctuation">(</span><span class="token punctuation">{</span> form <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Value of some field</span>
     form<span class="token punctuation">.</span>someField<span class="token punctuation">.</span>value
     <span class="token comment" spellcheck="true">// A true/false if field has a value</span>
@@ -632,13 +635,14 @@
     form<span class="token punctuation">.</span><span class="token function">getFields</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">)</span></code></pre><p>You can also use the <strong>field</strong> computed, pointing to the field. This will optimize rendering as only the field will render on change.</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/react'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>field<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> field <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  field<span class="token punctuation">:</span> <span class="token function">field</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`path.to.form.name`</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">function</span> MyField <span class="token punctuation">(</span><span class="token punctuation">{</span>field<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    field<span class="token punctuation">:</span> <span class="token function">field</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`path.to.form.name`</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token function">MyField</span><span class="token punctuation">(</span><span class="token punctuation">{</span> field <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// Value of some field</span>
     field<span class="token punctuation">.</span>value
     <span class="token comment" spellcheck="true">// A true/false if field has a value</span>
@@ -648,22 +652,23 @@
     <span class="token comment" spellcheck="true">// A true/false if field is valid</span>
     field<span class="token punctuation">.</span>isValid
   <span class="token punctuation">}</span>
-<span class="token punctuation">)</span></code></pre><h2 id="@cerebral/forms-defaultvalue">defaultValue<a href="#@cerebral/forms-defaultvalue">∞</a></h2><p>You can define a default value for your fields. When the form is <strong>reset</strong>, it will put back the default value:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">)</span></code></pre><h2>defaultValue<a href="#@cerebral/forms-defaultvalue">∞</a><span id="@cerebral/forms-defaultvalue"> </span></h2><p>You can define a default value for your fields. When the form is <strong>reset</strong>, it will put back the default value:</p><pre><code class="language-js"><span class="token punctuation">{</span>
   myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     firstName<span class="token punctuation">:</span> <span class="token punctuation">{</span>
       value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
       defaultValue<span class="token punctuation">:</span> <span class="token string">'Ben'</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-field">field<a href="#@cerebral/forms-field">∞</a></h2><p>A field is just an object with a <code>value</code> property:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h2>field<a href="#@cerebral/forms-field">∞</a><span id="@cerebral/forms-field"> </span></h2><p>A field is just an object with a <code>value</code> property:</p><pre><code class="language-js"><span class="token punctuation">{</span>
   myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     myField<span class="token punctuation">:</span> <span class="token punctuation">{</span>
       value<span class="token punctuation">:</span> <span class="token string">''</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-form">form<a href="#@cerebral/forms-form">∞</a></h2><p>A form is just an object in the state tree:</p><pre><code class="language-js"><span class="token punctuation">{</span>
-  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-isrequired">isRequired<a href="#@cerebral/forms-isrequired">∞</a></h2><p>Define field as required. This will make the field invalid if there is no value. By default forms identifies a value or not
+<span class="token punctuation">}</span></code></pre><h2>form<a href="#@cerebral/forms-form">∞</a><span id="@cerebral/forms-form"> </span></h2><p>A form is just an object in the state tree:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><h2>isRequired<a href="#@cerebral/forms-isrequired">∞</a><span id="@cerebral/forms-isrequired"> </span></h2><p>Define field as required. This will make the field invalid if there is no value. By default forms identifies a value or not
 using the <strong>isValue</strong> rule. You can change this rule if you want, look below.</p><pre><code class="language-js"><span class="token punctuation">{</span>
   myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     firstName<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -671,7 +676,7 @@ using the <strong>isValue</strong> rule. You can change this rule if you want, l
       isRequired<span class="token punctuation">:</span> <span class="token boolean">true</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-isvaluerules">isValueRules<a href="#@cerebral/forms-isvaluerules">∞</a></h2><p>You can change what defines a field as having a value. For example if your value is an array, you can use the <strong>minLength</strong> rule to
+<span class="token punctuation">}</span></code></pre><h2>isValueRules<a href="#@cerebral/forms-isvaluerules">∞</a><span id="@cerebral/forms-isvaluerules"> </span></h2><p>You can change what defines a field as having a value. For example if your value is an array, you can use the <strong>minLength</strong> rule to
 define a required minimum of 3 items in the array.</p><pre><code class="language-js"><span class="token punctuation">{</span>
   myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     interests<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -680,7 +685,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
       isValueRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-nesting">nesting<a href="#@cerebral/forms-nesting">∞</a></h2><p>You can nest this however you want, even with array:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h2>nesting<a href="#@cerebral/forms-nesting">∞</a><span id="@cerebral/forms-nesting"> </span></h2><p>You can nest this however you want, even with array:</p><pre><code class="language-js"><span class="token punctuation">{</span>
   myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     firstName<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
     lastName<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -693,29 +698,26 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
       films<span class="token punctuation">:</span> <span class="token punctuation">{</span>value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-operators">operators<a href="#@cerebral/forms-operators">∞</a></h2><h3 id="@cerebral/forms-operators-isvalidform">isValidForm<a href="#@cerebral/forms-operators-isvalidform">∞</a></h3><p>Diverge execution based on validity of a form.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>isValidForm<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
+<span class="token punctuation">}</span></code></pre><h2>operators<a href="#@cerebral/forms-operators">∞</a><span id="@cerebral/forms-operators"> </span></h2><h3>isValidForm<a href="#@cerebral/forms-operators-isvalidform">∞</a><span id="@cerebral/forms-operators-isvalidform"> </span></h3><p>Diverge execution based on validity of a form.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> isValidForm <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  <span class="token function">isValidForm</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token function">isValidForm</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form`</span></span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
     <span class="token boolean">true</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token boolean">false</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/forms-operators-resetform">resetForm<a href="#@cerebral/forms-operators-resetform">∞</a></h3><p>Reset a form.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>resetForm<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
+<span class="token punctuation">]</span></code></pre><h3>resetForm<a href="#@cerebral/forms-operators-resetform">∞</a><span id="@cerebral/forms-operators-resetform"> </span></h3><p>Reset a form.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> resetForm <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  <span class="token function">resetForm</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form`</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">]</span></code></pre><h3 id="@cerebral/forms-operators-setfield">setField<a href="#@cerebral/forms-operators-setfield">∞</a></h3><p>When you change the value of a field you will need to use this operator. Note that you point to the field, not the field value.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> props<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>setField<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span><span class="token function">resetForm</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form`</span></span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre><h3>setField<a href="#@cerebral/forms-operators-setfield">∞</a><span id="@cerebral/forms-operators-setfield"> </span></h3><p>When you change the value of a field you will need to use this operator. Note that you point to the field, not the field value.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> setField <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/forms/operators'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span>
-  <span class="token function">setField</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form.field`</span></span><span class="token punctuation">,</span> props<span class="token template-string"><span class="token string">`value`</span></span><span class="token punctuation">)</span>
-<span class="token punctuation">]</span></code></pre><h2 id="@cerebral/forms-provider">provider<a href="#@cerebral/forms-provider">∞</a></h2><p>You can also access your forms in actions.</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">[</span><span class="token function">setField</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token string">`my.form.field`</span></span><span class="token punctuation">,</span> props<span class="token template-string"><span class="token string">`value`</span></span><span class="token punctuation">)</span><span class="token punctuation">]</span></code></pre><h2>provider<a href="#@cerebral/forms-provider">∞</a><span id="@cerebral/forms-provider"> </span></h2><p>You can also access your forms in actions.</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> forms <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> form <span class="token operator">=</span> forms<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'path.to.form'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-provider-reset">reset<a href="#@cerebral/forms-provider-reset">∞</a></h3><p>Reset the form to its default values (or empty string by default).</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>reset<a href="#@cerebral/forms-provider-reset">∞</a><span id="@cerebral/forms-provider-reset"> </span></h3><p>Reset the form to its default values (or empty string by default).</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> forms <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   forms<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token string">'path.to.form'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-provider-tojson">toJSON<a href="#@cerebral/forms-provider-tojson">∞</a></h3><p>Typically you want to convert your forms to a plain value structure.</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>toJSON<a href="#@cerebral/forms-provider-tojson">∞</a><span id="@cerebral/forms-provider-tojson"> </span></h3><p>Typically you want to convert your forms to a plain value structure.</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> forms <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> form <span class="token operator">=</span> forms<span class="token punctuation">.</span><span class="token function">toJSON</span><span class="token punctuation">(</span><span class="token string">'path.to.form'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre><p>This form will now have the structure of:</p><pre><code class="language-js"><span class="token punctuation">{</span>
   myField<span class="token punctuation">:</span> <span class="token string">'theValue'</span><span class="token punctuation">,</span>
@@ -723,22 +725,22 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     street<span class="token punctuation">:</span> <span class="token string">'street value'</span><span class="token punctuation">,</span>
     zipCode<span class="token punctuation">:</span> <span class="token string">'zip code value'</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-provider-updateerrormessages">updateErrorMessages<a href="#@cerebral/forms-provider-updateerrormessages">∞</a></h3><p>Dynamically update global error messages:</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>updateErrorMessages<a href="#@cerebral/forms-provider-updateerrormessages">∞</a><span id="@cerebral/forms-provider-updateerrormessages"> </span></h3><p>Dynamically update global error messages:</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> forms <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   forms<span class="token punctuation">.</span><span class="token function">updateErrorMessages</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    someRule <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token function">someRule</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-provider-updaterules">updateRules<a href="#@cerebral/forms-provider-updaterules">∞</a></h3><p>Dynamically update available rules:</p><pre><code class="language-js"><span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span>forms<span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>updateRules<a href="#@cerebral/forms-provider-updaterules">∞</a><span id="@cerebral/forms-provider-updaterules"> </span></h3><p>Dynamically update available rules:</p><pre><code class="language-js"><span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> forms <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   forms<span class="token punctuation">.</span><span class="token function">updateRules</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    someNewRule <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token function">someNewRule</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span></code></pre><h2 id="@cerebral/forms-validationrules">validationRules<a href="#@cerebral/forms-validationrules">∞</a></h2><p>You add validation rules on the field:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h2>validationRules<a href="#@cerebral/forms-validationrules">∞</a><span id="@cerebral/forms-validationrules"> </span></h2><p>You add validation rules on the field:</p><pre><code class="language-js"><span class="token punctuation">{</span>
   myForm<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     firstName<span class="token punctuation">:</span> <span class="token punctuation">{</span>
       value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
       validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-equals:value">equals:Value<a href="#@cerebral/forms-validationrules-equals:value">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>equals:Value<a href="#@cerebral/forms-validationrules-equals:value">∞</a><span id="@cerebral/forms-validationrules-equals:value"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equals:123'</span><span class="token punctuation">]</span>
@@ -751,7 +753,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equals:[]'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-equalsfield:field">equalsField:Field<a href="#@cerebral/forms-validationrules-equalsfield:field">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>equalsField:Field<a href="#@cerebral/forms-validationrules-equalsfield:field">∞</a><span id="@cerebral/forms-validationrules-equalsfield:field"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equalsField:full.path.to.form.field2'</span><span class="token punctuation">]</span>
@@ -764,7 +766,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'equalsField:full.path.to.form.field2'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isalpha">isAlpha<a href="#@cerebral/forms-validationrules-isalpha">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isAlpha<a href="#@cerebral/forms-validationrules-isalpha">∞</a><span id="@cerebral/forms-validationrules-isalpha"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlpha'</span><span class="token punctuation">]</span>
@@ -777,7 +779,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'123abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlpha'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isalphanumeric">isAlphanumeric<a href="#@cerebral/forms-validationrules-isalphanumeric">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isAlphanumeric<a href="#@cerebral/forms-validationrules-isalphanumeric">∞</a><span id="@cerebral/forms-validationrules-isalphanumeric"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'123abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlphanumeric'</span><span class="token punctuation">]</span>
@@ -790,7 +792,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'123+abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isAlphanumeric'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isemail">isEmail<a href="#@cerebral/forms-validationrules-isemail">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isEmail<a href="#@cerebral/forms-validationrules-isemail">∞</a><span id="@cerebral/forms-validationrules-isemail"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'ho@hep.co'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmail'</span><span class="token punctuation">]</span>
@@ -803,7 +805,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'hel.co'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmail'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isempty">isEmpty<a href="#@cerebral/forms-validationrules-isempty">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isEmpty<a href="#@cerebral/forms-validationrules-isempty">∞</a><span id="@cerebral/forms-validationrules-isempty"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmpty'</span><span class="token punctuation">]</span>
@@ -816,7 +818,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isEmpty'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isexisty">isExisty<a href="#@cerebral/forms-validationrules-isexisty">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isExisty<a href="#@cerebral/forms-validationrules-isexisty">∞</a><span id="@cerebral/forms-validationrules-isexisty"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isExisty'</span><span class="token punctuation">]</span>
@@ -829,7 +831,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isExisty'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isfalse">isFalse<a href="#@cerebral/forms-validationrules-isfalse">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isFalse<a href="#@cerebral/forms-validationrules-isfalse">∞</a><span id="@cerebral/forms-validationrules-isfalse"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFalse'</span><span class="token punctuation">]</span>
@@ -842,7 +844,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFalse'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isfloat">isFloat<a href="#@cerebral/forms-validationrules-isfloat">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isFloat<a href="#@cerebral/forms-validationrules-isfloat">∞</a><span id="@cerebral/forms-validationrules-isfloat"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'22.5'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFloat'</span><span class="token punctuation">]</span>
@@ -855,7 +857,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'22'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isFloat'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isint">isInt<a href="#@cerebral/forms-validationrules-isint">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isInt<a href="#@cerebral/forms-validationrules-isint">∞</a><span id="@cerebral/forms-validationrules-isint"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isInt'</span><span class="token punctuation">]</span>
@@ -868,7 +870,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'22.5'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isInt'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-islength:number">isLength:Number<a href="#@cerebral/forms-validationrules-islength:number">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isLength:Number<a href="#@cerebral/forms-validationrules-islength:number">∞</a><span id="@cerebral/forms-validationrules-islength:number"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'hey'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isLength:3'</span><span class="token punctuation">]</span>
@@ -881,7 +883,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'hm 123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isLength:3'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isnumeric">isNumeric<a href="#@cerebral/forms-validationrules-isnumeric">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isNumeric<a href="#@cerebral/forms-validationrules-isnumeric">∞</a><span id="@cerebral/forms-validationrules-isnumeric"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isNumeric'</span><span class="token punctuation">]</span>
@@ -894,7 +896,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'123abc'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isNumeric'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isspecialwords">isSpecialWords<a href="#@cerebral/forms-validationrules-isspecialwords">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isSpecialWords<a href="#@cerebral/forms-validationrules-isspecialwords">∞</a><span id="@cerebral/forms-validationrules-isspecialwords"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'hey there'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isSpecialWords'</span><span class="token punctuation">]</span>
@@ -907,7 +909,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'hm 123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isSpecialWords'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-istrue">isTrue<a href="#@cerebral/forms-validationrules-istrue">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isTrue<a href="#@cerebral/forms-validationrules-istrue">∞</a><span id="@cerebral/forms-validationrules-istrue"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isTrue'</span><span class="token punctuation">]</span>
@@ -920,7 +922,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isTrue'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isundefined">isUndefined<a href="#@cerebral/forms-validationrules-isundefined">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isUndefined<a href="#@cerebral/forms-validationrules-isundefined">∞</a><span id="@cerebral/forms-validationrules-isundefined"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> undefined<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUndefined'</span><span class="token punctuation">]</span>
@@ -933,7 +935,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token number">123</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUndefined'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isurl">isUrl<a href="#@cerebral/forms-validationrules-isurl">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isUrl<a href="#@cerebral/forms-validationrules-isurl">∞</a><span id="@cerebral/forms-validationrules-isurl"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'http://www.test.com'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUrl'</span><span class="token punctuation">]</span>
@@ -946,7 +948,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'http//www'</span><span class="token punctuation">,</span> <span class="token operator">/</span><span class="token operator">/</span> not valid
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isUrl'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-iswords">isWords<a href="#@cerebral/forms-validationrules-iswords">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isWords<a href="#@cerebral/forms-validationrules-iswords">∞</a><span id="@cerebral/forms-validationrules-iswords"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'hey there'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isWords'</span><span class="token punctuation">]</span>
@@ -959,7 +961,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token string">'hm 123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isWords'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-isvalue">isValue<a href="#@cerebral/forms-validationrules-isvalue">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>isValue<a href="#@cerebral/forms-validationrules-isvalue">∞</a><span id="@cerebral/forms-validationrules-isvalue"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'test'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isValue'</span><span class="token punctuation">]</span>
@@ -976,7 +978,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'isValue'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-maxlength:number">maxLength:Number<a href="#@cerebral/forms-validationrules-maxlength:number">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>maxLength:Number<a href="#@cerebral/forms-validationrules-maxlength:number">∞</a><span id="@cerebral/forms-validationrules-maxlength:number"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'maxLength:3'</span><span class="token punctuation">]</span>
@@ -989,7 +991,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> <span class="token string">'mip'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// not valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'maxLength:3'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-minlength:number">minLength:Number<a href="#@cerebral/forms-validationrules-minlength:number">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>minLength:Number<a href="#@cerebral/forms-validationrules-minlength:number">∞</a><span id="@cerebral/forms-validationrules-minlength:number"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
@@ -1002,7 +1004,7 @@ define a required minimum of 3 items in the array.</p><pre><code class="language
     value<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">,</span> <span class="token string">'baz'</span><span class="token punctuation">,</span> <span class="token string">'mip'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'minLength:3'</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre><h3 id="@cerebral/forms-validationrules-regexp">regexp<a href="#@cerebral/forms-validationrules-regexp">∞</a></h3><pre><code class="language-js"><span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre><h3>regexp<a href="#@cerebral/forms-validationrules-regexp">∞</a><span id="@cerebral/forms-validationrules-regexp"> </span></h3><pre><code class="language-js"><span class="token punctuation">{</span>
   field1<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     value<span class="token punctuation">:</span> <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// valid</span>
     validationRules<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token operator">/</span>foo<span class="token operator">/</span><span class="token punctuation">]</span>

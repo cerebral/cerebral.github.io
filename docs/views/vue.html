@@ -574,9 +574,9 @@
                   nav_childless" href="/docs/migration/index.html#4.0-module-state-changes">Module state changes</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-testing">Testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/index.html#4.0-routing">Routing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/vue">@cerebral/vue</h1><p><a href="https://vuejs.org" target="new">Vue.js</a> view for Cerebral.</p><h2 id="@cerebral/vue-install">Install<a href="#@cerebral/vue-install">∞</a></h2><p><code>npm install @cerebral/vue vue</code></p><h2 id="@cerebral/vue-container">Container<a href="#@cerebral/vue-container">∞</a></h2><pre><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue/dist/vue'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>Container<span class="token punctuation">,</span> connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
+                  nav_childless" href="/docs/migration/index.html#4.0-migration">Migration</a></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="@cerebral/vue">@cerebral/vue</h1><p><a href="https://vuejs.org" target="new">Vue.js</a> view for Cerebral.</p><h2>Install<a href="#@cerebral/vue-install">∞</a><span id="@cerebral/vue-install"> </span></h2><p><code>npm install @cerebral/vue vue</code></p><h2>Container<a href="#@cerebral/vue-container">∞</a><span id="@cerebral/vue-container"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue/dist/vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Controller <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Container<span class="token punctuation">,</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
 
 <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -587,7 +587,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
- <span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
   components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     container<span class="token punctuation">:</span> <span class="token function">Container</span><span class="token punctuation">(</span>controller<span class="token punctuation">)</span>
@@ -596,17 +596,20 @@
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>container</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-component</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>my-component</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>container</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><h2 id="@cerebral/vue-connect">connect<a href="#@cerebral/vue-connect">∞</a></h2><p><em>MyComponent.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span>connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>state<span class="token punctuation">,</span> signal<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><h2>connect<a href="#@cerebral/vue-connect">∞</a><span id="@cerebral/vue-connect"> </span></h2><p><em>MyComponent.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> signal <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral/tags'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`foo`</span></span><span class="token punctuation">,</span>
-  click<span class="token punctuation">:</span> signal<span class="token template-string"><span class="token string">`clicked`</span></span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  template<span class="token punctuation">:</span> <span class="token string">'&lt;div v-on:click="click()">{{foo}}&lt;/div>'</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p><em>main.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue/dist/vue'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>Controller<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span>Container<span class="token punctuation">,</span> connect<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    foo<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`foo`</span></span><span class="token punctuation">,</span>
+    click<span class="token punctuation">:</span> signal<span class="token template-string"><span class="token string">`clicked`</span></span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">{</span>
+    template<span class="token punctuation">:</span> <span class="token string">'&lt;div v-on:click="click()">{{foo}}&lt;/div>'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span></code></pre><p><em>main.js</em></p><pre><code class="language-js"><span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue/dist/vue'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Controller <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> Container<span class="token punctuation">,</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
 <span class="token keyword">import</span> MyComponent <span class="token keyword">from</span> <span class="token string">'./MyComponent'</span>
 
 <span class="token keyword">const</span> controller <span class="token operator">=</span> <span class="token function">Controller</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
@@ -618,7 +621,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
- <span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+<span class="token keyword">var</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
   components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     container<span class="token punctuation">:</span> <span class="token function">Container</span><span class="token punctuation">(</span>controller<span class="token punctuation">)</span><span class="token punctuation">,</span>
