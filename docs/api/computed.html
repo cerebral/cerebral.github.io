@@ -186,7 +186,6 @@
                   nav_childless" href="/docs/api/proxy.html#proxy-props">Props</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/proxy.html#proxy-modulestate">ModuleState</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/proxy.html#proxy-modulesequences">ModuleSequences</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/api/proxy.html#proxy-modulecomputed">ModuleComputed</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/proxy.html#proxy-string">String</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/sequence.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/api/sequence.html">Sequence</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/sequence.html#sequence-async">Async</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -240,7 +239,8 @@
                   nav_childless" href="/docs/migration/5_0.html#5.0-deprecations-3.-rename-container-prop">3. Rename Container prop</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/5_0.html#5.0-deprecations-4.-remove-module-factory">4. Remove Module factory</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/5_0.html#5.0-deprecations-5.-rename-tags">5. Rename tags</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/migration/5_0.html#5.0-deprecations-6.-proxies">6. Proxies</a></li></ul></li><li><input type="checkbox" id="/docs/migration/5_0.html#5.0-replace-addons" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/5_0.html#5.0-deprecations-6.-from-tags-to-proxies">6. From tags to proxies</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/migration/5_0.html#5.0-deprecations-7.-from-operators-to-factories">7. From operators to factories</a></li></ul></li><li><input type="checkbox" id="/docs/migration/5_0.html#5.0-replace-addons" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_sublink
                   " href="/docs/migration/5_0.html#5.0-replace-addons">Replace addons</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/5_0.html#5.0-replace-addons-forms">Forms</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/migration/5_0.html#5.0-replace-addons-http">Http</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -251,19 +251,33 @@
                   nav_childless" href="/docs/contribute/index.html#introduction-contribute-to-documentation">Contribute to documentation</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/contribute/index.html#introduction-contribute-to-website">Contribute to website</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/contribute/index.html#introduction-contribute-to-codebase">Contribute to codebase</a></li></ul></li><li class="nav_page-item "><a class="nav_toggle-label nav_item-name nav_link nav_page
-                  nav_childless" href="/docs/contribute/issues.html">Issues</a></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="compute">Compute</h1><p>Computeds calculate and cache derived state values. Using computeds helps to keep logic out of the application view components and improves performance.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Compute<span class="token punctuation">,</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+                  nav_childless" href="/docs/contribute/issues.html">Issues</a></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="compute">Compute</h1><p>Computeds calculate and cache derived state values. Using computeds helps to keep logic out of the application view components and improves performance.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Compute</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  userName<span class="token punctuation">:</span> state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>name<span class="token punctuation">,</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> userName <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`Hi </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>A computed takes a map of dependencies. Proxies will be resolved to a value when the computed executes. </p><p>All computed also has a <strong>get</strong> property, it allows you to manually extract values that will become dynamic dependencies of the computed:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Compute<span class="token punctuation">,</span> state<span class="token punctuation">,</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> title <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">get</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`Hi </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">get</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span>
+<span class="token punctuation">}</span></code></pre><p>You use the <strong>get</strong> function to retrieve state and other computed values from the state tree. It will automatically track the computed to optimally figure out when it needs to recalculate.</p><p>You attach these computeds directly to your state:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> title <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./computed'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">Compute</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  userId<span class="token punctuation">:</span> state<span class="token punctuation">.</span>user<span class="token punctuation">.</span>id
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> userId<span class="token punctuation">,</span> <span class="token keyword">get</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token keyword">get</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>projects<span class="token punctuation">[</span>userId<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length <span class="token operator">></span> <span class="token keyword">get</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>limit<span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/api/computed.md" target="_new">Edit on Github</a></div></div></div></div></div>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    user<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      name<span class="token punctuation">:</span> <span class="token string">'Bob'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    title
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre><p>To use a computed just point to it as if it was normal state, here shown with React:</p><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/react'</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
+  <span class="token punctuation">{</span>
+    hello<span class="token punctuation">:</span> state<span class="token punctuation">.</span>title
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span> hello <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>h1<span class="token operator">></span><span class="token punctuation">{</span>title<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span></code></pre><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/api/computed.md" target="_new">Edit on Github</a></div></div></div></div></div>
     
 <script src="/search.js"></script>
 <script src="/mobile.js"></script>
