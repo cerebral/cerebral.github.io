@@ -71,7 +71,7 @@
                   nav_childless" href="/docs/advanced/structure.html#structure-sequences">Sequences</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/advanced/structure.html#structure-modules">Modules</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/advanced/test.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/advanced/test.html">Test</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/advanced/test.html#test-snapshot-testing-(beta)">Snapshot testing (beta)</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/advanced/test.html#test-snapshot-testing">Snapshot testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/advanced/test.html#test-traditional-assertion">Traditional assertion</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/advanced/typescript.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/advanced/typescript.html">Typescript</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/advanced/typescript.html#typescript-required:-preparing-typing">Required: Preparing typing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -176,7 +176,8 @@
                   nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-debounce">debounce</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-equals">equals</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-wait">wait</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-when">when</a></li></ul></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/providers.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-when">when</a></li></ul></li></ul></li><li class="nav_page-item "><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/api/module.html">Module</a></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/providers.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/api/providers.html">Providers</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/providers.html#providers-provider">Provider</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/proxy.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/api/proxy.html">Proxy</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -186,7 +187,8 @@
                   nav_childless" href="/docs/api/proxy.html#proxy-props">Props</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/proxy.html#proxy-modulestate">ModuleState</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/proxy.html#proxy-modulesequences">ModuleSequences</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/api/proxy.html#proxy-string">String</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/sequence.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/api/proxy.html#proxy-string">String</a></li></ul></li><li class="nav_page-item "><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/api/reaction.html">Reaction</a></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/sequence.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/api/sequence.html">Sequence</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/sequence.html#sequence-async">Async</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/sequence.html#sequence-sequence-factory">Sequence factory</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -268,13 +270,16 @@
 
 <span class="token function">loadItemsPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token keyword">const</span> vue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  el<span class="token punctuation">:</span> <span class="token string">'#app'</span><span class="token punctuation">,</span>
-  components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    container<span class="token punctuation">:</span> <span class="token function">Container</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">,</span>
-    app<span class="token punctuation">:</span> AppComponent
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>And you would define the component like this:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
+<span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  render<span class="token punctuation">:</span> h <span class="token operator">=</span><span class="token operator">></span>
+    <span class="token function">h</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        Container<span class="token punctuation">:</span> <span class="token function">Container</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        AppComponent<span class="token punctuation">:</span> AppComponent
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      template<span class="token punctuation">:</span> <span class="token string">"&lt;Container>&lt;AppComponent>&lt;/AppComponent>&lt;/Container>"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">"#app"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>And you would define the component like this:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> sequences <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
@@ -301,11 +306,7 @@
   &lt;/div>
 `</span></span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">)</span></code></pre><p>With Vue you would also need to update the <strong>index.html</strong> file with the following code:</p><pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>container</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>app</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>app</span><span class="token punctuation">></span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>container</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><p>You would of course be able to use <strong>.vue</strong> files as well here. Read more about that in <a href="/views/vue.html">@cerebral/vue</a>.</p><p>The tutorial will continue using <a href="https://reactjs.org/" target="new">React</a> though. Run the following command in the terminal:</p><p><code>npm install react react-dom @cerebral/react</code></p><p>And reset the <strong>index.html</strong> file to:</p><pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><p>And then in the root <strong>index.js</strong> file you can add:</p><pre><code class="language-js"><span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token punctuation">)</span></code></pre><p>You would of course be able to use <strong>.vue</strong> files as well here. Read more about that in <a href="/views/vue.html">@cerebral/vue</a>.</p><p>The tutorial will continue using <a href="https://reactjs.org/" target="new">React</a> though. Run the following command in the terminal:</p><p><code>npm install react react-dom @cerebral/react</code></p><p>And reset the <strong>index.html</strong> file to:</p><pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><p>And then in the root <strong>index.js</strong> file you can add:</p><pre><code class="language-js"><span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> Devtools <span class="token keyword">from</span> <span class="token string">'cerebral/devtools'</span>
 <span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom'</span>

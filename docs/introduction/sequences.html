@@ -71,7 +71,7 @@
                   nav_childless" href="/docs/advanced/structure.html#structure-sequences">Sequences</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/advanced/structure.html#structure-modules">Modules</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/advanced/test.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/advanced/test.html">Test</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/advanced/test.html#test-snapshot-testing-(beta)">Snapshot testing (beta)</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/advanced/test.html#test-snapshot-testing">Snapshot testing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/advanced/test.html#test-traditional-assertion">Traditional assertion</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/advanced/typescript.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/advanced/typescript.html">Typescript</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/advanced/typescript.html#typescript-required:-preparing-typing">Required: Preparing typing</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -176,7 +176,8 @@
                   nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-debounce">debounce</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-equals">equals</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-wait">wait</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-when">when</a></li></ul></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/providers.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/api/factories.html#factories-flow-control-factories-when">when</a></li></ul></li></ul></li><li class="nav_page-item "><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/api/module.html">Module</a></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/providers.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/api/providers.html">Providers</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/providers.html#providers-provider">Provider</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/proxy.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/api/proxy.html">Proxy</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -186,7 +187,8 @@
                   nav_childless" href="/docs/api/proxy.html#proxy-props">Props</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/proxy.html#proxy-modulestate">ModuleState</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/proxy.html#proxy-modulesequences">ModuleSequences</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/api/proxy.html#proxy-string">String</a></li></ul></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/sequence.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/api/proxy.html#proxy-string">String</a></li></ul></li><li class="nav_page-item "><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/api/reaction.html">Reaction</a></li><li class="nav_page-item "><input type="checkbox" id="/docs/api/sequence.html" class="nav_toggle"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/api/sequence.html">Sequence</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/sequence.html#sequence-async">Async</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/api/sequence.html#sequence-sequence-factory">Sequence factory</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -360,46 +362,9 @@
   getPosts<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// {}</span>
   setPosts<span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// { posts }</span>
   unsetLoadingPosts <span class="token comment" spellcheck="true">// { posts }</span>
-<span class="token punctuation">]</span></code></pre><p>Let us fire up the sequence and we can rather let the debugger do this visualization for us. In the <code>/src/index.js</code> add the following:</p><pre><code class="language-js"><span class="token keyword">import</span> App<span class="token punctuation">,</span> <span class="token punctuation">{</span> sequences <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
-<span class="token keyword">import</span> Devtools <span class="token keyword">from</span> <span class="token string">'cerebral/devtools'</span>
+<span class="token punctuation">]</span></code></pre><p>Let us fire up the sequence and we can rather let the debugger do this visualization for us. In the <code>/src/index.js</code> add the following:</p><pre><code class="language-js"><span class="token operator">...</span>
 
-<span class="token keyword">const</span> API_URL <span class="token operator">=</span> <span class="token string">'https://jsonplaceholder.typicode.com'</span>
-
-<span class="token keyword">const</span> setLoadingPosts <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> store <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
-  store<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'isLoadingPosts'</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> getPosts <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> api <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
-  api<span class="token punctuation">.</span><span class="token function">getPosts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>posts <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> posts <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> setPosts <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> store<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
-  store<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'posts'</span><span class="token punctuation">,</span> props<span class="token punctuation">.</span>posts<span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> unsetLoadingPosts <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> store <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
-  store<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'isLoadingPosts'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
-
-<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'My Project'</span><span class="token punctuation">,</span>
-    posts<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    users<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-    userModal<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      show<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-      id<span class="token punctuation">:</span> <span class="token keyword">null</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    isLoadingPosts<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    isLoadingUser<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    error<span class="token punctuation">:</span> <span class="token keyword">null</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  sequences<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    openPostsPage<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      setLoadingPosts<span class="token punctuation">,</span>
-      getPosts<span class="token punctuation">,</span>
-      setPosts<span class="token punctuation">,</span>
-      unsetLoadingPosts
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  providers<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span>  
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> openPostsPage <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token function">getSequence</span><span class="token punctuation">(</span><span class="token string">'openPostsPage'</span><span class="token punctuation">)</span>
 
@@ -413,7 +378,7 @@
   api<span class="token punctuation">.</span><span class="token function">getPosts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>posts <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> posts <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> getUser <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> api<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
-  jsonPlaceholder<span class="token punctuation">.</span><span class="token function">getUser</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>user <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> user <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  api<span class="token punctuation">.</span><span class="token function">getUser</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>user <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span><span class="token punctuation">{</span> user <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -449,7 +414,7 @@
 
 <span class="token keyword">const</span> openPostsPage <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token function">getSequence</span><span class="token punctuation">(</span><span class="token string">'openPostsPage'</span><span class="token punctuation">)</span>
 
-<span class="token function">openPostsPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre><p>We now just made several actions obsolete. There are other factories for changin state and also managing the flow of execution.</p><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/introduction/sequences.md" target="_new">Edit on Github</a></div></div></div></div></div>
+<span class="token function">openPostsPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre><p>We now just made several actions obsolete. There are other factories for changing state and also managing the flow of execution.</p><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/introduction/sequences.md" target="_new">Edit on Github</a></div></div></div></div></div>
     
 <script src="/search.js"></script>
 <script src="/mobile.js"></script>
