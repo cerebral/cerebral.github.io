@@ -261,136 +261,136 @@
                   " href="/docs/resources/index.html#utilities-@cerebral/storage">@cerebral/storage</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/resources/index.html#utilities-@cerebral/storage-description">Description</a></li></ul></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="proxy">Proxy</h1><p>The proxies exposed by Cerebral allows you to target state, sequences and props. They require the <a href="https://www.npmjs.com/package/babel-plugin-cerebral" target="new">babel-plugin-cerebral</a> which transforms the proxies into <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#Tagged_template_literals" target="new">template literal tags</a>.</p><h2>State<a href="#proxy-state">∞</a><span id="proxy-state"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token comment" spellcheck="true">// In action</span>
-<span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span> store <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  store<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span>
+<span class="token comment">// In action</span>
+<span class="token keyword">function</span> <span class="token function">myAction</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> store <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// In factories</span>
+<span class="token comment">// In factories</span>
 <span class="token punctuation">[</span>
-  <span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token function">when</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
 
-<span class="token comment" spellcheck="true">// In computed</span>
+<span class="token comment">// In computed</span>
 <span class="token function">Compute</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> state<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> state<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// In reaction</span>
+<span class="token comment">// In reaction</span>
 <span class="token function">Reaction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> state<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> state<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// In connect</span>
+<span class="token comment">// In connect</span>
 <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> state<span class="token punctuation">.</span>foo
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> state<span class="token punctuation">.</span>foo
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">)</span></code></pre><h2>Sequences<a href="#proxy-sequences">∞</a><span id="proxy-sequences"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> sequences <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token comment" spellcheck="true">// In action</span>
-<span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> mySequence <span class="token operator">=</span> <span class="token keyword">get</span><span class="token punctuation">(</span>sequences<span class="token punctuation">.</span>mySequence<span class="token punctuation">)</span>
+<span class="token comment">// In action</span>
+<span class="token keyword">function</span> <span class="token function">myAction</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> get <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> mySequence <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span>sequences<span class="token punctuation">.</span>mySequence<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// In factories</span>
+<span class="token comment">// In factories</span>
 <span class="token punctuation">[</span>
   <span class="token function">onMessage</span><span class="token punctuation">(</span><span class="token string">'some_channel'</span><span class="token punctuation">,</span> sequences<span class="token punctuation">.</span>onMessage<span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
 
-<span class="token comment" spellcheck="true">// In reaction</span>
+<span class="token comment">// In reaction</span>
 <span class="token function">Reaction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> state<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> foo<span class="token punctuation">,</span> <span class="token keyword">get</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">get</span><span class="token punctuation">(</span>sequences<span class="token punctuation">.</span>mySequence<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span> foo <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> state<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> foo<span class="token punctuation">,</span> get <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">get</span><span class="token punctuation">(</span>sequences<span class="token punctuation">.</span>mySequence<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span> foo <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// In connect</span>
+<span class="token comment">// In connect</span>
 <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> state<span class="token punctuation">.</span>foo<span class="token punctuation">,</span>
-  onClick<span class="token punctuation">:</span> sequences<span class="token punctuation">.</span>doThis
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> state<span class="token punctuation">.</span>foo<span class="token punctuation">,</span>
+  <span class="token literal-property property">onClick</span><span class="token operator">:</span> sequences<span class="token punctuation">.</span>doThis
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">)</span></code></pre><h2>Compute<a href="#proxy-compute">∞</a><span id="proxy-compute"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token comment" spellcheck="true">// In action</span>
-<span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> someValue <span class="token operator">=</span> <span class="token keyword">get</span><span class="token punctuation">(</span>computed<span class="token punctuation">.</span>someValue<span class="token punctuation">)</span>
+<span class="token comment">// In action</span>
+<span class="token keyword">function</span> <span class="token function">myAction</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> get <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> someValue <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span>computed<span class="token punctuation">.</span>someValue<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// In factories</span>
+<span class="token comment">// In factories</span>
 <span class="token punctuation">[</span>
   <span class="token function">when</span><span class="token punctuation">(</span>computed<span class="token punctuation">.</span>appIsAwesome<span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
 
-<span class="token comment" spellcheck="true">// In computed</span>
+<span class="token comment">// In computed</span>
 <span class="token function">Compute</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> computed<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> foo <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> computed<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> foo <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// In reaction</span>
+<span class="token comment">// In reaction</span>
 <span class="token function">Reaction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> computed<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> foo <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> computed<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> foo <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// In connect</span>
+<span class="token comment">// In connect</span>
 <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> computed<span class="token punctuation">.</span>foo
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> computed<span class="token punctuation">.</span>foo
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">)</span></code></pre><h2>Props<a href="#proxy-props">∞</a><span id="proxy-props"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> props <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token comment" spellcheck="true">// In factories</span>
+<span class="token comment">// In factories</span>
 <span class="token punctuation">[</span>
   <span class="token function">when</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>isCool<span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
 
-<span class="token comment" spellcheck="true">// In computed</span>
+<span class="token comment">// In computed</span>
 <span class="token function">Compute</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> props<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> foo <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> props<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> foo <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// In connect</span>
+<span class="token comment">// In connect</span>
 <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  item<span class="token punctuation">:</span> state<span class="token punctuation">.</span>items<span class="token punctuation">[</span>props<span class="token punctuation">.</span>index<span class="token punctuation">]</span>
+  <span class="token literal-property property">item</span><span class="token operator">:</span> state<span class="token punctuation">.</span>items<span class="token punctuation">[</span>props<span class="token punctuation">.</span>index<span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token operator">...</span><span class="token punctuation">)</span></code></pre><h2>ModuleState<a href="#proxy-modulestate">∞</a><span id="proxy-modulestate"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> moduleState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token comment" spellcheck="true">// In action</span>
-<span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span> store <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  store<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>moduleState<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span>
+<span class="token comment">// In action</span>
+<span class="token keyword">function</span> <span class="token function">myAction</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> store <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>moduleState<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// In factories</span>
+<span class="token comment">// In factories</span>
 <span class="token punctuation">[</span>
-  <span class="token keyword">set</span><span class="token punctuation">(</span>moduleState<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token function">set</span><span class="token punctuation">(</span>moduleState<span class="token punctuation">.</span>foo<span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
   <span class="token function">when</span><span class="token punctuation">(</span>moduleState<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
 
-<span class="token comment" spellcheck="true">// In computed</span>
+<span class="token comment">// In computed</span>
 <span class="token function">Compute</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> moduleState<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> moduleState<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token comment" spellcheck="true">// In reaction</span>
+<span class="token comment">// In reaction</span>
 <span class="token function">Reaction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> moduleState<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2>ModuleSequences<a href="#proxy-modulesequences">∞</a><span id="proxy-modulesequences"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> moduleSequences <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> moduleState<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2>ModuleSequences<a href="#proxy-modulesequences">∞</a><span id="proxy-modulesequences"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> moduleSequences <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token comment" spellcheck="true">// In action</span>
-<span class="token keyword">function</span> myAction <span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token keyword">get</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">const</span> mySequence <span class="token operator">=</span> <span class="token keyword">get</span><span class="token punctuation">(</span>moduleSequences<span class="token punctuation">.</span>mySequence<span class="token punctuation">)</span>
+<span class="token comment">// In action</span>
+<span class="token keyword">function</span> <span class="token function">myAction</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> get <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> mySequence <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span>moduleSequences<span class="token punctuation">.</span>mySequence<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token comment" spellcheck="true">// In factories</span>
+<span class="token comment">// In factories</span>
 <span class="token punctuation">[</span>
   <span class="token function">onMessage</span><span class="token punctuation">(</span><span class="token string">'some_channel'</span><span class="token punctuation">,</span> moduleSequences<span class="token punctuation">.</span>onMessage<span class="token punctuation">)</span>
 <span class="token punctuation">]</span>
 
-<span class="token comment" spellcheck="true">// In reaction</span>
+<span class="token comment">// In reaction</span>
 <span class="token function">Reaction</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  foo<span class="token punctuation">:</span> state<span class="token punctuation">.</span>foo
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> foo<span class="token punctuation">,</span> <span class="token keyword">get</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">get</span><span class="token punctuation">(</span>moduleSequences<span class="token punctuation">.</span>mySequence<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span> foo <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token literal-property property">foo</span><span class="token operator">:</span> state<span class="token punctuation">.</span>foo
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> foo<span class="token punctuation">,</span> get <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token function">get</span><span class="token punctuation">(</span>moduleSequences<span class="token punctuation">.</span>mySequence<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">{</span> foo <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h2>String<a href="#proxy-string">∞</a><span id="proxy-string"> </span></h2><p>The string can not e converted to a proxy cause it represents a string, but you can combine it with proxies:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> string <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token comment" spellcheck="true">// In factories</span>
+<span class="token comment">// In factories</span>
 <span class="token punctuation">[</span>
-  <span class="token function">httpGet</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token string">`/items/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>state<span class="token punctuation">.</span>currentItemId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">)</span>
+  <span class="token function">httpGet</span><span class="token punctuation">(</span>string<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/items/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>state<span class="token punctuation">.</span>currentItemId<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
 <span class="token punctuation">]</span></code></pre><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/api/proxy.md" target="_new">Edit on Github</a></div></div></div></div></div>
     
 <script src="/search.js"></script>

@@ -265,28 +265,28 @@
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
-    inputValue<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`inputValue`</span></span><span class="token punctuation">,</span>
-    changeInputValue<span class="token punctuation">:</span> sequences<span class="token template-string"><span class="token string">`changeInputValue`</span></span>
+    <span class="token literal-property property">inputValue</span><span class="token operator">:</span> state<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">inputValue</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    <span class="token literal-property property">changeInputValue</span><span class="token operator">:</span> sequences<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">changeInputValue</span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token keyword">class</span> <span class="token class-name">MyComponent</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">{</span>
     <span class="token function">componentDidMount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span><span class="token function">reaction</span><span class="token punctuation">(</span>
         <span class="token string">'focusUsername'</span><span class="token punctuation">,</span>
         <span class="token punctuation">{</span>
-          error<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`usernameError`</span></span>
+          <span class="token literal-property property">error</span><span class="token operator">:</span> state<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">usernameError</span><span class="token template-punctuation string">`</span></span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        <span class="token punctuation">(</span><span class="token punctuation">{</span> error <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> error <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>input<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> error <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> error <span class="token operator">&amp;&amp;</span> <span class="token keyword">this</span><span class="token punctuation">.</span>input<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
       <span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
     <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">return</span> <span class="token punctuation">(</span>
         <span class="token operator">&lt;</span>input
-          ref<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+          ref<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">node</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
             <span class="token keyword">this</span><span class="token punctuation">.</span>input <span class="token operator">=</span> node
           <span class="token punctuation">}</span><span class="token punctuation">}</span>
           value<span class="token operator">=</span><span class="token punctuation">{</span><span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span>inputValue<span class="token punctuation">}</span>
-          onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>
-            <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span><span class="token function">changeInputValue</span><span class="token punctuation">(</span><span class="token punctuation">{</span> value<span class="token punctuation">:</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">)</span>
+          onChange<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>props<span class="token punctuation">.</span><span class="token function">changeInputValue</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">value</span><span class="token operator">:</span> event<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">)</span>
           <span class="token punctuation">}</span>
         <span class="token operator">/</span><span class="token operator">></span>
       <span class="token punctuation">)</span>

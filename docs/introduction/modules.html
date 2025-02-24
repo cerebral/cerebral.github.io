@@ -262,18 +262,18 @@
                   nav_childless" href="/docs/resources/index.html#utilities-@cerebral/storage-description">Description</a></li></ul></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="modules">Modules</h1><p>The main building block of Cerebral is the <strong>Module</strong>. It helps you organize your application and it is an extension point to share logic between apps. In your project open the file <code>src/index.js</code>. Add the following content:</p><pre><code class="language-js"><span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'My Project'</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'My Project'</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p><strong>That is it!</strong> Cerebral is now wired up and we can start building the application. When your application grows you can extend a module with submodules:</p><pre><code class="language-js"><span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'My Project'</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'My Project'</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    someOtherModule<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      state<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token literal-property property">modules</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">someOtherModule</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>But before looking more into organizing your project, let us look at the devtools.</p><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/introduction/modules.md" target="_new">Edit on Github</a></div></div></div></div></div>

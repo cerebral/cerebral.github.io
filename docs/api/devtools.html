@@ -265,37 +265,37 @@
 
 <span class="token keyword">let</span> devtools <span class="token operator">=</span> <span class="token keyword">null</span>
 
-<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>NODE_ENV <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   devtools <span class="token operator">=</span> <span class="token function">Devtools</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// Connect to Electron debugger (external debugger). It will</span>
-    <span class="token comment" spellcheck="true">// fall back to chrome extension if unable to connect</span>
-    host<span class="token punctuation">:</span> <span class="token string">'localhost:8585'</span><span class="token punctuation">,</span>
+    <span class="token comment">// Connect to Electron debugger (external debugger). It will</span>
+    <span class="token comment">// fall back to chrome extension if unable to connect</span>
+    <span class="token literal-property property">host</span><span class="token operator">:</span> <span class="token string">'localhost:8585'</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// By default devtools connects to "ws://". This option should be set to true</span>
-    <span class="token comment" spellcheck="true">// when browser operates on https. Follow debugger instructions for</span>
-    <span class="token comment" spellcheck="true">// further configuration</span>
-    https<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token comment">// By default devtools connects to "ws://". This option should be set to true</span>
+    <span class="token comment">// when browser operates on https. Follow debugger instructions for</span>
+    <span class="token comment">// further configuration</span>
+    <span class="token literal-property property">https</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// By default the devtools tries to reconnect</span>
-    <span class="token comment" spellcheck="true">// to debugger when it can not be reached, but</span>
-    <span class="token comment" spellcheck="true">// you can turn it off</span>
-    reconnect<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// By default the devtools tries to reconnect</span>
+    <span class="token comment">// to debugger when it can not be reached, but</span>
+    <span class="token comment">// you can turn it off</span>
+    <span class="token literal-property property">reconnect</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Time travel</span>
-    storeMutations<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Time travel</span>
+    <span class="token literal-property property">storeMutations</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Shows a warning when you have components with number of</span>
-    <span class="token comment" spellcheck="true">// state dependencies or signals above the set number</span>
-    bigComponentsWarning<span class="token punctuation">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+    <span class="token comment">// Shows a warning when you have components with number of</span>
+    <span class="token comment">// state dependencies or signals above the set number</span>
+    <span class="token literal-property property">bigComponentsWarning</span><span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// Warnings when passing objects and arrays as props to child</span>
-    <span class="token comment" spellcheck="true">// components. They should rather be connected directly</span>
-    warnStateProps<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// Warnings when passing objects and arrays as props to child</span>
+    <span class="token comment">// components. They should rather be connected directly</span>
+    <span class="token literal-property property">warnStateProps</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 
-    <span class="token comment" spellcheck="true">// In addition to these basic JavaScript types: Object, Array, String, Number</span>
-    <span class="token comment" spellcheck="true">// and Boolean, types of File, FileList, Blob, ImageData and RegExp is allowed to be stored in state</span>
-    <span class="token comment" spellcheck="true">// tree. You can add additional types if you know what you are doing :)</span>
-    allowedTypes<span class="token punctuation">:</span> <span class="token punctuation">[</span>Blob<span class="token punctuation">]</span>
+    <span class="token comment">// In addition to these basic JavaScript types: Object, Array, String, Number</span>
+    <span class="token comment">// and Boolean, types of File, FileList, Blob, ImageData and RegExp is allowed to be stored in state</span>
+    <span class="token comment">// tree. You can add additional types if you know what you are doing :)</span>
+    <span class="token literal-property property">allowedTypes</span><span class="token operator">:</span> <span class="token punctuation">[</span>Blob<span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 

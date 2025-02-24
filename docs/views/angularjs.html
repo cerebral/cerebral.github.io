@@ -266,19 +266,19 @@
 <span class="token function">addModule</span><span class="token punctuation">(</span>angular<span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> mainModule <span class="token operator">=</span> <span class="token function">Module</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    foo<span class="token punctuation">:</span> <span class="token string">'bar'</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">foo</span><span class="token operator">:</span> <span class="token string">'bar'</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  sequences<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    onClick<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+  <span class="token literal-property property">sequences</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">onClick</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  services<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'MyAngularService'</span><span class="token punctuation">]</span>  <span class="token comment" spellcheck="true">// main module only. Added as providers with same name</span>
+  <span class="token literal-property property">services</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'MyAngularService'</span><span class="token punctuation">]</span>  <span class="token comment">// main module only. Added as providers with same name</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span>mainModule<span class="token punctuation">)</span>
 
 angular<span class="token punctuation">.</span><span class="token function">module</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'cerebral'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span>cerebralProvider<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">cerebralProvider</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     cerebralProvider<span class="token punctuation">.</span><span class="token function">configure</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token operator">...</span></code></pre><h2>connect<a href="#@cerebral/angularjs-connect">∞</a><span id="@cerebral/angularjs-connect"> </span></h2><pre><code class="language-js"><span class="token keyword">import</span> angular <span class="token keyword">from</span> <span class="token string">'angular'</span>
@@ -288,18 +288,18 @@ angular<span class="token punctuation">.</span><span class="token function">modu
 angular<span class="token punctuation">.</span><span class="token function">module</span><span class="token punctuation">(</span><span class="token string">'app'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'cerebral'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">config</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span>
   <span class="token punctuation">.</span><span class="token function">component</span><span class="token punctuation">(</span><span class="token string">'myComponent'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    template<span class="token punctuation">:</span> <span class="token string">'&lt;div ng-click="$ctrl.click()">{{$ctrl.foo}}&lt;/div>'</span><span class="token punctuation">,</span>
-    controller<span class="token punctuation">:</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      foo<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`foo`</span></span><span class="token punctuation">,</span>
-      click<span class="token punctuation">:</span> sequences<span class="token template-string"><span class="token string">`onClick`</span></span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'MyComponent'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'cerebral'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> MyController <span class="token punctuation">(</span>cerebral<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'&lt;div ng-click="$ctrl.click()">{{$ctrl.foo}}&lt;/div>'</span><span class="token punctuation">,</span>
+    <span class="token literal-property property">controller</span><span class="token operator">:</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token literal-property property">foo</span><span class="token operator">:</span> state<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">foo</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+      <span class="token literal-property property">click</span><span class="token operator">:</span> sequences<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">onClick</span><span class="token template-punctuation string">`</span></span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'MyComponent'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'cerebral'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token function">MyController</span> <span class="token punctuation">(</span><span class="token parameter">cerebral</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-      <span class="token comment" spellcheck="true">// In some cases you might need access to the cerebral app.</span>
-      <span class="token comment" spellcheck="true">// You can inject the cerebral angular service and</span>
-      <span class="token comment" spellcheck="true">// access it's app property anywhere in your app</span>
+      <span class="token comment">// In some cases you might need access to the cerebral app.</span>
+      <span class="token comment">// You can inject the cerebral angular service and</span>
+      <span class="token comment">// access it's app property anywhere in your app</span>
       cerebral<span class="token punctuation">.</span>app<span class="token punctuation">.</span><span class="token function">getSequence</span><span class="token punctuation">(</span><span class="token string">'mySignal'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-      <span class="token comment" spellcheck="true">// Optionally add custom behaviour to app</span>
+      <span class="token comment">// Optionally add custom behaviour to app</span>
     <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>Since angular doesn’t expose the component name,
 you will need to provide one to <code>connect</code> for the

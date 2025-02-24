@@ -268,28 +268,28 @@
 <span class="token keyword">import</span> <span class="token punctuation">{</span> AppComponent <span class="token punctuation">}</span>  <span class="token keyword">from</span> <span class="token string">'./app.component.ts'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> SomeAngularService <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./SomeAngularService'</span>
 
-<span class="token comment" spellcheck="true">// Create a factory to instantiate Cerebral. It can receive</span>
-<span class="token comment" spellcheck="true">// dependencies which you can "provide" to Cerebral to be used</span>
-<span class="token comment" spellcheck="true">// within sequences</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">configureApp</span><span class="token punctuation">(</span>someAngularService <span class="token punctuation">:</span> SomeAngularService<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token comment">// Create a factory to instantiate Cerebral. It can receive</span>
+<span class="token comment">// dependencies which you can "provide" to Cerebral to be used</span>
+<span class="token comment">// within sequences</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">configureApp</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">someAngularService</span> <span class="token operator">:</span> SomeAngularService</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">AppService</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// We use the "provide" function to an angular service to the sequences</span>
-    <span class="token comment" spellcheck="true">// of Cerebral</span>
-    providers<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token comment">// We use the "provide" function to an angular service to the sequences</span>
+    <span class="token comment">// of Cerebral</span>
+    <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>
       <span class="token function">provide</span><span class="token punctuation">(</span><span class="token string">'someAngularService'</span><span class="token punctuation">,</span> someAngularService<span class="token punctuation">)</span>
     <span class="token punctuation">]</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 @<span class="token function">NgModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  imports<span class="token punctuation">:</span>      <span class="token punctuation">[</span> BrowserModule <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  declarations<span class="token punctuation">:</span> <span class="token punctuation">[</span> AppComponent <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  bootstrap<span class="token punctuation">:</span>    <span class="token punctuation">[</span> AppComponent <span class="token punctuation">]</span><span class="token punctuation">,</span>
-  providers<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">imports</span><span class="token operator">:</span>      <span class="token punctuation">[</span> BrowserModule <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">declarations</span><span class="token operator">:</span> <span class="token punctuation">[</span> AppComponent <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">bootstrap</span><span class="token operator">:</span>    <span class="token punctuation">[</span> AppComponent <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">providers</span><span class="token operator">:</span> <span class="token punctuation">[</span>
      <span class="token punctuation">{</span>
-      provide<span class="token punctuation">:</span> AppService<span class="token punctuation">,</span>
-      useFactory<span class="token punctuation">:</span> configureApp<span class="token punctuation">,</span>
-      deps<span class="token punctuation">:</span> <span class="token punctuation">[</span>SomeAngularService<span class="token punctuation">]</span>
+      <span class="token literal-property property">provide</span><span class="token operator">:</span> AppService<span class="token punctuation">,</span>
+      <span class="token literal-property property">useFactory</span><span class="token operator">:</span> configureApp<span class="token punctuation">,</span>
+      <span class="token literal-property property">deps</span><span class="token operator">:</span> <span class="token punctuation">[</span>SomeAngularService<span class="token punctuation">]</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -306,23 +306,23 @@
 <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/angular'</span>
 
 @<span class="token function">Component</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  selector<span class="token punctuation">:</span> <span class="token string">'app-component'</span><span class="token punctuation">,</span>
-  template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+  <span class="token literal-property property">selector</span><span class="token operator">:</span> <span class="token string">'app-component'</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
     &lt;div (click)="onClick()">{{foo}}&lt;/div>
-  `</span></span><span class="token punctuation">,</span>
-  <span class="token comment" spellcheck="true">// Change detection needs to be set to "OnPush"</span>
-  changeDetection<span class="token punctuation">:</span> ChangeDetectionStrategy<span class="token punctuation">.</span>OnPush
+  </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+  <span class="token comment">// Change detection needs to be set to "OnPush"</span>
+  <span class="token literal-property property">changeDetection</span><span class="token operator">:</span> ChangeDetectionStrategy<span class="token punctuation">.</span>OnPush
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 @<span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// For AOT to work you will have to use the array version of template</span>
-  <span class="token comment" spellcheck="true">// tags</span>
-  myName<span class="token punctuation">:</span> <span class="token function">state</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-  onClick<span class="token punctuation">:</span> <span class="token function">sequences</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'clicked'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token comment">// For AOT to work you will have to use the array version of template</span>
+  <span class="token comment">// tags</span>
+  <span class="token literal-property property">myName</span><span class="token operator">:</span> <span class="token function">state</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">onClick</span><span class="token operator">:</span> <span class="token function">sequences</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'clicked'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token keyword">export</span> <span class="token keyword">class</span> <span class="token class-name">AppComponent</span> <span class="token keyword">extends</span> <span class="token class-name">CerebralComponent</span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// You have to inject "ChangeDetectionRef" and "ControllerService" and pass</span>
-  <span class="token comment" spellcheck="true">// them to parent for connect to do its work</span>
-  <span class="token keyword">constructor</span><span class="token punctuation">(</span>cdr<span class="token punctuation">:</span> ChangeDetectorRef<span class="token punctuation">,</span> app<span class="token punctuation">:</span> AppService<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token comment">// You have to inject "ChangeDetectionRef" and "ControllerService" and pass</span>
+  <span class="token comment">// them to parent for connect to do its work</span>
+  <span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="token parameter"><span class="token literal-property property">cdr</span><span class="token operator">:</span> ChangeDetectorRef<span class="token punctuation">,</span> <span class="token literal-property property">app</span><span class="token operator">:</span> AppService</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span>cdr<span class="token punctuation">,</span> app<span class="token punctuation">)</span>
     app<span class="token punctuation">.</span><span class="token function">getSequence</span><span class="token punctuation">(</span><span class="token string">'onClick'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>

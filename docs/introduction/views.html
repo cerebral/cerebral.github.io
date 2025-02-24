@@ -267,35 +267,35 @@
 <span class="token keyword">import</span> main <span class="token keyword">from</span> <span class="token string">'./main'</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span>main<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  devtools<span class="token punctuation">:</span> <span class="token function">Devtools</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    host<span class="token punctuation">:</span> <span class="token string">'localhost:8585'</span>
+  <span class="token literal-property property">devtools</span><span class="token operator">:</span> <span class="token function">Devtools</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">host</span><span class="token operator">:</span> <span class="token string">'localhost:8585'</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-<span class="token keyword">const</span> loadItemsPage <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span>sequences<span class="token punctuation">.</span>loadItemsPage<span class="token punctuation">)</span>
+<span class="token keyword">const</span> loadItemsPage <span class="token operator">=</span> app<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>sequences<span class="token punctuation">.</span>loadItemsPage<span class="token punctuation">)</span>
 
 <span class="token function">loadItemsPage</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">new</span> <span class="token class-name">Vue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  render<span class="token punctuation">:</span> h <span class="token operator">=</span><span class="token operator">></span>
+  <span class="token function-variable function">render</span><span class="token operator">:</span> <span class="token parameter">h</span> <span class="token operator">=></span>
     <span class="token function">h</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      components<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        Container<span class="token punctuation">:</span> <span class="token function">Container</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">,</span>
-        AppComponent<span class="token punctuation">:</span> AppComponent
+      <span class="token literal-property property">components</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token literal-property property">Container</span><span class="token operator">:</span> <span class="token function">Container</span><span class="token punctuation">(</span>app<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">AppComponent</span><span class="token operator">:</span> AppComponent
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
-      template<span class="token punctuation">:</span> <span class="token string">"&lt;Container>&lt;AppComponent>&lt;/AppComponent>&lt;/Container>"</span>
+      <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">"&lt;Container>&lt;AppComponent>&lt;/AppComponent>&lt;/Container>"</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span><span class="token string">"#app"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre><p>And you would define the component like this:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/vue'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> sequences <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
-    posts<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`posts`</span></span><span class="token punctuation">,</span>
-    isLoadingItems<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`isLoadingItems`</span></span><span class="token punctuation">,</span>
-    openUserModal<span class="token punctuation">:</span> sequences<span class="token template-string"><span class="token string">`openUserModal`</span></span>
+    <span class="token literal-property property">posts</span><span class="token operator">:</span> state<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">posts</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    <span class="token literal-property property">isLoadingItems</span><span class="token operator">:</span> state<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">isLoadingItems</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    <span class="token literal-property property">openUserModal</span><span class="token operator">:</span> sequences<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">openUserModal</span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">{</span>
-    template<span class="token punctuation">:</span> <span class="token template-string"><span class="token string">`
+    <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
   &lt;div v-if="isLoadingItems" className="content">
     &lt;h4>Loading posts...&lt;/h4>
   &lt;/div>
@@ -310,9 +310,9 @@
       &lt;/div>
     &lt;/div>
   &lt;/div>
-`</span></span>
+</span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">)</span></code></pre><p>You would of course be able to use <strong>.vue</strong> files as well here. Read more about that in <a href="/views/vue.html">@cerebral/vue</a>.</p><p>The tutorial will continue using <a href="https://reactjs.org/" target="new">React</a> though. Run the following command in the terminal:</p><p><code>npm install react react-dom @cerebral/react</code></p><p>And reset the <strong>index.html</strong> file to:</p><pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><p>And then in the root <strong>index.js</strong> file you can add:</p><pre><code class="language-js"><span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
+<span class="token punctuation">)</span></code></pre><p>You would of course be able to use <strong>.vue</strong> files as well here. Read more about that in <a href="/views/vue.html">@cerebral/vue</a>.</p><p>The tutorial will continue using <a href="https://reactjs.org/" target="new">React</a> though. Run the following command in the terminal:</p><p><code>npm install react react-dom @cerebral/react</code></p><p>And reset the <strong>index.html</strong> file to:</p><pre><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>app<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre><p>And then in the root <strong>index.js</strong> file you can add:</p><pre><code class="language-js"><span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> Devtools <span class="token keyword">from</span> <span class="token string">'cerebral/devtools'</span>
 <span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> render <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom'</span>
@@ -321,8 +321,8 @@
 <span class="token keyword">import</span> main <span class="token keyword">from</span> <span class="token string">'./main'</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span>main<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  devtools<span class="token punctuation">:</span> <span class="token function">Devtools</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    host<span class="token punctuation">:</span> <span class="token string">'localhost:8585'</span>
+  <span class="token literal-property property">devtools</span><span class="token operator">:</span> <span class="token function">Devtools</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token literal-property property">host</span><span class="token operator">:</span> <span class="token string">'localhost:8585'</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
@@ -337,16 +337,16 @@
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
-    posts<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`posts`</span></span><span class="token punctuation">,</span>
-    openUserModal<span class="token punctuation">:</span> sequences<span class="token template-string"><span class="token string">`openUserModal`</span></span>
+    <span class="token literal-property property">posts</span><span class="token operator">:</span> state<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">posts</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+    <span class="token literal-property property">openUserModal</span><span class="token operator">:</span> sequences<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">openUserModal</span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span> posts<span class="token punctuation">,</span> openUserModal <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> posts<span class="token punctuation">,</span> openUserModal <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
       <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"posts"</span><span class="token operator">></span>
-        <span class="token punctuation">{</span>posts<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>post <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">(</span>
+        <span class="token punctuation">{</span>posts<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">post</span> <span class="token operator">=></span> <span class="token punctuation">(</span>
           <span class="token operator">&lt;</span>div
             className<span class="token operator">=</span><span class="token string">"post"</span>
-            onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token function">openUserModal</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id<span class="token punctuation">:</span> post<span class="token punctuation">.</span>userId <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+            onClick<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">openUserModal</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">id</span><span class="token operator">:</span> post<span class="token punctuation">.</span>userId <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
           <span class="token operator">></span>
             <span class="token punctuation">{</span>post<span class="token punctuation">.</span>title<span class="token punctuation">}</span>
           <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>

@@ -270,23 +270,23 @@
 app
   <span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span>
     <span class="token punctuation">[</span>
-      <span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> store<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        store<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>isAwesome<span class="token punctuation">,</span> props<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
+      <span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> store<span class="token punctuation">,</span> props <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>isAwesome<span class="token punctuation">,</span> props<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
-      isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span>
+      <span class="token literal-property property">isAwesome</span><span class="token operator">:</span> <span class="token boolean">true</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// I am done running</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// I am done running</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>You can run a predefined sequence, which is defined inside a module as well:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> UniversalApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> main <span class="token keyword">from</span> <span class="token string">'./main'</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">UniversalApp</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span>
 
-app<span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token string">'some.module.aSequence'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token comment" spellcheck="true">// I am done running</span>
+app<span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token string">'some.module.aSequence'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">isAwesome</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// I am done running</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p><strong>NOTE!</strong> You should instantiate the app for each run you want to do.</p><h3>setState<a href="#universal-app-methods-setstate">∞</a><span id="universal-app-methods-setstate"> </span></h3><p>Finally, you can (synchronously) set a value inside the state directly, using a path:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> UniversalApp <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> main <span class="token keyword">from</span> <span class="token string">'./main'</span>
 
@@ -297,13 +297,13 @@ app<span class="token punctuation">.</span><span class="token function">setState
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">UniversalApp</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span>
 
-app<span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token string">'app.aSequence'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  app<span class="token punctuation">.</span><span class="token function">getChanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// {"app.isAwesome": true}</span>
+app<span class="token punctuation">.</span><span class="token function">runSequence</span><span class="token punctuation">(</span><span class="token string">'app.aSequence'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token literal-property property">isAwesome</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  app<span class="token punctuation">.</span><span class="token function">getChanges</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// {"app.isAwesome": true}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><h3>getScript<a href="#universal-app-methods-getscript">∞</a><span id="universal-app-methods-getscript"> </span></h3><p>When the client side application loads it will do its first render with the default state, meaning that if the server updated the state this is now out of sync. Using the <strong>getScript</strong> method you will get a script tag you can inject into the <em>HEAD</em> of the returned HTML. Cerebral will use this to bring your client side application state up to date with the server.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> UniversalApp<span class="token punctuation">,</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> main <span class="token keyword">from</span> <span class="token string">'./main'</span>
 <span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">'fs'</span>
 
-<span class="token comment" spellcheck="true">/*
+<span class="token comment">/*
   &lt;!DOCTYPE html>
   &lt;html>
     &lt;head>
@@ -321,15 +321,15 @@ app<span class="token punctuation">.</span><span class="token function">runSeque
 app
   <span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>
     <span class="token punctuation">[</span>
-      <span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token punctuation">{</span> store<span class="token punctuation">,</span> props <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        store<span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>app<span class="token punctuation">.</span>isAwesome<span class="token punctuation">,</span> props<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
+      <span class="token keyword">function</span> <span class="token function">myAction</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> store<span class="token punctuation">,</span> props <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        store<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>app<span class="token punctuation">.</span>isAwesome<span class="token punctuation">,</span> props<span class="token punctuation">.</span>isAwesome<span class="token punctuation">)</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">]</span><span class="token punctuation">,</span>
     <span class="token punctuation">{</span>
-      isAwesome<span class="token punctuation">:</span> <span class="token boolean">true</span>
+      <span class="token literal-property property">isAwesome</span><span class="token operator">:</span> <span class="token boolean">true</span>
     <span class="token punctuation">}</span>
   <span class="token punctuation">)</span>
-  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> index <span class="token operator">=</span> indexTemplate<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>
       <span class="token string">'{{CEREBRAL_SCRIPT}}'</span><span class="token punctuation">,</span>
       app<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -347,15 +347,15 @@ app
 <span class="token keyword">const</span> server <span class="token operator">=</span> <span class="token function">express</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token keyword">const</span> indexTemplate <span class="token operator">=</span> fs<span class="token punctuation">.</span><span class="token function">readFileSync</span><span class="token punctuation">(</span><span class="token string">'index.template.html'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-server<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>req<span class="token punctuation">,</span> res<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+server<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> res</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">UniversalApp</span><span class="token punctuation">(</span>main<span class="token punctuation">)</span>
 
   app
     <span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>loadAppSequence<span class="token punctuation">,</span> <span class="token punctuation">{</span>
-      query<span class="token punctuation">:</span> req<span class="token punctuation">.</span>query<span class="token punctuation">,</span>
-      useragent<span class="token punctuation">:</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'user-agent'</span><span class="token punctuation">]</span>
+      <span class="token literal-property property">query</span><span class="token operator">:</span> req<span class="token punctuation">.</span>query<span class="token punctuation">,</span>
+      <span class="token literal-property property">useragent</span><span class="token operator">:</span> req<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'user-agent'</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
-    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
       <span class="token keyword">const</span> index <span class="token operator">=</span> indexTemplate
         <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">'{{CEREBRAL_SCRIPT}}'</span><span class="token punctuation">,</span> app<span class="token punctuation">.</span><span class="token function">getScript</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>

@@ -265,14 +265,14 @@
 
 <span class="token keyword">function</span> <span class="token function">someAction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">MyError</span><span class="token punctuation">(</span><span class="token string">'Some message'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// any details</span>
+    <span class="token comment">// any details</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre><p>And caught like this:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> MyError <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./errors'</span>
 <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> sequences <span class="token keyword">from</span> <span class="token string">'./sequences'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   sequences<span class="token punctuation">,</span>
-  <span class="token keyword">catch</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  <span class="token literal-property property">catch</span><span class="token operator">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">[</span>MyError<span class="token punctuation">,</span> sequences<span class="token punctuation">.</span>handleError<span class="token punctuation">]</span>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span></code></pre><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/api/error.md" target="_new">Edit on Github</a></div></div></div></div></div>

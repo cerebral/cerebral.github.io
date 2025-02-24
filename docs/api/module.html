@@ -264,13 +264,13 @@
   sequences<span class="token punctuation">,</span>
   reactions<span class="token punctuation">,</span>
   providers<span class="token punctuation">,</span>
-  <span class="token keyword">catch</span><span class="token punctuation">,</span>
+  catch<span class="token punctuation">,</span>
   modules<span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre><p>You instantiate your application with a root module:</p><pre><code class="language-js"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><p>And you extend this root module with nested modules:</p><pre><code class="language-js"><span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">modules</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     moduleA<span class="token punctuation">,</span>
     moduleB
   <span class="token punctuation">}</span>

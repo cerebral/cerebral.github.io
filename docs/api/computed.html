@@ -261,14 +261,14 @@
                   " href="/docs/resources/index.html#utilities-@cerebral/storage">@cerebral/storage</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/resources/index.html#utilities-@cerebral/storage-description">Description</a></li></ul></li></ul></li></ul></li></ul></div><div class="docs-doc"><div class="docs-doc-content"><h1 id="compute">Compute</h1><p>Computeds calculate and cache derived state values. Using computeds helps to keep logic out of the application view components and improves performance.</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> state <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 
-<span class="token keyword">export</span> <span class="token keyword">const</span> title <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">get</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token template-string"><span class="token string">`Hi ${get(state`</span></span>user<span class="token punctuation">.</span>name<span class="token template-string"><span class="token string">`)}`</span></span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">title</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token keyword">get</span></span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hi </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">get</span><span class="token punctuation">(</span>state<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">user.name</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span>
 <span class="token punctuation">}</span></code></pre><p>You use the <strong>get</strong> function to retrieve state and other computed values from the state tree. It will automatically track the computed to optimally figure out when it needs to recalculate.</p><p>You attach these computeds directly to your state:</p><pre><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> title <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./computed'</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-  state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    user<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-      name<span class="token punctuation">:</span> <span class="token string">'Bob'</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">user</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">'Bob'</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
     title
   <span class="token punctuation">}</span>
@@ -278,9 +278,9 @@
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">connect</span><span class="token punctuation">(</span>
   <span class="token punctuation">{</span>
-    hello<span class="token punctuation">:</span> state<span class="token template-string"><span class="token string">`title`</span></span>
+    <span class="token literal-property property">hello</span><span class="token operator">:</span> state<span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">title</span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span> hello <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> hello <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
       <span class="token operator">&lt;</span>h1<span class="token operator">></span><span class="token punctuation">{</span>title<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
     <span class="token punctuation">)</span>

@@ -263,17 +263,17 @@
 <span class="token keyword">import</span> Devtools <span class="token keyword">from</span> <span class="token string">'cerebral/devtools'</span>
 
 <span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  state<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token string">'My Project'</span>
+  <span class="token literal-property property">state</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'My Project'</span>
   <span class="token punctuation">}</span>  
 <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-  devtools<span class="token punctuation">:</span> <span class="token function">Devtools</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// This should point to the host and port you</span>
-    <span class="token comment" spellcheck="true">// create in the Devtools application</span>
-    host<span class="token punctuation">:</span> <span class="token string">'localhost:8585'</span>
+  <span class="token literal-property property">devtools</span><span class="token operator">:</span> <span class="token function">Devtools</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// This should point to the host and port you</span>
+    <span class="token comment">// create in the Devtools application</span>
+    <span class="token literal-property property">host</span><span class="token operator">:</span> <span class="token string">'localhost:8585'</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><div><div style="background-color:#FAFAFA;border-left:4px solid #f4ca36;border-radius:3px;padding:10px 15px;color:#666"><p>Note that if you are developing a native application you will most likely have to use your IP address instead of “localhost”, when connecting to the Devtools</p></div></div><p>Open up the newly installed debugger and add a new application.</p><div><img src="/images/add_app.png" style="width:400px"/></div><p>If you refresh your application and go to the <strong>state</strong> tab you should now see:</p><pre><code class="language-js"><span class="token punctuation">{</span>
-  title<span class="token punctuation">:</span> <span class="token string">'My Project'</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre><div style="background-color:#FAFAFA;border-left:4px solid #f4ca36;border-radius:3px;padding:10px 15px;color:#666"><p>Note that if you are developing a native application you will most likely have to use your IP address instead of “localhost”, when connecting to the Devtools</p></div><p>Open up the newly installed debugger and add a new application.</p><img src="/images/add_app.png" style="width:400px"/><p>If you refresh your application and go to the <strong>state</strong> tab you should now see:</p><pre><code class="language-js"><span class="token punctuation">{</span>
+  <span class="token literal-property property">title</span><span class="token operator">:</span> <span class="token string">'My Project'</span>
 <span class="token punctuation">}</span></code></pre><div class="docs-doc-edit"><a href="https://github.com/cerebral/cerebral/tree/next/docs/introduction/devtools.md" target="_new">Edit on Github</a></div></div></div></div></div>
     
 <script src="/search.js"></script>
