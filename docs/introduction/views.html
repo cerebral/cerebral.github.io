@@ -120,9 +120,11 @@
                   " href="/docs/introduction/views.html#view-integrations-using-vue">Using Vue</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/introduction/views.html#view-integrations-using-vue-installation-of-@cerebral/vue">Installation of @cerebral/vue</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/introduction/views.html#view-integrations-using-vue-basic-setup-with-vue-3">Basic Setup with Vue 3</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/introduction/views.html#view-integrations-using-vue-defining-components">Defining Components</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/introduction/views.html#view-integrations-using-vue-basic-setup">Basic Setup</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
-                  nav_childless" href="/docs/introduction/views.html#view-integrations-using-vue-defining-components-in-react">Defining Components in React</a></li></ul></li></ul></li></ul></li><li class="nav_section-item "><input id="advanced" class="nav_toggle" type="checkbox"/><div class="nav_item-name nav_toggle-label nav_section">ADVANCED</div><ul><li class="nav_page-item "><input id="/docs/advanced/index.html" class="nav_toggle" type="checkbox"/><a class="nav_toggle-label nav_item-name nav_link nav_page
+                  nav_childless" href="/docs/introduction/views.html#view-integrations-using-vue-defining-components">Defining Components</a></li></ul></li><li><input id="/docs/introduction/views.html#view-integrations-using-react" class="nav_toggle" type="checkbox"/><a class="nav_toggle-label nav_item-name nav_sublink
+                  " href="/docs/introduction/views.html#view-integrations-using-react">Using React</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/introduction/views.html#view-integrations-using-react-installation-of-@cerebral/react">Installation of @cerebral/react</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/introduction/views.html#view-integrations-using-react-basic-setup">Basic Setup</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
+                  nav_childless" href="/docs/introduction/views.html#view-integrations-using-react-defining-components-in-react">Defining Components in React</a></li></ul></li></ul></li></ul></li><li class="nav_section-item "><input id="advanced" class="nav_toggle" type="checkbox"/><div class="nav_item-name nav_toggle-label nav_section">ADVANCED</div><ul><li class="nav_page-item "><input id="/docs/advanced/index.html" class="nav_toggle" type="checkbox"/><a class="nav_toggle-label nav_item-name nav_link nav_page
                   " href="/docs/advanced/index.html">Computed</a><ul><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/advanced/index.html#computed-when-to-use-computed-values">When to Use Computed Values</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
                   nav_childless" href="/docs/advanced/index.html#computed-basic-computed">Basic Computed</a></li><li><a class="nav_toggle-label nav_item-name nav_sublink
@@ -534,15 +536,7 @@
   &lt;/div>
 </span><span class="token template-punctuation string">`</span></span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">)</span></code></pre><p>You can also use <strong>.vue</strong> files for your components. Read more about that in <a href="/views/vue.html">@cerebral/vue</a>.</p><p>&lt;/Info&gt;</p><pre><code>
-## Using React
-
-React is one of the most popular integrations for Cerebral.
-
-### Installation of @cerebral/react
-
-```bash
-npm install react react-dom @cerebral/react</code></pre><h3>Basic Setup<a href="#view-integrations-using-vue-basic-setup">∞</a><span id="view-integrations-using-vue-basic-setup"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token punctuation">)</span></code></pre><p>You can also use <strong>.vue</strong> files for your components. Read more about that in <a href="/views/vue.html">@cerebral/vue</a>.</p><h2>Using React<a href="#view-integrations-using-react">∞</a><span id="view-integrations-using-react"> </span></h2><p>React is one of the most popular integrations for Cerebral.</p><h3>Installation of @cerebral/react<a href="#view-integrations-using-react-installation-of-@cerebral/react">∞</a><span id="view-integrations-using-react-installation-of-@cerebral/react"> </span></h3><pre><code>npm install react react-dom @cerebral/react</code></pre><h3>Basic Setup<a href="#view-integrations-using-react-basic-setup">∞</a><span id="view-integrations-using-react-basic-setup"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> createRoot <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'react-dom/client'</span>
 <span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> Container <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/react'</span>
@@ -561,7 +555,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
   <span class="token operator">&lt;</span>Container app<span class="token operator">=</span><span class="token punctuation">{</span>app<span class="token punctuation">}</span><span class="token operator">></span>
     <span class="token operator">&lt;</span>AppComponent <span class="token operator">/</span><span class="token operator">></span>
   <span class="token operator">&lt;</span><span class="token operator">/</span>Container<span class="token operator">></span>
-<span class="token punctuation">)</span></code></pre><h3>Defining Components in React<a href="#view-integrations-using-vue-defining-components-in-react">∞</a><span id="view-integrations-using-vue-defining-components-in-react"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
+<span class="token punctuation">)</span></code></pre><h3>Defining Components in React<a href="#view-integrations-using-react-defining-components-in-react">∞</a><span id="view-integrations-using-react-defining-components-in-react"> </span></h3><pre><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> state<span class="token punctuation">,</span> sequences <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'cerebral'</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> connect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@cerebral/react'</span>
 
